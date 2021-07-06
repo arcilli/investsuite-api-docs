@@ -93,7 +93,7 @@ nav:
     # - Rate limiting: advanced_topics/rate_limiting.md
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
-  - API specification: "https://public-api.dev.investsuite.com/redoc"
+  - API specification: "https://api.uat.investsuite.com/redoc"
   - Release notes: changelog.md
 
 extra_javascript:

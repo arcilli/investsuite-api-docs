@@ -18,7 +18,7 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
     GET /instrument_groups 
         ?[limit=100]
         &[embed=instrument_ids] HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 

@@ -13,7 +13,7 @@ When you successfully authenticate you receive an `access_token` and a `refresh_
 
     ```HTTP hl_lines="1"
     POST /auth HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
