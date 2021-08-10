@@ -12,7 +12,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
 
     ```HTTP hl_lines="1"
     POST /portfolios/ HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -104,7 +104,7 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
 
     ```HTTP hl_lines="1"
     GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -173,7 +173,7 @@ You can query each entity through a general endpoint e.g. `GET portfolios/?query
     ```HTTP hl_lines="1"
     GET /portfolios
         ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -241,7 +241,7 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
 
     ```HTTP hl_lines="1"
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -318,7 +318,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
     ```HTTP hl_lines="1"
     DELETE /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json

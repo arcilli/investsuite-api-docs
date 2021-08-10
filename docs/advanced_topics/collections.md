@@ -14,7 +14,7 @@ Collections are paginated lists of entities. To request a collection issue a `GE
     GET /portfolios/
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -22,7 +22,7 @@ Collections are paginated lists of entities. To request a collection issue a `GE
 
     ```JSON hl_lines="10"
     {
-        "next":"http://public-api.uat.investsuite.com/portfolios/?embed=owned_by_user_id&limit=2",
+        "next":"http://api.uat.investsuite.com/portfolios/?embed=owned_by_user_id&limit=2",
         "count":204,
         "offset":"10",
         "results":[
@@ -143,7 +143,7 @@ The API provides a structural search and filtering mechanism for all entities. W
     ```HTTP hl_lines="1"
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -174,8 +174,8 @@ List operator    | `IN` (element of) | `field in ['value1', 'value2', 'value3']`
 Logical operator | `AND`, `OR` | `email eq kristof and age gt 18`
 
 !!! Hint
-    You combine operator
-     in all possible compositions e.g. `email+eq+'*tom*'+and+firstname+in+[’tom',+‘thomas’]`.
+    You can combine operators
+    in all possible compositions e.g. `query=email+eq+'*tom*'+and+firstname+in+[’tom',+‘thomas’]`.
 ### Sorting
 
 The sorting operator always comes as the last term, except when there is a selection term which is always at the very last:

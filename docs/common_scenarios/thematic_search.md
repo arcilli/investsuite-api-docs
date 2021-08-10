@@ -8,7 +8,7 @@ The InvestSuite quant team composes and actively manages a list of themes (instr
 
 ## Model
 
-Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` aggregates 0..* `Instrument` objects. An InstrumentGroup is the category e.g. HealthCare and holds properties to describe the category: name, image, description. The `Instrument` object is a financial instrument, identified by an ISIN (external_id), and also holds properties to describe the instrument.
+Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` aggregates 0..* `Instrument` objects. An InstrumentGroup is the category e.g. _Health Care_ and holds properties to describe the category: name, image, description. The `Instrument` object is a financial instrument, identified by an ISIN (external_id), and also holds properties to describe the instrument.
 
 ![Screenshot](../img/instrument_groups_model.jpg)
 
@@ -18,7 +18,7 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
     GET /instrument_groups 
         ?[limit=100]
         &[embed=instrument_ids] HTTP/1.1
-    Host: public-api.uat.investsuite.com
+    Host: api.uat.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -87,8 +87,8 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
 
 ## Embedding
 
-You can add details about the `Instrument` objects to the `InstrumentGroup` objects collection by providing the `?embed=query` query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated _embedded key at the root level, which contains a full rendition of the referenced entities.
+You can add details about the `Instrument` objects to the `InstrumentGroup` objects collection by providing the `?embed=query` query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated _embedded key at the root level, which contains a full rendition of the referenced entities. Read detailed info about embedding **[here](../../advanced_topics/embedding/)**.
 
 ## Collections
 
-Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`. Collection endpoints accept alongside the `embed` query parameter take two parameters: limit and offset. Limit (`limit=50`) allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100. 
+Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`. Collection endpoints accept alongside the `embed` query parameter take two parameters: limit and offset. Limit (`limit=50`) allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100. Read detailed info about collections **[here](../../advanced_topics/collections/)**.
