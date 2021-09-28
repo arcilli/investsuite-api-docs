@@ -74,9 +74,10 @@ plugins:
       lang: en
 
 nav:
-  - Home:
+  - First steps:
     - About: index.md
-    - Authentication: first_steps.md
+    - Authentication: authentication.md
+    - Quick start: quick_start.md
   - Common scenarios: 
     - Create and manage users: common_scenarios/users.md
     - Create and manage portfolios: common_scenarios/portfolios.md

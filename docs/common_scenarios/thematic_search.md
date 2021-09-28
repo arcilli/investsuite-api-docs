@@ -10,7 +10,7 @@ The InvestSuite quant team composes and actively manages a list of themes (instr
 
 Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` aggregates 0..* `Instrument` objects. An InstrumentGroup is the category e.g. _Health Care_ and holds properties to describe the category: name, image, description. The `Instrument` object is a financial instrument, identified by an ISIN (external_id), and also holds properties to describe the instrument.
 
-![Screenshot](../img/instrument_groups_model.jpg)
+![Instrument Groups Model](../img/instrument_groups_model.jpg)
 
 === "Request"
 

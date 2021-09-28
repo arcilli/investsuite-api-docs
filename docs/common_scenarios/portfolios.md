@@ -19,7 +19,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
 
     {
-        "base_currency":"USD",
+        "currency":"USD",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
             "manager_settings":{
@@ -33,8 +33,8 @@ Once you have created a portfolio you can create a portfolio and assign the port
         "external_id":"your-bank-portfolio-1",
         "money_type":"PAPER_MONEY",
         "name":"General investing",
-        "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "portfolio":{
+        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "holdings":{
             "$USD":10000
         },
     }
@@ -43,7 +43,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
 
 === "Response (body)"
 
-    ```JSON hl_lines="10"
+    ```JSON
     {
         "external_id":"your-bank-portfolio-1",
         "readable_by":[
