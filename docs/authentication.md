@@ -7,15 +7,15 @@ Authenticate against the API to receive a JSON Web Token (JWT). Learn more about
 !!! Warning
     Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.
 
-When you successfully authenticate you receive an `access_token` and a `refresh_token`. Add the `access_token`to the HTTP headers in all subsequent requests. The `access_token` has a limited lifetime. The duration is added to the response body in the `expires_at`field, e.g `expires_at: 300`. To silently prolong the session without requiring authentication data request renewal using the `/refresh-token/`endpoint.
+When you successfully authenticate you receive an `access_token` and a `refresh_token`. Add the `access_token`to the HTTP headers in all subsequent requests. The `access_token` has a limited lifetime. The duration is added to the response body in the `expires_at`field, e.g `expires_at: 300`. 
 
-=== "Request"
+## Login
 
-    ```HTTP hl_lines="1"
-    POST /auth HTTP/1.1
-    Host: api.uat.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
+=== "HTTP"
+
+    ```HTTP 
+    POST /auth/login/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
     Content-Type: application/json
 
     {
@@ -25,14 +25,54 @@ When you successfully authenticate you receive an `access_token` and a `refresh_
 
     ```
 
-=== "Response (body)"
+=== "curl"
 
-    ```JSON hl_lines="10"
-    {
-        "access_token":"eyJ0eXAiOiJKV1QiL...",
-        "token_type":"Bearer",
-        "expires_in":"300",
-        "refresh_token":"eyJraWQiOiJEb..."
-    }
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -d '{"access_key_id":"nd348h88yhGNUHhhhb78y6gj","password":"secret"}' \
+    https://api.sandbox.investsuite.com/auth/login/
     ```
+
+Response:
+```JSON
+{
+    "access_token":"eyJ0eXAiOiJKV1QiL...",
+    "token_type":"Bearer",
+    "expires_in":"300",
+    "refresh_token":"eyJraWQiOiJEb..."
+}
+```
+
+## Refresh token
+
+Use the `/auth/refresh-token/`endpoint to silently prolong the session. This endpoint will return the same response as `/auth/login` does.
+
+=== "HTTP"
+
+    ```HTTP 
+    POST /auth/refresh-token/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+
+    {
+        "refresh_token": "{string}"
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -d '{"refresh_token": "{string}"}' \
+    https://api.sandbox.investsuite.com/auth/refresh-token/
+    ```
+
+
+
+
+
+
 

@@ -2,24 +2,25 @@
 title: Quick start
 ---
 
-## Introduction
+Get acquainted with the InvestSuite API. This quick start takes you through the steps typically pursued when integrating with InvestSuite's Optimizer and Robo Advisor products. Below sequence diagram describes these basic steps. As a quick start, we will perform these steps interactively. 
 
-Get acquainted with the InvestSuite API in no time by going from scratch to an optimised portfolio. This quick start takes you through the steps typically pursued when integration with InvestSuite's Optimizer and Robo Advisor products. Below sequence diagram describes these steps:
-
-1. Create a user by invoking `POST /users/`.
-2. Create a portfolio by invoking `POST /portfolios/`.
-3. Fund the account linked to the portfolio. This is between you and your broker or order management system.
-4. Update the portfolio with the portfolio holdings you get from the broker (initially only a cash holding).
-5. Get order recommendations from the Optimizer, based on the holdings and portfolio settings.
-6. Place the order with your broker.
-7. Post the transactions you get back from your broker.
-8. Repeat steps 4 - 7.
+!!! Hint
+    This exercise demonstrates the flow for Robo Advisor. The flow for **Self Investor** is the same. The only difference is that for Self Investor you do not get to call the optimizer for order recommendations.
 
 ## Integration flow
 
 ![Optimizer Integration](../img/investsuite_optimizer_api_integration.jpg)
 
-Ready to get your hands dirty? Let's go 🕹 ...
+Let's now get familiar with the API by simulating what is documented in the sequence diagram. As it is a simulation you will not integrate with your broker but instead create a so-called _virtual portfolio_. These will be the steps: 
+
+1. Create a user by invoking `POST /users/`.
+2. Create a portfolio by invoking `POST /portfolios/`.
+3. Fund the account linked to the portfolio. This is between you and your broker or order management system and is not part of this quick start. Here we will create a "virtual portfolio".
+4. Update the portfolio with the portfolio holdings you get from the broker (initially only a cash holding).
+5. Get order recommendations from the Optimizer, based on the holdings and portfolio settings.
+6. Place the order with your broker. (Not applicable to this quick start.)
+7. Post the transactions you get back from your broker.
+8. Repeat steps 4 - 7.
 
 ## Steps
 
@@ -27,11 +28,11 @@ Ready to get your hands dirty? Let's go 🕹 ...
 
 Create a user for your customer so that in the next step you can define that user as owner of a portfolio. Optionally add an e-mail address and phone number to add the user to the underlying Identity Provider so that your customer can log in to a front-end to view and manage portfolios. 
 
-=== "Request"
+=== "HTTP"
 
-    ```HTTP hl_lines="1"
+    ```HTTP 
     POST /users/ HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -47,35 +48,50 @@ Create a user for your customer so that in the next step you can define that use
 
     ```
 
-=== "Response (body)"
+=== "curl"
 
-    ```JSON
-    {
-        "external_id": "unique_external_entity_id",
-        "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-        "creation_datetime": "2021-02-18T08:21:02+00:00",
-        "version": 3,
-        "version_datetime": "2021-02-18T08:21:02+00:00",
-        "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-        "deleted": false,
-        "first_name": "Ashok",
-        "last_name": "Kumar",
-        "email": "ashok.kumar@example.com",
-        "phone": "+123456789"
-    }
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '{  \   
+            "external_id": "unique_external_entity_id",  \   
+            "first_name": "Ashok", \
+            "last_name": "Kumar", \
+            "email": "ashok.kumar@example.com",\
+            "phone": "+123456789" \
+        }' \
+    https://api.sandbox.investsuite.com/users/
     ```
 
-👆 Copy the User ID from the Response Body to use in the next step.
+**Response body** 
+
+```JSON
+{
+    "external_id": "unique_external_entity_id",
+    "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+    "creation_datetime": "2021-02-18T08:21:02+00:00",
+    "version": 3,
+    "version_datetime": "2021-02-18T08:21:02+00:00",
+    "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+    "deleted": false,
+    "first_name": "Ashok",
+    "last_name": "Kumar",
+    "email": "ashok.kumar@example.com",
+    "phone": "+123456789"
+}
+```
+
+!!! Hint
+    Copy the User ID from the Response Body to use in the next step.
 
 ### 2. Create a portfolio
 
-Create a portfolio under a discretionary mandate. This sort of mandate comprehends that the portfolio is fully managed by the Robo Advisor, without the need for your customer to intervene. Make it a “virtual portfolio” meaning paper money is used to simulate trades. Assign the user you just created as owner. Select the applicable investment policy as management setting required as input to the Optimizer's algorithm.
+=== "HTTP"
 
-=== "Request"
-
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="11"
     POST /portfolios/ HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -97,45 +113,75 @@ Create a portfolio under a discretionary mandate. This sort of mandate comprehen
 
     ```
 
-=== "Response (body)"
+=== "curl"
 
-    ```JSON
-    {
-        "external_id": "your-bank-portfolio-1",
-        "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "currency": "USD",
-        "money_type": "PAPER_MONEY",
-        "config":{
-            "manager": "ROBO_ADVISOR_DISCRETIONARY",
-            "manager_version":1,
-            "manager_settings": {
-                "policy_id": "Y01EF46X9XB437JS4678X0K529C",
-                "active": true
-            }
-        },
-        "snapshot_datetime": null,
-        "funded_since": null,
-        "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-        "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version": 1,
-        "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-        "deleted": false,
-        "status": "WAITING_FOR_FUNDS"
-    }
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '{  \   
+        "currency":"USD",  \   
+        "config":{  \   
+            "manager":"ROBO_ADVISOR_DISCRETIONARY",  \   
+            "manager_version":1  \   
+            "manager_settings": {  \   
+                "policy_id":"Y01EF46X9XB437JS4678X0K529C",  \   
+            }  \   
+        },  \   
+        "external_id":"your-bank-portfolio-1",  \   
+        "money_type":"PAPER_MONEY",  \   
+        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",  \   
+    }' \
+    https://api.sandbox.investsuite.com/portfolios/
     ```
 
-👆 Copy the Portfolio ID from the Response Body to use in the next step.
+Take a look at the request body... 
+
+- You create a portfolio under a discretionary mandate: `config.manager="ROBO_ADVISOR_DISCRETIONARY"`. This sort of mandate comprehends that the portfolio is fully managed by the Robo Advisor, without the need for your customer to intervene. 
+- Making it a “virtual portfolio” makes that paper money is used to simulate trades: `"money_type": "PAPER_MONEY"`.
+- You assign the user you created in step 1 as owner: `"owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ"`.
+- Selecting the applicable investment policy as management setting is required for the Robo Advisor's optimizer algorithm: `config.manager_settings.policy_id="Y01EF46X9XB437JS4678X0K529C"`.
+
+**Response body**
+
+```JSON
+{
+    "external_id": "your-bank-portfolio-1",
+    "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+    "currency": "USD",
+    "money_type": "PAPER_MONEY",
+    "config":{
+        "manager": "ROBO_ADVISOR_DISCRETIONARY",
+        "manager_version":1,
+        "manager_settings": {
+            "policy_id": "Y01EF46X9XB437JS4678X0K529C",
+            "active": true
+        }
+    },
+    "snapshot_datetime": null,
+    "funded_since": null,
+    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version": 1,
+    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+    "deleted": false,
+    "status": "WAITING_FOR_FUNDS"
+}
+```
+
+!!! Hint
+    Copy the Portfolio ID from the Response Body to use in the next step.
 
 ### 3. Fund the portfolio
 
-Add an initial amount for the Robo Advisor to invest the portfolio you just created. To indicate a portfolio's holding to be the cash holding use the portfolio `currency` abbreviation defined in the ISO international standard 4217, e.g. AUD, and prefix it with the $-sign so `$AUD`.
+Add an initial amount for the Robo Advisor to invest the portfolio you just created. To indicate a portfolio's holding to be the cash holding use the currency abbreviation defined in the ISO international standard 4217, e.g. AUD, and prefix it with the $-sign so `$AUD`. The currency to use is the one defined in the portfolio field `currency`.
 
-=== "Request"
+=== "HTTP"
 
     ```HTTP hl_lines="1"
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -149,178 +195,458 @@ Add an initial amount for the Robo Advisor to invest the portfolio you just crea
 
     ```
 
-=== "Response (body)"
+=== "curl"
 
-    ```JSON
-    {
-        "external_id": "your-bank-portfolio-1",
-        "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "currency": "USD",
-        "money_type": "PAPER_MONEY",
-        "config":{
-            "manager": "ROBO_ADVISOR_DISCRETIONARY",
-            "manager_version":1,
-            "manager_settings": {
-                "policy_id": "Y01EF46X9XB437JS4678X0K529C",
-                "active": true
-            }
-        },
+    ```bash
+    curl -X PATCH \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '{
         "holdings": {
             "$USD":10000
-        },
-        "snapshot_datetime": null,
-        "funded_since": null,
-        "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-        "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version": 2,
-        "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-        "deleted": false,
-        "status": "ACTIVE"
-    }
+        }
+    }' \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```
 
-### 4. Get order recommendations
+Alongside the updated holdings with the cash position, register the cash deposit transaction.
+
+=== "HTTP"
+
+    ```HTTP hl_lines="1"
+    POST /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+
+    {
+        "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",
+        "movements": [
+            {
+                "external_id": "13891096285",
+                "type": "CASH_DEPOSIT",
+                "status": "SETTLED",
+                "datetime": "2021-09-27T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "quantity": 10000.0,
+            }
+        ],
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X PATCH \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '{  \
+        "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",  \
+        "movements": [  \
+            {  \
+                "external_id": "13891096285",  \
+                "type": "CASH_DEPOSIT",  \
+                "status": "SETTLED",  \
+                "datetime": "2021-09-27T00:00:00+00:00",  \
+                "instrument_id": "$USD",  \
+                "quantity": 10000.0,  \
+            }  \
+        ],  \
+    }'  \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/
+    ```
+**Response body**
+
+```JSON
+{
+        "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",
+        "type": "CASH_TRANSFER",
+        "order_type": null,
+        "movements": [
+            {
+                "external_id": "13891096285",
+                "type": "CASH_DEPOSIT",
+                "sub_type": "Cash Deposit",
+                "description": null,
+                "status": "SETTLED",
+                "datetime": "2021-09-27T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "instrument_name": null,
+                "quantity": 1.0,
+                "quantity_portfolio_currency": 1.0,
+                "reference_instrument_id": null,
+                "reference_instrument_name": null,
+                "reference_quantity": null,
+                "unit_price": null,
+                "reference_external_id": null,
+                "original_external_id": null,
+                "trade_type": null,
+                "ex_dividend_date": null
+            }
+        ],
+        "description": null,
+        "id": "T01FGNG33GFJK5GCN4KZSPZYMFF",
+        "creation_datetime": "2021-09-28T06:04:54.671046+00:00",
+        "version": 1,
+        "version_datetime": "2021-09-28T06:04:54.671046+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false,
+        "status": "COMPLETED"
+    }
+```
+
+### 4. Recommended orders
 
 Given you assigned a policy and an initial amount to the portfolio as part of the two previous steps, you can now issue a `GET` request to retrieve order recommendations for the portfolio you just initiated.
 
-=== "Request"
+=== "HTTP"
 
     ```HTTP hl_lines="1"
     GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimization/ HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
-=== "Response (body)"
+=== "curl"
 
-    ```JSON
-    {
-    "current_solution":{
-        "objective_value":-2.3899945188058256e-05,
-        "portfolio":{
-            "US78468R1014":3,
-            "$USD":402.52
-        },
-        "look_through":{
-            "asset_classes":{
-                "alternatives":0.0,
-                "bonds":1.0,
-                "commodities":0.0,
-                "stocks":0.0,
-                "cash":0.0
-            },
-            "regions":{
-                "bonds":{
-                "asia_pacific_developed":0.0,
-                "emerging":0.0,
-                "europe_developed":0.0,
-                "north_america":1.0
-                },
-                "stocks":{
-                "asia_pacific_developed":0.0,
-                "emerging":0.0,
-                "europe_developed":0.0,
-                "north_america":0.0
-                }
-            },
-            "bond_types":null,
-            "sectors":{
-                "basic_materials":0.0,
-                "consumer_cyclical":0.0,
-                "consumer_defensive":0.0,
-                "communication_services":0.0,
-                "energy":0.0,
-                "financial_services":0.0,
-                "healthcare":0.0,
-                "industrials":0.0,
-                "real_estate":0.0,
-                "technology":0.0,
-                "utilities":0.0
-            }
-        }
-    },
-    "optimal_solution":{
-        "objective_value":0.001359509844724587,
-        "portfolio":{
-            "US4642886612":0.76,
-            "US78468R1014":3,
-            "US4642863926":0.7381,
-            "US46429B2676":3.7190000000000003,
-            "US78468R2004":3.0000000000000004,
-            "$USD":14.769662844999981
-        },
-        "look_through":{
-            "asset_classes":{
-                "alternatives":0.0,
-                "bonds":0.7986485447656201,
-                "commodities":0.0,
-                "stocks":0.20135145523437992,
-                "cash":0.0
-            },
-            "regions":{
-                "bonds":{
-                "asia_pacific_developed":0.0,
-                "emerging":0.0,
-                "europe_developed":0.0,
-                "north_america":1.0
-                },
-                "stocks":{
-                "asia_pacific_developed":0.09369676320272571,
-                "emerging":0.0,
-                "europe_developed":0.1799403747870528,
-                "north_america":0.7263628620102215
-                }
-            },
-            "bond_types":null,
-            "sectors":{
-                "basic_materials":0.046054619609495716,
-                "consumer_cyclical":0.13806308600212508,
-                "consumer_defensive":0.07094628258129534,
-                "communication_services":0.022473042495950425,
-                "energy":0.03446538322470511,
-                "financial_services":0.16124155877170626,
-                "healthcare":0.12224125679967916,
-                "industrials":0.11992341101283713,
-                "real_estate":0.0,
-                "technology":0.2563740870896863,
-                "utilities":0.02821727241251957
-            }
-        },
-    },
-    "portfolio_update":{
-        "is_recommended":true,
-        "orders":{
-            "US4642886612":{
-                "shares":0.76,
-                "expected_share_price":130.09,
-                "expected_transaction_cost":0.4943420000000001
-            },
-            "US4642863926":{
-                "shares":0.7381,
-                "expected_share_price":130.31,
-                "expected_transaction_cost":0.48090905500000003
-            },
-            "US46429B2676":{
-                "shares":3.719,
-                "expected_share_price":26.58,
-                "expected_transaction_cost":0.4942551
-            },
-            "US78468R2004":{
-                "shares":3,
-                "expected_share_price":30.64,
-                "expected_transaction_cost":0.4596
-            }
-        }
-    },
-    "id":"O01FGNGNS3R3836WB3JHD22J748",
-    "creation_datetime":"2021-09-28T06:15:06.613287+00:00",
-    "version":1,
-    "version_datetime":"2021-09-28T06:15:06.613287+00:00",
-    "version_authored_by_user_id":"UXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "deleted":false,
-    }   
+    ```bash
+    curl -X GET \                 
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    https://api.sandbox.investsuite.com/portfolios/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimization/
     ```
+
+**Response body**
+
+```JSON
+{
+"current_solution":{
+    "objective_value":-2.3899945188058256e-05,
+    "portfolio":{
+        "US78468R1014":3,
+        "$USD":402.52
+    },
+    "look_through":{
+        "asset_classes":{
+            "alternatives":0.0,
+            "bonds":1.0,
+            "commodities":0.0,
+            "stocks":0.0,
+            "cash":0.0
+        },
+        "regions":{
+            "bonds":{
+            "asia_pacific_developed":0.0,
+            "emerging":0.0,
+            "europe_developed":0.0,
+            "north_america":1.0
+            },
+            "stocks":{
+            "asia_pacific_developed":0.0,
+            "emerging":0.0,
+            "europe_developed":0.0,
+            "north_america":0.0
+            }
+        },
+        "bond_types":null,
+        "sectors":{
+            "basic_materials":0.0,
+            "consumer_cyclical":0.0,
+            "consumer_defensive":0.0,
+            "communication_services":0.0,
+            "energy":0.0,
+            "financial_services":0.0,
+            "healthcare":0.0,
+            "industrials":0.0,
+            "real_estate":0.0,
+            "technology":0.0,
+            "utilities":0.0
+        }
+    }
+},
+"optimal_solution":{
+    "objective_value":0.001359509844724587,
+    "portfolio":{
+        "US4642886612":0.76,
+        "US78468R1014":3,
+        "US4642863926":0.7381,
+        "US46429B2676":3.7190000000000003,
+        "US78468R2004":3.0000000000000004,
+        "$USD":14.769662844999981
+    },
+    "look_through":{
+        "asset_classes":{
+            "alternatives":0.0,
+            "bonds":0.7986485447656201,
+            "commodities":0.0,
+            "stocks":0.20135145523437992,
+            "cash":0.0
+        },
+        "regions":{
+            "bonds":{
+            "asia_pacific_developed":0.0,
+            "emerging":0.0,
+            "europe_developed":0.0,
+            "north_america":1.0
+            },
+            "stocks":{
+            "asia_pacific_developed":0.09369676320272571,
+            "emerging":0.0,
+            "europe_developed":0.1799403747870528,
+            "north_america":0.7263628620102215
+            }
+        },
+        "bond_types":null,
+        "sectors":{
+            "basic_materials":0.046054619609495716,
+            "consumer_cyclical":0.13806308600212508,
+            "consumer_defensive":0.07094628258129534,
+            "communication_services":0.022473042495950425,
+            "energy":0.03446538322470511,
+            "financial_services":0.16124155877170626,
+            "healthcare":0.12224125679967916,
+            "industrials":0.11992341101283713,
+            "real_estate":0.0,
+            "technology":0.2563740870896863,
+            "utilities":0.02821727241251957
+        }
+    },
+},
+"portfolio_update":{
+    "is_recommended":true,
+    "orders":{
+        "US4642886612":{
+            "shares":0.76,
+            "expected_share_price":130.09,
+            "expected_transaction_cost":0.4943420000000001
+        },
+        "US4642863926":{
+            "shares":0.7381,
+            "expected_share_price":130.31,
+            "expected_transaction_cost":0.48090905500000003
+        },
+        "US46429B2676":{
+            "shares":3.719,
+            "expected_share_price":26.58,
+            "expected_transaction_cost":0.4942551
+        },
+        "US78468R2004":{
+            "shares":3,
+            "expected_share_price":30.64,
+            "expected_transaction_cost":0.4596
+        }
+    }
+},
+"id":"O01FGNGNS3R3836WB3JHD22J748",
+"creation_datetime":"2021-09-28T06:15:06.613287+00:00",
+"version":1,
+"version_datetime":"2021-09-28T06:15:06.613287+00:00",
+"version_authored_by_user_id":"UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+"deleted":false,
+}   
+```
+
+### 5. Post transactions
+
+Simulate buy transactions for the orders the optimizer recommended in step 4 above, see `portfolio_update.orders` in the response body.
+
+=== "HTTP"
+
+    ```HTTP hl_lines="1"
+    POST /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+
+    [
+        {
+            "movements": [
+                {
+                    "type": "BUY",
+                    "status": "SETTLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "US4642886612",
+                    "quantity": 2,
+                },
+                {
+                    "type": "SELL",
+                    "status": "SETTLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "$USD",
+                    "quantity": 125,
+                }
+            ]
+        },
+        {
+            "movements": [
+                {
+                    "type": "BUY",
+                    "status": "SETTLED",
+                    "datetime": "2021-09-24T06:15:01.930643+00:00",
+                    "instrument_id": "US4642863926",
+                    "quantity": 3,
+                },
+                {
+                    "type": "SELL",
+                    "status": "SETTLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "$USD",
+                    "quantity": 350.50,
+                }
+            ]
+        }
+    ]
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '[
+        {
+            "movements": [
+                {
+                    "type": "BUY",
+                    "status": "SETLLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "US4642886612",
+                    "quantity": 2,
+                },
+                {
+                    "type": "SELL",
+                    "status": "SETLLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "$USD",
+                    "quantity": 125,
+                }
+            ]
+        },
+        {
+            "movements": [
+                {
+                    "type": "BUY",
+                    "status": "SETTLED",
+                    "datetime": "2021-09-24T06:15:01.930643+00:00",
+                    "instrument_id": "US4642863926",
+                    "quantity": 3,
+                },
+                {
+                    "type": "SELL",
+                    "status": "SETLLED",
+                    "datetime": "2021-09-24T06:15:01.999300+00:00",
+                    "instrument_id": "$USD",
+                    "quantity": 350.50,
+                }
+            ]
+        }
+    ]'  \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/
+    ```
+
+### 6. Update holdings
+
+Next update the portfolio to hold the acquired positions. This will trigger the optimizer anew. In principle the portfolio is now in line with the investment policy used by the optimizer returning no recommendations.
+
+=== "HTTP"
+
+    ```HTTP 
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+
+    "holdings": {
+        "$USD": 208.086729,
+        "US78464A6644": 18.78,
+        "US4642886612": 9.2243,
+        "US46137V2410": 9,
+        "US3160923039": 3,
+        "US3160928731": 10,
+        "US97717W5215": 6,
+        "US4642861458": 4,
+        "US46429B2676": 45.146,
+        "US46434V7617": 9,
+        "US4642865251": 7.6828,
+        "US46434V4234": 3
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X PATCH \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -d '"holdings": { \ 
+        "$USD": 208.086729, \ 
+        "US78464A6644": 18.78, \ 
+        "US4642886612": 9.2243, \ 
+        "US46137V2410": 9, \ 
+        "US3160923039": 3, \ 
+        "US3160928731": 10, \ 
+        "US97717W5215": 6, \ 
+        "US4642861458": 4, \ 
+        "US46429B2676": 45.146, \ 
+        "US46434V7617": 9, \ 
+        "US4642865251": 7.6828, \ 
+        "US46434V4234": 3 \ 
+    }'  \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
+    ```
+
+**Response body**
+
+```JSON
+{
+    "external_id": "your-bank-portfolio-1",
+    "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+    "currency": "USD",
+    "money_type": "PAPER_MONEY",
+    "config":{
+        "manager": "ROBO_ADVISOR_DISCRETIONARY",
+        "manager_version":1,
+        "manager_settings": {
+            "policy_id": "Y01EF46X9XB437JS4678X0K529C",
+            "active": true
+        }
+    },
+    "holdings": {
+        "$USD": 208.086729,
+        "US78464A6644": 18.78,
+        "US4642886612": 9.2243,
+        "US46137V2410": 9,
+        "US3160923039": 3,
+        "US3160928731": 10,
+        "US97717W5215": 6,
+        "US4642861458": 4,
+        "US46429B2676": 45.146,
+        "US46434V7617": 9,
+        "US4642865251": 7.6828,
+        "US46434V4234": 3
+    },
+    "snapshot_datetime": null,
+    "funded_since": null,
+    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version": 3,
+    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+    "deleted": false,
+    "status": "ACTIVE"
+}
+```
+
+Now that there is an invested portfolio you can view the performance and a Monte Carlo simulation to display future performance, see how by taking a look at the API specification.
+
+That’s it. If you made it so far well done! 👏👏👏 Next up, a bit more detail.
+
