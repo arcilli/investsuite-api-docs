@@ -2,7 +2,7 @@
 title: Handling collection responses
 ---
 
-At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [Get started](../first_steps.md) chapter.
+At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [First steps](../authentication.md) chapter.
 
 ## Collection response format
 
@@ -14,7 +14,7 @@ Collections are paginated lists of entities. To request a collection issue a `GE
     GET /portfolios/
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -22,7 +22,7 @@ Collections are paginated lists of entities. To request a collection issue a `GE
 
     ```JSON hl_lines="10"
     {
-        "next":"http://api.uat.investsuite.com/portfolios/?embed=owned_by_user_id&limit=2",
+        "next":"http://api.sandbox.investsuite.com/portfolios/?embed=owned_by_user_id&limit=2",
         "count":204,
         "offset":"10",
         "results":[
@@ -143,7 +143,7 @@ The API provides a structural search and filtering mechanism for all entities. W
     ```HTTP hl_lines="1"
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 

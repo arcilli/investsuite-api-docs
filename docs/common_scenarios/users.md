@@ -2,13 +2,6 @@
 title: Create and manage users
 ---
 
-## Account opening
-
-To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or web site, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.
-
-User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required.
-
-InvestSuite does not require you to store personal data (PII) on its servers. Instead we demand an identifier to reference your client. On top of that the user's e-mail address and phone number are required in case you intend to integrate our front-end experience.
 
 ## Create a user
 
@@ -16,18 +9,23 @@ InvestSuite does not require you to store personal data (PII) on its servers. In
 
     ```HTTP hl_lines="1"
     POST /users/ HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
 
     {
-        "external_id": "your-bank-user-1",
-        "email": "jane.doe@example.com",
-        "phone": "+123456789",
-        "brokerage_user_id": "12345678",
-        "idp_user_id": "user_idp_identity",
+        "external_id": "unique_external_entity_id",
+        "first_name": "Ashok",
+        "last_name": "Kumar",
+        "email": "ashok.kumar@example.com",
+        "phone": "+12345667",
+        "counter_account": {
+            bank_account_number: "BE01234567891234",
+            bank_account_type: "IBAN",
+            bank_id: "IDQMIE2D"
+        },
         "language": "en-US"
     }
 
@@ -38,25 +36,16 @@ InvestSuite does not require you to store personal data (PII) on its servers. In
     ```JSON hl_lines="10"
     {
         "external_id": "unique_external_entity_id",
-        "readable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
-        "modifiable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
         "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "creation_datetime": "2021-02-18T08:21:02+00:00",
         "version": 3,
         "version_datetime": "2021-02-18T08:21:02+00:00",
         "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "deleted": false,
-        "_embedded": {},
         "first_name": "Jane",
         "last_name": "Doe",
         "email": "jane.doe@example.com",
         "phone": "+123456789",
-        "brokerage_user_id": "12345678",
-        "idp_user_id": "user_idp_identity",
         "language": "en-US"
     }
     ```
@@ -69,7 +58,7 @@ Add the InvestSuite ID to the path to retrieve a user object.
 
     ```HTTP hl_lines="1"
     GET /users/U01F8YW5NJXMF78PMFKXTE2R7Q7 HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
     ```
 
@@ -100,57 +89,20 @@ Add the InvestSuite ID to the path to retrieve a user object.
         "language": "en-US"
     }
     ```
+## Change ("patch") fields
 
-## Search
+Given the right permissions you can update any object issuing a `PATCH` request. 
 
-You can query each entity through a general endpoint e.g. `GET portfolios/?query=…`. Learn more in the [Handling collection responses](/advanced_topics/collections/) section.
+!!! Info
+    Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
 
-=== "Request"
-
-    ```HTTP hl_lines="1"
-    GET /users
-        ?query=email+eq+'jane*' HTTP/1.1
-    Host: api.uat.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
-    ```
-
-=== "Response (body)"
-
-    ```JSON hl_lines="10"
-    {
-        "external_id": "unique_external_entity_id",
-        "readable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
-        "modifiable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
-        "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-        "creation_datetime": "2021-02-18T08:21:02+00:00",
-        "version": 3,
-        "version_datetime": "2021-02-18T08:21:02+00:00",
-        "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-        "deleted": false,
-        "_embedded": {},
-        "first_name": "Jane",
-        "last_name": "Doe",
-        "email": "jane.doe@example.com",
-        "phone": "+123456789",
-        "brokerage_user_id": "12345678",
-        "idp_user_id": "user_idp_identity",
-        "language": "en-US"
-    }
-    ```
-
-## Update a user object
-
-Given the right permissions you can update any object by issuing a `PATCH` request.
+Screenshot Admin Console
 
 === "Request"
 
     ```HTTP hl_lines="1"
     PATCH /users/U01F8YW5NJXMF78PMFKXTE2R7Q7 HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -167,25 +119,51 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
     ```JSON hl_lines="10"
     {
         "external_id": "unique_external_entity_id",
-        "readable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
-        "modifiable_by": [
-            "U01ARZ3NDEKTSV4RRFFQ69G5FAV"
-        ],
         "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "creation_datetime": "2021-02-18T08:21:02+00:00",
         "version": 3,
         "version_datetime": "2021-02-18T08:21:02+00:00",
         "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "deleted": false,
-        "_embedded": {},
         "first_name": "Jane",
         "last_name": "Doe",
         "email": "jane.doe@example.com",
         "phone": "+123456789",
-        "brokerage_user_id": "12345678",
-        "idp_user_id": "user_idp_identity",
+        "language": "en-US"
+    }
+    ```
+
+!!! Warning
+    You cannot update any user field. The `phone` and `email` fields can only be set once. You can update these fields: `external_id`, `first_name`, `last_name`, `counter_account`, `language`
+
+## Search
+
+You can query each entity collection with the `query` parameter e.g. `GET /users/?query=…`. Learn more in the [Handling collection responses](/advanced_topics/collections/) section.
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /users
+        ?query=email+eq+'jane*' HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    ```
+
+=== "Response (body)"
+
+    ```JSON 
+    {
+        "external_id": "unique_external_entity_id",
+        "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "creation_datetime": "2021-02-18T08:21:02+00:00",
+        "version": 3,
+        "version_datetime": "2021-02-18T08:21:02+00:00",
+        "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "deleted": false,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+123456789",
         "language": "en-US"
     }
     ```
@@ -198,7 +176,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
     ```HTTP hl_lines="1"
     DELETE /users/U01F8YW5NJXMF78PMFKXTE2R7Q7 HTTP/1.1
-    Host: api.uat.investsuite.com
+    Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
@@ -207,8 +185,19 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 === "Response (body)"
 
-    ```JSON hl_lines="10"
+    ```JSON 
     {
-        "msg":"Resource 'U01F8YW5NJXMF78PMFKXTE2R7Q7' has been deleted"
+        "external_id": "unique_external_entity_id",
+        "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "creation_datetime": "2021-02-18T08:21:02+00:00",
+        "version": 3,
+        "version_datetime": "2021-02-18T08:21:02+00:00",
+        "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "deleted": true,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+123456789",
+        "language": "en-US"
     }
     ```
