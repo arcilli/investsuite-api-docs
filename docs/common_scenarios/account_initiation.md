@@ -92,7 +92,9 @@ What else:
 
 ## Create login
 
-InvestSuite prefers not to store personal data (PII) in the InvestSuite platform. Instead we merely demand an identifier to reference your client. However if you want to create credentials on the InvestSuite platform so that your user can log in to the platform, or in fact to the front-ends exposing the platform, you need to register the user’s e-mail address and mobile number.
+InvestSuite prefers not to store personal data (PII) in the InvestSuite platform. Instead we merely demand an identifier to reference your client. However if you want to create credentials on the InvestSuite platform so that your user can log in to the platform, or in fact to the front-ends exposing the platform, you need to register the user’s e-mail address and mobile number.  
+<span style="color:blue">*Right now, the customer does not know whether it is possible to add phone and email to a user after it is already created.*</span>  
+<span style="color:blue">*What happens if email/phone that the user provided is wrong? Does IVS automatically delete this entity? Is that the reason that it is not mentioned here that email/phone can be added later?*</span>
 
 === "HTTP"
 
@@ -137,7 +139,7 @@ Field | Description | Data type | Example | Required
 
 When the user is registered in the IdP for a customer, that customer can then go through a process to obtain a password. This process takes place outside of InvestSuite and the bank and requires the user to access the identity platform immediately.
 
-Now, with the e-mail address and the password the user can authenticate against the IdP. When authentication is successful the IdP returns a JWT. You can then add the InvestSuite User ID in the JWT claims to interact with the API on behalf of that user, for instance going through risk profiling on the person’s behalf, retrieving portfolio data, issuing buy or sell orders etc.
+Now, with the e-mail address and the password the user can authenticate against the IdP. When authentication is successful the IdP returns a JWT <span style="color:blue">*(JSON Web Token)*</span>. You can then add the InvestSuite User ID in the JWT claims to interact with the API on behalf of that user, for instance going through risk profiling on the person’s behalf, retrieving portfolio data, issuing buy or sell orders etc.
 
 ![IdP integration](../img/idp-integration.jpg)
 
