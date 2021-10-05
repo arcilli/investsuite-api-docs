@@ -145,7 +145,8 @@ Now, with the e-mail address and the password the user can authenticate against 
 
 ## Add a counter account
 
-You can optionally add a counter account. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.
+You can optionally add a counter account. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.  
+<span style="color:blue">*Is it possible to add a counter account to a user after it is already created?*</span>
 
 === "HTTP"
 
@@ -277,7 +278,7 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
 }
 ```
 
-**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, an example of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
+**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, examples of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
@@ -294,7 +295,7 @@ Field | Description | Data type | Example | Required
 
 ## Portfolio management settings
 
-For the Robo Advisor to operate a limited number of management settings need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you register these management settings.
+For the Robo Advisor to operate, there is a limited number of management settings that need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you can register these management settings.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
