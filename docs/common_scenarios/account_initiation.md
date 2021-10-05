@@ -20,9 +20,10 @@ User objects serve two purposes. Firstly to grant access to one or more InvestSu
 
 ## Create a user
 
-Prior to creating the user in the InvestSuite platform you are assumed to register that user at your end as a customer in the database or CRM of your choice. The ID of the user in that system you add to the InvestSuite system in the `external_id` field, also called the _Reference ID_.
+Prior to creating the user in the InvestSuite platform you are assumed to register that user at your end as a customer in the database or CRM of your choice. The ID of the user in that system you add to the InvestSuite system in the `external_id` field, also called the _Reference ID_.  
+<span style="color:blue">*This last sentence is a little hard to read. Maybe change to "You can add the ID of that user in your system in the `external_id` field, also called the reference ID"*</span>
 
-Next to your user ID you can optionally register the first name and last name. Let’s now create a user and then see why adding the user’s first name and last name may be a good idea.
+Next to your user ID you can optionally register the first name and last name. Let’s now create a user and then see why adding the user’s first name and last name may be a good idea.  
 
 === "HTTP"
 
@@ -56,7 +57,7 @@ Next to your user ID you can optionally register the first name and last name. L
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness. | `string <= 64 characters` | unique_external_entity_id | no 
+`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness <span style="color:blue">*in the InvestSuite database*</span>. | `string <= 64 characters` | unique_external_entity_id | no 
 `first_name` | The first name of the user. | `string <= 128 characters` | Ashok | no
 `last_name` | The last name of the user. | `string <= 128 characters` | Kumar | no
 
@@ -86,7 +87,8 @@ What else:
 * You can [add the counter account](#add-a-counter-account) for withdrawal instructions.
 * You can [change (“patch”) fields](../users/#change-patch-fields).
 * You can [delete the user](../users/#delete-a-user).
-* You can [search for users](../users/#search) by Reference ID, the user’s name etc.
+* You can [search for users](../users/#search) by Reference ID, the user’s name etc.  
+<span style="color:blue">*we can add creating a portfolio to this list as well*</span>
 
 ## Create login
 
