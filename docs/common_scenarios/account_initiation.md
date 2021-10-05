@@ -7,11 +7,16 @@ title: Account initiation
 
 ## Context
 
-To provide to your customers the services and products of the InvestSuite wealthtech-as-a-service platform the first steps in the process are - in that order - to create a user and a portfolio. To create a user register the user ID identifying the customer in your system. Then use the InvestSuite ID the API returns to create a portfolio with the user as owner.
+To provide to your customers the services and products of the InvestSuite wealthtech-as-a-service platform the first steps in the process are - in that order - to create a user and a portfolio. To create a user register the user ID identifying the customer in your system. Then use the InvestSuite ID the API returns to create a portfolio with the user as owner.  
+<span style="color:blue">*For me it was not immediately clear where the InvestSuite ID comes from. Maybe change it to something like "To create a user, register the user ID identifying the customer in your system. The InvestSuite API will then create a user in the system, storing this user ID and creating an InvestSuite ID that uniquely identifies the user in our system. Then use the InvestSuite ID that the API returns to create a portfolio with this user as owner."*</span>.
 
-To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or web site, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.
 
-User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required...
+To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or website, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.  
+<span style="color:blue">*This paragraph is not entirely clear. Is opening an account on behalf of your clients something different from registering a user? What is meant by "passing the data you request"?*</span>  
+<span style="color:blue">*I think it would be better to leave this paragraph out, or write about something else here. Now it is a bit confusing with the paragraph above.*</span>
+
+User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required...  
+<span style="color:blue">*We can add here: "Later on, more data can be stored in the user objects, depending on the InvestSuite products that they will be using."*</span>
 
 ## Create a user
 
