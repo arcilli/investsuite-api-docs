@@ -25,7 +25,7 @@ Next to your user ID you can optionally register the first name and last name. L
     POST /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -40,7 +40,7 @@ Next to your user ID you can optionally register the first name and last name. L
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "external_id": "unique_external_entity_id",  \   
             "first_name": "Ashok", \
@@ -89,11 +89,11 @@ InvestSuite prefers not to store personal data (PII) in the InvestSuite platform
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP hl_lines="1"
     POST /users/?create_idp_user=true HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -110,7 +110,7 @@ InvestSuite prefers not to store personal data (PII) in the InvestSuite platform
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "external_id": "unique_external_entity_id",  \   
             "first_name": "Ashok", \
@@ -144,7 +144,7 @@ You can optionally add a counter account. This is used to display to your custom
     POST /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -166,7 +166,7 @@ You can optionally add a counter account. This is used to display to your custom
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "external_id": "unique_external_entity_id",  \   
             "first_name": "Ashok", \
@@ -200,10 +200,10 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
-        "currency":"USD",
+        "base_currency":"USD",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
             "manager_version":1
@@ -223,9 +223,9 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
-        "currency":"USD",  \   
+        "base_currency":"USD",  \   
         "config":{  \   
             "manager":"ROBO_ADVISOR_DISCRETIONARY",  \   
             "manager_version":1  \   
@@ -246,7 +246,7 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
 {
     "external_id": "your-bank-portfolio-1",
     "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    "currency": "USD",
+    "base_currency": "USD",
     "money_type": "PAPER_MONEY",
     "config":{
         "manager": "ROBO_ADVISOR_DISCRETIONARY",
@@ -274,14 +274,14 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `name` | The display name of the portfolio set by the user. | `string <= 128 characters` | My Portfolio-1 | yes
 `owned_by_user_id` | The portfolio owner's user ID. This field is required firstly to get to the account of the owner for cash withdrawals, and secondly to group portfolios by owner. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
-`currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
+`base_currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
 `money_type` | Defines whether this is a 'virtual' portfolio or not. In a virtual portfolio buying and selling decisions are simulated, rather than placed as actual orders through a broker. ! Write once | `enum("REAL_MONEY", "PAPER_MONEY")` | REAL_MONEY | yes
 `config->manager` | The manager type is either: self managed, or managed by the Robo Advisor under an advisory or discretionary mandate. For **Self Investor** select `USER_MANAGED` ! Write once. | `enum("USER_MANAGED", "ROBO_ADVISOR_ADVISORY", "ROBO_ADVISOR_DISCRETIONARY")` | ROBO_ADVISOR_DISCRETIONARY | yes
 `config->manager_version` | Which major version of the selected portfolio manager to use. | `integer >= 1` | 1 | yes
-`account_information` | Account information associated with this portfolio | `Object` |  | no
-`account_information->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
-`account_information->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
-`account_information->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
+`brokerage_account` | Account information associated with this portfolio | `Object` |  | no
+`brokerage_account->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
+`brokerage_account->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
+`brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
 
 ## Portfolio management settings
 

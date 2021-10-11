@@ -80,6 +80,7 @@ nav:
     - Quick start: quick_start.md
   - Common scenarios: 
     - Account initiation: common_scenarios/account_initiation.md
+    - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
     - Thematic search: common_scenarios/thematic_search.md

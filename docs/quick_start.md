@@ -36,7 +36,7 @@ Create a user for your customer so that in the next step you can define that use
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -51,17 +51,16 @@ Create a user for your customer so that in the next step you can define that use
 === "curl"
 
     ```bash
-    curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
-    -d '{  \   
-            "external_id": "unique_external_entity_id",  \   
-            "first_name": "Ashok", \
-            "last_name": "Kumar", \
-            "email": "ashok.kumar@example.com",\
-            "phone": "+123456789" \
-        }' \
-    https://api.sandbox.investsuite.com/users/
+    curl --location --request POST 'https://api.sandbox.investsuite.com/users/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "external_id": "ashok-kumar-1",
+            "first_name": "Ashok",
+            "last_name": "Kumar",
+            "email": "ashok.kumar@example.com",
+            "phone": "+123456789"
+        }'
     ```
 
 **Response body** 
@@ -95,10 +94,10 @@ Create a user for your customer so that in the next step you can define that use
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
-        "currency":"USD",
+        "base_currency":"USD",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
             "manager_version":1
@@ -116,23 +115,22 @@ Create a user for your customer so that in the next step you can define that use
 === "curl"
 
     ```bash
-    curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
-    -d '{  \   
-        "currency":"USD",  \   
-        "config":{  \   
-            "manager":"ROBO_ADVISOR_DISCRETIONARY",  \   
-            "manager_version":1  \   
-            "manager_settings": {  \   
-                "policy_id":"Y01EF46X9XB437JS4678X0K529C",  \   
-            }  \   
-        },  \   
-        "external_id":"your-bank-portfolio-1",  \   
-        "money_type":"PAPER_MONEY",  \   
-        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",  \   
-    }' \
-    https://api.sandbox.investsuite.com/portfolios/
+    curl --location --request POST 'https://api.sandbox.investsuite.com/portfolios/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{    
+            "base_currency":"USD",    
+            "config":{    
+                "manager":"ROBO_ADVISOR_DISCRETIONARY",   
+                "manager_version":1    
+                "manager_settings": {    
+                    "policy_id":"Y01EF46X9XB437JS4678X0K529C",    
+                }  
+            },  
+            "external_id":"your-bank-portfolio-1",   
+            "money_type":"PAPER_MONEY", 
+            "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ", 
+        }'
     ```
 
 Take a look at the request body... 
@@ -148,7 +146,7 @@ Take a look at the request body...
 {
     "external_id": "your-bank-portfolio-1",
     "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    "currency": "USD",
+    "base_currency": "USD",
     "money_type": "PAPER_MONEY",
     "config":{
         "manager": "ROBO_ADVISOR_DISCRETIONARY",
@@ -175,7 +173,7 @@ Take a look at the request body...
 
 ### 3. Fund the portfolio
 
-Add an initial amount for the Robo Advisor to invest the portfolio you just created. To indicate a portfolio's holding to be the cash holding use the currency abbreviation defined in the ISO international standard 4217, e.g. AUD, and prefix it with the $-sign so `$AUD`. The currency to use is the one defined in the portfolio field `currency`.
+Add an initial amount for the Robo Advisor to invest the portfolio you just created. To indicate a portfolio's holding to be the cash holding use the currency abbreviation defined in the ISO international standard 4217, e.g. AUD, and prefix it with the $-sign so `$AUD`. The currency to use is the one defined in the portfolio field `base_currency`.
 
 === "HTTP"
 
@@ -185,7 +183,7 @@ Add an initial amount for the Robo Advisor to invest the portfolio you just crea
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "holdings": {
@@ -198,15 +196,14 @@ Add an initial amount for the Robo Advisor to invest the portfolio you just crea
 === "curl"
 
     ```bash
-    curl -X PATCH \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
-    -d '{
-        "holdings": {
-            "$USD":10000
-        }
-    }' \
-    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
+    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "holdings": {
+                "$USD":10000
+            }
+        }'
     ```
 
 Alongside the updated holdings with the cash position, register the cash deposit transaction.
@@ -219,7 +216,7 @@ Alongside the updated holdings with the cash position, register the cash deposit
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",
@@ -240,24 +237,24 @@ Alongside the updated holdings with the cash position, register the cash deposit
 === "curl"
 
     ```bash
-    curl -X PATCH \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
-    -d '{  \
-        "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",  \
-        "movements": [  \
-            {  \
-                "external_id": "13891096285",  \
-                "type": "CASH_DEPOSIT",  \
-                "status": "SETTLED",  \
-                "datetime": "2021-09-27T00:00:00+00:00",  \
-                "instrument_id": "$USD",  \
-                "quantity": 10000.0,  \
-            }  \
-        ],  \
-    }'  \
-    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/
+    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+                "external_id": "P01FFMGXDPSZ2HKZD4G55T6YHHD/2014087240",
+                "movements": [
+                    {
+                        "external_id": "13891096285",
+                        "type": "CASH_DEPOSIT",
+                        "status": "SETTLED",
+                        "datetime": "2021-09-27T00:00:00+00:00",
+                        "instrument_id": "$USD",
+                        "quantity": 10000.0,
+                    }
+                ],
+            }'
     ```
+    
 **Response body**
 
 ```JSON
@@ -310,14 +307,14 @@ Given you assigned a policy and an initial amount to the portfolio as part of th
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "curl"
 
     ```bash
     curl -X GET \                 
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     https://api.sandbox.investsuite.com/portfolios/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimization/
     ```
 
@@ -461,7 +458,7 @@ Simulate buy transactions for the orders the optimizer recommended in step 4 abo
     POST /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     [
         {
@@ -508,7 +505,7 @@ Simulate buy transactions for the orders the optimizer recommended in step 4 abo
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '[
         {
             "movements": [
@@ -562,7 +559,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     "holdings": {
         "$USD": 208.086729,
@@ -586,7 +583,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
     ```bash
     curl -X PATCH \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '"holdings": { \ 
         "$USD": 208.086729, \ 
         "US78464A6644": 18.78, \ 
@@ -610,7 +607,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
 {
     "external_id": "your-bank-portfolio-1",
     "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    "currency": "USD",
+    "base_currency": "USD",
     "money_type": "PAPER_MONEY",
     "config":{
         "manager": "ROBO_ADVISOR_DISCRETIONARY",

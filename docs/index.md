@@ -14,7 +14,7 @@ The InvestSuite API is an Open API 3.0 compliant API for developers to integrate
 - Retrieve portfolio statistics
 
 !!! Info
-    You are looking at version 0.1.0 of the InvestSuite API. As renewed insights arise it will be necessary to change and adjust some parts of the API. Still it is the **intention of InvestSuite** to not introduce breaking changes so that version upgrades will not affect your integrations. Instead of changes to existing endpoints and models, in future versions endpoints may be added and models extended. 
+    You are looking at version 1.9 of the InvestSuite API. As renewed insights arise it will be necessary to change and adjust some parts of the API. Still it is the **intention of InvestSuite** to not introduce breaking changes so that version upgrades will not affect your integrations. Instead of changes to existing endpoints and models, in future versions endpoints may be added and models extended. 
 
 The InvestSuite API is in constant progress to give you a good developer experience and make integration as effortless as can be. If you have any ideas or comments please send them to luk.verhelst@investsuite.com. 
 

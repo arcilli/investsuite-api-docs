@@ -19,7 +19,7 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
         ?[limit=100]
         &[embed=instrument_ids] HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"

@@ -29,9 +29,9 @@ When you successfully authenticate you receive an `access_token` and a `refresh_
 
     ```bash
     curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -d '{"access_key_id":"nd348h88yhGNUHhhhb78y6gj","password":"secret"}' \
-    https://api.sandbox.investsuite.com/auth/login/
+        -H "Content-Type: application/json" \
+        -d '{"access_key_id":"{access_key}","secret_access_key":"{secret"}' \
+        https://api.sandbox.investsuite.com/auth/login/
     ```
 
 Response:
@@ -65,10 +65,33 @@ Use the `/auth/refresh-token/`endpoint to silently prolong the session. This end
 
     ```bash
     curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -d '{"refresh_token": "{string}"}' \
-    https://api.sandbox.investsuite.com/auth/refresh-token/
+        -H "Content-Type: application/json" \
+        -d '{"refresh_token": "{string}"}' \
+        https://api.sandbox.investsuite.com/auth/refresh-token/
     ```
+## Add token to requests
+
+You are obliged to use the JWT Web Token in all subsequent requests. This is the token that is returned in the `access_token` property. API requests without authentication will fail and return a `403 Access Forbidden`. JSON Web Tokens must be specified via an authorization header as a Bearer token, eg: `Authorization: Bearer 4eC39HqLyjWDarjtT1zdp7dc`.
+
+To try, replace {string} in the curl request below with the `access_token` you obtained above, and launch the command from your terminal.
+
+=== "HTTP"
+
+    ```HTTP 
+    GET /users/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Authorization: Bearer {string}
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X GET \
+        -H "Authorization: Bearer {string}" \
+        https://api.sandbox.investsuite.com/users/
+    ```
+
+
 
 
 
