@@ -8,20 +8,14 @@ title: Account initiation
 ## Context
 
 To provide to your customers the services and products of the InvestSuite wealthtech-as-a-service platform the first steps in the process are - in that order - to create a user and a portfolio. To create a user register the user ID identifying the customer in your system. Then use the InvestSuite ID the API returns to create a portfolio with the user as owner.  
-<span style="color:blue">*For me it was not immediately clear where the InvestSuite ID comes from. Maybe change it to something like "To create a user, register the user ID identifying the customer in your system. The InvestSuite API will then create a user in the system, storing this user ID and creating an InvestSuite ID that uniquely identifies the user in our system. Then use the InvestSuite ID that the API returns to create a portfolio with this user as owner."*</span>.
-
 
 To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or website, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.  
-<span style="color:blue">*This paragraph is not entirely clear. Is opening an account on behalf of your clients something different from registering a user? What is meant by "passing the data you request"?*</span>  
-<span style="color:blue">*I think it would be better to leave this paragraph out, or write about something else here. Now it is a bit confusing with the paragraph above.*</span>
 
 User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required...  
-<span style="color:blue">*We can add here: "Later on, more data can be stored in the user objects, depending on the InvestSuite products that they will be using."*</span>
 
 ## Create a user
 
 Prior to creating the user in the InvestSuite platform you are assumed to register that user at your end as a customer in the database or CRM of your choice. The ID of the user in that system you add to the InvestSuite system in the `external_id` field, also called the _Reference ID_.  
-<span style="color:blue">*This last sentence is a little hard to read. Maybe change to "You can add the ID of that user in your system in the `external_id` field, also called the reference ID"*</span>
 
 Next to your user ID you can optionally register the first name and last name. Let’s now create a user and then see why adding the user’s first name and last name may be a good idea.  
 
@@ -57,7 +51,7 @@ Next to your user ID you can optionally register the first name and last name. L
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness <span style="color:blue">*in the InvestSuite database*</span>. | `string <= 64 characters` | unique_external_entity_id | no 
+`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness. | `string <= 64 characters` | unique_external_entity_id | no 
 `first_name` | The first name of the user. | `string <= 128 characters` | Ashok | no
 `last_name` | The last name of the user. | `string <= 128 characters` | Kumar | no
 
@@ -88,13 +82,10 @@ What else:
 * You can [change (“patch”) fields](../users/#change-patch-fields).
 * You can [delete the user](../users/#delete-a-user).
 * You can [search for users](../users/#search) by Reference ID, the user’s name etc.  
-<span style="color:blue">*we can add creating a portfolio to this list as well*</span>
 
 ## Create login
 
 InvestSuite prefers not to store personal data (PII) in the InvestSuite platform. Instead we merely demand an identifier to reference your client. However if you want to create credentials on the InvestSuite platform so that your user can log in to the platform, or in fact to the front-ends exposing the platform, you need to register the user’s e-mail address and mobile number.  
-<span style="color:blue">*Right now, the customer does not know whether it is possible to add phone and email to a user after it is already created.*</span>  
-<span style="color:blue">*What happens if email/phone that the user provided is wrong? Does IVS automatically delete this entity? Is that the reason that it is not mentioned here that email/phone can be added later?*</span>
 
 === "HTTP"
 
@@ -139,14 +130,13 @@ Field | Description | Data type | Example | Required
 
 When the user is registered in the IdP for a customer, that customer can then go through a process to obtain a password. This process takes place outside of InvestSuite and the bank and requires the user to access the identity platform immediately.
 
-Now, with the e-mail address and the password the user can authenticate against the IdP. When authentication is successful the IdP returns a JWT <span style="color:blue">*(JSON Web Token)*</span>. You can then add the InvestSuite User ID in the JWT claims to interact with the API on behalf of that user, for instance going through risk profiling on the person’s behalf, retrieving portfolio data, issuing buy or sell orders etc.
+Now, with the e-mail address and the password the user can authenticate against the IdP. When authentication is successful the IdP returns a JWT. You can then add the InvestSuite User ID in the JWT claims to interact with the API on behalf of that user, for instance going through risk profiling on the person’s behalf, retrieving portfolio data, issuing buy or sell orders etc.
 
 ![IdP integration](../img/idp-integration.jpg)
 
 ## Add a counter account
 
 You can optionally add a counter account. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.  
-<span style="color:blue">*Is it possible to add a counter account to a user after it is already created?*</span>
 
 === "HTTP"
 
