@@ -7,15 +7,13 @@ title: Account initiation
 
 ## Context
 
-To provide to your customers the services and products of the InvestSuite wealthtech-as-a-service platform the first steps in the process are - in that order - to create a user and a portfolio. To create a user register the user ID identifying the customer in your system. Then use the InvestSuite ID the API returns to create a portfolio with the user as owner.
-
-To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or web site, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.
-
-User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required...
-
+To intiate an account two steps are required: create a user and create a portfolio. To create a user, register the user ID identifying the customer in your system. The InvestSuite API will then create a user in the system, storing this user ID and creating an InvestSuite ID that uniquely identifies the user in our system. Then use the InvestSuite ID that the API returns to create a portfolio with this user as owner.
 ## Create a user
 
-Prior to creating the user in the InvestSuite platform you are assumed to register that user at your end as a customer in the database or CRM of your choice. The ID of the user in that system you add to the InvestSuite system in the `external_id` field, also called the _Reference ID_.
+User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required, i.e. a user ID and optionally the user's name. Later on, more data can be stored in the user objects, depending on the InvestSuite products that your customer will be using.
+### Basic fields
+
+You can add the ID of that user in your system in the `external_id` field, also called the reference ID.
 
 Next to your user ID you can optionally register the first name and last name. Let’s now create a user and then see why adding the user’s first name and last name may be a good idea.
 
@@ -51,7 +49,7 @@ Next to your user ID you can optionally register the first name and last name. L
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness. | `string <= 64 characters` | unique_external_entity_id | no 
+`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. | `string <= 64 characters` | unique_external_entity_id | no 
 `first_name` | The first name of the user. | `string <= 128 characters` | Ashok | no
 `last_name` | The last name of the user. | `string <= 128 characters` | Kumar | no
 
@@ -82,6 +80,7 @@ What else:
 * You can [change (“patch”) fields](../users/#change-patch-fields).
 * You can [delete the user](../users/#delete-a-user).
 * You can [search for users](../users/#search) by Reference ID, the user’s name etc.
+* You can [create a portfolio](#create-portfolio) for the user.
 
 ## Create login
 
@@ -136,7 +135,7 @@ Now, with the e-mail address and the password the user can authenticate against 
 
 ## Add a counter account
 
-You can optionally add a counter account. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.
+You can optionally add a counter account during user creation; or afterwards by patching the user object. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.
 
 === "HTTP"
 
