@@ -3,7 +3,7 @@ title: Risk profiler
 ---
 
 !!! Info
-    Applicable to: Robo Advisor, Self Investor
+    Applicable to: Robo Advisor
 
 ## Context
 
@@ -15,13 +15,15 @@ InvestSuite has conducted a lot of research together with universities to create
 
 **Assessment** - An assessment follows the questions of a questionnaire, and holds the progress of the user. For each portfolio the user takes an assessment. As such, as assessment is specific to a portfolio.
 
-At the end of an assessment, the InvestSuite API returns a score. The client can use this score to determine the right investing strategy for the user. The formula for how the score is calculated is determined by the client, which means that there are no customisation constraints. Parameters in the risk profile of a user do not all have to contribute to the eventual score. For example, the birth date of the user a required parameter in order to determine whether the user is old enough to open an investment account, but it does not influence the risk score.  
+## How it works
+
+At the end of an assessment, the InvestSuite API returns a score. The client can use this score to determine the right investing strategy for the user. The formula for how the score is calculated is determined by the client, which means that there are no customisation constraints. Parameters in the risk profile of a user do not all have to contribute to the eventual score. For example, the birth date of the user is a required parameter in order to determine whether the user is old enough to open an investment account, but it does not influence the risk score.  
 
 Because there can be logic jumps in the question order (and the next question can depend on the previous answers), only the next question to be asked and previously answered questions are given in each assessment response. After an answer is submitted, Investsuite immediately stores it in the risk profile. This way, a user can close the application at any time without losing their progress, and can resume the assessment later.
 
 ## Create assessment
 
-When a user is created, it is possible to create an assessment with the user ID. To create an assessment for a user, a user ID and questionnaire ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the User collection `GET /users/?query=…`, see the [Search users](/docs/common_scenarios/users/#search) section for more information. The questionnaire ID identifies the questionnaire that will be used for the assessment. This questionnaire is specific to the customer and is designed and configured together with InvestSuite. Let's try it out and create an assessment for a specific `user_id` and `questionnaire_id`.
+When a user is created, it is possible to create an assessment with the user ID. To create an assessment for a user, a user ID and questionnaire ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the *User* collection `GET /users/?query=…`, see the [Search users](/docs/common_scenarios/users/#search) section for more information. The questionnaire ID identifies the questionnaire that will be used for the assessment. This questionnaire is specific to the customer and is designed and configured together with InvestSuite. Let's try it out and create an assessment for a specific `user_id` and `questionnaire_id`.
 
 === "HTTP"
 
@@ -102,7 +104,7 @@ Now that we created the assessment, we can start asking questions to the user. T
 
 After an assessment is created for a user, the risk profiling can begin. Conducting an assessment is done by asking a question to the user, submitting the answer to InvestSuite, receiving the next question to ask from InvestSuite, asking that question to the user, and so on until the assessment is completed. An assessment will have a status COMPLETE and calculate a score when all questions are answered. When there are still questions to be answered, the assessment has a status IN_PROGRESS and contains a next question to ask.  
 
-After receiving an answer from the user, the answer is submitted to InvestSuite in order to get the next question. InvestSuite saves the answer immediately and determines the next question. This way, InvestSuite keeps track of and saves the progress of the assessment, which leads to the possibility for the user to close the application any time and resume the assessment where he left off later. 
+After receiving an answer from the user, the answer is submitted to InvestSuite in order to get the next question. InvestSuite saves the answer immediately and determines the next question. This way, InvestSuite keeps track of and saves the progress of the assessment, so the user can close the application any time and resume the assessment where they left off later. 
 
 ![Conducting assessment](../img/conducting_assessment.jpg)
 
