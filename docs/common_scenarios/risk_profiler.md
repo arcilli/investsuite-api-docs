@@ -7,27 +7,29 @@ title: Risk profiler
 
 ## Context
 
-InvestSuite has conducted a lot of researh together with universities to create a risk profiler that evaluates someone's willingness and ability to take risk in an engaging, human way. InvestSuite risk profile questionnaires can be Mifid-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
+InvestSuite has conducted a lot of research together with universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
+
+## Definitions
 
 **Questionnaire** - A questionnaire determines the logic that is used to fill out parameters in the risk profile. It determines the content of questions that will be asked, and the (dynamic) pathway of questions. 
 
-**Assessment** - An assessment is specific to a portfolio. It follows the questions of a questionnaire, and holds the progress of the user. An assessment (specific risk profile) contains the parameter values that determine the user preferences for the portfolio.
+**Assessment** - An assessment follows the questions of a questionnaire, and holds the progress of the user. For each portfolio the user takes an assessment. As such, as assessment is specific to a portfolio.
 
 At the end of an assessment, the InvestSuite API returns a score. The client can use this score to determine the right investing strategy for the user. The formula for how the score is calculated is determined by the client, which means that there are no customisation constraints. Parameters in the risk profile of a user do not all have to contribute to the eventual score. For example, the birth date of the user a required parameter in order to determine whether the user is old enough to open an investment account, but it does not influence the risk score.  
 
-Because there can be logic jumps in the question order (and the next question can depend on the previous answers), only the next question to be asked is given in each assessment response. After an answer is submitted, Investsuite immediately saves stores it in the risk profile. This way, a user can close the application at any time without losing their progress, and can resume the assessment later.
+Because there can be logic jumps in the question order (and the next question can depend on the previous answers), only the next question to be asked and previously answered questions are given in each assessment response. After an answer is submitted, Investsuite immediately stores it in the risk profile. This way, a user can close the application at any time without losing their progress, and can resume the assessment later.
 
 ## Create assessment
 
-When a user is created, it is possible to create an assessment with the user ID. To create an assessment for a user, a user ID and questionnaire ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. The questionnaire ID identifies the questionnaire that will be used for the assessment. This questionnaire is specific to the customer and is designed and configured together with InvestSuite. Let's try it out and create an assessment for a specific `user_id` and `questionnaire_id`.
+When a user is created, it is possible to create an assessment with the user ID. To create an assessment for a user, a user ID and questionnaire ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the User collection `GET /users/?query=…`, see the [Search users](/docs/common_scenarios/users/#search) section for more information. The questionnaire ID identifies the questionnaire that will be used for the assessment. This questionnaire is specific to the customer and is designed and configured together with InvestSuite. Let's try it out and create an assessment for a specific `user_id` and `questionnaire_id`.
 
 === "HTTP"
 
     ```HTTP 
-    POST /risk-profiler/assessments HTTP/1.1
+    POST /risk-profiler/assessments/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "questionnaire_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",
@@ -41,18 +43,18 @@ When a user is created, it is possible to create an assessment with the user ID.
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "questionnaire_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",  \
             "user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",  \
         }'
-    https://api.sandbox.investsuite.com/risk-profiler/assessments
+    https://api.sandbox.investsuite.com/risk-profiler/assessments/
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `questionnaire_id` | A unique identifier for the questionnaire to be used to conduct the assessment. This field is required for knowing which questions to ask the when conducting the assessment. | `string ^Q[0-9A-HJKMNP-TV-Z]{26}\Z` | Q01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
-`user_id` | The user ID of the person that this assessment is for. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z	` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
+`user_id` | The user ID of the person that this assessment is for. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
 
 **Response body** 
 
@@ -185,10 +187,10 @@ Sometimes it is useful to adjust parameter values withouth conducting the assess
 === "HTTP"
 
     ```HTTP 
-    POST /risk-profiler/parameters/{name}/values HTTP/1.1
+    POST /risk-profiler/parameters/{name}/values/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "value": {
@@ -208,7 +210,7 @@ Sometimes it is useful to adjust parameter values withouth conducting the assess
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \
             "value": {  \
                 "type": "DATE",  \
@@ -219,7 +221,7 @@ Sometimes it is useful to adjust parameter values withouth conducting the assess
                 "type": "USER"  \
             },  \
         }'
-    https://api.sandbox.investsuite.com/risk-profiler/parameters/{name}/values
+    https://api.sandbox.investsuite.com/risk-profiler/parameters/{name}/values/
     ```
 
 Field | Description | Data type | Example | Required
