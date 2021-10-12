@@ -37,10 +37,10 @@ When you successfully authenticate you receive an `access_token` and a `refresh_
 Response:
 ```JSON
 {
-    "access_token":"eyJ0eXAiOiJKV1QiL...",
+    "access_token":"{string}",
     "token_type":"Bearer",
     "expires_in":"300",
-    "refresh_token":"eyJraWQiOiJEb..."
+    "refresh_token":"{string}"
 }
 ```
 

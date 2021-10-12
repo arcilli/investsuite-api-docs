@@ -8,6 +8,7 @@ title: Account initiation
 ## Context
 
 To intiate an account two steps are required: create a user and create a portfolio. To create a user, register the user ID identifying the customer in your system. The InvestSuite API will then create a user in the system, storing this user ID and creating an InvestSuite ID that uniquely identifies the user in our system. Then use the InvestSuite ID that the API returns to create a portfolio with this user as owner.
+
 ## Create a user
 
 User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required, i.e. a user ID and optionally the user's name. Later on, more data can be stored in the user objects, depending on the InvestSuite products that your customer will be using.
@@ -267,7 +268,7 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
 }
 ```
 
-**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, an example of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
+**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, examples of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
@@ -284,7 +285,7 @@ Field | Description | Data type | Example | Required
 
 ## Portfolio management settings
 
-For the Robo Advisor to operate a limited number of management settings need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you register these management settings.
+For the Robo Advisor to operate, there is a limited number of management settings that need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you can register these management settings.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------

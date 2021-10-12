@@ -254,7 +254,7 @@ Alongside the updated holdings with the cash position, register the cash deposit
                 ],
             }'
     ```
-    
+
 **Response body**
 
 ```JSON
