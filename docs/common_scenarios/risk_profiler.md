@@ -3,7 +3,7 @@ title: Risk profiler
 ---
 
 !!! Info
-    Applicable to: Robo Advisor
+    Applicable to: Robo Advisor, stand-alone
 
 ## Context
 
