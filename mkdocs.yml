@@ -81,10 +81,11 @@ nav:
   - Common scenarios: 
     - Account initiation: common_scenarios/account_initiation.md
     - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
+    - Cash movements: common_scenarios/cash_movements.md
+    - Risk profiling: common_scenarios/risk_profiler.md
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
     - Thematic search: common_scenarios/thematic_search.md
-    - Risk profiling: common_scenarios/risk_profiler.md
   - Advanced topics:
     - Handling collection responses: advanced_topics/collections.md # Search
     - A closer look at API errors : advanced_topics/errors.md # 422 responses, permissions

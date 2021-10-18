@@ -2,7 +2,7 @@
 title: Quick start
 ---
 
-Get acquainted with the InvestSuite API. This quick start takes you through the steps typically pursued when integrating with InvestSuite's Optimizer and Robo Advisor products. Below sequence diagram describes these basic steps. As a quick start, we will perform these steps interactively. 
+Get acquainted with the InvestSuite API. This quick start takes you through the typical steps to integrate with InvestSuite's Optimizer and Robo Advisor products. Below sequence diagram describes these basic steps. As a quick start, we will perform these steps interactively. 
 
 !!! Hint
     This exercise demonstrates the flow for Robo Advisor. The flow for **Self Investor** is the same. The only difference is that for Self Investor you do not get to call the optimizer for order recommendations.
@@ -11,22 +11,25 @@ Get acquainted with the InvestSuite API. This quick start takes you through the 
 
 ![Optimizer Integration](../img/investsuite_optimizer_api_integration.jpg)
 
-Let's now get familiar with the API by simulating what is documented in the sequence diagram. As it is a simulation you will not integrate with your broker but instead create a so-called _virtual portfolio_. These will be the steps: 
+Let's now get familiar with the API by simulating what is documented in the sequence diagram. These will be the steps: 
 
 1. Create a user by invoking `POST /users/`.
 2. Create a portfolio by invoking `POST /portfolios/`.
-3. Fund the account linked to the portfolio. This is between you and your broker or order management system and is not part of this quick start. Here we will create a "virtual portfolio".
-4. Update the portfolio with the portfolio holdings you get from the broker (initially only a cash holding).
-5. Get order recommendations from the Optimizer, based on the holdings and portfolio settings.
-6. Place the order with your broker. (Not applicable to this quick start.)
-7. Post the transactions you get back from your broker.
-8. Repeat steps 4 - 7.
+3. Update the portfolio with the latest portfolio snapshot (initially only a cash holding).
+4. Get order recommendations as the result of an optimization, based on the holdings and portfolio settings.
+5. Post the transactions you get back from your broker.
+6. Repeat steps 4 - 7.
+
+!!! Note
+    As the sequence diagram reflects it is your role to act as the middle layer between InvestSuite and the broker (unless agreed differently during a common analyses). This means you get the orders and cash movement instructions via InvestSuite and place them with the broker. In the opposite direction, you provide to InvestSuite the holdings and the transactions from the broker. 
+    
+    Since this is a simulation however broker integration is not relevant. Instead we create a so-called _virtual portfolio_. This is a portfolio funded with _paper money_, as opposed to real money.
 
 ## Steps
 
 ### 1. Create a user
 
-Create a user for your customer so that in the next step you can define that user as owner of a portfolio. Optionally add an e-mail address and phone number to add the user to the underlying Identity Provider so that your customer can log in to a front-end to view and manage portfolios. 
+Create a user for your customer so that in the next step you can define that user as owner of a portfolio. 
 
 === "HTTP"
 
@@ -41,9 +44,7 @@ Create a user for your customer so that in the next step you can define that use
     {
         "external_id": "unique_external_entity_id",
         "first_name": "Ashok",
-        "last_name": "Kumar",
-        "email": "ashok.kumar@example.com",
-        "phone": "+123456789"
+        "last_name": "Kumar"
     }
 
     ```
@@ -57,9 +58,7 @@ Create a user for your customer so that in the next step you can define that use
         --data-raw '{
             "external_id": "ashok-kumar-1",
             "first_name": "Ashok",
-            "last_name": "Kumar",
-            "email": "ashok.kumar@example.com",
-            "phone": "+123456789"
+            "last_name": "Kumar"
         }'
     ```
 
@@ -75,9 +74,7 @@ Create a user for your customer so that in the next step you can define that use
     "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
     "deleted": false,
     "first_name": "Ashok",
-    "last_name": "Kumar",
-    "email": "ashok.kumar@example.com",
-    "phone": "+123456789"
+    "last_name": "Kumar"
 }
 ```
 
@@ -85,6 +82,25 @@ Create a user for your customer so that in the next step you can define that use
     Copy the User ID from the Response Body to use in the next step.
 
 ### 2. Create a portfolio
+
+To optimize a portfolio that portfolio has to reference a _policy_, which is an investment strategy defined by the bank. Such strategy holds the constraints for the optimization algorithm to take into account when rendering order recommendations, for instance the minimum number of stocks within a certain sector or region. Select the `id` from the first policy returned by requesting `GET /policies/`.
+
+=== "HTTP"
+
+    ```HTTP hl_lines="11"
+    GET /policies/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Authorization: Bearer {access_token_string}
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X GET 'https://api.sandbox.investsuite.com/policies/' \
+    --H 'Authorization: Bearer {access_token_string}'
+    ```
+
+Once you have obtained the policy ID you can create a portfolio.
 
 === "HTTP"
 
@@ -168,8 +184,7 @@ Take a look at the request body...
 }
 ```
 
-!!! Hint
-    Copy the Portfolio ID from the Response Body to use in the next step.
+Copy the Portfolio ID from the Response Body to use in the next step.
 
 ### 3. Fund the portfolio
 

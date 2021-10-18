@@ -177,7 +177,7 @@ Objects in the InvestSuite system are immutable. Every change leads to a new ver
 === "Request"
 
     ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive

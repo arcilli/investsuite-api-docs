@@ -2,12 +2,18 @@
 title: Authentication
 ---
 
-Authenticate against the API to receive a JSON Web Token (JWT). Learn more about JWT at [jwt.io](https://jwt.io). To authenticate you need an access key and a secret. Reach out to your InvestSuite representative and we will set you up in no time.
+Authenticate against the API to receive a JSON Web Token (JWT). Learn more about JWT at [jwt.io](https://jwt.io). To authenticate you need an access key and a secret. Reach out to your InvestSuite representative or send a mail to [api@investsuite.com](mailto:api@investsuite.com) and we will set you up in no time.
 
 !!! Warning
     Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.
 
-When you successfully authenticate you receive an `access_token` and a `refresh_token`. Add the `access_token`to the HTTP headers in all subsequent requests. The `access_token` has a limited lifetime. The duration is added to the response body in the `expires_at`field, e.g `expires_at: 300`. 
+When you successfully authenticate you receive an `access_token` and a `refresh_token`. Add the `access_token`to the HTTP headers in all subsequent requests. This is required to authenticate against the API service. You cannot access any endpoint without a valid JWT. 
+
+The `access_token` has a limited lifetime. The duration is added to the response body in the `expires_at`field, e.g `expires_at: 300`. Within the lifetime of the access_token you can refresh the token by issuing the `/auth/refresh-token` endpoint. We will try this out below where we will perform following three steps:
+
+1. Login: uthenticate with `access_key_id` and `secret_access_key` to retrieve an access token.
+2. Refresh token: Refresh the access token.
+3. Add token: Issue a GET request with the access token.
 
 ## Login
 
@@ -28,19 +34,21 @@ When you successfully authenticate you receive an `access_token` and a `refresh_
 === "curl"
 
     ```bash
-    curl -X POST \                 
-        -H "Content-Type: application/json" \
-        -d '{"access_key_id":"{access_key}","secret_access_key":"{secret"}' \
-        https://api.sandbox.investsuite.com/auth/login/
+    curl --location --request POST 'https://api.sandbox.investsuite.com/auth/login/' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+            "access_key_id":"{access_key}",
+            "secret_access_key":"{secret}"
+        }'
     ```
 
 Response:
 ```JSON
 {
-    "access_token":"{string}",
+    "access_token":"{access_token_string}",
     "token_type":"Bearer",
     "expires_in":"300",
-    "refresh_token":"{string}"
+    "refresh_token":"{refresh_token_string}"
 }
 ```
 
@@ -56,7 +64,7 @@ Use the `/auth/refresh-token/`endpoint to silently prolong the session. This end
     Content-Type: application/json
 
     {
-        "refresh_token": "{string}"
+        "refresh_token": "{refresh_token_string}"
     }
 
     ```
@@ -64,10 +72,9 @@ Use the `/auth/refresh-token/`endpoint to silently prolong the session. This end
 === "curl"
 
     ```bash
-    curl -X POST \                 
-        -H "Content-Type: application/json" \
-        -d '{"refresh_token": "{string}"}' \
-        https://api.sandbox.investsuite.com/auth/refresh-token/
+    curl --location --request POST 'https://api.sandbox.investsuite.com/auth/refresh-token/' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"refresh_token": "{refresh_token_string}"}'
     ```
 ## Add token to requests
 
@@ -80,22 +87,12 @@ To try, replace {string} in the curl request below with the `access_token` you o
     ```HTTP 
     GET /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer {string}
+    Authorization: Bearer {access_token_string}
     ```
 
 === "curl"
 
     ```bash
-    curl -X GET \
-        -H "Authorization: Bearer {string}" \
-        https://api.sandbox.investsuite.com/users/
+    curl -X GET 'https://api.sandbox.investsuite.com/users/' \
+    --H 'Authorization: Bearer {access_token_string}'
     ```
-
-
-
-
-
-
-
-
-

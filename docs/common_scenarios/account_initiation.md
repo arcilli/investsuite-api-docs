@@ -12,7 +12,8 @@ To intiate an account two steps are required: create a user and create a portfol
 ## Create a user
 
 User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required, i.e. a user ID and optionally the user's name. Later on, more data can be stored in the user objects, depending on the InvestSuite products that your customer will be using.
-### Basic fields
+
+**Basic fields**
 
 You can add the ID of that user in your system in the `external_id` field, also called the reference ID.
 

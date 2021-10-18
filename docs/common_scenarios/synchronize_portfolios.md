@@ -4,17 +4,13 @@ title: Synchronize portfolios
 
 ## Context
 
-Synchronizing a portfolio involves taking the holdings and the transactions for a portfolio from your brokerage and custody system and passing them to InvestSuite.
-
-When your customer is onboarded to the service and the account is successfully initiated the ongoing phase kicks off. This is illustrated in the section [Quick start](../../quick_start/). In this ongoing phase as an API client you are responsible for keeping the holdings and transactions in sync between the broker / custody system and the InvestSuite platform. In some cases other systems need to be kept up-to-date as well, for instance reporting and analytics systems.
-
-The master data source for both the positions and the transactions is that of the broker / custody provider. For Robo Advisor you copy the holdings and transactions into the InvestSuite system on a recurring bases, most probably once a day. For Self Investor this synchronization should run in near real time.
+Synchronizing a portfolio involves taking the holdings and the transactions for a portfolio from your brokerage and custody system and passing them to InvestSuite. As an API client you are responsible for keeping the holdings and transactions in sync between the broker / custody system and the InvestSuite platform. The master data source for both the positions and the transactions is that of the broker / custody provider. For Robo Advisor you copy the holdings and transactions into the InvestSuite system on a recurring bases, for instance once a day. For Self Investor this synchronization should run in near real time.
 
 ### Transactions definition
 
-Transactions are a combination of movements that describe an exchange or trade. In the context of investing these transfers relate to funds and securities into and from an account. A bank or other licensed entity engages in transactions on behalf of invididuals or organizations. The financial institution therefore uses some sort of an exchange. Each transaction is recorded in a ledger.
+Transactions are a combination of movements that describe an exchange or trade. In the context of investing these transactions relate to funds and securities transferred into, and from an account. A bank or other licensed entity engages in transactions on behalf of invididuals or organizations. The  bank therefore uses some sort of an exchange. Each transaction is recorded in a ledger.
 
-Transactions can be investment transactions as well as cash transactions. Investment transactions relate to the purchase and sale of securities. Cash transactions mainly describe a deposit of cash in the portfolio. Other forms of cash transactions are those with respect to fees and taxes, or transactions resulting from the distribution of dividends. A third important of set of transactions consider corporate action such as for instance a stock split.
+Transactions can be investment transactions as well as cash transactions. Investment transactions relate to the purchase and sale of securities. Cash transactions mainly describe a deposit of cash in the portfolio, or a divestment. Other forms of cash transactions are those with respect to fees and taxes. A third important of set of transactions consider corporate action such as for instance a stock split or distribution of dividends.
 
 ### Holdings definition
 
@@ -30,7 +26,7 @@ Example:
 }
 ```
 
-## Send transaction updates
+## Send transaction
 
 Transactions are synchronized to calculate the performance and return of a portfolio, to report to the customer, and to monitor the status of some transactions for instance to exchange if a `BUY` transaction is _pending_, _executed_ or _settled_. 
 
@@ -54,9 +50,6 @@ Field | Description | Data type | Example | Required
 `movement->description` | An optional description for this movement. This string can contain any additional details of the movement type and can be set by the client. | `string` | STAMP_DUTY | no
 `movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | US4642865251 | no
 
-
-		
-
 Some common transactions to pass to InvestSuite are: 
 
 1. Buy transactions
@@ -67,7 +60,7 @@ Some common transactions to pass to InvestSuite are:
 
 ### 1. Buy transactions
 
-A buy transaction describes the properties a buy order. It consists of two movements: one describing the instrument to be purchased, the other the amount to be transferred from the cash account to buy the instrument. 
+A buy transaction describes the properties of a buy order. It consists of two movements: one describing the instrument to be purchased, the other the amount to be transferred from the cash account to buy the instrument. 
 
 === "Request"
 
@@ -364,6 +357,153 @@ Corporate actions are registered as transactions as they will lead to movements 
     }
     ```
 
+## Update transaction status
+
+After a transaction is posted in its initial state, in subsequent phases the status of the transaction changes. Most (common) transactions go from `PLANNED` to `PENDING` to `PLACED` to `EXECUTED` to `SETTLED`. In case an error occurs or a stakeholder intervenes transactions can end up in a `NOT_EXECUTED`, `EXPIRED` or `CANCELLED` state. To change the status of a transaction you issue a `PATCH` request.
+
+=== "Request"
+
+    ```HTTP
+    PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FGZK41MJ4NJXKZ27VJC0HGS9/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "movements": [
+            {
+                "type": "CASH_DIVIDEND",
+                "status": "SETTLED",
+                "datetime": "2021-10-01T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "quantity_type": "AMOUNT",
+                "quantity": 0.0785,
+                "reference_instrument_id": "US78464A6727",
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "your-corporate-action-1",
+        "movements": [
+            {
+                "type": "CASH_DIVIDEND",
+                "status": "SETTLED",
+                "datetime": "2021-10-01T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "quantity_type": "AMOUNT",
+                "quantity": 0.0785,
+                "reference_instrument_id": "US78464A6727",
+            }
+        ],
+        "id": "T01FGZK41MJ4NJXKZ27VJC0HGS9",
+        "creation_datetime": "2021-10-02T04:10:15.570586+00:00",
+        "version": 1,
+        "version_datetime": "2021-10-02T04:10:15.570586+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
 ## Update portfolio holdings
+
+To update the holdings you patch the portfolio.
+
+=== "HTTP"
+
+    ```HTTP 
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    "holdings": {
+        "$USD": 208.086729,
+        "US78464A6644": 18.78,
+        "US4642886612": 9.2243,
+        "US46137V2410": 9,
+        "US3160923039": 3,
+        "US3160928731": 10,
+        "US97717W5215": 6,
+        "US4642861458": 4,
+        "US46429B2676": 45.146,
+        "US46434V7617": 9,
+        "US4642865251": 7.6828,
+        "US46434V4234": 3
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X PATCH \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "{string}"  \   
+    -d '"holdings": { \ 
+        "$USD": 208.086729, \ 
+        "US78464A6644": 18.78, \ 
+        "US4642886612": 9.2243, \ 
+        "US46137V2410": 9, \ 
+        "US3160923039": 3, \ 
+        "US3160928731": 10, \ 
+        "US97717W5215": 6, \ 
+        "US4642861458": 4, \ 
+        "US46429B2676": 45.146, \ 
+        "US46434V7617": 9, \ 
+        "US4642865251": 7.6828, \ 
+        "US46434V4234": 3 \ 
+    }'  \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
+    ```
+
+**Response body**
+
+```JSON
+{
+    "external_id": "your-bank-portfolio-1",
+    "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+    "base_currency": "USD",
+    "money_type": "PAPER_MONEY",
+    "config":{
+        "manager": "ROBO_ADVISOR_DISCRETIONARY",
+        "manager_version":1,
+        "manager_settings": {
+            "policy_id": "Y01EF46X9XB437JS4678X0K529C",
+            "active": true
+        }
+    },
+    "holdings": {
+        "$USD": 208.086729,
+        "US78464A6644": 18.78,
+        "US4642886612": 9.2243,
+        "US46137V2410": 9,
+        "US3160923039": 3,
+        "US3160928731": 10,
+        "US97717W5215": 6,
+        "US4642861458": 4,
+        "US46429B2676": 45.146,
+        "US46434V7617": 9,
+        "US4642865251": 7.6828,
+        "US46434V4234": 3
+    },
+    "snapshot_datetime": null,
+    "funded_since": null,
+    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version": 3,
+    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
+    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+    "deleted": false,
+    "status": "ACTIVE"
+}
+```
+
+
 
 
