@@ -88,7 +88,7 @@ To optimize a portfolio that portfolio has to reference a _policy_, which is an 
 === "HTTP"
 
     ```HTTP hl_lines="11"
-    GET /policies/ HTTP/1.1
+    GET /robo-advisor/policies/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Authorization: Bearer {access_token_string}
     ```
@@ -96,7 +96,7 @@ To optimize a portfolio that portfolio has to reference a _policy_, which is an 
 === "curl"
 
     ```bash
-    curl -X GET 'https://api.sandbox.investsuite.com/policies/' \
+    curl -X GET 'https://api.sandbox.investsuite.com/robo-advisor/policies/' \
     --H 'Authorization: Bearer {access_token_string}'
     ```
 
@@ -265,6 +265,7 @@ Alongside the updated holdings with the cash position, register the cash deposit
                         "datetime": "2021-09-27T00:00:00+00:00",
                         "instrument_id": "$USD",
                         "quantity": 10000.0,
+                        "quantity_type": "AMOUNT"
                     }
                 ],
             }'
@@ -287,16 +288,7 @@ Alongside the updated holdings with the cash position, register the cash deposit
                 "datetime": "2021-09-27T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "instrument_name": null,
-                "quantity": 1.0,
-                "quantity_portfolio_currency": 1.0,
-                "reference_instrument_id": null,
-                "reference_instrument_name": null,
-                "reference_quantity": null,
-                "unit_price": null,
-                "reference_external_id": null,
-                "original_external_id": null,
-                "trade_type": null,
-                "ex_dividend_date": null
+                "quantity": 1
             }
         ],
         "description": null,

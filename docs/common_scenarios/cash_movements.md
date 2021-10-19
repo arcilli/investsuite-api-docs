@@ -1,5 +1,5 @@
 ---
-title: Cash movements
+title: Cash transactions
 ---
 
 !!! Info
@@ -7,7 +7,7 @@ title: Cash movements
 
 ## Context
 
-There are two sorts of cash movements: deposits and withdrawals. You register a cash movement with InvestSuite when the movement is settled in the account of the customer in your core banking platform. This triggers us to take a number of actions on your behalf, depending on the setup we have agreed upon:
+There are two sorts of cash transactions: deposits and withdrawals. You register a cash movement with InvestSuite when the movement is settled in the account of the customer in your core banking platform. This triggers us to take a number of actions on your behalf, depending on the setup we have agreed upon:
 
 1. Update the cash holding in the targeted portfolio. In case of the Robo Advisor this will result in an optimization of the portfolio.
 2. Create a transaction to publish in the transaction history presented to the customer.
