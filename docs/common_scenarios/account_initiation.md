@@ -42,9 +42,9 @@ Next to your user ID you can optionally register the first name and last name. L
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
     -d '{  \   
-            "external_id": "unique_external_entity_id",  \   
-            "first_name": "Ashok", \
-            "last_name": "Kumar", \
+            "external_id": "unique_external_entity_id",   
+            "first_name": "Ashok",
+            "last_name": "Kumar",
         }'
     https://api.sandbox.investsuite.com/users/
     ```
@@ -71,7 +71,7 @@ Field | Description | Data type | Example | Required
 }
 ```
 
-Now that you have successfully registered the user you can find that user in the InvestSuite Admin Console. Contact your representative to get credentials to access the Admin Console. Having provided the user’s name now comes in handy.
+Now that you have successfully registered the user you can find that user in the InvestSuite Admin Console. Contact your representative or reach out to [api@investsuite.com](mailto:api@investsuite.com) to get credentials to access the Admin Console. Having provided the user’s name now comes in handy.
 
 ![InvestSuite Admin Console](../img/admin_console.png)
 
