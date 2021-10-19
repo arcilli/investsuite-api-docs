@@ -16,10 +16,10 @@ Once you have created a portfolio you can create a portfolio and assign the port
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
-        "currency":"USD",
+        "base_currency":"USD",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
             "manager_settings":{
@@ -46,7 +46,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
     {
         "external_id":"your-bank-portfolio-1""name":"General investing",
         "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "currency":"USD",
+        "base_currency":"USD",
         "money_type":"PAPER_MONEY",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
@@ -58,7 +58,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
                 "active":true
             }
         },
-        "account_information":null,
+        "brokerage_account":null,
         "holdings":{
             "$USD":10000
         },
@@ -83,7 +83,7 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
     ```HTTP hl_lines="1"
     GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -93,7 +93,7 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
         "external_id":"your-bank-portfolio-1",
         "name":"General investing",
         "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "currency":"USD",
+        "base_currency":"USD",
         "money_type":"PAPER_MONEY",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
@@ -130,7 +130,7 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
     GET /portfolios/
         ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -140,7 +140,7 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
         "external_id":"your-bank-portfolio-1",
         "name":"General investing",
         "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "currency":"USD",
+        "base_currency":"USD",
         "money_type":"PAPER_MONEY",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
@@ -177,12 +177,12 @@ Objects in the InvestSuite system are immutable. Every change leads to a new ver
 === "Request"
 
     ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     "config": {
         "manager_settings": {
@@ -235,7 +235,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -282,7 +282,7 @@ Both for Self Investor portfolios as well as for Robo Advisor portfolios access 
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "manager": {
@@ -299,7 +299,7 @@ Both for Self Investor portfolios as well as for Robo Advisor portfolios access 
     ```bash
     curl -X PATCH \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{ "config": { "manager_settings": { active: false } } } }' \
     https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```

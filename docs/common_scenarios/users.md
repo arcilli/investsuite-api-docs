@@ -13,7 +13,7 @@ title: Create and manage users
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -59,7 +59,7 @@ Add the InvestSuite ID to the path to retrieve a user object.
     ```HTTP hl_lines="1"
     GET /users/U01F8YW5NJXMF78PMFKXTE2R7Q7 HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -106,7 +106,7 @@ Screenshot Admin Console
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "language": "be-NL"
@@ -146,7 +146,7 @@ You can query each entity collection with the `query` parameter e.g. `GET /users
     GET /users
         ?query=email+eq+'jane*' HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -180,7 +180,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"

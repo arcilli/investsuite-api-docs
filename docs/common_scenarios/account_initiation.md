@@ -7,15 +7,15 @@ title: Account initiation
 
 ## Context
 
-To provide to your customers the services and products of the InvestSuite wealthtech-as-a-service platform the first steps in the process are - in that order - to create a user and a portfolio. To create a user register the user ID identifying the customer in your system. Then use the InvestSuite ID the API returns to create a portfolio with the user as owner.
-
-To offer access to InvestSuite products you open an account on behalf of your clients. Opening an account requires passing the data you request via an app or web site, or sending the data stored in your banking system or CRM. The data that are required are two-fold. Firstly an identifier to reference the user, and secondly a Portfolio object assigned to the user.
-
-User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required...
+To intiate an account two steps are required: create a user and create a portfolio. To create a user, register the user ID identifying the customer in your system. The InvestSuite API will then create a user in the system, storing this user ID and creating an InvestSuite ID that uniquely identifies the user in our system. Then use the InvestSuite ID that the API returns to create a portfolio with this user as owner.
 
 ## Create a user
 
-Prior to creating the user in the InvestSuite platform you are assumed to register that user at your end as a customer in the database or CRM of your choice. The ID of the user in that system you add to the InvestSuite system in the `external_id` field, also called the _Reference ID_.
+User objects serve two purposes. Firstly to grant access to one or more InvestSuite products i.e. StoryTeller, Robo Advisor, Self Investor or the Admin Console. Secondly to assign users as owners to one or more portfolios. To create a user a limited number of fields are required, i.e. a user ID and optionally the user's name. Later on, more data can be stored in the user objects, depending on the InvestSuite products that your customer will be using.
+
+**Basic fields**
+
+You can add the ID of that user in your system in the `external_id` field, also called the reference ID.
 
 Next to your user ID you can optionally register the first name and last name. Let’s now create a user and then see why adding the user’s first name and last name may be a good idea.
 
@@ -25,7 +25,7 @@ Next to your user ID you can optionally register the first name and last name. L
     POST /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -40,18 +40,18 @@ Next to your user ID you can optionally register the first name and last name. L
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
-            "external_id": "unique_external_entity_id",  \   
-            "first_name": "Ashok", \
-            "last_name": "Kumar", \
+            "external_id": "unique_external_entity_id",   
+            "first_name": "Ashok",
+            "last_name": "Kumar",
         }'
     https://api.sandbox.investsuite.com/users/
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. This field is not checked for uniqueness. | `string <= 64 characters` | unique_external_entity_id | no 
+`external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity. | `string <= 64 characters` | unique_external_entity_id | no 
 `first_name` | The first name of the user. | `string <= 128 characters` | Ashok | no
 `last_name` | The last name of the user. | `string <= 128 characters` | Kumar | no
 
@@ -71,7 +71,7 @@ Field | Description | Data type | Example | Required
 }
 ```
 
-Now that you have successfully registered the user you can find that user in the InvestSuite Admin Console. Contact your representative to get credentials to access the Admin Console. Having provided the user’s name now comes in handy.
+Now that you have successfully registered the user you can find that user in the InvestSuite Admin Console. Contact your representative or reach out to [api@investsuite.com](mailto:api@investsuite.com) to get credentials to access the Admin Console. Having provided the user’s name now comes in handy.
 
 ![InvestSuite Admin Console](../img/admin_console.png)
 
@@ -82,6 +82,7 @@ What else:
 * You can [change (“patch”) fields](../users/#change-patch-fields).
 * You can [delete the user](../users/#delete-a-user).
 * You can [search for users](../users/#search) by Reference ID, the user’s name etc.
+* You can [create a portfolio](#create-portfolio) for the user.
 
 ## Create login
 
@@ -89,11 +90,11 @@ InvestSuite prefers not to store personal data (PII) in the InvestSuite platform
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP hl_lines="1"
     POST /users/?create_idp_user=true HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -110,7 +111,7 @@ InvestSuite prefers not to store personal data (PII) in the InvestSuite platform
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "external_id": "unique_external_entity_id",  \   
             "first_name": "Ashok", \
@@ -136,7 +137,7 @@ Now, with the e-mail address and the password the user can authenticate against 
 
 ## Add a counter account
 
-You can optionally add a counter account. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.
+You can optionally add a counter account during user creation; or afterwards by patching the user object. This is used to display to your customer the account that is funded in case of a withdrawal instruction. In some cases banks allow the customer to modify the counter account via its front-end.
 
 === "HTTP"
 
@@ -144,7 +145,7 @@ You can optionally add a counter account. This is used to display to your custom
     POST /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
         "external_id": "unique_external_entity_id",
@@ -166,7 +167,7 @@ You can optionally add a counter account. This is used to display to your custom
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
             "external_id": "unique_external_entity_id",  \   
             "first_name": "Ashok", \
@@ -200,10 +201,10 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
 
     {
-        "currency":"USD",
+        "base_currency":"USD",
         "config":{
             "manager":"ROBO_ADVISOR_DISCRETIONARY",
             "manager_version":1
@@ -223,9 +224,9 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ..."  \   
+    -H "Auhorization": "{string}"  \   
     -d '{  \   
-        "currency":"USD",  \   
+        "base_currency":"USD",  \   
         "config":{  \   
             "manager":"ROBO_ADVISOR_DISCRETIONARY",  \   
             "manager_version":1  \   
@@ -246,7 +247,7 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
 {
     "external_id": "your-bank-portfolio-1",
     "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    "currency": "USD",
+    "base_currency": "USD",
     "money_type": "PAPER_MONEY",
     "config":{
         "manager": "ROBO_ADVISOR_DISCRETIONARY",
@@ -268,24 +269,24 @@ With a InvestSuite User ID at hand you can create a portfolio for your customer.
 }
 ```
 
-**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, an example of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
+**What is a portfolio to InvestSuite** - An investment portfolio in the classical sense of the term is a collection of financial assets grouped with the aim of earning a profit. These assets are referred to as holdings. Alongside holdings, portfolio objects in the InvestSuite platform contain general info, for instance to display to the customer, and configuration settings to manage the portfolio. An example of general info is a portfolio name e.g. My Retirement Portfolio, examples of configuration settings are the active boolean to indicate that trading is allowed for a portfolio and the risk profile the customer had set for the portfolio.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `name` | The display name of the portfolio set by the user. | `string <= 128 characters` | My Portfolio-1 | yes
 `owned_by_user_id` | The portfolio owner's user ID. This field is required firstly to get to the account of the owner for cash withdrawals, and secondly to group portfolios by owner. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
-`currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
+`base_currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
 `money_type` | Defines whether this is a 'virtual' portfolio or not. In a virtual portfolio buying and selling decisions are simulated, rather than placed as actual orders through a broker. ! Write once | `enum("REAL_MONEY", "PAPER_MONEY")` | REAL_MONEY | yes
 `config->manager` | The manager type is either: self managed, or managed by the Robo Advisor under an advisory or discretionary mandate. For **Self Investor** select `USER_MANAGED` ! Write once. | `enum("USER_MANAGED", "ROBO_ADVISOR_ADVISORY", "ROBO_ADVISOR_DISCRETIONARY")` | ROBO_ADVISOR_DISCRETIONARY | yes
 `config->manager_version` | Which major version of the selected portfolio manager to use. | `integer >= 1` | 1 | yes
-`account_information` | Account information associated with this portfolio | `Object` |  | no
-`account_information->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
-`account_information->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
-`account_information->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
+`brokerage_account` | Account information associated with this portfolio | `Object` |  | no
+`brokerage_account->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
+`brokerage_account->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
+`brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
 
 ## Portfolio management settings
 
-For the Robo Advisor to operate a limited number of management settings need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you register these management settings.
+For the Robo Advisor to operate, there is a limited number of management settings that need configuration, e.g. the related investment policy or the user’s risk profile. Either while creating the portfolio issuing a POST request, or afterwards by issuing a PATCH request you can register these management settings.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------

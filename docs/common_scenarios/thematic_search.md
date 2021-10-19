@@ -4,7 +4,7 @@ title: Thematic search
 
 ## Instrument groups
 
-The InvestSuite quant team composes and actively manages a list of themes (instrument groups) such as Healthcare, Clean & Green economy, Social trends each holding an applicable list of financial instruments. The aim of thematic search is to offer in the context of self execution, complementary to other search mechanisms, to your clients a means to filter the stock universe to their personal preference and view. To retrieve themes and selected instruments within them perform a `GET` request against the  `instrument_groups` endpoint.
+The InvestSuite quant team composes and actively manages a list of themes (instrument groups) such as Healthcare, Clean & Green economy, Social trends each holding an applicable list of financial instruments. The aim of thematic search is to offer in the context of self execution, complementary to other search mechanisms, to your clients a means to filter the instrument universe to their personal preference and view. To retrieve themes and selected instruments within them perform a `GET` request against the  `instrument-groups` endpoint.
 
 ## Model
 
@@ -15,11 +15,12 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
 === "Request"
 
     ```HTTP hl_lines="1"
-    GET /instrument_groups 
+    GET /thematic-search/instrument-groups/ 
         ?[limit=100]
+        &[count=true]
         &[embed=instrument_ids] HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -87,8 +88,8 @@ Thematic search is based on a simple CRUD model. The entity `InstrumentGroups` a
 
 ## Embedding
 
-You can add details about the `Instrument` objects to the `InstrumentGroup` objects collection by providing the `?embed=query` query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated _embedded key at the root level, which contains a full rendition of the referenced entities. Read detailed info about embedding **[here](../../advanced_topics/embedding/)**.
+You can add details about the `Instrument` objects to the `InstrumentGroup` objects collection by providing the `?embed={query}` query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated `_embedded` key at the root level, which contains a full rendition of the referenced entities. Read detailed info about embedding **[here](../../advanced_topics/embedding/)**.
 
 ## Collections
 
-Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`. Collection endpoints accept alongside the `embed` query parameter take two parameters: limit and offset. Limit (`limit=50`) allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100. Read detailed info about collections **[here](../../advanced_topics/collections/)**.
+Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users/`, `GET /portfolios/`, `GET /instrument-groups/`. Collection endpoints accept alongside `embed` two additional query parameters for pagination: limit and offset. Limit (e.g. `limit=50`) allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is 20 items. The maximum size is 100. Read detailed info about collections **[here](../../advanced_topics/collections/)**.
