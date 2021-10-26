@@ -154,9 +154,10 @@ You can optionally add a counter account during user creation; or afterwards by 
         "email": "ashok.kumar@example.com",
         "phone": "+12345667",
         "counter_account": {
-            bank_account_number: "BE01234567891234",
-            bank_account_type: "IBAN",
-            bank_id: "IDQMIE2D"
+            "bank_account_number": "BE01234567891234",
+            "bank_account_number_type": "IBAN",
+            "bank_id": "IDQMIE2D",
+            "bank_id_type": "BIC"
         }
     }
 
@@ -165,29 +166,30 @@ You can optionally add a counter account during user creation; or afterwards by 
 === "curl"
 
     ```bash
-    curl -X POST \                 
-    -H "Content-Type: application/json" \
+    curl --location --request POST 'https://api.sandbox.investsuite.com/users/' \
+    --header 'Content-Type: application/json' \
     -H "Auhorization": "{string}"  \   
-    -d '{  \   
-            "external_id": "unique_external_entity_id",  \   
-            "first_name": "Ashok", \
-            "last_name": "Kumar", \
-            "email": "ashok.kumar@example.com", \
-            "phone": "+123456789", \
-            "counter_account": { \
-                bank_account_number: "BE01234567891234", \
-                bank_account_type: "IBAN", \
-                bank_id: "IDQMIE2D" \
+    --data-raw '{
+            "external_id": "unique_external_entity_id",
+            "first_name": "Ashok",
+            "last_name": "Kumar",
+            "email": "ashok.kumar@example.com",
+            "phone": "+12345667",
+            "counter_account": {
+                "bank_account_number": "BE01234567891234",
+                "bank_account_number_type": "IBAN",
+                "bank_id": "IDQMIE2D",
+                "bank_id_type": "BIC"
             }
         }'
-    https://api.sandbox.investsuite.com/users/
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `bank_account_number` | Account number of the user for withdrawal instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
-`bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
+`bank_account_number_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
 `bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
+`bank_id_type` | Bank identifier code type. | `string AnyOf("BIC", "ABA")` | IDQMIE2D | no
 
 ## Create a portfolio
 

@@ -70,7 +70,7 @@ Cash withdrawal takes two steps:
 === "HTTP"
 
     ```HTTP 
-    POST /events/deposit/ HTTP/1.1
+    POST /events/withdraw/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
 
