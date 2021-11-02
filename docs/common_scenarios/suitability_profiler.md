@@ -14,9 +14,9 @@ One application of an assessment in the suitaibility profiler is assessing the w
 
 **Profiler** - A profiler determines the structure of a profile. It contains questionnaires, that determine what the assessments in the profile will look like. A profiler is essentially a template for a portfolio-specific suitability profile.
 
-**Questionnaire** - A questionnaire determines the logic that is used to fill out parameters in the risk profile. It determines the content of questions that will be asked, and the (dynamic) pathway of questions. 
+**Questionnaire** - A questionnaire determines the structure of an assessment. This concerns the logic that is used to fill out parameters, the content of questions that will be asked, and the (dynamic) pathway of questions. 
 
-**Assessment** - An assessment follows the questions of a questionnaire, and holds the progress of the user. For each portfolio the user takes an assessment. As such, as assessment is specific to a portfolio.
+**Assessment** - An assessment follows the questions of a questionnaire, and holds the progress of the user. It contains the questions to be asked and answers that the user provides. 
 
 ![Suitability Profiler Architecture](../img/suitability_profiler_architecture.jpg)
 
