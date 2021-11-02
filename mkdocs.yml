@@ -83,7 +83,7 @@ nav:
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
     - Thematic search: common_scenarios/thematic_search.md
-    - Risk profiling: common_scenarios/risk_profiler.md
+    - Suitability profiler: common_scenarios/suitability_profiler.md
   - Advanced topics:
     - Handling collection responses: advanced_topics/collections.md # Search
     - A closer look at API errors : advanced_topics/errors.md # 422 responses, permissions
