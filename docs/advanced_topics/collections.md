@@ -15,7 +15,7 @@ Collections are paginated lists of entities. To request a collection issue a `GE
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 === "Response (body)"
@@ -144,7 +144,7 @@ The API provides a structural search and filtering mechanism for all entities. W
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJ...
+    Authorization: Bearer {string}
     ```
 
 ### Fundamental rules

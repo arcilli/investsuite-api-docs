@@ -45,7 +45,7 @@ extra:
     - icon: fontawesome/solid/globe
       link: https://www.investsuite.com/
     - icon: fontawesome/solid/envelope
-      link: mailto:hello@investsuite.com
+      link: mailto:api@investsuite.com
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/investsuite
     - icon: fontawesome/brands/linkedin
@@ -80,6 +80,8 @@ nav:
     - Quick start: quick_start.md
   - Common scenarios: 
     - Account initiation: common_scenarios/account_initiation.md
+    - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
+    - Cash transactions: common_scenarios/cash_movements.md
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
     - Thematic search: common_scenarios/thematic_search.md
