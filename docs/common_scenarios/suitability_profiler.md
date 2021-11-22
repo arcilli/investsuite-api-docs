@@ -6,6 +6,8 @@ title: Suitability profiler
 
 A suitability profiler captures the information needed to create a suitable portfolio for someone. Part of this is creating a risk profile, other information can include preferences on sustainable investing or specific investment themes. Through one or more assessments in a suitability profile, this information can be gathered and translated into characteristics of a suitable portfolio.
 
+### Risk profiler
+
 One application of an assessment in the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted a lot of research together with universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
 
 ## Definitions
@@ -82,19 +84,27 @@ Field | Description | Data type | Example | Required
 **Response body** 
 ```JSON
 {
-    "id": "M01ARZ3NDEKTSV4RRFFQ69G5FAV"
+    "id": "M01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+    "assessment_statuses": {
+        "U01ARZ3NDEKTSV4RRFFQ69G5FAV": "IN_PROGRESS",
+    }, 
+    "status": {
+        "type": "IN_PROGRESS"
+    }
 }
 ```
-Now that we created the profile, we can start asking questions to the user. The now empty assessments of the profile will be filled out sporadically by submitting answers via the API.  
+The response contains the profile ID, the overall profile status, and the status of each individual assessment. The assessments in the response are identified by the ID of the questionnaire that they follow. This means that profiles of the same template will always have the same IDs under `assessment_statuses`. Now that we created the profile, we can start asking questions to the user. The now empty assessments of the profile will be filled out sporadically by submitting answers via the API.  
 
-## Retrieve assessment  
+Only when the status of the profile is equal to `COMPLETED`, the suitability profile can be used to determine a suitable investment policy. 
+
+## Conduct an assessment  
 
 When a profile is created for a user, we can start conducting the assessments in order to complete the profile. As mentioned above, each assessment is linked to a questionnaire, that determines what the assessment looks like. This questionnaire ID in combination with the ID of the created profile uniquely determine an assessment. Let us give an example of how to retrieve an assessment.  
 
 === "HTTP"
 
     ```HTTP 
-    POST /suitability-profiler/profiles/{profile_id}/assessments/{questionnaire_id} HTTP/1.1
+    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
@@ -104,10 +114,10 @@ When a profile is created for a user, we can start conducting the assessments in
 === "curl"
 
     ```bash
-    curl -X POST \                 
+    curl -X GET \                 
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/{profile_id}/assessments/{questionnaire_id}
+    https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/
     ```
 
 Field | Description | Data type | Example | Required
@@ -152,15 +162,14 @@ Field | Description | Data type | Example | Required
 }
 ```
 
-## Conduct assessment
-
-After a profile is created for a user, the assessing can begin. Conducting an assessment is done by asking a question to the user, submitting the answer to InvestSuite, receiving the next question to ask from InvestSuite, asking that question to the user, and so on until the assessment is completed. An assessment will have a status COMPLETE and show a result when all questions are answered. When there are still questions to be answered, the assessment has a status IN_PROGRESS and contains a next question to ask.  
+Now that we have retrieved the assessment, the assessing can begin. Conducting an assessment is done by asking a question to the user, submitting the answer to InvestSuite, receiving the next question to ask from InvestSuite, asking that question to the user, and so on until the assessment is completed. An assessment will have a status COMPLETE and show a result when all questions are answered. When there are still questions to be answered, the assessment has a status IN_PROGRESS and contains a next question to ask.  
 
 After receiving an answer from the user, the answer is submitted to InvestSuite in order to get the next question. InvestSuite saves the answer immediately and determines the next question. This way, InvestSuite keeps track of and saves the progress of the assessment, so the user can close the application any time and resume the assessment where they left off later. 
 
 ![Conducting assessment](../img/conducting_assessment.jpg)
 
-Both calls in the sequence diagram have the same response body, containing the next question to be asked or the score, the parameters, the sections with the answered questions, and a status. 
+The assessment response contains the next question to be asked or the score, the parameters, the sections with the answered questions, and a status. This will be the response of a call to `GET /suitability-profiler/profiles/{profile_id}/assessments/{questionnaire_id}` and the `PUT /profiles/{profile_id}/questionnaires/{questionnaire_id}/assessment/questions/{question_id}/answer`
+ for submitting an answer.
 
 **Response body** 
 ```JSON
@@ -215,41 +224,84 @@ Both calls in the sequence diagram have the same response body, containing the n
 
 ## Get a profile property value
 
-When a profile is created for a user, profile property values are initially set to a default value. The user can later on see these properties and change them if they like. For example, if the robo advisor offers the option to only invest in sharia compliant companies, a property value sharia_compliant can initially be set to false. If the user decides that they want to invest in only sharia compliant companies, this property can be set to true.  
-
-## Change a property value
+When a profile is created for a user, profile property values are initially set to a default value. The user can later on see these properties and change them if they like. For example, if the robo advisor offers the option to only invest in sharia compliant companies, a property value sharia_compliant can initially be set to false. If the user decides that they want to invest in only sharia compliant companies, this property can be set to true. Let's retrieve a property value together.
 
 === "HTTP"
 
     ```HTTP 
-    POST /suitability-profiler/profiles/{profile_id}/properties/{property_id}/value/ HTTP/1.1
+    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
-
-    {
-        "profile_id": "A01ARZ3NDEKTSV4RRFFQ69G5FAV",
-        "property_id": "sharia_compliant",
-    }
 
     ```
 
 === "curl"
 
     ```bash
-    curl -X POST \                 
+    curl -X GET \                 
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
-    -d '{  \   
-            "profiler_id": "À01ARZ3NDEKTSV4RRFFQ69G5FAV",  \
-            "property_id": "sharia_compliant",  \
-        }'
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/{profile_id}/properties/{property_id}/value/
+    https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/
+
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`profiler_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^À[0-9A-HJKMNP-TV-Z]{26}\Z` | À01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
-`property_id` | The ID of a property in the profile that you want to change. | `string` | sharia_compliant | yes
+`profile_id` | A unique identifier of the profile that this assessment is for. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`property_id` | The ID of the property that is to be retrieved. | `string ^P[0-9A-HJKMNP-TV-Z]{26}\Z` | P01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
+
+**Response body** 
+```JSON
+{
+    "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+    "property_name": {
+        "en-US": "Exclusion list"
+    }, 
+    "value": {
+        "type": "lIST", 
+        "value": []
+    }
+}
+```
+
+The exclusion list for this portfolio is still empty. When a user wants to exclude an instrument from their portfolio, this list will be updated.
+
+## Change a property value
+
+The user can adjust its profile property values to make their portfolio more suitable to them. For example, if a user only wants to invest in Sharia compliant instruments, and the tenant supports this option, the profile property value corresponding to this option can be adjusted. Let's look at the below example.
+
+=== "HTTP"
+
+    ```HTTP 
+    PUT /suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    {
+        "type": "BOOLEAN",
+        "value": "true",
+    }
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X PUT \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "{string}"  \   
+    -d '{  \   
+            "type": "BOOLEAN",  \
+            "value": "true",  \
+        }'
+    https://api.sandbox.investsuite.com/suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`profile_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^À[0-9A-HJKMNP-TV-Z]{26}\Z` | À01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`property_id` | The ID of a property in the profile that you want to change. | `string ^P[0-9A-HJKMNP-TV-Z]{26}\Z` | P01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`type` | The type of the property ID value | `string` | BOOLEAN | yes 
+`value` | The value of the property ID | `Any` | true | yes
 
 When a successful response comes back, the property is changed in the profile. 
