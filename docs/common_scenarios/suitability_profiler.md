@@ -8,28 +8,30 @@ A suitability profiler captures the information needed to create a suitable port
 
 ### Risk profiler
 
-One application of an assessment in the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted a lot of research together with universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
+One application of an assessment in the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted research in close collaboration with several universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
 
 ## Definitions
 
-**Profile** - A profile is a portfolio-specific object that captures the information necessary to create a suitable portfolio. It contains one or more assessments, each assessing a certain aspect of the suitability profile, and property values, that capture other settings that influence the policy. The results of the assessments and property values are translated into outputs. A profiler formula can then combine these outputs into a result that defines a policy to create a suitable portfolio.
+**Assessment** - An assessment contains the question to be asked, and the answer that the user provides. An assessment follows the questions of a questionnaire, and holds the progress of the user. As can be seen in the image below, after an assessment is completed, it generates an output based on a pre-defined formula.  
+
+**Profile** - A profile holds the information necessary to create a suitable portfolio. It contains one or more assessments, each assessing a certain aspect of a suitability profile, and so-called property values. These hold additional settings that together with the assessments serve as input to the profiler.
 
 **Profiler** - A profiler determines the structure of a profile. It contains questionnaires, that determine what the assessments in the profile will look like, and profile properties. A profiler formula determines how the outputs of the assessments will combine into policy settings. A profiler is essentially a template for a portfolio-specific suitability profile. A profiler, as well as the questionnaires, properties and formula in the profiler, is designed and configured together with InvestSuite.
 
 **Questionnaire** - A questionnaire determines the structure of an assessment. This concerns the logic that is used to fill out parameters, the content of questions that will be asked, the (dynamic) pathway of questions, and a formula that converts the captured information into an output. 
 
-**Assessment** - An assessment follows the questions of a questionnaire, and holds the progress of the user. It contains the questions to be asked and answers that the user provides. With the information captured in the assessment, an output can be generated based on a pre-defined formula. 
-
 **Profile properties** - Profile properties determine settings that influence the policy but are not captured in assessments. Each property in a profiler has a default value that it should be set to upon the creation of a portfolio-specific profile.  
 
 **Profile property values** - Profile property values capture profile settings that determine the policy of a profile and are not part of an assessment. These property values are all set to a default initial value, that is determined by the profile properties in the corresponding profiler.
+
+**Policy** - A policy is an investment strategy. Policies can exist for customer segments or can exist for individual portfolios. The policy will instruct the InvestSuite Optimizer on how to construct a portfolio. A policy for instance holds the applicable instrument universe and the preferred asset allocation. For more information about policies, please have a look at our [API specification](https://api.sandbox.investsuite.com/redoc#operation/handler_robo_advisor_policies__id___get).
 
 
 ![Suitability Profiler Architecture](../img/suitability_profiler_architecture.jpg)
 
 ## How it works
 
-As mentioned above, to come to guidelines for a suitable portfolio, the user must go through one or more assessments in their suitability profile to capture the necessary information.
+To come to guidelines for a suitable portfolio, the user must go through one or more assessments in their suitability profile to capture the necessary information.
 Once designed and configured a profiler together with InvestSuite, it is possible to generate a profile. For each portfolio, a profile can be created based on a profiler. This profiler acts as a template for a specific profile. It determines which assessments will be asked, which profile properties will be set, and how the gathered information is translated into policy guidelines. All assessments in the profile object should be completed by the user in order to determine a suitable policy.
 
 ### Outputs  
@@ -46,7 +48,7 @@ The profile property values are initialized to a default value upon creation of 
 
 ## Create profile
 
-When a user is created, it is possible to create a profile with the user ID. To create a profile for a user, a user ID and profiler ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the *User* collection `GET /users/?query=…`, see the [Search users](/docs/common_scenarios/users/#search) section for more information. The profiler ID identifies the profiler that will be used as template for the profile. This profiler is specific to the customer and is designed and configured together with InvestSuite. Let's try it out and create a profile for a specific `user_id` and `profiler_id`.
+When a user is created, it is possible to create a profile with the user ID. To create a profile for a user, a user ID and profiler ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the *User* collection `GET /users/?query=…`, see the [Search users](/docs/common_scenarios/users/#search) section for more information. The profiler ID identifies the profiler that will be used as template for the profile. This profiler is specific to the customer and is designed and configured together with InvestSuite. This profiler ID will be given to the customer after configuration. Let's try it out and create a profile for a specific `user_id` and `profiler_id`.
 
 === "HTTP"
 
@@ -66,14 +68,13 @@ When a user is created, it is possible to create a profile with the user ID. To 
 === "curl"
 
     ```bash
-    curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    -d '{  \   
-            "profiler_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",  \
-            "user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",  \
+    curl --location --request POST 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/' \                 
+        --header "Content-Type: application/json" \
+        --header "Auhorization": "Bearer {string}"  \   
+        --data-raw '{    
+                "profiler_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",  
+                "user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",  
         }'
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/
     ```
 
 Field | Description | Data type | Example | Required
@@ -114,10 +115,9 @@ When a profile is created for a user, we can start conducting the assessments in
 === "curl"
 
     ```bash
-    curl -X GET \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/
+    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/' \                 
+    --header "Content-Type: application/json" \
+    --header "Auhorization": "Bearer {string}"  \   
     ```
 
 Field | Description | Data type | Example | Required
@@ -239,16 +239,16 @@ When a profile is created for a user, profile property values are initially set 
 === "curl"
 
     ```bash
-    curl -X GET \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/
+    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/' \                 
+    --header "Content-Type: application/json" \
+    --header "Auhorization": "Bearer {string}"  \   
+    
 
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`profile_id` | A unique identifier of the profile that this assessment is for. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`profile_id` | A unique identifier of the profile. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
 `property_id` | The ID of the property that is to be retrieved. | `string ^P[0-9A-HJKMNP-TV-Z]{26}\Z` | P01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
 
 **Response body** 
@@ -259,13 +259,63 @@ Field | Description | Data type | Example | Required
         "en-US": "Exclusion list"
     }, 
     "value": {
-        "type": "lIST", 
+        "type": "MULTI", 
         "value": []
     }
 }
 ```
 
-The exclusion list for this portfolio is still empty. When a user wants to exclude an instrument from their portfolio, this list will be updated.
+The exclusion list for this portfolio is still empty. When a user wants to exclude an instrument from their portfolio, this list will be updated.  
+
+It is also possible to get an overview of all properties of a profile at once.
+
+=== "HTTP"
+
+    ```HTTP 
+    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/' \                 
+    --header "Content-Type: application/json" \
+    --header "Auhorization": "Bearer {string}"  \   
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`profile_id` | A unique identifier of the profile. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+
+**Response body** 
+```JSON
+[
+    {
+        "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+        "property_name": {
+            "en-US": "Exclusion list"
+        }, 
+        "value": {
+            "type": "MULTI", 
+            "value": []
+        }
+    }, 
+    {
+        "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+        "property_name": {
+            "en-US": "Sharia-compliant"
+        }, 
+        "value": {
+            "type": "BOOLEAN", 
+            "value": false
+        }
+    }
+]
+```
 
 ## Change a property value
 
@@ -287,14 +337,13 @@ The user can adjust its profile property values to make their portfolio more sui
 === "curl"
 
     ```bash
-    curl -X PUT \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    -d '{  \   
-            "type": "BOOLEAN",  \
-            "value": "true",  \
+    curl --location --request PUT 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/' \                 
+    --header "Content-Type: application/json" \
+    --header "Auhorization": "Bearer {string}"  \   
+    --data-raw '{   
+            "type": "BOOLEAN",  
+            "value": "true",  
         }'
-    https://api.sandbox.investsuite.com/suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/
     ```
 
 Field | Description | Data type | Example | Required
