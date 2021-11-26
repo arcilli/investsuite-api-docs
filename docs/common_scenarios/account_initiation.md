@@ -189,7 +189,7 @@ Field | Description | Data type | Example | Required
 `bank_account_number` | Account number of the user for withdrawal instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
 `bank_account_number_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
 `bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
-`bank_id_type` | Bank identifier code type. | `string AnyOf("BIC", "ABA")` | IDQMIE2D | no
+`bank_id_type` | Bank identifier code type. | `string AnyOf("BIC", "ABA")` | BIC | no
 
 ## Create a portfolio
 
