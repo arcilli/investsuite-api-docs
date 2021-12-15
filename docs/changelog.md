@@ -10,7 +10,10 @@ The current and past members of the InvestSuite team.
 * [@Lotte-Verheyden-IVS](https://github.com/Lotte-Verheyden-IVS)
 * [@LukV](https://github.com/LukV)
 
-### v6 (2021-10-19)
+### v6 (2021-11-19)
+
+* Added portfolio funding and cash withdrawal
+### v6 (2021-11-19)
 
 * Add draft Suitability Profiler documentation
 * Add Financial Data Service API documentation
