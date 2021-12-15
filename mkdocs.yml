@@ -81,7 +81,7 @@ nav:
   - Common scenarios: 
     - Account initiation: common_scenarios/account_initiation.md
     - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
-    - Cash transactions: common_scenarios/cash_movements.md
+    - Funding and withdrawal: common_scenarios/cash_movements.md
     - Suitability profiler: common_scenarios/suitability_profiler.md
     - Financial data: common_scenarios/financial_data.md
     - Manage users: common_scenarios/users.md
