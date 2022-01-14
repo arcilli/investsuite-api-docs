@@ -4,12 +4,7 @@ title: Financial data service
 
 ## Context
 
-The Financial Data API allows you to integrate with the InvestSuite Financial Data services. These services evolve around investment products and securities such as stocks, ETFs, funds, cryptocurrencies ... At the time of writing, the Financial Data API scope is limited. With the current API endpoints you can query which instruments are attributed to the universe used in your Robo Advisor and Self Investor installations. 
-
-During the first half of 2022 we intend to extend these services in two ways. Firstly, so that you can add data to instruments in your universe. This is applicable in the siutation where InvestSuite does not get the all or some of the data from the market data provider. This applies for instance to data on OTC funds but is also applicable when you retrieve data on securities from market data providers to which InvestSuite is not connected. Data that you pass will obviously only be present in your installation.
-
-Secondly, through these services for certain instruments InvestSuite intends to expose _data enrichments_. Examples of such enrichments are additional metrics to support investors in composing their portfolios and company logos for listed stocks.
-
+The Financial Data API allows you to integrate with the InvestSuite Financial Data services. These services evolve around investment products and securities such as stocks, ETFs, funds, cryptocurrencies ... With the current API endpoints you can query which instruments are attributed to the universe used in your Robo Advisor and Self Investor setups. 
 ## Instrument universe
 
 Financial instruments in general are assets that hold capital and can be traded in the market. Examples are shares, bonds, funds. To use StoryTeller, Optimizer, Self Investor, Robo Advisor you define an _instrument universe_. This is the collection of instruments that can be used to trade or report on. When you query `GET /financial-data/instruments/` the return will hold all instruments in the assigned universe.

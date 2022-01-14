@@ -201,7 +201,7 @@ Add an initial amount for the Robo Advisor to invest the portfolio you just crea
     Authorization: Bearer {string}
 
     {
-        "holdings": {
+        "portfolio": {
             "$USD":10000
         }
     }
@@ -215,7 +215,7 @@ Add an initial amount for the Robo Advisor to invest the portfolio you just crea
         --header 'Authorization: Bearer {string}' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "holdings": {
+            "portfolio": {
                 "$USD":10000
             }
         }'
@@ -309,7 +309,7 @@ Given you assigned a policy and an initial amount to the portfolio as part of th
 === "HTTP"
 
     ```HTTP hl_lines="1"
-    GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimization/ HTTP/1.1
+    GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimizations/current/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
@@ -322,7 +322,7 @@ Given you assigned a policy and an initial amount to the portfolio as part of th
     ```bash
     curl -X GET \                 
     -H "Auhorization": "{string}"  \   
-    https://api.sandbox.investsuite.com/portfolios/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimization/
+    https://api.sandbox.investsuite.com/portfolios/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimizations/current/
     ```
 
 **Response body**
@@ -591,7 +591,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
     curl -X PATCH \                 
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
-    -d '"holdings": { \ 
+    -d '"portfolio": { \ 
         "$USD": 208.086729, \ 
         "US78464A6644": 18.78, \ 
         "US4642886612": 9.2243, \ 
@@ -624,7 +624,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
             "active": true
         }
     },
-    "holdings": {
+    "portfolio": {
         "$USD": 208.086729,
         "US78464A6644": 18.78,
         "US4642886612": 9.2243,

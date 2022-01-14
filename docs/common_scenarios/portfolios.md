@@ -33,7 +33,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
         "money_type":"PAPER_MONEY",
         "name":"General investing",
         "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "holdings":{
+        "portfolio":{
             "$USD":10000
         },
     }
@@ -59,7 +59,7 @@ Once you have created a portfolio you can create a portfolio and assign the port
             }
         },
         "brokerage_account":null,
-        "holdings":{
+        "portfolio":{
             "$USD":10000
         },
         "snapshot_datetime":null,
@@ -151,7 +151,7 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
                 "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ",
             }
         },
-        "holdings":{
+        "portfolio":{
             "$USD":10000
         },
         "snapshot_datetime":null,
@@ -209,7 +209,7 @@ Objects in the InvestSuite system are immutable. Every change leads to a new ver
                 "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ"
             }
         },
-        "holdings":{
+        "portfolio":{
             "$USD":10000
         },
         "funded_since":null,
@@ -256,7 +256,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
                 "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ"
             }
         },
-        "holdings":{
+        "portfolio":{
             "$USD":10000
         },
         "funded_since":null,
