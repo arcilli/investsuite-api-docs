@@ -4,19 +4,19 @@ title: Suitability profiler
 
 ## Context
 
-A suitability profiler captures the information needed to create a suitable portfolio for someone. Part of this is creating a risk profile, other information can include preferences on sustainable investing or specific investment themes. Through one or more assessments in a suitability profile, this information can be gathered and translated into characteristics of a suitable portfolio.
+The suitability profiler captures the information needed to create a suitable portfolio for someone. Part of this is creating a risk profile, other information can include preferences on sustainable investing or specific investment themes. Through one or more assessments in a suitability profile, this information can be gathered and translated into characteristics of a suitable portfolio.
 
 ### Risk profiler
 
-One application of an assessment in the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted research in close collaboration with several universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each client, InvestSuite creates and stores one or more custom questionnaires, that the client can use to assess their users' risk profile.
+One application of the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted research in close collaboration with several universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each financial institution subscribed to the service, InvestSuite creates and stores one or more custom questionnaires, that the institution can use to assess their users' risk profile.
 
 ## Definitions
 
-**Assessment** - An assessment contains the question to be asked, and the answer that the user provides. An assessment follows the questions of a questionnaire, and holds the progress of the user. As can be seen in the image below, after an assessment is completed, it generates an output based on a pre-defined formula.  
+**Assessment** - An assessment contains the questions to be asked, and the answers that the user provides. An assessment follows the questions of a questionnaire, and holds the progress of the user. As can be seen in the image below, after an assessment is completed, it generates an output based on a pre-defined formula.  
 
 **Profile** - A profile holds the information necessary to create a suitable portfolio. It contains one or more assessments, each assessing a certain aspect of a suitability profile, and so-called property values. These hold additional settings that together with the assessments serve as input to the profiler.
 
-**Profiler** - A profiler determines the structure of a profile. It contains questionnaires, that determine what the assessments in the profile will look like, and profile properties. A profiler formula determines how the outputs of the assessments will combine into policy settings. A profiler is essentially a template for a portfolio-specific suitability profile. A profiler, as well as the questionnaires, properties and formula in the profiler, is designed and configured together with InvestSuite.
+**Profiler** - A profiler is essentially a template for a portfolio-specific suitability profile. A profiler, as well as the questionnaires, properties and formula in the profiler, is designed and configured together with InvestSuite.
 
 **Questionnaire** - A questionnaire determines the structure of an assessment. This concerns the logic that is used to fill out parameters, the content of questions that will be asked, the (dynamic) pathway of questions, and a formula that converts the captured information into an output. 
 
@@ -32,7 +32,7 @@ One application of an assessment in the suitaibility profiler is assessing the w
 ## How it works
 
 To come to guidelines for a suitable portfolio, the user must go through one or more assessments in their suitability profile to capture the necessary information.
-Once designed and configured a profiler together with InvestSuite, it is possible to generate a profile. For each portfolio, a profile can be created based on a profiler. This profiler acts as a template for a specific profile. It determines which assessments will be asked, which profile properties will be set, and how the gathered information is translated into policy guidelines. All assessments in the profile object should be completed by the user in order to determine a suitable policy.
+Once you designed and configured a profiler together with InvestSuite, it is possible to generate a profile. For each portfolio, a profile can be created based on a profiler. This profiler acts as a template for a specific profile. It determines which assessments will be asked, which profile properties will be set, and how the gathered information is translated into policy guidelines. All assessments in the profile object should be completed by the user in order to determine a suitable policy.
 
 ### Outputs  
 

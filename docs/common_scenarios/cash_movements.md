@@ -159,7 +159,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
     Authorization: Bearer {string}
 
     {
-        "holdings": {
+        "portfolio": {
             "$USD":10000,
             "US4642886612":0.76,
             "US78468R1014":3,
@@ -176,7 +176,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
         --header 'Authorization: Bearer {string}' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "holdings": {
+            "portfolio": {
                 "$USD":10000,
                 "US4642886612":0.76,
                 "US78468R1014":3,
@@ -187,7 +187,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
 
 !!! Warning
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
-    with only `"holdings": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
+    with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
 
 #### Instruct InvestSuite to send a notification
 
@@ -503,7 +503,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
     Authorization: Bearer {string}
 
     {
-        "holdings": {
+        "portfolio": {
             "$USD":10000,
             "US4642886612":0.76,
             "US78468R1014":3,
@@ -520,7 +520,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
         --header 'Authorization: Bearer {string}' \
         --header 'Content-Type: application/json' \
         --data-raw '{
-            "holdings": {
+            "portfolio": {
                 "$USD":10000,
                 "US4642886612":0.76,
                 "US78468R1014":3,
@@ -531,7 +531,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 
 !!! Warning
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
-    with only `"holdings": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
+    with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
 ##### Create transaction
 
 === "HTTP"

@@ -422,7 +422,7 @@ To update the holdings you patch the portfolio.
     Content-Type: application/json
     Authorization: Bearer {string}
 
-    "holdings": {
+    "portfolio": {
         "$USD": 208.086729,
         "US78464A6644": 18.78,
         "US4642886612": 9.2243,
@@ -445,7 +445,7 @@ To update the holdings you patch the portfolio.
     curl -X PATCH \                 
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
-    -d '"holdings": { \ 
+    -d '"portfolo": { \ 
         "$USD": 208.086729, \ 
         "US78464A6644": 18.78, \ 
         "US4642886612": 9.2243, \ 
@@ -478,7 +478,7 @@ To update the holdings you patch the portfolio.
             "active": true
         }
     },
-    "holdings": {
+    "portfolio": {
         "$USD": 208.086729,
         "US78464A6644": 18.78,
         "US4642886612": 9.2243,
