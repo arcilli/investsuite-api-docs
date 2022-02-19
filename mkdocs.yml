@@ -63,11 +63,21 @@ markdown_extensions:
       permalink: true
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences
   - codehilite:
       guess_lang: false
   - footnotes
+
+  # extensions for tables that span multiple cells: https://github.com/Neepawa/cell_row_span -- git clone + pip install
+  - tables
+  - cell_row_span
+
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
 
 plugins:
   - search:
@@ -76,6 +86,8 @@ plugins:
 nav:
   - First steps:
     - About: index.md
+    - Solution Architecture: solution_architecture.md
+    - Integration Architecture: integration_architecture.md
     - Authentication: authentication.md
     - Quick start: quick_start.md
   - Common scenarios: 
