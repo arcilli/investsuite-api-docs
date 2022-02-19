@@ -8,10 +8,10 @@ The InvestSuite platform is typically integrated with the following 3rd parties:
 - A **market data provider**, that provides instrument reference data and quotes
 - A **broker/custodian** to execute orders and holds instruments in custody
 
-Depending on the product, some integrations are required (:material-circle:) or optional (:material-circle-outline:).
+Depending on the product, some integrations are required (:material-circle:), optional (:material-circle-outline:) or not required/supported (-).
 
-|               | Your Backend | Market Data Provider | Broker/Custodian |
-|---------------|:---:|:---:|:---:|
+|   | Your Backend | Market Data Provider | Broker/Custodian |
+|---|:---:|:---:|:---:|
 | Robo Advisor  | :material-circle: | :material-circle: | :material-numeric-1-circle-outline: |
 | Self Investor | :material-circle: | :material-circle: | :material-circle: |
 | Storyteller   | :material-circle: | - |  - |
