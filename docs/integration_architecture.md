@@ -4,35 +4,40 @@ title: Integration Architecture
 
 The InvestSuite platform is typically integrated with the following 3rd parties:
 
-- **Your backend**, that masters accounts and users and many other things
+- **Client backend**, that masters accounts and users and many other things
 - A **market data provider**, that provides instrument reference data and quotes
 - A **broker/custodian** to execute orders and holds instruments in custody
 
 Depending on the product, some integrations are required (:material-circle:), optional (:material-circle-outline:) or not required/supported (-).
 
-|   | Your Backend | Market Data Provider | Broker/Custodian |
+|   | Client Backend | Market Data Provider | Broker/Custodian |
 |---|:---:|:---:|:---:|
 | Robo Advisor  | :material-circle: | :material-numeric-1-circle-outline: | :material-numeric-2-circle-outline: |
 | Self Investor | :material-circle: | :material-circle: | :material-circle: |
-| Storyteller   | :material-circle: | - |  - |
-| Value Added APIs   | :material-circle: | - | - |
+| StoryTeller   | :material-numeric-3-circle-outline: | :material-numeric-1-circle-outline: |  - |
+| Value Added APIs   | :material-numeric-3-circle-outline: | - | - |
+| Portfolio Optimizer API  | :material-circle: | - | - |
+| Suitability Profiler API  | :material-circle: | - | - |
+| Model Builder  | - | - | - |
 
-## :material-numeric-1-circle-outline: Robo Advisor with Market Data Provider
+
+## :material-numeric-1-circle-outline: Optional Market Data Provider
 
 If all instrument data can be delivered through our Financial Data API (eg. when the instrument universe is only OTC/unlisted funds), then an integration with a Market Data Provider is not required.
 ## :material-numeric-2-circle-outline: Robo Advisor with Broker/Custodian Integration
 
-The default way of integrating Robo Advisor is through your backend, which is downstream integrated with the broker/custodian. This allows you to remain in control of the entire integration and avoid an organizational dependency on InvestSuite. This corresponds to Option A in the diagram.
+The default way of integrating Robo Advisor is through your backend, which is downstream integrated with the broker/custodian. This allows you to reuse your existing integration, remain in control of the end-to-end flow and avoid an organizational dependency on InvestSuite. This scenario is referred to as 'Integration by the Client'.
 
-Alternatively, we can integrate with a supported broker/custodian. This corresponds to Option B in the diagram.
-
-- REASONS FOR CHOOSING A ???
-- REASONS FOR CHOOSING B ???
-- DO WE HAVE A SEXY NAME FOR OPTIONS A AND B? LIGHT INTEGRATION? DIRECT INTEGRATION?
-- A: geen implementatiekost aan ons te betalen voor brokerintegratie + oplevertijd van app zal minder lang zijn, aangezien integratie in parallel kan verlopen (want gebeurt niet met onze resources)
-B: moeten zich zelf niks aantrekken van brokerintegratie, maar hier komt wel een implementatiekost bij kijken (in gevallen waarbij de broker echt niet nuttig is voor ons om te implementeren, geven wij dit zelfs niet als een optie)
+Alternatively, we can integrate with a supported broker/custodian. This scenario is referred to as 'Integration by InvestSuite'.
 
 ![](../img/robo_integration_options.jpg)
+
+## :material-numeric-3-circle-outline: Optional Client Backend
+
+Data can delivered through an Excel file in the browser.
+
+For more advanced scenarios, an API integration is required.
+
 
 
 
