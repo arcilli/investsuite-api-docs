@@ -56,7 +56,7 @@ Call `POST /events/deposit/` to send a notification when your customer has tranf
                     }
                 }'
     ```
-### Broker integration by the Bank
+### Broker integration by the Client
 
 These are the steps performed to fund a portfolio, given the broker integration is handled by you:
 
@@ -363,9 +363,9 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
                 }'
     ```
 
-#### Broker integration by the Bank
+#### Broker integration by the Client
 
-Steps to take when the clients issues an instruction to withdraw funds, and you as the Bank are in charge of the integration with the broker:
+Steps to take when the clients issues an instruction to withdraw funds, and you as the Client are in charge of the integration with the broker:
 
 1. **You** (or InvestSuite in case the app is managed by InvestSuite) update the portfolio `divest_amount` by issuing a PATCH request against `/portfolios/{portfolioId}` when the client sets a divest amount in the app. **See below**: Set divest amount.
 2. **InvestSuite** asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.
@@ -618,7 +618,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 
 ### Self Investor
 
-For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Bank transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps: 
+For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps: 
 
 1. **InvestSuite** captures in the app the client withdraw instruction, and passes the instruction on to the broker.
 2. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
