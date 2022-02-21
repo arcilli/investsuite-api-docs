@@ -21,7 +21,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
 4. **InvestSuite**, once the transaction is settled at the broker, updates the portfolio's cash holding and the transaction status.
 5. **InvestSuite** creates a notification to be sent to the client.
 
-**Notify InvestSuite on successful deposit**
+**1. Notify InvestSuite on successful deposit**
 
 Call `POST /events/deposit/` to send a notification when your customer has tranferred cash into their cash account and the transaction is settled on your end. 
 
