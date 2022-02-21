@@ -21,7 +21,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
 4. **InvestSuite**, once the transaction is settled at the broker, updates the portfolio's cash holding and the transaction status.
 5. **InvestSuite** creates a notification to be sent to the client.
 
-#### Notify InvestSuite on successful deposit
+**Notify InvestSuite on successful deposit**
 
 Call `POST /events/deposit/` to send a notification when your customer has tranferred cash into their cash account and the transaction is settled on your end. 
 
@@ -67,7 +67,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
 4. **You** call `POST /events/deposit/`. **See below**: Instruct InvestSuite to send a notification.
 5. **InvestSuite** creates a notification to be sent to the client.
 
-#### Create pending transaction
+**2. Create pending transaction**
 
 === "HTTP"
 
@@ -113,7 +113,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
         }'
     ```
 
-#### Update transaction to settled
+**3. Update transaction to settled**
 
 === "HTTP"
 
@@ -146,7 +146,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
             ]
         }'
     ```
-#### Update cash position
+**4. Update cash position**
 
 === "HTTP"
 
@@ -189,7 +189,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
     with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
 
-#### Instruct InvestSuite to send a notification
+**5. Instruct InvestSuite to send a notification**
 
 === "HTTP"
 
@@ -251,7 +251,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
 !!! Info
     As trigger to transfer the freed up cash you use the input from the broker, for instance be parsing end-of-day files.
 
-##### Set divest amount
+**1. Set divest amount**
 
 === "HTTP"
 
@@ -288,7 +288,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
         }'
     ```
 
-##### Get counter account
+**7. Get counter account**
 
 === "HTTP"
 
@@ -329,7 +329,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
     "deleted": false,
 }
 ```
-##### Notify InvestSuite on successful cash transfer
+**8. Notify InvestSuite on successful cash transfer**
 
 === "HTTP"
 
@@ -378,7 +378,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 11. **You** update the portfolio's cash position. **See below**: Update cash position.
 12. **You** reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  **See below**: Reset divest amount.
 
-##### Set divest amount
+**1. Set divest amount**
 
 === "HTTP"
 
@@ -415,7 +415,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
         }'
     ```
 
-##### Get counter account
+**5. Get counter account**
 
 === "HTTP"
 
@@ -456,7 +456,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
     "deleted": false,
 }
 ```
-##### Notify InvestSuite on successful cash transfer
+**6. Notify InvestSuite on successful cash transfer**
 
 === "HTTP"
 
@@ -490,7 +490,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
                 }'
     ```
 
-##### Update cash position
+**9. Update cash position**
 
 === "HTTP"
 
@@ -532,7 +532,8 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 !!! Warning
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
     with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
-##### Create transaction
+
+**8. Create transaction**
 
 === "HTTP"
 
@@ -578,7 +579,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
         }'
     ```
 
-##### Reset divest amount
+**10. Reset divest amount**
 
 === "HTTP"
 
@@ -620,11 +621,11 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Bank transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps: 
 
 1. **InvestSuite** captures in the app the client withdraw instruction, and passes the instruction on to the broker.
-7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-8. **You** notify InvestSuite that the payment has occured. **See below**: Notify InvestSuite on successful cash transfer.
-9. **InvestSuite** puts the message on a queue to send a push notification to the client.
+2. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
+3. **You** notify InvestSuite that the payment has occured. **See below**: Notify InvestSuite on successful cash transfer.
+4. **InvestSuite** puts the message on a queue to send a push notification to the client.
 
-##### Get counter account
+**2. Get counter account**
 
 === "HTTP"
 
@@ -665,7 +666,7 @@ For Self Investor InvestSuite manages the app, and captures withdrawal instructi
     "deleted": false,
 }
 ```
-##### Notify InvestSuite on successful cash transfer
+**3. Notify InvestSuite on successful cash transfer**
 
 === "HTTP"
 
