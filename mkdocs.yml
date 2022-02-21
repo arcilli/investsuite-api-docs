@@ -86,6 +86,7 @@ plugins:
 nav:
   - First steps:
     - About: index.md
+    - Glossary: glossary.md
     - Solution Architecture: solution_architecture.md
     - Integration Architecture: integration_architecture.md
     - Authentication: authentication.md
