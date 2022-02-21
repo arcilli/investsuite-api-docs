@@ -9,7 +9,7 @@ The current and past members of the InvestSuite team.
 * [@gidven](https://github.com/gidven)
 * [@Lotte-Verheyden-IVS](https://github.com/Lotte-Verheyden-IVS)
 * [@LukV](https://github.com/LukV)
-* [@woutervanranst)(https://github.com/woutervanranst)
+* [@woutervanranst](https://github.com/woutervanranst)
 
 ### v8 (2022-02-21)
 
