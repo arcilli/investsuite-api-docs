@@ -9,6 +9,11 @@ The current and past members of the InvestSuite team.
 * [@gidven](https://github.com/gidven)
 * [@Lotte-Verheyden-IVS](https://github.com/Lotte-Verheyden-IVS)
 * [@LukV](https://github.com/LukV)
+* [@woutervanranst)(https://github.com/woutervanranst)
+
+### v8 (2022-02-21)
+
+* Fixed technical issues 1/ with pymdownx.tabbed being broken and 2/ custom domain name being lost on every deploy
 
 ### v7 (2022-01-14)
 
