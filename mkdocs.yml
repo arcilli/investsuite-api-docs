@@ -80,6 +80,7 @@ nav:
     - Authentication: authentication.md
     - Quick start: quick_start.md
   - Common scenarios: 
+    - Account structure: common_scenarios/account_structure.md
     - Account initiation: common_scenarios/account_initiation.md
     - Optimize a portfolio: common_scenarios/run_optimizer.md
     - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
