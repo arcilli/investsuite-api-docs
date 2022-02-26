@@ -2,6 +2,9 @@
 title: Synchronize portfolios
 ---
 
+!!! Info
+    Applicable to: Integration Architecture 'Broker Integration by Client'
+
 ## Context
 
 Synchronizing a portfolio involves taking the holdings and the transactions for a portfolio from your brokerage and custody system and passing them to InvestSuite. As an API client you are responsible for keeping the holdings and transactions in sync between the broker / custody system and the InvestSuite platform. The master data source for both the positions and the transactions is that of the broker / custody provider. For Robo Advisor you copy the holdings and transactions into the InvestSuite system on a recurring basis, for instance once a day. For Self Investor this synchronization should run in near real time.
