@@ -112,3 +112,34 @@ portfolio.brokerage_account
 </table>
 
 
+https://miro.com/app/board/o9J_lUQX6NI=/?moveToWidget=3074457355188901601&cot=14
++1
+eyes
+raised_hands
+
+
+
+
+
+14:55
+https://miro.com/app/board/o9J_lUQX6NI=/?moveToWidget=3074457355190283340&cot=14
+14:55
+dit zijn onze huidige flows met omnibus account
+14:55
+maar zo werken ze dus niet
+14:55
+die brokerage accounts, zijn dat Belgische rekeningen?
+14:56
+de reden waarom er doorgaans met omnibus accounts gewerkt wordt, is omdat er geld tussen landen verplaatst moet worden
+14:58
+bijv. Saxo verplicht de bank om een cash account bij Saxo zelf te hebben (Denemarken als ik mij niet vergis). Als dat geld dan naar de UAE verplaatst moet worden, doen banken dat liefst in één keer (om geen onnodige kosten te hebben).
+14:59
+Daarvoor dienen die omnibus accounts. Elke dag doet CBD een reconciliation tussen zijn omnibus account bij Saxo en zijn eigen omnibus account
+15:00
+Als Degroof zegt dat geld rechtstreeks van de portfolio cash account naar de user zijn zichtrekening verplaatst mag worden, dan hebben we dat allemaal niet nodig
+15:01
+maar die context mis ik dus nog, wat de exacte set-up van Degroof is
+15:02
+en als dat besproken wordt, zou ik daar graag iemand bij hebben die veel van banking weet, zoals Marc. Want ikzelf ken de impact niet heel goed van individuele accounts vs. omnibus accounts
+15:06
+ik ben ook niet zeker of ze door hebben dat we een individuele investment account per portfolio vereisen, en dus niet per user
