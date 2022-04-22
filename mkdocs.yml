@@ -77,6 +77,7 @@ plugins:
 nav:
   - First steps:
     - About: index.md
+    - Glossary: glossary.md
     - Authentication: authentication.md
     - Quick start: quick_start.md
   - Common scenarios: 
