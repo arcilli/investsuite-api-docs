@@ -80,7 +80,7 @@ nav:
     - Glossary: glossary.md
     - Authentication: authentication.md
     - Quick start: quick_start.md
-  - Common scenarios: 
+  - Common scenarios:
     - Account initiation: common_scenarios/account_initiation.md
     - Optimize a portfolio: common_scenarios/run_optimizer.md
     - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
@@ -102,6 +102,9 @@ nav:
     # - Rate limiting: advanced_topics/rate_limiting.md
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
+  - Value Added APIs:
+    - Themes API: value-added-apis/themes.md
+    - Inspiration API: value-added-apis/inspiration.md
   - API specification: "https://api.sandbox.investsuite.com/redoc"
   - Release notes: changelog.md
 
