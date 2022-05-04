@@ -65,8 +65,10 @@ Setting `include_children` to `true` will include the instruments of child Theme
     ]
     ```
 
-<!-- ## InvestSuite Thematic Screening Methodology
+## InvestSuite Theme Screening Methodology
+
 The screening process consists of two-phases each of which is based on a automated process using human-in-the-loop artificial intelligence.
 
-1. Theme identification: TODO describe this.
-2. Instrument screening: TODO describe this. -->
+1. Theme identification: Themes and Thematic Investments are manually identified based on social trends or based on popular investment products (Thematic ETFs). A description and criteria for screening are drafted.
+
+2. Instrument screening: We automatically check the main activities of the instrument companies and their descriptions. The automated screening is then followed by extensive manual screening by humans and serves as a guide. Currently, the majority of the screening work is done by humans with automated suggestions.
