@@ -1,0 +1,72 @@
+---
+title: Themes Value Added API
+---
+
+## Service Description
+
+The InvestSuite quant team composes and actively manages a list of Themes or thematic instrument groups such as Healthcare, Clean & Green Economy, Social Trends each holding an applicable list of financial instruments. The aim of the Themes Value-Added-API service is to offer a means to filter the instrument universe to their personal preference and view. To retrieve Themes and selected instruments within them perform a `GET` request against the  `/themes/` endpoint:
+
+- [Themes API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Themes)
+- [Themes API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Themes/)
+
+Themes can be grouped into Metathemes. A Metatheme consists of multiple themes and will combine their instruments with its own.
+
+## Usage & Model
+
+Request Themes and Metathemes instruments and metadata by passing your tenant identifier.
+
+By default Metathemes that consist of multiple child Themes will not include child instruments.
+Setting `include_children` to `true` will include the instruments of child Themes into the Metathemes data.
+
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /themes/
+        ?[tenant_id={your_identifier}]
+        &[include_children=true] HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    Authorization: Bearer {access_token_string}
+    ```
+
+=== "Response (body)"
+
+    ```JSON hl_lines="10"
+    [
+        {
+            "name": "theme1",
+            "description": "Description of theme1.",
+            "type": "theme",
+            "children": [],
+            "instruments": [
+                {
+                    "isin": "ISIN1234",
+                    "name": "CompanyXYZ Inc."
+                },
+                ...
+            ]
+            "date_modified": "2022-04-06T14:34:32.425959"
+        },
+        ...
+        {
+            "name": "metatheme1",
+            "description": "Description of metatheme2.",
+            "type": "metatheme",
+            "children": ["theme1"],
+            "instruments": [
+                {
+                    "isin": "ISIN5678",
+                    "name": "Enterprise Corp."
+                },
+                ...
+            ]
+            "date_modified": "2022-04-06T14:34:32.425959"
+        }
+    ]
+    ```
+
+<!-- ## InvestSuite Thematic Screening Methodology
+The screening process consists of two-phases each of which is based on a automated process using human-in-the-loop artificial intelligence.
+
+1. Theme identification: TODO describe this.
+2. Instrument screening: TODO describe this. -->
