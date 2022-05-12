@@ -89,7 +89,7 @@ nav:
     - Financial data: common_scenarios/financial_data.md
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
-    - Thematic search: common_scenarios/thematic_search.md
+    # - Thematic search: common_scenarios/thematic_search.md
   - Advanced topics:
     - Handling collection responses: advanced_topics/collections.md # Search
     - A closer look at API errors : advanced_topics/errors.md # 422 responses, permissions
@@ -105,7 +105,7 @@ nav:
   - Value Added APIs:
     - Themes API: value-added-apis/themes.md
     - Inspiration API: value-added-apis/inspiration.md
-  - API specification: "https://api.sandbox.investsuite.com/redoc"
+  - InvestSuite API specification: "https://api.sandbox.investsuite.com/redoc"
   - Release notes: changelog.md
 
 extra_javascript:
