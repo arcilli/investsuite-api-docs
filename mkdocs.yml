@@ -105,6 +105,7 @@ nav:
   - Value Added APIs:
     - Themes API: value-added-apis/themes.md
     - Inspiration API: value-added-apis/inspiration.md
+    - Uploading Custom Data: value-added-apis/custom_data.md
   - InvestSuite API specification: "https://api.sandbox.investsuite.com/redoc"
   - Release notes: changelog.md
 
