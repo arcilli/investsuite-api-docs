@@ -9,10 +9,10 @@ The Inspiration API provides groupings of instruments by automated curation with
 To retrieve Inspiration and up-to-date instruments within them perform a `GET` request against the  `/inspiration/` endpoint.
 A GET request against the `/inspiration/definition/` endpoint will return the metadata (identifier, description, name, query definition) available to the tenant.
 
-- [Inspiration API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Inspiration)
-- [Inspiration API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Inspiration/)
+- [Inspiration API Redoc Documentation](https://api.data.dev.investsuite.com/redoc#tag/Inspiration)
+- [Inspiration API Swagger UI Interface](https://api.data.dev.investsuite.com/docs#/Inspiration/)
 
-** ⚠️ NOTE: UAT Beta version does not yet support user-defined Inspiration Definitions.**
+** ⚠️ NOTE: V1 version does not yet support user-defined Inspiration Definitions.**
 
 ## Usage & Model
 
