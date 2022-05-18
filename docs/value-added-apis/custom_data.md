@@ -106,7 +106,7 @@ Field | Description | Data type | Example | Required
 `cache_instrument_count` | The number of instruments that the client has provided custom reference data for. | `integer` | 2 | yes
 `cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
 
-To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten. 
+To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 
 ## Uploading Custom Timeseries Data
 
@@ -213,8 +213,7 @@ Field | Description | Data type | Example | Required
 `cache_instrument_count` | The number of instruments that the client has provided custom timeseries data for. | `integer` | 2 | yes
 `cache_date_count` | The number of different dates that the client has provided timeseries data for, over all instruments. | `integer` | 3 | yes
 
-To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again. Only the provided fields will be overwritten.
-
+To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again. 
 
 ## Uploading Custom Composition Data
 
@@ -326,11 +325,11 @@ Field | Description | Data type | Example | Required
 `cache_composition_type_count` | The number of composition types that the client has provided composition data for. | `integer` | 2 | yes
 `cache_date_count` | The number of different dates that the client has provided timeseries data for, over all instruments. | `integer` | 6 | yes
 
-To overwrite a certain type of composition data for one or more instruments on specific dates, simply provide the data for these instruments and types on the dates to overwrite again. Only the provided fields will be overwritten.
+To overwrite a certain type of composition data for one or more instruments on specific dates, simply provide the data for these instruments and types on the dates to overwrite again. 
 
 ## Uploading Custom Attribution Data
 
-Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has contributen to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries). 
+Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries). 
 
 The endpoint accepts a batch of instruments at once. Let us look at an example.
 
@@ -419,4 +418,4 @@ Field | Description | Data type | Example | Required
 `cache_fund_count` | The number of fund instruments that the client has provided custom attribution data for. | `integer` | 2 | yes
 `cache_date_count` | The number of dates that the client has provided attribution data for. | `integer` | 3 | yes
 
-To overwrite a certain type of attribution data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again. Only the provided fields will be overwritten.
+To overwrite a certain type of attribution data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again. 
