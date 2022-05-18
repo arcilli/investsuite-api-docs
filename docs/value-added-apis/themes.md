@@ -6,8 +6,8 @@ title: Themes Value Added API
 
 The InvestSuite quant team composes and actively manages a list of Themes or thematic instrument groups such as Healthcare, Clean & Green Economy, Social Trends each holding an applicable list of financial instruments. The aim of the Themes Value-Added-API service is to offer a means to filter the instrument universe to their personal preference and view. To retrieve Themes and selected instruments within them perform a `GET` request against the  `/themes/` endpoint:
 
-- [Themes API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Themes)
-- [Themes API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Themes/)
+- [Themes API Redoc Documentation](https://api.data.dev.investsuite.com/redoc#tag/Themes)
+- [Themes API Swagger UI Interface](https://api.data.dev.investsuite.com/docs#/Themes/)
 
 Themes can be grouped into Metathemes. A Metatheme consists of multiple themes and will combine their instruments with its own.
 
