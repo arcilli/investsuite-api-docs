@@ -4,11 +4,13 @@ title: Uploading Custom Data
 
 ## Service Description
 
-InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page.  
+InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page.  This then takes precedence on the data from the provider.
 
 The Financial Data API accepts custom data via four different endpoints, each accepting a specific type of data: 
 
-- [Reference data](https://api.data.dev.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
+<!-- do we really want to point to dev? -->
+
+- [Reference data](https://api.data.dev.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post) 
 - [Timeseries data](https://api.data.dev.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
 - [Composition data](https://api.data.dev.investsuite.com/redoc#operation/create_composition_batch_data_custom_composition_batch__post)
 - [Attribution data](https://api.data.dev.investsuite.com/redoc#operation/create_attribution_batch_data_custom_attribution_batch__post)
@@ -86,7 +88,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a reference data object for each provided instrument. | `list` |  | yes 
-`instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
+`instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. <br>There is not necessarily a relationship to the ISIN.| `string` | "US2546871060" | yes
 `reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the [API documentation of this endpoint](https://api.data.dev.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `object` | | yes
 
 After uploading data, we get a response back: 
@@ -107,6 +109,7 @@ Field | Description | Data type | Example | Required
 `cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
 
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
+<!-- So this is really a PATCH (not POST) semantic? -->
 
 ## Uploading Custom Timeseries Data
 
@@ -192,7 +195,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a timeseries data object for each provided instrument. | `list` |  | yes 
 `instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
-`values` | An object holding the timeseries data for the instrument. | `object` | | yes
+`values` | An object holding the timeseries data for the instrument. SORRY NO INLINE COMMENTS BUT WHAT IS THE RESOLUTION OF THESE? CAN IT BE HOURLY? CONCRETE ASK FROM DEGROOF. DOES FDA THEN INTERPOLATE THE VALUES TO SHOW A GRAPH IN EG SELF INVESTOR? | `object` | | yes
 `timeseries_type` | The type of timeseries data that is provided. Available types can be seen in the [API documentation of this endpoint](https://api.data.dev.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
 
 
