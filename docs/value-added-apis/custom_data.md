@@ -1,5 +1,5 @@
 ---
-title: Uploading Custom Data 
+title: Custom Data API
 ---
 
 ## Service Description
@@ -18,7 +18,7 @@ The Financial Data API accepts custom data via four different endpoints, each ac
 The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.
 
 
-## Uploading Custom Reference Data
+## Custom Reference Data
 
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments. 
 
@@ -111,7 +111,7 @@ Field | Description | Data type | Example | Required
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 <!-- So this is really a PATCH (not POST) semantic? -->
 
-## Uploading Custom Timeseries Data
+## Custom Timeseries Data
 
 Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type. 
 
@@ -218,7 +218,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again. 
 
-## Uploading Custom Composition Data
+## Custom Composition Data
 
 Composition data of an instrument provides a look-through of the underlying instruments according to certain composition types. Examples are the asset class or country composition of a fund. Using this endpoint, a client can upload composition data on different composition types for specific instruments, for certain dates (timeseries). 
 
@@ -330,7 +330,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of composition data for one or more instruments on specific dates, simply provide the data for these instruments and types on the dates to overwrite again. 
 
-## Uploading Custom Attribution Data
+## Custom Attribution Data
 
 Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries). 
 
