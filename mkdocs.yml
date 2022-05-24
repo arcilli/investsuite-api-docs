@@ -102,7 +102,7 @@ nav:
     # - Rate limiting: advanced_topics/rate_limiting.md
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
-    - Onboarding scenarios: advanced_topics/onboarding_scenarios.md
+    - Onboarding: advanced_topics/onboarding.md
   - Value Added APIs:
     - Themes API: value-added-apis/themes.md
     - Inspiration API: value-added-apis/inspiration.md

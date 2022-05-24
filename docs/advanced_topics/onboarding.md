@@ -1,17 +1,31 @@
 ---
-title: Onboarding scenarios
+title: Onboarding
 ---
 ## Context
 
-Onboarding a user involves the creation of a user in InvestSuite. For the user to start investing, a portfolio needs to be created in InvestSuite with this user as owner. The creation of both the user and the portfolio can be triggered via the InvestSuite API or through the InvestSuite app. Different onboarding scenarios can apply based on your specific implementation of the InvestSuite products. This page explains the most common use cases.
+An Onboarding process varies wildly from client to client, but typically involves the following steps in any order:
 
-## User creation scenario  1: User onboarding is already done in your application
+* Strong identifity verification (eg. through a national ID provider)
+* Capture additional information (Anti Money-Laundering (AML) checks, tax information, ...)
+* Setting a withdrawal IBAN
+* Suitability test
+* MiFID Checks
+* Signing a contract
+* Creation of a User in InvestSuite
+* Creation of a Portfolio in InvestSuite, with the User as owner
 
-**Use case description** 
+Broadly speaking, the Onboarding process happens either outside the InvestSuite application (Scenario 1, also referred to as 'API Onboarding') or inside InvestSuite (Scenario 2, also referred to as 'In-App Onboarding').
 
-The user onboards via your application. This means kyc checks, aml checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.
+The former is the preferred scenario as it requires less integration work and provides a smoother experience for your existing users.
 
-**How to create the user in InvestSuite**
+## Scenario 1: API Onboarding
+### Create User
+
+**Use Case** 
+
+The User onboards outside of InvesSuite / via your application. This means KYC checks, AML checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.
+
+**How-To**
 
 The below table shows the minimum required data you provide as an input when creating a user through the InvestSuite API.
 
@@ -29,13 +43,13 @@ counter_account > bank_account_number | Account number of the user to which mone
 
 For the detailed specification of our endpoints, go to [InvestSuite API specification](https://api.sandbox.investsuite.com/redoc). 
 
-## Portfolio creation scenario 1: Create a Self Investor portfolio
+### Create Self Investor Portfolio
 
-**Use case description** 
+**Use Case** 
 
 You create a Self Investor portfolio for a fully onboarded user. The user is already created in InvestSuite.
 
-**How to create the portfolio in InvestSuite**
+**How-To**
 
 The below table shows the minimum required data you provide as an input when creating a portfolio through the InvestSuite API.
 
@@ -53,3 +67,20 @@ brokerage_account > bank_account_number | Account number of the account to which
 brokerage_account > payment_reference | Payment reference the user needs to add to the bank transfer for funding the portfolio. Required if the user uses InvestSuite's front-end applications for investing and the portfolio is funded through a pooled account. Displayed in the funding screen of the InvestSuite app. | request body
 
 For the detailed specification of our endpoints, go to [InvestSuite API specification](https://api.sandbox.investsuite.com/redoc). 
+
+### Create Robo Advisor Portfolio
+
+Under construction
+
+## Scenario 2: In-App Onboarding
+
+### Create User
+
+Under construction
+### Create Self Investor Portfolio
+
+Under construction
+
+### Create Robo Advisor Portfolio
+
+Under construction
