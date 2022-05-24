@@ -23,7 +23,7 @@ The former is the preferred scenario as it requires less integration work and pr
 
 **Use Case** 
 
-The User onboards outside of InvesSuite / via your application. This means KYC checks, AML checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.
+The User onboards outside of InvestSuite / via your application. This means KYC checks, AML checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.
 
 **How-To**
 
