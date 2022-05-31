@@ -1,0 +1,216 @@
+---
+title: Monte Carlo API
+---
+
+## Service Description
+
+This API endpoint can be used to simulate a range of possible future returns for a portfolio, based on confidence intervals. This can be based on the historical returns of the asset classed the portfolio is exposed to, or a set of expected returns over the short and long term. When using expected returns, the short and long term estimates for the returns and volatilities of the asset classes (which InvestSuite obtains from a variety of sources) are used to calculate the simulations. A linear smoothing is applied to change the distributions over time. InvestSuite updates these expectations in a timely fashion.
+
+The Financial Data API endpoint for the Monte Carlo simulations is accessed through the following endpoint:
+
+- [Future Performance](https://api.data.uat.investsuite.com/redoc#operation/future_performance_future__post) 
+
+Below, we elaborate further on how to use this endpoints in practice.
+
+
+## Future Data
+
+The endpoint has a range of predefined fields to queery data for. Let us look at an example.
+
+
+=== "HTTP"
+
+    ```HTTP 
+    POST /performance/future/?X-TENANT-ID={your_identifier} HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {access_token_string}
+
+    {
+        "asset_classes": {
+            "EQUITY": [0.8, 1],
+            "FIXED_INCOME": [0, 0.2]
+        },
+        "start_date": "2022-01-31",
+        "end_date": "2022-12-31",
+        "currency": "EUR",
+        "start_amount": 1000,
+        "recurring_deposit_amount": 50,
+        "recurring_deposit_frequency": "M",
+        "sample_frequency": "M",
+        "quantiles": [0.05, 0.5, 0.95],
+        "use_expected_returns": false
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X POST \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "{string}"  \   
+    -d '{
+            "asset_classes": {
+            "EQUITY": [0.8, 1],
+            "FIXED_INCOME": [0, 0.2]
+            },
+            "start_date": "2022-01-31",
+            "end_date": "2022-12-31",
+            "currency": "EUR",
+            "start_amount": 1000,
+            "recurring_deposit_amount": 50,
+            "recurring_deposit_frequency": "M",
+            "sample_frequency": "M",
+            "quantiles": [0.05, 0.5, 0.95],
+            "use_expected_returns": false
+        }'
+    https://api.data.uat.investsuite.com/performance/future/batch/?X-TENANT-ID={your_identifier}
+    ```
+
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`asset_classes` | A dictionary mapping asset classes to portfolio upper and lower weights. | `dict` | {"EQUITY": [0.8, 1], "FIXED_INCOME": [0, 0.2]} | yes 
+`start_date` | Start date of the scenarios. | `date` | "2022-01-31" | yes 
+`end_date` | End date of the scenarios. | `date` | "2022-12-31" | yes 
+`currency` | The currency of the portfolio in ISO format. | `str` | "USD" | no
+`start_amount` | Start amount of the portfolio (in base currency) - i.e. amount put in at start_date. | `float` | 1000 | no
+`recurring_deposit_amount` | Amount assumed to be added/subtracted at the provided frequency. | `float` | 100 | no
+`recurring_deposit_frequency` | Frequency of the deposit amount. Options are "D", "W", "M" or "Y". | `str` | "M" | no
+`sample_frequency` | Frequency for which the scenarios should be generated. Options are "D", "W", "M" or "Y". | `str` | "M" | no
+`quantiles` | The quantiles to calculate and return (expressed in decimal form). | `list` | [0.05, 0.5, 0.95] | no
+`use_expected_returns` | Whether the simulations need to are based on projected returns, not historical ones. | `bool` | false | no
+`asset_class_mapping` | Instruments to use for the historical asset class returns. | `dict` | {"EQUITY": "US0378331005", "FIXED_INCOME": "IE00B4L5Y983"} | no
+`asset_class_st_mean_and_stdev` | Mean and standard deviation for the short term projected asset class returns. | `dict` | {"EQUITY": {"mean": 0.25, "stdev": 0.05}, "FIXED_INCOME": {"mean": 0.005, "stdev": 0.04}} | no
+`asset_class_lt_mean_and_stdev` | Mean and standard deviation for the long term projected asset class returns. | `dict` | {"EQUITY": {"mean": 0.15, "stdev": 0.01}, "FIXED_INCOME": {"mean": 0.005, "stdev": 0.04}} | no
+`short_to_long_term_transition_cut_off` | Cut-off between the short and long term distributions, in years. | `int` | 5 | no
+
+The long term and short term distribution parameters can be provided by mapping asset classes to the following structure.
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`mean` | The mean of the distribution. | `float` | 0.15 | yes 
+`stdev` | The standard deviation of the distribution. | `float` | 0.25 | yes 
+
+
+After uploading data, we get a response back: 
+
+```JSON
+{
+    "data": {
+        "value": {
+            "0.05": {
+                "2022-01-31": 1050.0,
+                "2022-02-28": 1035.8986317433569,
+                "2022-03-31": 1062.909705454118,
+                "2022-04-30": 1098.0423232530165,
+                "2022-05-31": 1136.4747383722322,
+                "2022-06-30": 1177.626590630353,
+                "2022-07-31": 1220.224942405298,
+                "2022-08-31": 1264.2030987489222,
+                "2022-09-30": 1309.4483732734739,
+                "2022-10-31": 1355.4800950037823,
+                "2022-11-30": 1402.444917327639,
+                "2022-12-31": 1450.056624826056
+            },
+            "0.5": {
+                "2022-01-31": 1050.0,
+                "2022-02-28": 1109.6624596515082,
+                "2022-03-31": 1170.9736005974196,
+                "2022-04-30": 1232.5227773187382,
+                "2022-05-31": 1295.0862723996452,
+                "2022-06-30": 1357.8595579986254,
+                "2022-07-31": 1421.7006505864554,
+                "2022-08-31": 1486.1924956532225,
+                "2022-09-30": 1550.8506397526621,
+                "2022-10-31": 1616.6589515683183,
+                "2022-11-30": 1682.6038711807148,
+                "2022-12-31": 1749.7551854182339
+            },
+            "0.95": {
+                "2022-01-31": 1050.0,
+                "2022-02-28": 1188.9452142854648,
+                "2022-03-31": 1290.8444771469728,
+                "2022-04-30": 1385.1076785976206,
+                "2022-05-31": 1478.5385541312273,
+                "2022-06-30": 1569.679318178448,
+                "2022-07-31": 1661.974513373949,
+                "2022-08-31": 1754.4407258712579,
+                "2022-09-30": 1845.9738216137268,
+                "2022-10-31": 1939.5250152249216,
+                "2022-11-30": 2032.411301502351,
+                "2022-12-31": 2127.5945389625517
+            }
+        },
+        "deposits": {
+            "deposits": {
+                "2022-01-31": 50.0,
+                "2022-02-28": 100.0,
+                "2022-03-31": 150.0,
+                "2022-04-30": 200.0,
+                "2022-05-31": 250.0,
+                "2022-06-30": 300.0,
+                "2022-07-31": 350.0,
+                "2022-08-31": 400.0,
+                "2022-09-30": 450.0,
+                "2022-10-31": 500.0,
+                "2022-11-30": 550.0,
+                "2022-12-31": 600.0
+            }
+        },
+        "return": {
+            "0.05": {
+                "2022-01-31": 1000.0,
+                "2022-02-28": 935.8986317433569,
+                "2022-03-31": 912.909705454118,
+                "2022-04-30": 898.0423232530165,
+                "2022-05-31": 886.4747383722322,
+                "2022-06-30": 877.6265906303529,
+                "2022-07-31": 870.224942405298,
+                "2022-08-31": 864.2030987489222,
+                "2022-09-30": 859.4483732734739,
+                "2022-10-31": 855.4800950037823,
+                "2022-11-30": 852.4449173276389,
+                "2022-12-31": 850.0566248260559
+            },
+            "0.5": {
+                "2022-01-31": 1000.0,
+                "2022-02-28": 1009.6624596515082,
+                "2022-03-31": 1020.9736005974196,
+                "2022-04-30": 1032.5227773187382,
+                "2022-05-31": 1045.0862723996452,
+                "2022-06-30": 1057.8595579986254,
+                "2022-07-31": 1071.7006505864554,
+                "2022-08-31": 1086.1924956532225,
+                "2022-09-30": 1100.8506397526621,
+                "2022-10-31": 1116.6589515683183,
+                "2022-11-30": 1132.6038711807148,
+                "2022-12-31": 1149.7551854182339
+            },
+            "0.95": {
+                "2022-01-31": 1000.0,
+                "2022-02-28": 1088.9452142854648,
+                "2022-03-31": 1140.8444771469728,
+                "2022-04-30": 1185.1076785976206,
+                "2022-05-31": 1228.5385541312273,
+                "2022-06-30": 1269.679318178448,
+                "2022-07-31": 1311.974513373949,
+                "2022-08-31": 1354.4407258712579,
+                "2022-09-30": 1395.9738216137268,
+                "2022-10-31": 1439.5250152249216,
+                "2022-11-30": 1482.411301502351,
+                "2022-12-31": 1527.5945389625517
+            }
+        }
+    },
+    "meta": null
+}
+```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`data` | Holds all the Monte Carlo simulation data. | `object` |  | yes 
+`value` | The simulated future value of the portfolio of the requested quantiles. | `dict` |  | yes
+`deposits` | The cumulative deposits over time. | `dict` |  | yes
+`return` | The simulated future value of the portfolio of the requested quantiles, minus the deposits. | `dict` |  | yes
