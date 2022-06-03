@@ -40,6 +40,7 @@ phone | The mobile phone number of the user. Required if InvestSuite creates the
 language | The preferred communication language of the user. | request body
 counter_account > bank_account_number_type | Type of the bank account number, typically an IBAN number. Required if the user uses InvestSuite's front-end applications for investing. | request body
 counter_account > bank_account_number | Account number of the user to which money withdrawn from the user's portfolio will be settled. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the withdrawal screen of the InvestSuite app. | request body
+status | The status of the user. Always `ACTIVE` for this onboarding scenario. | request body
 
 For the detailed specification of our endpoints, go to [InvestSuite API specification](https://api.sandbox.investsuite.com/redoc). 
 
