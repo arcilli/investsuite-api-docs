@@ -15,16 +15,17 @@ Below, we elaborate further on how to use this endpoints in practice.
 
 ## Future Data
 
-The endpoint has a range of predefined fields to queery data for. Let us look at an example.
+The endpoint has a range of predefined fields to query data for. Let us look at an example.
 
 
 === "HTTP"
 
     ```HTTP 
-    POST /performance/future/?X-TENANT-ID={your_identifier} HTTP/1.1
+    POST /performance/future/ HTTP/1.1
     Host: api.data.uat.investsuite.com
+    X-TENANT-ID: demo.com
+    X-Api-Key: X
     Content-Type: application/json
-    Authorization: Bearer {access_token_string}
 
     {
         "asset_classes": {
@@ -49,7 +50,8 @@ The endpoint has a range of predefined fields to queery data for. Let us look at
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
+    -H "X-TENANT-ID": "{your_identifier}"  \   
+    -H "X-Api-Key": "X"  \   
     -d '{
             "asset_classes": {
             "EQUITY": [0.8, 1],
@@ -65,7 +67,7 @@ The endpoint has a range of predefined fields to queery data for. Let us look at
             "quantiles": [0.05, 0.5, 0.95],
             "use_expected_returns": false
         }'
-    https://api.data.uat.investsuite.com/performance/future/batch/?X-TENANT-ID={your_identifier}
+    https://api.data.uat.investsuite.com/performance/future/
     ```
 
 
