@@ -10,7 +10,11 @@ The current and past members of the InvestSuite team.
 * [@Lotte-Verheyden-IVS](https://github.com/Lotte-Verheyden-IVS)
 * [@LukV](https://github.com/LukV)
 * [@woutervanranst](https://github.com/woutervanranst)
+* [@MelanieHoubrechts](https://github.com/MelanieHoubrechts)
 
+### v9 (2022-06-13)
+
+* Added how to register the cancellation of an order
 ### v8 (2022-02-21)
 
 * Fixed technical issues 1/ with pymdownx.tabbed being broken and 2/ custom domain name being lost on every deploy

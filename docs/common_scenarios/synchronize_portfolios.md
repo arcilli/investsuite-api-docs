@@ -60,7 +60,10 @@ Some common transactions to pass to InvestSuite are:
 
 ### 1. Buy transactions
 
-A buy transaction describes the properties of a buy order. It consists of two movements: one describing the instrument to be purchased, the other the amount to be transferred from the cash account to buy the instrument. 
+A buy transaction describes the properties of a buy order. It consists of three movements: 
+- one describing the instrument to be purchased at the time of placement, 
+- a second describing the instrument purchased at the time of settlemet, 
+- a third the amount that was transferred from the cash account to buy the instrument. 
 
 === "Request"
 
@@ -75,19 +78,25 @@ A buy transaction describes the properties of a buy order. It consists of two mo
         "movements": [
             {
                 "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "quantity": 1
+            },
+            {
+                "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930872+00:00",
-                "instrument_id": "US46429B2676",
-                "quantity_type": "SHARES",
-                "quantity": 3,
+                "datetime": "2022-06-12T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
             },
             {
                 "type": "SELL",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930921+00:00",
+                "datetime": "2022-06-12T07:49:26.341Z",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": -105.152,
+                "quantity": -206.57
             }
         ]
     }
@@ -101,19 +110,25 @@ A buy transaction describes the properties of a buy order. It consists of two mo
         "movements": [
             {
                 "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "quantity": 1
+            },
+            {
+                "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930872+00:00",
-                "instrument_id": "US46429B2676",
-                "quantity_type": "SHARES",
-                "quantity": 3,
+                "datetime": "2022-06-12T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
             },
             {
                 "type": "SELL",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930921+00:00",
+                "datetime": "2022-06-12T07:49:26.341Z",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": -105.152,
+                "quantity": -206.57
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -125,11 +140,12 @@ A buy transaction describes the properties of a buy order. It consists of two mo
     }
     ```    
 
-One specific property of a buy order is the status which can be `PLANNED`, `PENDING`, `PLACED`, `EXECUTED`, `SETTLED`, `NOT_EXECUTED`, `EXPIRED`, or `CANCELLED`. To update the status of a transaction previously registered you pass your ID of that the transaction, as `external_id`.
-
 ### 2. Sell transactions
 
-A sell transaction describes the properties a sell order. It consists of two movements: one describing the instrument to be disposed, the other the amount to be transferred when the instrument is traded. 
+A sell transaction describes the properties a sell order. It is the reverse of a buy transaction It consists of three movements:
+- one describing the instrument to be disposed as planned, 
+- a second when the sell instruction was settled,
+- the third the amount to be transferred when the instrument is traded. 
 
 === "Request"
 
@@ -144,19 +160,25 @@ A sell transaction describes the properties a sell order. It consists of two mov
         "movements": [
             {
                 "type": "SELL",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "quantity": -7
+            },
+            {
+                "type": "SELL",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930872+00:00",
-                "instrument_id": "US46429B2676",
-                "quantity_type": "SHARES",
-                "quantity": -3,
+                "datetime": "2022-06-12T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "unit_price": 29.51,
+                "quantity": -7
             },
             {
                 "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930921+00:00",
+                "datetime": "2022-06-12T07:49:26.341Z",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": 105.152,
+                "quantity": 206.57
             }
         ]
     }
@@ -170,19 +192,25 @@ A sell transaction describes the properties a sell order. It consists of two mov
         "movements": [
             {
                 "type": "SELL",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "quantity": -7
+            },
+            {
+                "type": "SELL",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930872+00:00",
-                "instrument_id": "US46429B2676",
-                "quantity_type": "SHARES",
-                "quantity": -3,
+                "datetime": "2022-06-12T07:49:26.341Z",
+                "instrument_id": "US78468R1014",
+                "unit_price": 29.51,
+                "quantity": -7
             },
             {
                 "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2021-09-30T13:35:40.930921+00:00",
+                "datetime": "2022-06-12T07:49:26.341Z",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": 105.152,
+                "quantity": 206.57
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -193,9 +221,6 @@ A sell transaction describes the properties a sell order. It consists of two mov
         "deleted": false
     }
     ```    
-
-One specific property of a sell order is the status which can be `PLANNED`, `PENDING`, `PLACED`, `EXECUTED`, `SETTLED`, `NOT_EXECUTED`, `EXPIRED`, or `CANCELLED`. To update the status of a transaction previously registered you pass your ID of that the transaction, as `external_id`.
-
 
 ### 3. Cash movements
 
@@ -219,7 +244,6 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
                 "status": "SETTLED",
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 500.0,
             }
         ]
@@ -237,7 +261,6 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
                 "status": "SETTLED",
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 500.0,
             }
         ],
@@ -252,7 +275,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
 
 ### 4. Costs and charges
 
-Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For witholding tax paid to the governement use `"type": "WIHTHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
+Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For witholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
 
 === "Request"
 
@@ -289,8 +312,56 @@ Costs and charges come in various forms. There are items in the `type` Enum that
                 "status": "SETTLED",
                 "datetime": "2021-10-03T08:00:16.733954+00:00",
                 "instrument_id": "$USD",
+                "quantity": -0.1035719
+            }
+        ],
+        "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
+        "creation_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version": 1,
+        "version_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
+
+Example `WITHHOLDING_TAX`:
+
+=== "Request"
+
+    ```HTTP
+    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "external_id": "14031738752",
+                "type": "WITHHOLDING_TAX",
+                "status": "SETTLED",
+                "datetime": "2021-10-03T08:00:16.733954+00:00",
+                "instrument_id": "$USD",
                 "quantity_type": "AMOUNT",
                 "quantity": -0.1035719,
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "type": "WITHHOLDING_TAX",
+                "status": "SETTLED",
+                "datetime": "2021-10-03T08:00:16.733954+00:00",
+                "instrument_id": "$USD",
+                "quantity": -0.1035719
             }
         ],
         "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
@@ -324,7 +395,6 @@ Corporate actions are registered as transactions as they will lead to movements 
                 "status": "SETTLED",
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 0.0785,
                 "reference_instrument_id": "US78464A6727",
             }
@@ -343,7 +413,6 @@ Corporate actions are registered as transactions as they will lead to movements 
                 "status": "SETTLED",
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 0.0785,
                 "reference_instrument_id": "US78464A6727",
             }
@@ -376,7 +445,6 @@ After a transaction is posted in its initial state, in subsequent phases the sta
                 "status": "SETTLED",
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 0.0785,
                 "reference_instrument_id": "US78464A6727",
             }
@@ -395,7 +463,6 @@ After a transaction is posted in its initial state, in subsequent phases the sta
                 "status": "SETTLED",
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": 0.0785,
                 "reference_instrument_id": "US78464A6727",
             }
@@ -408,6 +475,115 @@ After a transaction is posted in its initial state, in subsequent phases the sta
         "deleted": false
     }
     ```
+
+## Cancel a placed order
+
+To turn a `PLACED` into a cancelled one, you patch the movements of the transactions with the current `PLACED` movement to a new movement with status `CANCELLED`.
+
+Given a current status with a `PLACED` order:
+```JSON
+{
+    "id": "T01G53YQW6E5RH7CAOBFUSCATED",
+    "external_id": "my-transaction-1",
+    "portfolio_id": "P01G511AYA61Z3Q14OBFUSCATED",
+    "portfolio_currency": "USD",
+    "type": "ORDER",
+    "order_type": "LIMIT",
+    "primary_movement": {
+        "external_id": "my-movement-1",
+        "type": "BUY",
+        "status": "PLACED",
+        "datetime": "2022-06-08T10:15:53.000000+00:00",
+        "instrument_id": "US2660424076",
+        "quantity": "3",
+        "unit_price": "3.49"
+    },
+    "movements": [
+        {
+            "external_id": "my-movement-1",
+            "type": "BUY",
+            "status": "PLACED",
+            "datetime": "2022-06-08T10:15:53.000000+00:00",
+            "instrument_id": "US2660424076",
+            "quantity": "3",
+            "unit_price": "3.49"
+        }
+    ]
+}
+```
+
+To register a cancellation you add one movement to the current list of movements. Nothing else should be updated, so the payload is as follows. Note that **you have to send the existing movements in this list as well**, because they would be lost otherwise:
+
+=== "Request"
+
+    ```HTTP
+    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "external_id": "movement-1",
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-08T10:15:53.000000+00:00",
+                "instrument_id": "US2660424076",
+                "quantity": "3",
+                "unit_price": "3.49"
+            },
+            {
+                "external_id": "movement-2",
+                "type": "BUY",
+                "status": "CANCELLED",
+                "datetime": "2022-06-08T11:01:54.000000+00:00",
+                "instrument_id": "US2660424076",
+                "quantity": "3",
+                "unit_price": "3.49"
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "external_id": "movement-1",
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-08T10:15:53.000000+00:00",
+                "instrument_id": "US2660424076",
+                "quantity": "3",
+                "unit_price": "3.49"
+            },
+            {
+                "external_id": "movement-2",
+                "type": "BUY",
+                "status": "CANCELLED",
+                "datetime": "2022-06-08T11:01:54.000000+00:00",
+                "instrument_id": "US2660424076",
+                "quantity": "3",
+                "unit_price": "3.49"
+            }
+        ],
+        "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
+        "creation_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version": 1,
+        "version_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
+
+!!! Info
+    Notice that the `PLACED` and `CANCELLED` movements are identical, apart from their status and their datetime. The datetime is the time the order was `PLACED` and `CANCELLED` respectively.
+
 ## Update portfolio holdings
 
 To update the holdings you patch the portfolio.
