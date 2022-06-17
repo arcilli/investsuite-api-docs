@@ -9,32 +9,43 @@ The Inspiration API provides groupings of instruments by automated curation with
 To retrieve Inspiration and up-to-date instruments within them perform a `GET` request against the  `/inspiration/` endpoint.
 A GET request against the `/inspiration/definition/` endpoint will return the metadata (identifier, description, name, query definition) available to the tenant.
 
-- [Inspiration API Redoc Documentation](https://api.data.dev.investsuite.com/redoc#tag/Inspiration)
-- [Inspiration API Swagger UI Interface](https://api.data.dev.investsuite.com/docs#/Inspiration/)
-
-** ⚠️ NOTE: V1 version does not yet support user-defined Inspiration Definitions.**
+- [Inspiration API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Inspiration)
+- [Inspiration API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Inspiration/)
 
 ## Usage & Model
 
 ### Inspiration
 GET Inspirations for a tenant with updated instruments matching the provided Inspiration Definition at endpoint `/inspiration/`.
 
-One or multiple `id` parameter queries can be passed with optional to filter on Inspirations of interest.
-`id` is optional and by default gets all available Inspirations.
-To obtain available identifiers in the Inspiration Definitions via a GET request the `/inspiration/definition/` endpoint (cf. below).
+=== "HTTP Request"
 
-=== "Request"
-
-    ```HTTP hl_lines="1"
-    GET /inspiration/
-        ?[id={inspiration_identifier_1}] HTTP/1.1
+    ```HTTP
+    GET /inspiration/?id={inspiration_identifier_1} HTTP/1.1
     Host: api.data.uat.investsuite.com
-    Authorization: Bearer {access_token_string}
+    X-TENANT-ID: {your-tenant-identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
+    accept: application/json
     ```
 
-=== "Response (body)"
+=== "Curl Request"
 
-    ```JSON hl_lines="10"
+    ```bash
+    curl -X 'GET' \
+    'https://api.data.uat.investsuite.com/inspiration/?id={inspiration_identifier_1}' \
+    -H 'X-TENANT-ID: {your-tenant-identifier}' \
+    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
+    -H 'accept: application/json'
+    ```
+
+Query Parameter Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`id` | One or multiple `id` parameter queries can be passed with optional to filter on Inspirations of interest. `id` is optional and by default gets all available Inspirations. To obtain available identifiers in the Inspiration Definitions via a GET request the `/inspiration/definition/` endpoint (cf. below). | string | `top_financial_health` |  No, if not given return all Inspirations
+
+After the request, we get the following example response:
+
+=== "HTTP Response (body content)"
+
+    ```JSON
     [{
         "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
         "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",
@@ -59,18 +70,31 @@ To obtain available identifiers in the Inspiration Definitions via a GET request
 ### Inspiration Definitions
 GET the Inspiration Definition metadata without the instruments at the `/inspiration/definition/` endpoint.
 
-=== "Request"
+=== "HTTP Request"
 
-    ```HTTP hl_lines="1"
-    GET /inspiration/definition/ HTTP/1.1
+    ```HTTP
+    GET /inspiration/ HTTP/1.1
     Host: api.data.uat.investsuite.com
-    Tenant-id: {your_identifier}
-    Authorization: Bearer {access_token_string}
+    X-TENANT-ID: {your-tenant-identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
+    accept: application/json
     ```
 
-=== "Response (body)"
+=== "Curl Request"
 
-    ```JSON hl_lines="10"
+    ```bash
+    curl -X 'GET' \
+    'https://api.data.uat.investsuite.com/inspiration/' \
+    -H 'X-TENANT-ID: {your-tenant-identifier}' \
+    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
+    -H 'accept: application/json'
+    ```
+
+After the request, we receive the following example response:
+
+=== "HTTP Response (body content json)"
+
+    ```JSON
     [{
         "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
         "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",

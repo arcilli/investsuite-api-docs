@@ -6,8 +6,8 @@ title: Themes Value Added API
 
 The InvestSuite quant team composes and actively manages a list of Themes or thematic instrument groups such as Healthcare, Clean & Green Economy, Social Trends each holding an applicable list of financial instruments. The aim of the Themes Value-Added-API service is to offer a means to filter the instrument universe to their personal preference and view. To retrieve Themes and selected instruments within them perform a `GET` request against the  `/themes/` endpoint:
 
-- [Themes API Redoc Documentation](https://api.data.dev.investsuite.com/redoc#tag/Themes)
-- [Themes API Swagger UI Interface](https://api.data.dev.investsuite.com/docs#/Themes/)
+- [Themes API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Themes)
+- [Themes API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Themes/)
 
 Themes can be grouped into Metathemes. A Metatheme consists of multiple themes and will combine their instruments with its own.
 
@@ -15,23 +15,36 @@ Themes can be grouped into Metathemes. A Metatheme consists of multiple themes a
 
 Request Themes and Metathemes instruments and metadata by passing your tenant identifier.
 
-By default Metathemes that consist of multiple child Themes will not include child instruments.
-Setting `include_children` to `true` will include the instruments of child Themes into the Metathemes data.
+=== "HTTP Request"
 
-
-=== "Request"
-
-    ```HTTP hl_lines="1"
-    GET /themes/
-        ?[tenant_id={your_identifier}]
-        &[include_children=true] HTTP/1.1
+    ```HTTP
+    GET /themes/?include_children=false HTTP/1.1
     Host: api.data.uat.investsuite.com
-    Authorization: Bearer {access_token_string}
+    X-TENANT-ID: {your-tenant-identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
+    accept: application/json
     ```
 
-=== "Response (body)"
+=== "Curl Request"
 
-    ```JSON hl_lines="10"
+  ```bash
+  curl -X 'GET' \
+  'https://api.data.uat.investsuite.com/themes/?include_children=false' \
+  -H 'X-TENANT-ID: {your-tenant-identifier}' \
+  -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
+  -H 'accept: application/json'
+  ```
+
+Query Parameter Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`include_children` | By default Metathemes that consist of multiple child Themes will not include child instruments. Setting `include_children` to `true` will include the instruments of child Themes into the Metathemes data. | boolean: `true`\|`false` |  | No, default `false`
+
+
+After the request, we get the following example response:
+
+=== "HTTP Response (body content)"
+
+    ```JSON
     [
         {
             "name": "theme1",
