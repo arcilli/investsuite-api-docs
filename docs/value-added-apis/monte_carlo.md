@@ -71,7 +71,7 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
     ```
 
 
-Query Parameter Field | Description | Data type | Example | Required
+Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `asset_classes` | A dictionary mapping asset classes to portfolio upper and lower weights. | `dict` | {"EQUITY": [0.8, 1], "FIXED_INCOME": [0, 0.2]} | yes
 `start_date` | Start date of the scenarios. | `date` | "2022-01-31" | yes
@@ -90,7 +90,7 @@ Query Parameter Field | Description | Data type | Example | Required
 
 The long term and short term distribution parameters can be provided by mapping asset classes to the following structure.
 
-Query Parameter Field | Description | Data type | Example | Required
+Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `mean` | The mean of the distribution. | `float` | 0.15 | yes
 `stdev` | The standard deviation of the distribution. | `float` | 0.25 | yes
@@ -161,7 +161,7 @@ After uploading data, we get a response back:
 }
 ```
 
-Query Parameter Field | Description | Data type | Example | Required
+Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | Holds all the Monte Carlo simulation data. | `object` |  | yes
 `value` | The simulated future value of the portfolio of the requested quantiles. | `dict` |  | yes
