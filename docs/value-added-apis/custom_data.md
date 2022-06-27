@@ -6,7 +6,7 @@ title: Custom Data API
 
 InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page.  This then takes precedence on the data from the provider.
 
-The Financial Data API accepts custom data via four different endpoints, each accepting a specific type of data:
+The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:
 
 - [Custom Reference Data](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
 - [Custom Reference Data CSV](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
