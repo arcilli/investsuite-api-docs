@@ -103,9 +103,10 @@ nav:
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
   - Value Added APIs:
+    - Authentication & Usage: value-added-apis/authentication_usage.md
+    - Custom Data API: value-added-apis/custom_data.md
     - Themes API: value-added-apis/themes.md
     - Inspiration API: value-added-apis/inspiration.md
-    - Custom Data API: value-added-apis/custom_data.md
     - Monte Carlo API: value-added-apis/monte_carlo.md
   - InvestSuite API specification: "https://api.sandbox.investsuite.com/redoc"
   - Release notes: changelog.md
