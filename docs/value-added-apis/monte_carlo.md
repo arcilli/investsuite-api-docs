@@ -8,7 +8,7 @@ This API endpoint can be used to simulate a range of possible future returns for
 
 The Financial Data API endpoint for the Monte Carlo simulations is accessed through the following endpoint:
 
-- [Future Performance](https://api.data.uat.investsuite.com/redoc#operation/future_performance_future__post) 
+- [Future Performance](https://api.data.uat.investsuite.com/redoc#operation/future_performance_future__post)
 
 Below, we elaborate further on how to use this endpoints in practice.
 
@@ -20,11 +20,11 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /performance/future/ HTTP/1.1
     Host: api.data.uat.investsuite.com
-    X-TENANT-ID: demo.com
-    X-Api-Key: X
+    X-TENANT-ID: {your-tenant-identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
     Content-Type: application/json
 
     {
@@ -50,8 +50,8 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "X-TENANT-ID": "{your_identifier}"  \   
-    -H "X-Api-Key": "X"  \   
+    -H "X-TENANT-ID": "{your-tenant-identifier}"  \   
+    -H "X-Api-Key": "{YOUR_API_SECRET_KEY}"  \   
     -d '{
             "asset_classes": {
             "EQUITY": [0.8, 1],
@@ -71,11 +71,11 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
     ```
 
 
-Field | Description | Data type | Example | Required
+Query Parameter Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`asset_classes` | A dictionary mapping asset classes to portfolio upper and lower weights. | `dict` | {"EQUITY": [0.8, 1], "FIXED_INCOME": [0, 0.2]} | yes 
-`start_date` | Start date of the scenarios. | `date` | "2022-01-31" | yes 
-`end_date` | End date of the scenarios. | `date` | "2022-12-31" | yes 
+`asset_classes` | A dictionary mapping asset classes to portfolio upper and lower weights. | `dict` | {"EQUITY": [0.8, 1], "FIXED_INCOME": [0, 0.2]} | yes
+`start_date` | Start date of the scenarios. | `date` | "2022-01-31" | yes
+`end_date` | End date of the scenarios. | `date` | "2022-12-31" | yes
 `currency` | The currency of the portfolio in ISO format. | `str` | "USD" | no
 `start_amount` | Start amount of the portfolio (in base currency) - i.e. amount put in at start_date. | `float` | 1000 | no
 `recurring_deposit_amount` | Amount assumed to be added/subtracted at the provided frequency. | `float` | 100 | no
@@ -90,13 +90,13 @@ Field | Description | Data type | Example | Required
 
 The long term and short term distribution parameters can be provided by mapping asset classes to the following structure.
 
-Field | Description | Data type | Example | Required
+Query Parameter Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`mean` | The mean of the distribution. | `float` | 0.15 | yes 
-`stdev` | The standard deviation of the distribution. | `float` | 0.25 | yes 
+`mean` | The mean of the distribution. | `float` | 0.15 | yes
+`stdev` | The standard deviation of the distribution. | `float` | 0.25 | yes
 
 
-After uploading data, we get a response back: 
+After uploading data, we get a response back:
 
 ```JSON
 {
@@ -105,42 +105,21 @@ After uploading data, we get a response back:
             "0.05": {
                 "2022-01-31": 1050.0,
                 "2022-02-28": 1035.8986317433569,
-                "2022-03-31": 1062.909705454118,
-                "2022-04-30": 1098.0423232530165,
-                "2022-05-31": 1136.4747383722322,
-                "2022-06-30": 1177.626590630353,
-                "2022-07-31": 1220.224942405298,
-                "2022-08-31": 1264.2030987489222,
-                "2022-09-30": 1309.4483732734739,
-                "2022-10-31": 1355.4800950037823,
+                ...
                 "2022-11-30": 1402.444917327639,
                 "2022-12-31": 1450.056624826056
             },
             "0.5": {
                 "2022-01-31": 1050.0,
                 "2022-02-28": 1109.6624596515082,
-                "2022-03-31": 1170.9736005974196,
-                "2022-04-30": 1232.5227773187382,
-                "2022-05-31": 1295.0862723996452,
-                "2022-06-30": 1357.8595579986254,
-                "2022-07-31": 1421.7006505864554,
-                "2022-08-31": 1486.1924956532225,
-                "2022-09-30": 1550.8506397526621,
-                "2022-10-31": 1616.6589515683183,
+                ...
                 "2022-11-30": 1682.6038711807148,
                 "2022-12-31": 1749.7551854182339
             },
             "0.95": {
                 "2022-01-31": 1050.0,
                 "2022-02-28": 1188.9452142854648,
-                "2022-03-31": 1290.8444771469728,
-                "2022-04-30": 1385.1076785976206,
-                "2022-05-31": 1478.5385541312273,
-                "2022-06-30": 1569.679318178448,
-                "2022-07-31": 1661.974513373949,
-                "2022-08-31": 1754.4407258712579,
-                "2022-09-30": 1845.9738216137268,
-                "2022-10-31": 1939.5250152249216,
+                ...
                 "2022-11-30": 2032.411301502351,
                 "2022-12-31": 2127.5945389625517
             }
@@ -149,14 +128,7 @@ After uploading data, we get a response back:
             "deposits": {
                 "2022-01-31": 50.0,
                 "2022-02-28": 100.0,
-                "2022-03-31": 150.0,
-                "2022-04-30": 200.0,
-                "2022-05-31": 250.0,
-                "2022-06-30": 300.0,
-                "2022-07-31": 350.0,
-                "2022-08-31": 400.0,
-                "2022-09-30": 450.0,
-                "2022-10-31": 500.0,
+                ...
                 "2022-11-30": 550.0,
                 "2022-12-31": 600.0
             }
@@ -165,42 +137,21 @@ After uploading data, we get a response back:
             "0.05": {
                 "2022-01-31": 1000.0,
                 "2022-02-28": 935.8986317433569,
-                "2022-03-31": 912.909705454118,
-                "2022-04-30": 898.0423232530165,
-                "2022-05-31": 886.4747383722322,
-                "2022-06-30": 877.6265906303529,
-                "2022-07-31": 870.224942405298,
-                "2022-08-31": 864.2030987489222,
-                "2022-09-30": 859.4483732734739,
-                "2022-10-31": 855.4800950037823,
+                ...
                 "2022-11-30": 852.4449173276389,
                 "2022-12-31": 850.0566248260559
             },
             "0.5": {
                 "2022-01-31": 1000.0,
                 "2022-02-28": 1009.6624596515082,
-                "2022-03-31": 1020.9736005974196,
-                "2022-04-30": 1032.5227773187382,
-                "2022-05-31": 1045.0862723996452,
-                "2022-06-30": 1057.8595579986254,
-                "2022-07-31": 1071.7006505864554,
-                "2022-08-31": 1086.1924956532225,
-                "2022-09-30": 1100.8506397526621,
-                "2022-10-31": 1116.6589515683183,
+                ...
                 "2022-11-30": 1132.6038711807148,
                 "2022-12-31": 1149.7551854182339
             },
             "0.95": {
                 "2022-01-31": 1000.0,
                 "2022-02-28": 1088.9452142854648,
-                "2022-03-31": 1140.8444771469728,
-                "2022-04-30": 1185.1076785976206,
-                "2022-05-31": 1228.5385541312273,
-                "2022-06-30": 1269.679318178448,
-                "2022-07-31": 1311.974513373949,
-                "2022-08-31": 1354.4407258712579,
-                "2022-09-30": 1395.9738216137268,
-                "2022-10-31": 1439.5250152249216,
+                ...
                 "2022-11-30": 1482.411301502351,
                 "2022-12-31": 1527.5945389625517
             }
@@ -210,9 +161,9 @@ After uploading data, we get a response back:
 }
 ```
 
-Field | Description | Data type | Example | Required
+Query Parameter Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`data` | Holds all the Monte Carlo simulation data. | `object` |  | yes 
+`data` | Holds all the Monte Carlo simulation data. | `object` |  | yes
 `value` | The simulated future value of the portfolio of the requested quantiles. | `dict` |  | yes
 `deposits` | The cumulative deposits over time. | `dict` |  | yes
 `return` | The simulated future value of the portfolio of the requested quantiles, minus the deposits. | `dict` |  | yes
