@@ -14,7 +14,7 @@ Transactions can be investment transactions as well as cash transactions. Invest
 
 ### Holdings definition
 
-Holdings are positions in a portfolio. Holdings are the assets out of which a portfolo is composed. Holdings can be either investment products or cash holdings. Cash holdings are expressed in their currency. 
+Holdings are positions in a portfolio. Holdings are the assets out of which a portfolo is composed. Holdings can be either investment products or cash holdings. Cash holdings are expressed in their currency.
 
 Example:
 ```JSON
@@ -28,7 +28,7 @@ Example:
 
 ## Send transaction
 
-Transactions are synchronized to calculate the performance and return of a portfolio, to report to the customer, and to monitor the status of some transactions for instance to exchange if a `BUY` transaction is _pending_, _executed_ or _settled_. 
+Transactions are synchronized to calculate the performance and return of a portfolio, to report to the customer, and to monitor the status of some transactions for instance to exchange if a `BUY` transaction is _pending_, _executed_ or _settled_.
 
 For Robo Advisor it is usually sufficient to synchronize transactions on a daily bases. For Self Investor synchronization it is required to notify InvestSuite in realtime. To facilitate this, as an alternative to using the InvestSuite API REST interfaces you can send commands to a (Kafka) message broker. Reach out if you wish to discuss this setup.
 
@@ -50,7 +50,7 @@ Field | Description | Data type | Example | Required
 `movement->description` | An optional description for this movement. This string can contain any additional details of the movement type and can be set by the client. | `string` | STAMP_DUTY | no
 `movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | US4642865251 | no
 
-Some common transactions to pass to InvestSuite are: 
+Some common transactions to pass to InvestSuite are:
 
 1. Buy transactions
 2. Sell transactions
@@ -60,10 +60,10 @@ Some common transactions to pass to InvestSuite are:
 
 ### 1. Buy transactions
 
-A buy transaction describes the properties of a buy order. It consists of three movements: 
-- one describing the instrument to be purchased at the time of placement, 
-- a second describing the instrument purchased at the time of settlemet, 
-- a third the amount that was transferred from the cash account to buy the instrument. 
+A buy transaction describes the properties of a buy order. It consists of three movements:
+- one describing the instrument to be purchased at the time of placement,
+- a second describing the instrument purchased at the time of settlemet,
+- a third the amount that was transferred from the cash account to buy the instrument.
 
 === "Request"
 
@@ -143,9 +143,9 @@ A buy transaction describes the properties of a buy order. It consists of three 
 ### 2. Sell transactions
 
 A sell transaction describes the properties a sell order. It is the reverse of a buy transaction It consists of three movements:
-- one describing the instrument to be disposed as planned, 
+- one describing the instrument to be disposed as planned,
 - a second when the sell instruction was settled,
-- the third the amount to be transferred when the instrument is traded. 
+- the third the amount to be transferred when the instrument is traded.
 
 === "Request"
 
@@ -224,7 +224,7 @@ A sell transaction describes the properties a sell order. It is the reverse of a
 
 ### 3. Cash movements
 
-Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform. 
+Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
 Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH_WITHDRAWAL"` and `"quantity": -500`.
 
@@ -275,7 +275,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
 
 ### 4. Costs and charges
 
-Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For witholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
+Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
 
 === "Request"
 
@@ -375,7 +375,7 @@ Example `WITHHOLDING_TAX`:
 
 ### 5. Corporate actions
 
-Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote. 
+Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.
 
 Corporate actions are registered as transactions as they will lead to movements such as issuing dividends. Note the use of `reference_instrument_id` to reference the portfolio position the corporate action refers to.
 
@@ -590,7 +590,7 @@ To update the holdings you patch the portfolio.
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
@@ -621,19 +621,19 @@ To update the holdings you patch the portfolio.
     curl -X PATCH \                 
     -H "Content-Type: application/json" \
     -H "Auhorization": "{string}"  \   
-    -d '"portfolo": { \ 
-        "$USD": 208.086729, \ 
-        "US78464A6644": 18.78, \ 
-        "US4642886612": 9.2243, \ 
-        "US46137V2410": 9, \ 
-        "US3160923039": 3, \ 
-        "US3160928731": 10, \ 
-        "US97717W5215": 6, \ 
-        "US4642861458": 4, \ 
-        "US46429B2676": 45.146, \ 
-        "US46434V7617": 9, \ 
-        "US4642865251": 7.6828, \ 
-        "US46434V4234": 3 \ 
+    -d '"portfolo": { \
+        "$USD": 208.086729, \
+        "US78464A6644": 18.78, \
+        "US4642886612": 9.2243, \
+        "US46137V2410": 9, \
+        "US3160923039": 3, \
+        "US3160928731": 10, \
+        "US97717W5215": 6, \
+        "US4642861458": 4, \
+        "US46429B2676": 45.146, \
+        "US46434V7617": 9, \
+        "US4642865251": 7.6828, \
+        "US46434V4234": 3 \
     }'  \
     https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```
@@ -679,7 +679,3 @@ To update the holdings you patch the portfolio.
     "status": "ACTIVE"
 }
 ```
-
-
-
-

@@ -5,11 +5,11 @@ title: Funding and withdrawal
 !!! Info
     Applicable to: Robo Advisor, Self Investor
 
-There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: you or InvestSuite), and (3) the selected product (Robo Advisor or Self Investor) you undertake one or several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a user notification. Below we describe in detail which actions to take, and which ones are taken on your behalf depending on the scenario. 
+There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: you or InvestSuite), and (3) the selected product (Robo Advisor or Self Investor) you undertake one or several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a user notification. Below we describe in detail which actions to take, and which ones are taken on your behalf depending on the scenario.
 
 ## Funding a portfolio
 
-Funding a portfolio requires you to perform just one, or four steps depending on whether you or InvestSuite is integrated with the broker. 
+Funding a portfolio requires you to perform just one, or four steps depending on whether you or InvestSuite is integrated with the broker.
 
 ### Broker integration by InvestSuite
 
@@ -23,11 +23,11 @@ These are the steps performed to fund a portfolio, given the broker integration 
 
 **1. Notify InvestSuite on successful deposit**
 
-Call `POST /events/deposit/` to send a notification when your customer has tranferred cash into their cash account and the transaction is settled on your end. 
+Call `POST /events/deposit/` to send a notification when your customer has transferred cash into their cash account and the transaction is settled on your end.
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /events/deposit/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -193,7 +193,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /events/deposit/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -232,7 +232,7 @@ Cash withdrawal for Robo Advisor involves two phases:
 2. When the money has in fact been withdrawn from the customer's account in your banking system, you alert InvestSuite by issuing `POST /events/withdraw/`. We then update the cash position, put the `divest_amount` field back to `null` and publish a notification event to the message broker to notify the user via front-end channels.
 
 !!! Warning
-    In certain cases the instruction to withdraw money comes from the front-end. It is the front-end integration that updates the `divest_amount` field, not your integration (remember: this API is designed for backend-to-backend communication). Still, it is you that has to transfer the cash from the user's account to the counter account. In that case you listen to our event queue to trigger such transer. See diagram below. 
+    In certain cases the instruction to withdraw money comes from the front-end. It is the front-end integration that updates the `divest_amount` field, not your integration (remember: this API is designed for backend-to-backend communication). Still, it is you that has to transfer the cash from the user's account to the counter account. In that case you listen to our event queue to trigger such transfer. See diagram below.
 
 #### Broker integration by InvestSuite
 
@@ -245,7 +245,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
 5. **InvestSuite** updates the portfolio's cash holding on successful reception of settled transactions from the broker.
 6. **InvestSuite** updates the divest amount to `0`.
 7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-8. **You** notify InvestSuite that the payment has occured. **See below**: Notify InvestSuite on successful cash transfer.
+8. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
 9. **InvestSuite** puts the message on a queue to send a push notification to the client.
 
 !!! Info
@@ -333,7 +333,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /events/withdraw/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -372,7 +372,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 3. In case of a advisory mandate (as opposed to a discretionary mandate, see [Portfolio creation](/common_scenarios/account_initiation/#create-a-portfolio)) the user confirms the sell orders. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. **You** place the sell orders at the broker.
 7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-8. **You** notify InvestSuite that the payment has occured. **See below**: Notify InvestSuite on successful cash transfer.
+8. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
 9. **InvestSuite** puts the message on a queue to send a push notification to the client.
 10. **You** create a `SETTLED` transaction, referring to the transaction ID created by the broker in the `external_id` attribute. **See below**: Create transaction.
 11. **You** update the portfolio's cash position. **See below**: Update cash position.
@@ -460,7 +460,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /events/withdraw/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -618,11 +618,11 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 
 ### Self Investor
 
-For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps: 
+For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps:
 
 1. **InvestSuite** captures in the app the client withdraw instruction, and passes the instruction on to the broker.
 2. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-3. **You** notify InvestSuite that the payment has occured. **See below**: Notify InvestSuite on successful cash transfer.
+3. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
 4. **InvestSuite** puts the message on a queue to send a push notification to the client.
 
 **2. Get counter account**
@@ -670,7 +670,7 @@ For Self Investor InvestSuite manages the app, and captures withdrawal instructi
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP
     POST /events/withdraw/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -684,4 +684,3 @@ For Self Investor InvestSuite manages the app, and captures withdrawal instructi
     }
 
     ```
-
