@@ -30,6 +30,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     X-TENANT-ID: {your_identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
 
     {
         "data": [
@@ -59,7 +60,8 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "X-TENANT-ID: {your_identifier}"  \   
+    -H "X-TENANT-ID: {your_identifier}" \
+    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \   
     -d '{
             "data": [
                 {
@@ -121,6 +123,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     X-TENANT-ID: {your_identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
 
     {
         "data": [
@@ -157,7 +160,8 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "X-TENANT-ID: {your_identifier}"  \   
+    -H "X-TENANT-ID: {your_identifier}" \
+    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \   
     -d '{
             "data": [
                 {
@@ -228,6 +232,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     X-TENANT-ID: {your_identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
 
     {
         "data": [
@@ -266,7 +271,8 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "X-TENANT-ID: {your_identifier}"  \   
+    -H "X-TENANT-ID: {your_identifier}" \
+    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \
     -d '{
             "data": [
                 {
@@ -340,6 +346,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     X-TENANT-ID: {your_identifier}
+    X-Api-Key: {YOUR_API_SECRET_KEY}
 
     {
         "data": [
@@ -370,7 +377,8 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     ```bash
     curl -X POST \                 
     -H "Content-Type: application/json" \
-    -H "X-TENANT-ID: {your_identifier}"  \   
+    -H "X-TENANT-ID: {your_identifier}" \
+    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \
     -d '{
             "data": [
                 {
