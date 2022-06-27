@@ -27,13 +27,13 @@ Request Themes and Metathemes instruments and metadata by passing your tenant id
 
 === "Curl Request"
 
-  ```bash
-  curl -X 'GET' \
-  'https://api.data.uat.investsuite.com/themes/?include_children=false' \
-  -H 'X-TENANT-ID: {your-tenant-identifier}' \
-  -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-  -H 'accept: application/json'
-  ```
+    ```bash
+    curl -X 'GET' \
+    'https://api.data.uat.investsuite.com/themes/?include_children=false' \
+    -H 'X-TENANT-ID: {your-tenant-identifier}' \
+    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
+    -H 'accept: application/json'
+    ```
 
 Query Parameter Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
