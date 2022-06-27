@@ -33,10 +33,11 @@ A subsection per request type and subpath in the endpoint.
     'https://api.data.uat.investsuite.com/{endpoint-name}/?{example-query-params}' \
     -H 'X-TENANT-ID: {your-tenant-identifier}' \
     -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'accept: application/json'
+    -H 'accept: application/json' \
+    -H 'Content-Type: application/json'
     ```
 
-Query Parameter Field | Description | Data type | Example | Required
+Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `{example-query-params}` | Description. | data type: `possible|values` | Example | Yes/No, default `false`
 
@@ -54,3 +55,5 @@ After the request, we get the following example response:
       {'example-field': 'example_data'},
     ]
     ```
+
+### Exceptions

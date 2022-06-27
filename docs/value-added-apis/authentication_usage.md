@@ -34,12 +34,14 @@ Example requests with authentication headers:
     Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.
 
 
+## API Docsite Usage
+Auto-generated documentation showing data models and response descriptions at the `redoc` path: [https://api.data.uat.investsuite.com/redoc](https://api.data.uat.investsuite.com/redoc)
+
+You can navigate the data models and schemata by clicking the drop-down buttons for the relevant field.
+
+
 ## Webinterface Usage
-
-Each API endpoint can be accessed from the browser:
-
-- Auto-generated documentation showing parameter fields and response descriptions at the `redoc` path: [https://api.data.uat.investsuite.com/redoc](https://api.data.uat.investsuite.com/redoc)
-- Interactive Swagger UI interface for testing at the `/docs` path: [https://api.data.uat.investsuite.com/docs](https://api.data.uat.investsuite.com/redoc)
+An interactive Swagger UI interface is available for testing at the `/docs` path: [https://api.data.uat.investsuite.com/docs](https://api.data.uat.investsuite.com/redoc)
 
 **⚠️ `/docs` Interactive Swagger UI caching issues**:
 
