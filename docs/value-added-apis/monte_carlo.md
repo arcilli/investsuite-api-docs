@@ -12,19 +12,44 @@ The Financial Data API endpoint for the Monte Carlo simulations is accessed thro
 
 Below, we elaborate further on how to use this endpoints in practice.
 
-
-## Future Data
+## Future Data POST
 
 The endpoint has a range of predefined fields to query data for. Let us look at an example.
 
+=== "Curl Request"
 
-=== "HTTP"
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/performance/future/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "asset_classes": {
+            "EQUITY": [0.8, 1],
+            "FIXED_INCOME": [0, 0.2]
+            },
+            "start_date": "2022-01-31",
+            "end_date": "2022-12-31",
+            "currency": "EUR",
+            "start_amount": 1000,
+            "recurring_deposit_amount": 50,
+            "recurring_deposit_frequency": "M",
+            "sample_frequency": "M",
+            "quantiles": [0.05, 0.5, 0.95],
+            "use_expected_returns": false
+        }'
+    ```
+
+=== "HTTP Request"
 
     ```HTTP
     POST /performance/future/ HTTP/1.1
     Host: api.data.uat.investsuite.com
-    X-TENANT-ID: {your-tenant-identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+    accept: application/json
     Content-Type: application/json
 
     {
@@ -44,32 +69,6 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
     }
 
     ```
-
-=== "curl"
-
-    ```bash
-    curl -X POST \                 
-    -H "Content-Type: application/json" \
-    -H "X-TENANT-ID": "{your-tenant-identifier}"  \   
-    -H "X-Api-Key": "{YOUR_API_SECRET_KEY}"  \   
-    -d '{
-            "asset_classes": {
-            "EQUITY": [0.8, 1],
-            "FIXED_INCOME": [0, 0.2]
-            },
-            "start_date": "2022-01-31",
-            "end_date": "2022-12-31",
-            "currency": "EUR",
-            "start_amount": 1000,
-            "recurring_deposit_amount": 50,
-            "recurring_deposit_frequency": "M",
-            "sample_frequency": "M",
-            "quantiles": [0.05, 0.5, 0.95],
-            "use_expected_returns": false
-        }'
-    https://api.data.uat.investsuite.com/performance/future/
-    ```
-
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
@@ -98,6 +97,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
     "data": {
