@@ -109,6 +109,7 @@ nav:
     - Inspiration API: value-added-apis/inspiration.md
     - Logos API: value-added-apis/logos.md
     - Monte Carlo API: value-added-apis/monte_carlo.md
+    - Reference API: value-added-apis/reference.md
     - Tenant Configuration: value-added-apis/tenant_config.md
   - InvestSuite API specification: "https://api.sandbox.investsuite.com/redoc"
   - Release notes: changelog.md
