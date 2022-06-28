@@ -12,8 +12,7 @@ The Financial Data API endpoint for the Monte Carlo simulations is accessed thro
 
 Below, we elaborate further on how to use this endpoints in practice.
 
-
-## Future Data
+## Future Data POST
 
 The endpoint has a range of predefined fields to query data for. Let us look at an example.
 

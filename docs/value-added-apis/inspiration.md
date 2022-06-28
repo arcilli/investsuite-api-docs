@@ -12,9 +12,7 @@ A GET request against the `/inspiration/definition/` endpoint will return the me
 - [Inspiration API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Inspiration)
 - [Inspiration API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Inspiration/)
 
-## Usage & Model
-
-### Inspiration
+## Inspiration GET
 GET Inspirations for a tenant with updated instruments matching the provided Inspiration Definition at endpoint `/inspiration/`.
 
 === "Curl Request"
@@ -68,7 +66,7 @@ After the request, we get the following example response:
   ]
   ```
 
-### Inspiration Definitions
+## Inspiration Definitions GET
 GET the Inspiration Definition metadata without the instruments at the `/inspiration/definition/` endpoint.
 
 === "Curl Request"

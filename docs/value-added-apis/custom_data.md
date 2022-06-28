@@ -8,17 +8,17 @@ InvestSuite offers a range of products, all using financial data. Each product h
 
 The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:
 
-- [Custom Reference Data](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
-- [Custom Reference Data CSV](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
-- [Custom Timeseries Data](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
-- [Custom Composition Data](https://api.data.uat.investsuite.com/redoc#operation/create_composition_batch_data_custom_composition_batch__post)
-- [Custom Composition Timeseries Data](https://api.data.uat.investsuite.com/redoc#operation/create_composition_timeseries_batch_data_custom_composition_timeseries_batch__post)
-- [Custom Attribution Data](https://api.data.uat.investsuite.com/redoc#operation/create_attribution_batch_data_custom_attribution_batch__post)
+- [Custom Reference Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
+- [Custom Reference CSV Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
+- [Custom Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
+- [Custom Composition Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_composition_batch_data_custom_composition_batch__post)
+- [Custom Composition Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_composition_timeseries_batch_data_custom_composition_timeseries_batch__post)
+- [Custom Attribution Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_attribution_batch_data_custom_attribution_batch__post)
 
 The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.
 
 
-## Custom Reference Data
+## Custom Reference POST
 
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments.
 
@@ -113,7 +113,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 
-## Custom Reference CSV Data
+## Custom Reference CSV POST
 
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments as **Comma Separated Values (.CSV) file**.
 
@@ -176,7 +176,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 
-## Custom Timeseries Data
+## Custom Timeseries POST
 
 Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type.
 
@@ -276,7 +276,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again.
 
-## Custom Composition Data
+## Custom Composition POST
 Composition data of an instrument provides a look-through of the underlying instruments according to certain composition types.
 Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
@@ -396,7 +396,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of composition data for one or more instruments, simply provide the data for these instruments and types on the dates to overwrite again.
 
-## Custom Composition Timeseries Data
+## Custom Composition Timeseries POST
 
 Composition timeseries data of an instrument provides a look-through of the underlying instruments according to certain composition types at certain dates. Examples are the asset class or country composition of a fund on a certain date. Using this endpoint, a client can upload composition data on different composition types for specific instruments, for certain dates (timeseries).
 
@@ -513,7 +513,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of composition data for one or more instruments on specific dates, simply provide the data for these instruments and types on the dates to overwrite again.
 
-## Custom Attribution Data
+## Custom Attribution POST
 
 Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries).
 

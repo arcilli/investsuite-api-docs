@@ -9,12 +9,7 @@ Describe the service here in natural language and provide documentation and UI l
 - [Themes API Documentation](https://api.data.uat.investsuite.com/redoc#tag/{})
 - [Themes API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Themes/)
 
-
-## Usage & Model
-
-A subsection per request type and subpath in the endpoint.
-
-### GET example
+## GET example
 
 === "Curl Request"
 
@@ -30,11 +25,12 @@ A subsection per request type and subpath in the endpoint.
 === "HTTP Request"
 
     ```HTTP
-    GET /{endpoint-name}/?{example-query-params} HTTP/1.1
+    GET /$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS HTTP/1.1
     Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
-    accept: application/json
     ```
 
 Field | Description | Data type | Example | Required

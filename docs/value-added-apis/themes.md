@@ -11,7 +11,7 @@ The InvestSuite quant team composes and actively manages a list of Themes or the
 
 Themes can be grouped into Metathemes. A Metatheme consists of multiple themes and will combine their instruments with its own.
 
-## Usage & Model
+## Themes GET
 
 Request Themes and Metathemes instruments and metadata by passing your tenant identifier.
 
