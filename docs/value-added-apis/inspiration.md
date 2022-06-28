@@ -1,5 +1,5 @@
 ---
-title: Inspiration Value Added API
+title: Inspiration API
 ---
 
 ## Service Description

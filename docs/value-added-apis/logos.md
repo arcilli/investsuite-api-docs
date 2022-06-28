@@ -1,5 +1,5 @@
 ---
-title: Logos
+title: Logos API
 ---
 
 ## Service Description

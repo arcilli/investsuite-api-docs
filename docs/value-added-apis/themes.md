@@ -1,5 +1,5 @@
 ---
-title: Themes Value Added API
+title: Themes API
 ---
 
 ## Service Description
