@@ -17,25 +17,27 @@ A GET request against the `/inspiration/definition/` endpoint will return the me
 ### Inspiration
 GET Inspirations for a tenant with updated instruments matching the provided Inspiration Definition at endpoint `/inspiration/`.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "GET" \
+    "https://api.data.uat.investsuite.com/inspiration/?id={inspiration_identifier_1}" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET"
+    ```
+
 === "HTTP Request"
 
     ```HTTP
     GET /inspiration/?id={inspiration_identifier_1} HTTP/1.1
     Host: api.data.uat.investsuite.com
-    X-TENANT-ID: {your-tenant-identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
     accept: application/json
-    ```
-
-=== "Curl Request"
-
-    ```bash
-    curl -X 'GET' \
-    'https://api.data.uat.investsuite.com/inspiration/?id={inspiration_identifier_1}' \
-    -H 'X-TENANT-ID: {your-tenant-identifier}' \
-    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'accept: application/json'
-    ```
+    Content-Type: application/json
+    ````
 
 Query Parameter Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
@@ -43,71 +45,71 @@ Query Parameter Field | Description | Data type | Example | Required
 
 After the request, we get the following example response:
 
-=== "HTTP Response (body content)"
-
-    ```JSON
-    [{
-        "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
-        "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",
-        "description": "str: Description of the inspiration, e.g. Financially healthy companies.",
-        "type": "str: InvestSuite Thematic-datatype field (inspiration|theme|metatheme)"".
-        "custom": "bool: Custom to tenant or whitelabel (false|true)"",
-        "query": {
-            "xray": "$FINANCIAL_HEALTH_STARS >= 0"
-        },
-        "instruments": [
-            {
-                "isin": "ISIN identifier of instrument, e.g. ISIN1234.",
-                "name": "Full extended company name, e.g., XYZ Corporation."
-            }
-            ...
-        ]
-    },
-    ...
-    ]
-    ```
+=== "Response (Body Content JSON)"
+  ```JSON
+  [{
+      "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
+      "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",
+      "description": "str: Description of the inspiration, e.g. Financially healthy companies.",
+      "type": "str: InvestSuite Thematic-datatype field (inspiration|theme|metatheme)"".
+      "custom": "bool: Custom to tenant or whitelabel (false|true)"",
+      "query": {
+          "xray": "$FINANCIAL_HEALTH_STARS >= 0"
+      },
+      "instruments": [
+          {
+              "isin": "ISIN identifier of instrument, e.g. ISIN1234.",
+              "name": "Full extended company name, e.g., XYZ Corporation."
+          }
+          ...
+      ]
+  },
+  ...
+  ]
+  ```
 
 ### Inspiration Definitions
 GET the Inspiration Definition metadata without the instruments at the `/inspiration/definition/` endpoint.
 
-=== "HTTP Request"
-
-    ```HTTP
-    GET /inspiration/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
-    X-TENANT-ID: {your-tenant-identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
-    accept: application/json
-    ```
-
 === "Curl Request"
 
     ```bash
-    curl -X 'GET' \
-    'https://api.data.uat.investsuite.com/inspiration/' \
-    -H 'X-TENANT-ID: {your-tenant-identifier}' \
-    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'accept: application/json'
+    curl -X "GET" \
+    "https://api.data.uat.investsuite.com/inspiration/definition/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET"
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    GET /inspiration/definition/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+    accept: application/json
+    Content-Type: application/json
     ```
 
 After the request, we receive the following example response:
 
-=== "HTTP Response (body content json)"
-
-    ```JSON
-    [{
-        "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
-        "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",
-        "description": "str: Description of the inspiration, e.g. Financially healthy companies.",
-        "type": "str: InvestSuite Thematic-datatype field (inspiration|theme|metatheme).",
-        "custom": "bool: Custom to tenant or whitelabel (false|true)",
-        "query": {
-            "xray": "$FINANCIAL_HEALTH_STARS >= 0"
-        },
+=== "Response (Body Content JSON)"
+```JSON
+[{
+    "name": "str: The formatted full name of your inspiration, e.g. Top Financial Health",
+    "id": "str: The short identifier name, use underscore seperor, e.g. top_financial_health",
+    "description": "str: Description of the inspiration, e.g. Financially healthy companies.",
+    "type": "str: InvestSuite Thematic-datatype field (inspiration|theme|metatheme).",
+    "custom": "bool: Custom to tenant or whitelabel (false|true)",
+    "query": {
+        "xray": "$FINANCIAL_HEALTH_STARS >= 0"
     },
-    ...
-    ]
-    ```
+},
+...
+]
+```
 
 <!-- ## Inspiration Definition specification
 TODO add more info on query language and potential datasource targets. -->

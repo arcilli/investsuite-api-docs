@@ -1,5 +1,5 @@
 ---
-title: endpoint-name Title
+title: Endpoint Name Title
 ---
 
 ## Service Description
@@ -16,25 +16,25 @@ A subsection per request type and subpath in the endpoint.
 
 ### GET example
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "GET" \
+    "https://api.data.uat.investsuite.com/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    ```
+
 === "HTTP Request"
 
     ```HTTP
     GET /{endpoint-name}/?{example-query-params} HTTP/1.1
     Host: api.data.uat.investsuite.com
-    X-TENANT-ID: {your-tenant-identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
     accept: application/json
-    ```
-
-=== "Curl Request"
-
-    ```bash
-    curl -X 'GET' \
-    'https://api.data.uat.investsuite.com/{endpoint-name}/?{example-query-params}' \
-    -H 'X-TENANT-ID: {your-tenant-identifier}' \
-    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'accept: application/json' \
-    -H 'Content-Type: application/json'
     ```
 
 Field | Description | Data type | Example | Required
@@ -44,15 +44,15 @@ Field | Description | Data type | Example | Required
 
 After the request, we get the following example response:
 
-=== "HTTP Response (body content)"
+=== "Response (Body Content JSON)"
 
     ```JSON
     [
-      {'example-field': 'example_data'},
-      {'example-field': 'example_data'},
+      {"example-field": "example_data"},
+      {"example-field": "example_data"},
       ...  # truncate long responses of the same values for readability
-      {'example-field': 'example_data'},
-      {'example-field': 'example_data'},
+      {"example-field": "example_data"},
+      {"example-field": "example_data"},
     ]
     ```
 

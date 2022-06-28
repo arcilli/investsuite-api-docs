@@ -24,15 +24,46 @@ Reference data consists of instrument-level data of which only the latest value 
 
 The endpoint accepts a batch of instruments at once, and has a range of predefined fields to upload data.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/reference/batch/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "data": [
+                {
+                    "instrument_id": "US0378331005",
+                    "reference_data": {
+                        "country": "US",
+                        "name": "APPLE",
+                        "roundlot_size": 1
+                    }
+                },
+                {
+                    "instrument_id": "US2546871060",
+                    "reference_data": {
+                        "country": "US",
+                        "name": "WALT DISNEY",
+                        "roundlot_size": 1
+                    }
+                }
+            ]
+        }'
+    ```
 
 === "HTTP Request"
 
     ```HTTP
     POST /data/custom/reference/batch/ HTTP/1.1
     Host: api.data.uat.investsuite.com
+    accept: application/json
     Content-Type: application/json
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
 
     {
         "data": [
@@ -54,37 +85,6 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
             }
         ]
     }
-
-    ```
-
-=== "Curl Request"
-
-    ```bash
-    curl -X "POST" \                 
-    -H "Content-Type: application/json" \
-    -H "X-TENANT-ID: {your_identifier}" \
-    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \   
-    -d '{
-            "data": [
-                {
-                    "instrument_id": "US0378331005",
-                    "reference_data": {
-                        "country": "US",
-                        "name": "APPLE",
-                        "roundlot_size": 1
-                    }
-                },
-                {
-                    "instrument_id": "US2546871060",
-                    "reference_data": {
-                        "country": "US",
-                        "name": "WALT DISNEY",
-                        "roundlot_size": 1
-                    }
-                }
-            ]
-        }'
-    https://api.data.uat.investsuite.com/data/custom/reference/batch/
     ```
 
 Field | Description | Data type | Example | Required
@@ -95,6 +95,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {
@@ -126,27 +127,27 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
   US0378331005,US,APPLE,1
   ```
 
-=== "HTTP Request"
-
-    ```HTTP
-    POST /data/custom/reference/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
-    accept: application/json
-    Content-Type: multipart/form-data; filename="reference-data.csv"
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
-    ```
-
 === "Curl Request"
 
     ```bash
-    curl -X 'POST' \
-    'https://api.data.uat.investsuite.com/data/custom/reference/csv/' \
-    -H 'accept: application/json' \
-    -H 'X-TENANT-ID: {your_identifier}' \
-    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'Content-Type: multipart/form-data' \
-    -F 'file=@reference-data.csv;type=text/csv'
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/reference/csv/" \
+    -H "accept: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -H "Content-Type: multipart/form-data" \
+    -F "file=@reference-data.csv;type=text/csv"
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/reference/csv/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: multipart/form-data; filename="reference-data.csv"
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
     ```
 
 Field | Description | Data type | Example | Required
@@ -157,6 +158,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {
@@ -180,6 +182,38 @@ Timeseries data consist of instrument-level data for which data changes frequent
 
 The endpoint accepts a batch of instruments at once, for the a particular type of timeseries data. Let us look at an example.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/timeseries/batch/" \                 
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "data": [
+                {
+                    "instrument_id": "US0378331005",
+                    "values": {
+                        "2022-03-07": 158834,
+                        "2022-03-08": 156979.4,
+                        "2022-03-09": 162473.3
+                    }
+                },
+                {
+                    "instrument_id": "US2546871060",
+                    "values": {
+                        "2022-03-07": 9615.215,
+                        "2022-03-08": 9489.172,
+                        "2022-03-09": 9626.016
+                    }
+                }
+            ],
+            "timeseries_type": "ADJUSTED_PRICE"
+        }'
+    ```
+
 === "HTTP Request"
 
     ```HTTP
@@ -187,8 +221,8 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     accept: application/json
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
 
     {
         "data": [
@@ -214,38 +248,6 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
 
     ```
 
-=== "Curl Request"
-
-    ```bash
-    curl -X "POST" \                 
-    -H "Content-Type: application/json" \
-    -H "accept: application/json" \
-    -H "X-TENANT-ID: {your_identifier}" \
-    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \   
-    -d '{
-            "data": [
-                {
-                    "instrument_id": "US0378331005",
-                    "values": {
-                        "2022-03-07": 158834,
-                        "2022-03-08": 156979.4,
-                        "2022-03-09": 162473.3
-                    }
-                },
-                {
-                    "instrument_id": "US2546871060",
-                    "values": {
-                        "2022-03-07": 9615.215,
-                        "2022-03-08": 9489.172,
-                        "2022-03-09": 9626.016
-                    }
-                }
-            ],
-            "timeseries_type": "ADJUSTED_PRICE"
-        }'
-    https://api.data.uat.investsuite.com/data/custom/timeseries/batch/
-    ```
-
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a timeseries data object for each provided instrument. | `list` |  | yes
@@ -256,6 +258,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {
@@ -279,6 +282,49 @@ Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
 If you require composition data over different points in time (timeseries) use [Custom Composition Timeseries Data](#custom-composition-timeseries-data).
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/composition/batch/" \                
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+      "data": [{
+    			"instrument_id": "IE00B4L5Y983",
+    			"composition_data": {
+    				"asset_class": {
+    					"equity": 1
+    				},
+    				"currency": {
+    					"gbp": 1
+    				},
+    				"equity_region": {
+    					"emerging": 0.1,
+    					"europe_developed": 0.2,
+    					"north_america": 0.7
+    				}
+    			}
+    		},
+    		{
+    			"instrument_id": "IE00BWT41R00",
+    			"composition_data": {
+    				"equity_sector": {
+    					"real_estate": 0.3,
+    					"technology": 0.3,
+    					"utilities": 0.2
+    				},
+    				"fixed_income_type": {
+    					"government": 1
+    				}
+    			}
+    		}
+    	]
+    }'
+    ```
+
 === "HTTP Request"
 
     ```HTTP
@@ -286,8 +332,8 @@ If you require composition data over different points in time (timeseries) use [
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     accept: application/json
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
 
     {
     	"data": [{
@@ -323,49 +369,6 @@ If you require composition data over different points in time (timeseries) use [
     }
     ```
 
-=== "Curl Request"
-
-    ```bash
-    curl -X "POST" \                 
-    -H "Content-Type: application/json" \
-    -H "accept: application/json" \
-    -H "X-TENANT-ID: {your_identifier}" \
-    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \
-    -d '{
-      "data": [{
-    			"instrument_id": "IE00B4L5Y983",
-    			"composition_data": {
-    				"asset_class": {
-    					"equity": 1
-    				},
-    				"currency": {
-    					"gbp": 1
-    				},
-    				"equity_region": {
-    					"emerging": 0.1,
-    					"europe_developed": 0.2,
-    					"north_america": 0.7
-    				}
-    			}
-    		},
-    		{
-    			"instrument_id": "IE00BWT41R00",
-    			"composition_data": {
-    				"equity_sector": {
-    					"real_estate": 0.3,
-    					"technology": 0.3,
-    					"utilities": 0.2
-    				},
-    				"fixed_income_type": {
-    					"government": 1
-    				}
-    			}
-    		}
-    	]
-    }'
-    https://api.data.uat.investsuite.com/data/custom/composition/batch/
-    ```
-
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
@@ -374,6 +377,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {
@@ -398,6 +402,47 @@ Composition timeseries data of an instrument provides a look-through of the unde
 
 The endpoint accepts a batch of instruments at once. Let us look at an example.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/" \                 
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "data": [
+                {
+                "instrument_id": "IE00B4L5Y983",
+                "composition_data": {
+                    "ASSET_CLASS": {
+                        "2022-01-31": {
+                            "equity": 0.5,
+                            "money_market": 0.5
+                        },
+                        "2022-02-28": {
+                            "equity": 0.6,
+                            "money_market": 0.4
+                        }
+                    },
+                    "EQUITY_REGION": {
+                        "2022-01-31": {
+                            "europe": 0.3,
+                            "north_america": 0.6,
+                            "emerging_markets": 0.1
+                        },
+                        "2022-02-28": {
+                            "europe": 0.35,
+                            "north_america": 0.65
+                        }
+                    }
+                }
+                }
+            ]
+        }'
+    ```
+
 === "HTTP Request"
 
     ```HTTP
@@ -405,8 +450,8 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     Host: api.data.uat.investsuite.com
     Content-Type: application/json
     accept: application/json
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
 
     {
         "data": [
@@ -440,47 +485,6 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     }
     ```
 
-=== "Curl Request"
-
-    ```bash
-    curl -X "POST" \                 
-    -H "Content-Type: application/json" \
-    -H "accept: application/json" \
-    -H "X-TENANT-ID: {your_identifier}" \
-    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \
-    -d '{
-            "data": [
-                {
-                "instrument_id": "IE00B4L5Y983",
-                "composition_data": {
-                    "ASSET_CLASS": {
-                        "2022-01-31": {
-                            "equity": 0.5,
-                            "money_market": 0.5
-                        },
-                        "2022-02-28": {
-                            "equity": 0.6,
-                            "money_market": 0.4
-                        }
-                    },
-                    "EQUITY_REGION": {
-                        "2022-01-31": {
-                            "europe": 0.3,
-                            "north_america": 0.6,
-                            "emerging_markets": 0.1
-                        },
-                        "2022-02-28": {
-                            "europe": 0.35,
-                            "north_america": 0.65
-                        }
-                    }
-                }
-                }
-            ]
-        }'
-    https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/
-    ```
-
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
@@ -489,6 +493,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {
@@ -514,15 +519,46 @@ Attribution data of an instrument provides an overview of how much the underlyin
 
 The endpoint accepts a batch of instruments at once. Let us look at an example.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/attribution/batch/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{"data": [
+          {
+            "fund_id": "US78462F1030",
+            "attribution_data": {
+              "2022-03-08": {
+                "US0378331005": -0.005838,
+                "US88160R1014": 0.012317
+              },
+              "2022-03-09": {
+                "US0378331005": 0.017499,
+                "US88160R1014": 0.020967
+              },
+              "2022-03-10": {
+                "US0378331005": -0.013593,
+                "US88160R1014": -0.012032
+                }
+              }
+            }
+          ]
+        }'
+    ```
+
 === "HTTP Request"
 
     ```HTTP
     POST /data/custom/attribution/batch/ HTTP/1.1
     Host: api.data.uat.investsuite.com
-    Content-Type: application/json
     accept: application/json
-    X-TENANT-ID: {your_identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
 
     {
         "data": [
@@ -548,38 +584,6 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 
     ```
 
-=== "Curl Request"
-
-    ```bash
-    curl -X "POST" \                 
-    -H "Content-Type: application/json" \
-    -H "accept: application/json" \
-    -H "X-TENANT-ID: {your_identifier}" \
-    -H "X-Api-Key: {YOUR_API_SECRET_KEY}" \
-    -d '{
-            "data": [
-                {
-                    "fund_id": "US78462F1030",
-                    "attribution_data": {
-                        "2022-03-08": {
-                            "US0378331005": -0.005838,
-                            "US88160R1014": 0.012317
-                        },
-                        "2022-03-09": {
-                            "US0378331005": 0.017499,
-                            "US88160R1014": 0.020967
-                        },
-                        "2022-03-10": {
-                            "US0378331005": -0.013593,
-                            "US88160R1014": -0.012032
-                        }
-                    }
-                }
-            ]
-        }'
-    https://api.data.uat.investsuite.com/data/custom/attribution/batch/
-    ```
-
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds an attribution timeseries data object for each provided instrument. | `list` |  | yes
@@ -588,6 +592,7 @@ Field | Description | Data type | Example | Required
 
 After uploading data, we get a response back:
 
+=== "Response (Body Content JSON)"
 ```JSON
 {
   "data": {

@@ -15,24 +15,26 @@ Themes can be grouped into Metathemes. A Metatheme consists of multiple themes a
 
 Request Themes and Metathemes instruments and metadata by passing your tenant identifier.
 
+=== "Curl Request"
+
+    ```bash
+    curl -X "GET" \
+    "https://api.data.uat.investsuite.com/themes/?include_children=false" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET"
+    ```
+
 === "HTTP Request"
 
     ```HTTP
     GET /themes/?include_children=false HTTP/1.1
     Host: api.data.uat.investsuite.com
-    X-TENANT-ID: {your-tenant-identifier}
-    X-Api-Key: {YOUR_API_SECRET_KEY}
     accept: application/json
-    ```
-
-=== "Curl Request"
-
-    ```bash
-    curl -X 'GET' \
-    'https://api.data.uat.investsuite.com/themes/?include_children=false' \
-    -H 'X-TENANT-ID: {your-tenant-identifier}' \
-    -H 'X-Api-Key: {YOUR_API_SECRET_KEY}' \
-    -H 'accept: application/json'
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
     ```
 
 Query Parameter Field | Description | Data type | Example | Required
@@ -42,8 +44,7 @@ Query Parameter Field | Description | Data type | Example | Required
 
 After the request, we get the following example response:
 
-=== "HTTP Response (body content)"
-
+=== "Response (Body Content JSON)"
     ```JSON
     [
         {
