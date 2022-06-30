@@ -4,7 +4,7 @@ title: Custom Data API
 
 ## Service Description
 
-InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page.  This then takes precedence on the data from the provider.
+InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page. This then takes precedence on the data from the provider.
 
 The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:
 
@@ -23,6 +23,8 @@ The client will most likely use a combination of these endpoints. Below, we elab
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments.
 
 The endpoint accepts a batch of instruments at once, and has a range of predefined fields to upload data.
+
+**Overwriting existing data:** Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.
 
 === "Curl Request"
 
@@ -119,6 +121,7 @@ Reference data consists of instrument-level data of which only the latest value 
 
 The endpoint accepts a batch of instruments at once, and has a range of predefined fields to upload data.
 
+**Overwriting existing data:** Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.
 
 === "Example CSV File"
 
@@ -181,6 +184,8 @@ To overwrite the data of an instrument, simply provide the reference data fields
 Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type.
 
 The endpoint accepts a batch of instruments at once, for the a particular type of timeseries data. Let us look at an example.
+
+**Overwriting existing data:** Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.
 
 === "Curl Request"
 
@@ -281,6 +286,8 @@ Composition data of an instrument provides a look-through of the underlying inst
 Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
 If you require composition data over different points in time (timeseries) use [Custom Composition Timeseries Data](#custom-composition-timeseries-data).
+
+**Overwriting existing data:** Updating can be done by providing new data values at the composition type/instrument-level (i.e., the entire composition for a given type and instrument gets overwritten). For now, it is not possible to delete old values, only overwrite them.
 
 === "Curl Request"
 
@@ -402,6 +409,8 @@ Composition timeseries data of an instrument provides a look-through of the unde
 
 The endpoint accepts a batch of instruments at once. Let us look at an example.
 
+**Overwriting existing data:** Updating can be done by providing new data values at the composition type/instrument/date level (i.e., the entire composition for a given type and instrument on a give day gets overwritten). For now, it is not possible to delete old values, only overwrite them.
+
 === "Curl Request"
 
     ```bash
@@ -518,6 +527,8 @@ To overwrite a certain type of composition data for one or more instruments on s
 Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries).
 
 The endpoint accepts a batch of instruments at once. Let us look at an example.
+
+**Overwriting existing data:** Updating can be done by providing new data values at the day/fund-level (i.e., the entire day/fund gets overwritten with the uploaded data). For now, it is not possible to delete old values, only overwrite them.
 
 === "Curl Request"
 
