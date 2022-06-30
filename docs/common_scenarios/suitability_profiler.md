@@ -8,7 +8,7 @@ The suitability profiler captures the information needed to create a suitable po
 
 ### Risk profiler
 
-One application of the suitaibility profiler is assessing the willingness to take risk. InvestSuite has conducted research in close collaboration with several universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each financial institution subscribed to the service, InvestSuite creates and stores one or more custom questionnaires, that the institution can use to assess their users' risk profile.
+One application of the suitability profiler is assessing the willingness to take risk. InvestSuite has conducted research in close collaboration with several universities to create a risk profiler that evaluates in an engaging and human way someone's willingness and ability to take risk. InvestSuite risk profile questionnaires can be MiFID 2-compliant, have dynamic pathways and logic jumps, and have questions based on real numbers specific to the user. For each financial institution subscribed to the service, InvestSuite creates and stores one or more custom questionnaires, that the institution can use to assess their users' risk profile.
 
 ## Definitions
 
@@ -59,7 +59,7 @@ When a user is created, it is possible to create a profile with the user ID. To 
     Authorization: Bearer {string}
 
     {
-        "profiler_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "profiler_id": "X01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
     }
 
@@ -72,40 +72,30 @@ When a user is created, it is possible to create a profile with the user ID. To 
         --header "Content-Type: application/json" \
         --header "Auhorization": "Bearer {string}"  \   
         --data-raw '{    
-                "profiler_id": "Q01ARZ3NDEKTSV4RRFFQ69G5FAV",  
+                "profiler_id": "X01ARZ3NDEKTSV4RRFFQ69G5FAV",  
                 "user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",  
         }'
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`profiler_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^À[0-9A-HJKMNP-TV-Z]{26}\Z` | À01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`profiler_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^X[0-9A-HJKMNP-TV-Z]{26}\Z` | X01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
 `user_id` | The user ID of the person that this profile is for. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
 
 **Response body** 
 ```JSON
-{
-    "id": "M01ARZ3NDEKTSV4RRFFQ69G5FAV", 
-    "assessment_statuses": {
-        "U01ARZ3NDEKTSV4RRFFQ69G5FAV": "IN_PROGRESS",
-    }, 
-    "status": {
-        "type": "IN_PROGRESS"
-    }
-}
+"N01ARZ3NDEKTSV4RRFFQ69G5FAV"
 ```
-The response contains the profile ID, the overall profile status, and the status of each individual assessment. The assessments in the response are identified by the ID of the questionnaire that they follow. This means that profiles of the same template will always have the same IDs under `assessment_statuses`. Now that we created the profile, we can start asking questions to the user. The now empty assessments of the profile will be filled out sporadically by submitting answers via the API.  
-
-Only when the status of the profile is equal to `COMPLETED`, the suitability profile can be used to determine a suitable investment policy. 
+The response contains the plain profile ID. This `profile_id` should be used in the url path of further requests.
 
 ## Conduct an assessment  
 
-When a profile is created for a user, we can start conducting the assessments in order to complete the profile. As mentioned above, each assessment is linked to a questionnaire, that determines what the assessment looks like. This questionnaire ID in combination with the ID of the created profile uniquely determine an assessment. Let us give an example of how to retrieve an assessment.  
+When a profile is created for a user, we can start conducting the assessments in order to complete the profile. Each assessment is linked to a questionnaire, that determines what the assessment looks like. This questionnaire's `external_id` in combination with the ID of the created profile uniquely determine an assessment. These questionnaire IDs will be given to the customer after configuration. Let us give an example of how to retrieve an assessment.  
 
 === "HTTP"
 
     ```HTTP 
-    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/ HTTP/1.1
+    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
@@ -115,7 +105,7 @@ When a profile is created for a user, we can start conducting the assessments in
 === "curl"
 
     ```bash
-    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/assessments/U01ARZ3NDEKTSV4RRFFQ69G5FAV/' \                 
+    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/' \                 
     --header "Content-Type: application/json" \
     --header "Auhorization": "Bearer {string}"  \   
     ```
@@ -123,14 +113,20 @@ When a profile is created for a user, we can start conducting the assessments in
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `profile_id` | A unique identifier of the profile that this assessment is for. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
-`questionnaire_id` | The ID of the questionnaire that this assessment is based on. | `string ^M[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
+`questionnaire_external_id` | The external ID of the questionnaire that this assessment is based on. | `string ^.{1,64}$` | DUMMY-External-ID | yes
 
 **Response body** 
 ```JSON
 {
+    "description": {
+        "en-US": "Balancing risk and reward"
+    },
     "sections": [
         {
             "answered_questions": [], 
+            "body": null,
+            "external_id": null,
+            "image_uri": null,
             "title": {
                 "en-us": "Introduction",
             }, 
@@ -138,6 +134,9 @@ Field | Description | Data type | Example | Required
         }, 
         {
             "answered_questions": [], 
+            "body": null,
+            "external_id": null,
+            "image_uri": null,
             "title": {
                 "en-us": "Investment Goals",
             }, 
@@ -146,30 +145,37 @@ Field | Description | Data type | Example | Required
     ],
     "status": {
         "section_index": 0,
-        }, 
         "question": {
             "form": {
-                "control_type": "OK", 
+                "control_type": "YES_NO", 
                 "type": "CONTROL",
             },
-            "title": "Welcome", 
-            "body": "In the next minutes, we'll help you create your own, personalized investment portfolio. But first we want to explain how this works.",
+            "title": {
+                "en-US": "Welcome"
+            }, 
+            "body": {
+                "en-US": "In the next minutes, we'll help you create your own, personalized investment portfolio. But first we want to explain how this works."
+            },
             "index": "0", 
-            "id": "D01ARZ3NDEKTSV4RRFFQ69G5FAV",
+            "id": "E01ARZ3NDEKTSV4RRFFQ69G5FAV",
         }, 
         "type": "IN_PROGRESS",
+    },
+    "title": {
+        "en-US": "Risk profiling"
     }
 }
 ```
 
-Now that we have retrieved the assessment, the assessing can begin. Conducting an assessment is done by asking a question to the user, submitting the answer to InvestSuite, receiving the next question to ask from InvestSuite, asking that question to the user, and so on until the assessment is completed. An assessment will have a status COMPLETE and show a result when all questions are answered. When there are still questions to be answered, the assessment has a status IN_PROGRESS and contains a next question to ask.  
+Now that we have retrieved the assessment, the assessing can begin. Conducting an assessment is done by asking a question to the user, submitting the answer to InvestSuite, receiving the next question to ask from InvestSuite, asking that question to the user, and so on until the assessment is completed. An assessment will have a status `COMPLETED` and show a result when all questions are answered. When there are still questions to be answered, the assessment has a status IN_PROGRESS and contains a next question to ask.  
 
 After receiving an answer from the user, the answer is submitted to InvestSuite in order to get the next question. InvestSuite saves the answer immediately and determines the next question. This way, InvestSuite keeps track of and saves the progress of the assessment, so the user can close the application any time and resume the assessment where they left off later. 
 
 ![Conducting assessment](../img/conducting_assessment.jpg)
 
-The assessment response contains the next question to be asked or the score, the parameters, the sections with the answered questions, and a status. This will be the response of a call to `GET /suitability-profiler/profiles/{profile_id}/assessments/{questionnaire_id}` and the `PUT /profiles/{profile_id}/questionnaires/{questionnaire_id}/assessment/questions/{question_id}/answer`
- for submitting an answer.
+The assessment response will contain the questionnaire's description, title, sections and a status. When the status' type is `IN_PROGRESS`, it will also contain `question`, which represents the next question to be asked to the end-user. This is a dummy response of a call to `GET /suitability-profiler/profiles/{profile_id}/assessments/{questionnaire_external_id}` and the `PUT /profiles/{profile_id}/questionnaires/{questionnaire_external_id}/assessment/questions/{question_id}/answer`
+ for submitting an answer.  
+ Note: `id` will always be unique, but for this example placeholders are used.
 
 **Response body** 
 ```JSON
@@ -178,19 +184,22 @@ The assessment response contains the next question to be asked or the score, the
         {
             "answered_questions": [
                 {
-                    "value": {
-                        "form": {
-                            "control_type": "OK", 
-                            "type": "CONTROL",
+                    "form": {
+                        "input": {
+                            "default_value": true,
+                            "type": "BOOLEAN"
                         },
-                        "title": "Welcome", 
-                        "body": "In the next minutes, we'll help you create your own, personalized investment portfolio. But first we want to explain how this works.",
-                        "index": "0", 
-                        "id": "D01RRZ3NDDKTSK4RRFFQ69G5FAV",
+                        "control_type": "YES_NO", 
+                        "type": "CONTROL",
+                    },
+                    "title": {
+                        "en-US": "Welcome"
                     }, 
-                    "answer": {
-                        "type": "OK"
-                    }
+                    "body": {
+                        "en-US": "In the next minutes, we'll help you create your own, personalized investment portfolio. But first we want to explain how this works."
+                    },
+                    "index": "0", 
+                    "id": "E01RRZ3NDDKTSK4RRFFQ69G5FAV",
                 }
             ], 
             "title": {
@@ -209,13 +218,17 @@ The assessment response contains the next question to be asked or the score, the
         "section_index": 0,
         "question": {
             "form": {
-                "control_type": "OK", 
+                "control_type": "YES_NO", 
                 "type": "CONTROL",
             },
-            "title": "More information", 
-            "body": "Robo Advisor invests in Exchange Traded Funds (ETFs), which are made from underlying instruments like stocks or bonds, and follows an index.",
+            "title": {
+                "en-US": "More information"
+            }, 
+            "body": {
+                "en-US": "Robo Advisor invests in Exchange Traded Funds (ETFs), which are made from underlying instruments like stocks or bonds, and follows an index."
+            },
             "index": "1", 
-            "id": "D01ARZ3NDEKTSV4RRFFQ69G5FAV",
+            "id": "E01ARZ3NDEKTSV4RRFFQ69G5FAV",
         }, 
         "type": "IN_PROGRESS",
     },
@@ -224,50 +237,7 @@ The assessment response contains the next question to be asked or the score, the
 
 ## Get a profile property value
 
-When a profile is created for a user, profile property values are initially set to a default value. The user can later on see these properties and change them if they like. For example, if the robo advisor offers the option to only invest in sharia compliant companies, a property value sharia_compliant can initially be set to false. If the user decides that they want to invest in only sharia compliant companies, this property can be set to true. Let's retrieve a property value together.
-
-=== "HTTP"
-
-    ```HTTP 
-    GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/exclusion-list/' \                 
-    --header "Content-Type: application/json" \
-    --header "Auhorization": "Bearer {string}"  \   
-    
-
-    ```
-
-Field | Description | Data type | Example | Required
------ | ----------- | --------- | ------- | --------
-`profile_id` | A unique identifier of the profile. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
-`property_id` | The ID of the property that is to be retrieved. | `string ^P[0-9A-HJKMNP-TV-Z]{26}\Z` | P01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
-
-**Response body** 
-```JSON
-{
-    "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
-    "property_name": {
-        "en-US": "Exclusion list"
-    }, 
-    "value": {
-        "type": "MULTI", 
-        "value": []
-    }
-}
-```
-
-The exclusion list for this portfolio is still empty. When a user wants to exclude an instrument from their portfolio, this list will be updated.  
-
-It is also possible to get an overview of all properties of a profile at once.
+When a profile is created for a user, profile property values are initially set to a default value. The user can later on see these properties and change them if they like. For example, if the robo advisor offers the option to only invest in sharia compliant companies, a property value sharia_compliant can initially be set to false. If the user decides that they want to invest in only sharia compliant companies, this property can be set to true. Let's retrieve the property values together.
 
 === "HTTP"
 
@@ -285,6 +255,8 @@ It is also possible to get an overview of all properties of a profile at once.
     curl --location --request GET 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/' \                 
     --header "Content-Type: application/json" \
     --header "Auhorization": "Bearer {string}"  \   
+    
+
     ```
 
 Field | Description | Data type | Example | Required
@@ -293,28 +265,12 @@ Field | Description | Data type | Example | Required
 
 **Response body** 
 ```JSON
-[
-    {
-        "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
-        "property_name": {
-            "en-US": "Exclusion list"
-        }, 
-        "value": {
-            "type": "MULTI", 
-            "value": []
-        }
-    }, 
-    {
-        "property_id": "P01ARZ3NDEKTSV4RRFFQ69G5FAV", 
-        "property_name": {
-            "en-US": "Sharia-compliant"
-        }, 
-        "value": {
-            "type": "BOOLEAN", 
-            "value": false
-        }
+{
+    "ShariaCompliant": {
+        "type": "BOOLEAN",
+        "value": false
     }
-]
+}
 ```
 
 ## Change a property value
@@ -324,33 +280,35 @@ The user can adjust its profile property values to make their portfolio more sui
 === "HTTP"
 
     ```HTTP 
-    PUT /suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/ HTTP/1.1
+    PUT /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
     {
         "type": "BOOLEAN",
-        "value": "true",
+        "value": true,
     }
     ```
 
 === "curl"
 
     ```bash
-    curl --location --request PUT 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/À01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/P01ARZ3NDEKTSV4RRFFQ69G5FAV/value/' \                 
+    curl --location --request PUT 'https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/' \                 
     --header "Content-Type: application/json" \
     --header "Auhorization": "Bearer {string}"  \   
     --data-raw '{   
             "type": "BOOLEAN",  
-            "value": "true",  
+            "value": true,  
         }'
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`profile_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^À[0-9A-HJKMNP-TV-Z]{26}\Z` | À01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
-`property_id` | The ID of a property in the profile that you want to change. | `string ^P[0-9A-HJKMNP-TV-Z]{26}\Z` | P01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`profile_id` | A unique identifier for the profiler to be used as template for the profile. This field is required for knowing which assessments to add to the profile. | `string ^N[0-9A-HJKMNP-TV-Z]{26}\Z` | N01ARZ3NDEKTSV4RRFFQ69G5FAV | yes 
+`property_key` | The key of a property in the profile that you want to change. | `string` | ShariaCompliant | yes 
 `type` | The type of the property ID value | `string` | BOOLEAN | yes 
 `value` | The value of the property ID | `Any` | true | yes
 
-When a successful response comes back, the property is changed in the profile. 
+Note: The `type` and `value` are part of the post-data, while the `profile_id` and `property_key` are part of the URL
+
+When a successful response (status code: 200 OK) comes back, the property was successfully changed in the profile. 
