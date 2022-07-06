@@ -5,18 +5,23 @@ title: Onboarding
 
 An Onboarding process varies wildly from client to client, but typically involves the following steps in any order:
 
-* Strong identifity verification (eg. through a national ID provider)
+* Strong identify verification (eg. through a national ID provider)
 * Capture additional information (Anti Money-Laundering (AML) checks, tax information, ...)
 * Setting a withdrawal IBAN
 * Suitability test
 * MiFID Checks
 * Signing a contract
 * Creation of a User in InvestSuite
-* Creation of a Portfolio in InvestSuite, with the User as owner
+* Creation of a Portfolio in InvestSuite, with the User as owner TODO WITH COUNTER ACCOUNT
 
 Broadly speaking, the Onboarding process happens either outside the InvestSuite application (Scenario 1, also referred to as 'API Onboarding') or inside InvestSuite (Scenario 2, also referred to as 'In-App Onboarding').
 
 The former is the preferred scenario as it requires less integration work and provides a smoother experience for your existing users.
+
+## Choices to make
+
+- 1 contract or one contrac tper produc
+- IVS managed idp or client managed : AAD B2C or ORacle IDCS
 
 ## Scenario 1: API Onboarding
 ### Create User
