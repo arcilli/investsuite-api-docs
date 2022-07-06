@@ -63,8 +63,8 @@ markdown_extensions:
       permalink: true
   - admonition
   - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
+#  - pymdownx.tabbed:
+#      alternate_style: true
   - pymdownx.superfences
   - codehilite:
       guess_lang: false
@@ -105,6 +105,7 @@ nav:
     # - Rate limiting: advanced_topics/rate_limiting.md
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
+    - Onboarding: advanced_topics/onboarding.md
   - Value Added APIs:
     - Authentication & Usage: value-added-apis/authentication_usage.md
     - Custom Data API: value-added-apis/custom_data.md
