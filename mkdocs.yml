@@ -75,12 +75,11 @@ plugins:
       lang: en
 
 nav:
-  - First steps:
+  - Introduction:
     - About: index.md
     - Glossary: glossary.md
-    - Authentication: authentication.md
-    - Quick start: quick_start.md
   - Common scenarios:
+    - Authentication: common_scenarios/authentication.md
     - Account initiation: common_scenarios/account_initiation.md
     - Optimize a portfolio: common_scenarios/run_optimizer.md
     - Synchronize portfolios: common_scenarios/synchronize_portfolios.md
@@ -90,6 +89,10 @@ nav:
     - Manage users: common_scenarios/users.md
     - Manage portfolios: common_scenarios/portfolios.md
     # - Thematic search: common_scenarios/thematic_search.md
+  - Robo Advisor:
+    - Quick start: robo/quick_start.md
+  - Self Investor:
+    - Quick start: self/quick_start.md
   - Advanced topics:
     - Handling collection responses: advanced_topics/collections.md # Search
     - A closer look at API errors : advanced_topics/errors.md # 422 responses, permissions
