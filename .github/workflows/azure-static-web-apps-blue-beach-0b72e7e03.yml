@@ -31,7 +31,7 @@ jobs:
           
       - name: Publish docs
         run: |
-          mkdocs build --verbose # builds to the /build folder
+          mkdocs build --verbose # builds to the /site folder as per https://www.mkdocs.org/user-guide/configuration/#site_dir
           
       - name: Build And Deploy
         id: builddeploy
@@ -44,7 +44,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
-          output_location: "/build" # Built app content directory - optional
+          output_location: "/site" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
