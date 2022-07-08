@@ -1,0 +1,128 @@
+title API Onboarding 
+
+participant "InvestSuite Application" as _app
+participant "InvestSuite API" as _ivsapi
+participant "Client Onboarding Solution" as _onb_sol
+participant "Identity Provider" as _idp
+participant "Client Middleware" as _mw
+participant Core Banking System
+participant BDP CRM
+participant Blanco
+
+== Sign Up==
+
+_app->_onb_sol:RED001 User clicks 'Sign Up'\nIs redirected to the Onboarding Solution (unauthenticated)\n\n(Webview or Redirect)
+
+_onb_sol->_onb_sol:Strong identitiy verification (eg. through a national ID provider)\nCapture additional information (AML, tax, ...)\nSetting a withdrawal IBAN\nMiFID Checks
+
+opt If one contract is used for all products
+_onb_sol->_onb_sol:Contracting flow:\n- Create the PDF contract file (for all products)\n- Create a signing package at Document Signing Solution\n- Redirect Document Signing Solution to sign the package\n- User signs the package with strong authentication\n- Retrieve the signed PDF (package)\n- Allow user to download the PDF (optional)\n- Store the PDF in the digital archive
+end
+
+opt If Client Managed Identity Provider
+_onb_sol->_idp:Create User
+end
+_onb_sol->_ivsapi:RST001 Create User\n\nPOST /users/
+opt If InvestSuite Managed Identity Provider
+_ivsapi->_idp:Create User
+end
+_onb_sol<--_ivsapi:return (ivs_user_id)
+_onb_sol->_ivsapi
+_ivsapi->_ivsapi
+_onb_sol<--_ivsapi
+_onb_sol->_mw:Store the ivs_user_id in the middleware for future use
+_app<-_onb_sol:User continues in app
+
+_app->_idp:OID001 User clicks 'Login'\n\n(OpenID Compliant Scheme)
+_idp->_idp:User activation within IdP
+_app<--_idp:return with JWT\n\n(OpenID Scheme to accessToken, refreshToken...)
+_app->_app:Complete app enrollment\n(Optional disclaimers, PIN, Face ID, Notifications...)
+
+==Create Robo Advisor Portfolio==
+_app->_app:User clicks 'Robo Advisor'
+opt Robo Advisor contract is not signed
+_app->_app
+_app->_onb_sol:RED002 User to the Onboarding Solution (authenticated, including JWT and Portfolio ID)
+_onb_sol->_onb_sol:Contracting flow (see above)
+_onb_sol->_ivsapi:RST002 Update User\n\nPATCH /users/
+
+end
+
+group Paper Money Portfolio
+_app->_ivsapi:Create new Portfolio
+_ivsapi->_ivsapi:Create new Portfolio\n\nportfolio.status = WAITING FOR POLICY\nportfolio.money_type = PAPER_MONEY\nportfolio.id
+note over _ivsapi:NOTE: Once the portfolio is funded, \nthis portfolio will be closed and a new one will be created, \nwith a different portfolio id\n\nTake this into account for the exernal id in the middleware
+_app->_ivsapi:Suitability Profiling
+note over _ivsapi:Refer to Suitaility Profiler for more information
+_app<--_ivsapi:Display Profile result
+_app->_app
+_app->_ivsapi:Set Investment Policy based on Suitability Profile\n\nPATCH /policy\nPATCH risk profile 
+# TODO ROALD WHAT IS THE PATCH RISK PROFILE
+_ivsapi->_ivsapi:Update Portfolio\n\nportfolio.status = WAITING FOR FUNDS
+_app<--_ivsapi:return ok
+end
+
+_app->_ivsapi:Get proposal\n-> IVS optimiser will take over the connection to the external
+alt Lifecycle
+_ivsapi->_mw:FDA001\nGet proposal information (Monte Carlo + Glidepath)\n(@wouter to be adjusted --> will be done through own IVS optimiser (future endpoints)
+_mw->Blanco:get proposal
+_mw<--Blanco:return proposal
+_ivsapi<--_mw:return proposal
+else Standard Discretionary
+_ivsapi->_ivsapi:Get monte carlo for policy\nTo be configured at IVS\n\n.../future/value
+end
+_app<--_ivsapi:return proposal screen
+_app->_app
+_app->_app:User chooses to "invest now"
+_app->_ivsapi:Activate portfolio\n\n- delete "paper_money" portfolio\n- create "real_money" portfolio
+_ivsapi->_ivsapi:Delete portfolio (PAPER_MONEY)\nwas created earlier
+_ivsapi->_ivsapi:Create portfolio (REAL_MONEY)\nAll links/data are moved to the newly created portfolio
+note over _ivsapi:New portfolio\nmoney type = "real_money"\nstatus = "WAITING FOR ACCOUNT"
+_mw<-_ivsapi:event portfolios/creation (IVE021)\nevent portfolios/status-update (IVE022) \n\n1{\n2  "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F", \n3  "value": "WAITING_FOR_ACCOUNT"\n4}\nNote: possible values for value field are WAITING_FOR_POLICY,\nWAITING_FOR_ACCOUNT/ACTIVATING, WAITING_FOR_FUNDS, ACTIVE
+_ivsapi<-_mw:Get portfolio details (IVR004)\n\n- to read if it is a robo / self portfolio\n- to read the money_type (no account creation in avq needed\nfor paper_money)\n\n!!! get results of assessment when a real_money ptf is created
+_ivsapi-->_mw:return portfolio information
+alt Lifecycle
+_mw->Core Banking System:Create container
+_mw<--Core Banking System:return
+_mw->Blanco:Create portfolio in Blanco
+_mw<--Blanco:ack
+else Standard discretionary
+_mw->Core Banking System:Create container
+_mw<--Core Banking System:return
+
+end
+_ivsapi<-_mw:IVR003 - PATCH /portfolios/(id) (Container + money account)\n\nexternal_id, brokerage_account >brokerage_portfolio_id, \nbrokerage_account >brokerage_user_id, brokerage_account > \nbank_account_type, brokerage_account > bank_account_number, \nbrokerage_account > payment_reference
+note over _ivsapi:Status is updated\nmoney type = "real_money"\nstatus = "WAITING FOR FUNDS"
+_app<-_ivsapi:return status-update: WAITING FOR FUNDS
+_app->_app:User can see funding instruction
+
+==USER IS LOGGED IN - SELF PORTFOLIO CREATION==
+_app->_app:User taps self card
+_app->_app:App checks if user is allowed to open a SELF portfolio\nin this case it is allowed
+alt SELF agreement signed
+_app->_ivsapi:Create new portfolio\n\nstatus = WAITING FOR ACCOUNT\nmoney type = real_money
+_ivsapi->_ivsapi:create portfolio in ivs DB
+_app<--_ivsapi:portfolio id
+_app->_app
+_app->_ivsapi
+_app<--_ivsapi
+_app->_app
+_app->_app
+_app->_ivsapi
+_mw<-_ivsapi:event portfolios/creation (IVE021)\nevent portfolios/status-update (IVE022) \n\n1{\n2  "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F", \n3  "value": "WAITING_FOR_ACCOUNT"\n4}\nNote: possible values for value field are WAITING_FOR_POLICY,\nWAITING_FOR_ACCOUNT/ACTIVATING, WAITING_FOR_FUNDS, ACTIVE
+_ivsapi<-_mw:Get portfolio details (IVR004)\n\n- to read if it is a robo / self portfolio\n- to read the money_type (no account creation in avq needed\nfor paper_money)
+_ivsapi-->_mw:return portfolio information
+_mw->Core Banking System:Create container
+_mw<--Core Banking System:return
+_ivsapi<-_mw:IVR003 - PATCH /portfolios/(id) (Container + money account)\n\nexternal_id, brokerage_account >brokerage_portfolio_id, \nbrokerage_account >brokerage_user_id, brokerage_account > \nbank_account_type, brokerage_account > bank_account_number, \nbrokerage_account > payment_reference
+note over _ivsapi:Status is updated\nmoney type = "real_money"\nstatus = "WAITING FOR FUNDS"
+_app<-_ivsapi:return status-update: WAITING FOR FUNDS
+_app->_app:User can see funding instruction
+else Self agreement NOT signed
+_app->_app:App checks if a user is allowed to create a SELF portfolio\nIn this case it is not allowed
+_app->_onb_sol:App opens onboarding solution of BDP (incl. JWT and product needed to start up the journey) (ONB002)
+_onb_sol->_onb_sol:Contracting (see above)
+_onb_sol->_ivsapi:Update user that Self contract has been signed (IVR002)\n\nPATCH /users/(id)
+note over _onb_sol:Next time user will follow the alternative scenario (above)
+end
+

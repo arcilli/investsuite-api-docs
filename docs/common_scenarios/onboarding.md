@@ -1,6 +1,9 @@
 ---
 title: Onboarding
 ---
+
+!!! warning
+    This page is under construction
 ## Context
 
 An Onboarding process varies wildly from client to client, but typically involves the following steps in any order:
@@ -12,7 +15,7 @@ An Onboarding process varies wildly from client to client, but typically involve
 * MiFID Checks
 * Signing a contract
 * Creation of a User in InvestSuite
-* Creation of a Portfolio in InvestSuite, with the User as owner TODO WITH COUNTER ACCOUNT
+* Creation of a Portfolio in InvestSuite, with the User as owner <!-- TODO WITH COUNTER ACCOUNT -->
 
 Broadly speaking, the Onboarding process happens either outside the InvestSuite application (Scenario 1, also referred to as 'API Onboarding') or inside InvestSuite (Scenario 2, also referred to as 'In-App Onboarding').
 
@@ -20,17 +23,28 @@ The former is the preferred scenario as it requires less integration work and pr
 
 ## Choices to make
 
-- 1 contract or one contrac tper produc
-- IVS managed idp or client managed : AAD B2C or ORacle IDCS
+- Will the customer sign one contract for all products (per user) or one contract per product
+- Will InvestSuite manage the Identity Provider (packaged within the InvestSuite platform) or will the Client (see the Supported 3rd Party list) <!-- TODO Add Link -->
 
 ## Scenario 1: API Onboarding
 ### Create User
 
 **Use Case** 
 
-The User onboards outside of InvestSuite / via your application. This means KYC checks, AML checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.
+The User onboards outside of InvestSuite: a third party application takes care of KYC checks, AML checks and contract signing, after which the user is created in InvestSuite.
 
-**How-To**
+**Sequence Diagram**
+![onboarding_signup](../common_scenarios/onboarding_signup.svg)
+
+
+**API Calls**
+
+RED001: A basic HTTP redirect to a web page which hosts the onboarding solution. This call is unauthenticated.
+- RST001: POST /users
+
+
+
+
 
 The below table shows the minimum required data you provide as an input when creating a user through the InvestSuite API.
 
@@ -48,6 +62,30 @@ counter_account > bank_account_number | Account number of the user to which mone
 status | The status of the user. Always `ACTIVE` for this onboarding scenario. | request body
 
 For the detailed specification of our endpoints, go to [InvestSuite API specification](https://api.sandbox.investsuite.com/redoc). 
+
+
+<!-- TODO User Status Status
+STATUS : contract signed or not -->
+
+
+- OID001
+- cg
+
+CREATE USER: 
+
+RST001
+
+RST002 
+update user status that contract has been signed
+
+
+Suitability Profiler
+EVT001 Event when an assessment is complete
+EVT002 Event when a profile is complete
+Get result of assessment in profile (IVR013)
+Get suitability profile result (IVR014)
+
+**How-To**
 
 ### Create Self Investor Portfolio
 
