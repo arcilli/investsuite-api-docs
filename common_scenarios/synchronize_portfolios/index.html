@@ -1214,404 +1214,404 @@
 - one describing the instrument to be purchased at the time of placement,
 - a second describing the instrument purchased at the time of settlemet,
 - a third the amount that was transferred from the cash account to buy the instrument.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;your-transaction-id-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-10T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;quantity&quot;: 1
-        },
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;unit_price&quot;: 29.51,
-            &quot;quantity&quot;: 7
-        },
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: -206.57
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">29.51</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-206.57</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;your-transaction-id-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-10T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;quantity&quot;: 1
-        },
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;unit_price&quot;: 29.51,
-            &quot;quantity&quot;: 7
-        },
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: -206.57
-        }
-    ],
-    &quot;id&quot;: &quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-07T06:11:22.217585+00:00&quot;,
-    &quot;version&quot;: 2,
-    &quot;version_datetime&quot;: &quot;2021-10-08T06:15:51.106890+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">29.51</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-206.57</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-07T06:11:22.217585+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-08T06:15:51.106890+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="2-sell-transactions">2. Sell transactions<a class="headerlink" href="#2-sell-transactions" title="Permanent link">&para;</a></h3>
 <p>A sell transaction describes the properties a sell order. It is the reverse of a buy transaction It consists of three movements:
 - one describing the instrument to be disposed as planned,
 - a second when the sell instruction was settled,
 - the third the amount to be transferred when the instrument is traded.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;your-transaction-id-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-10T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;quantity&quot;: -7
-        },
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;unit_price&quot;: 29.51,
-            &quot;quantity&quot;: -7
-        },
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 206.57
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">29.51</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">206.57</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;your-transaction-id-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-10T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;quantity&quot;: -7
-        },
-        {
-            &quot;type&quot;: &quot;SELL&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;US78468R1014&quot;,
-            &quot;unit_price&quot;: 29.51,
-            &quot;quantity&quot;: -7
-        },
-        {
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-12T07:49:26.341Z&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 206.57
-        }
-    ],
-    &quot;id&quot;: &quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-07T06:11:22.217585+00:00&quot;,
-    &quot;version&quot;: 2,
-    &quot;version_datetime&quot;: &quot;2021-10-08T06:15:51.106890+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SELL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">29.51</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-7</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-12T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">206.57</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-07T06:11:22.217585+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-08T06:15:51.106890+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="3-cash-movements">3. Cash movements<a class="headerlink" href="#3-cash-movements" title="Permanent link">&para;</a></h3>
 <p>Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.</p>
 <p>Below is an example for a cash deposit. For a cash withdrawal use <code>"type": "CASH_WITHDRAWAL"</code> and <code>"quantity": -500</code>.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 500.0,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 500.0,
-        }
-    ],
-    &quot;id&quot;: &quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-07T06:11:22.217585+00:00&quot;,
-    &quot;version&quot;: 2,
-    &quot;version_datetime&quot;: &quot;2021-10-08T06:15:51.106890+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-07T06:11:22.217585+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-08T06:15:51.106890+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="4-costs-and-charges">4. Costs and charges<a class="headerlink" href="#4-costs-and-charges" title="Permanent link">&para;</a></h3>
 <p>Costs and charges come in various forms. There are items in the <code>type</code> Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use <code>"type": "OTHER_FEE"</code> and <code>"description": "{string}"</code>. Same goes for taxes. For withholding tax paid to the governement use <code>"type": "WITHHOLDING_TAX"</code>. For other sorts of taxes charged use <code>"type": "OTHER_TAX"</code> and <code>"description": "{string}"</code>.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;external_id&quot;: &quot;14031738752&quot;,
-            &quot;type&quot;: &quot;MANAGEMENT_FEE&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-03T08:00:16.733954+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-            &quot;quantity&quot;: -0.1035719,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MANAGEMENT_FEE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.733954+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1035719</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;MANAGEMENT_FEE&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-03T08:00:16.733954+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: -0.1035719
-        }
-    ],
-    &quot;id&quot;: &quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version&quot;: 1,
-    &quot;version_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MANAGEMENT_FEE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.733954+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1035719</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p>Example <code>WITHHOLDING_TAX</code>:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;external_id&quot;: &quot;14031738752&quot;,
-            &quot;type&quot;: &quot;WITHHOLDING_TAX&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-03T08:00:16.733954+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-            &quot;quantity&quot;: -0.1035719,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WITHHOLDING_TAX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.733954+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1035719</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;WITHHOLDING_TAX&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-03T08:00:16.733954+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: -0.1035719
-        }
-    ],
-    &quot;id&quot;: &quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version&quot;: 1,
-    &quot;version_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WITHHOLDING_TAX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.733954+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1035719</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="5-corporate-actions">5. Corporate actions<a class="headerlink" href="#5-corporate-actions" title="Permanent link">&para;</a></h3>
 <p>Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.</p>
 <p>Corporate actions are registered as transactions as they will lead to movements such as issuing dividends. Note the use of <code>reference_instrument_id</code> to reference the portfolio position the corporate action refers to.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label><label for="__tabbed_6_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;your-corporate-action-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DIVIDEND&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-01T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 0.0785,
-            &quot;reference_instrument_id&quot;: &quot;US78464A6727&quot;,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-corporate-action-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DIVIDEND&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0785</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78464A6727&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;your-corporate-action-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DIVIDEND&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-01T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 0.0785,
-            &quot;reference_instrument_id&quot;: &quot;US78464A6727&quot;,
-        }
-    ],
-    &quot;id&quot;: &quot;T01FGZK41MJ4NJXKZ27VJC0HGS9&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-02T04:10:15.570586+00:00&quot;,
-    &quot;version&quot;: 1,
-    &quot;version_datetime&quot;: &quot;2021-10-02T04:10:15.570586+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-corporate-action-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DIVIDEND&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0785</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78464A6727&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FGZK41MJ4NJXKZ27VJC0HGS9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-02T04:10:15.570586+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-02T04:10:15.570586+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="update-transaction-status">Update transaction status<a class="headerlink" href="#update-transaction-status" title="Permanent link">&para;</a></h2>
 <p>After a transaction is posted in its initial state, in subsequent phases the status of the transaction changes. Most (common) transactions go from <code>PLANNED</code> to <code>PENDING</code> to <code>PLACED</code> to <code>EXECUTED</code> to <code>SETTLED</code>. In case an error occurs or a stakeholder intervenes transactions can end up in a <code>NOT_EXECUTED</code>, <code>EXPIRED</code> or <code>CANCELLED</code> state. To change the status of a transaction you issue a <code>PATCH</code> request.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FGZK41MJ4NJXKZ27VJC0HGS9/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Request</label><label for="__tabbed_7_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FGZK41MJ4NJXKZ27VJC0HGS9/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DIVIDEND&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-01T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 0.0785,
-            &quot;reference_instrument_id&quot;: &quot;US78464A6727&quot;,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DIVIDEND&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0785</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78464A6727&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;your-corporate-action-1&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DIVIDEND&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-01T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity&quot;: 0.0785,
-            &quot;reference_instrument_id&quot;: &quot;US78464A6727&quot;,
-        }
-    ],
-    &quot;id&quot;: &quot;T01FGZK41MJ4NJXKZ27VJC0HGS9&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-02T04:10:15.570586+00:00&quot;,
-    &quot;version&quot;: 1,
-    &quot;version_datetime&quot;: &quot;2021-10-02T04:10:15.570586+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-corporate-action-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DIVIDEND&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-01T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0785</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78464A6727&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FGZK41MJ4NJXKZ27VJC0HGS9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-02T04:10:15.570586+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-02T04:10:15.570586+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="cancel-a-placed-order">Cancel a placed order<a class="headerlink" href="#cancel-a-placed-order" title="Permanent link">&para;</a></h2>
 <p>To turn a <code>PLACED</code> into a cancelled one, you patch the movements of the transactions with the current <code>PLACED</code> movement to a new movement with status <code>CANCELLED</code>.</p>
 <p>Given a current status with a <code>PLACED</code> order:
@@ -1645,129 +1645,128 @@ Authorization: Bearer {string}
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <p>To register a cancellation you add one movement to the current list of movements. Nothing else should be updated, so the payload is as follows. Note that <strong>you have to send the existing movements in this list as well</strong>, because they would be lost otherwise:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Request</label><label for="__tabbed_8_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;external_id&quot;: &quot;movement-1&quot;,
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-08T10:15:53.000000+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;US2660424076&quot;,
-            &quot;quantity&quot;: &quot;3&quot;,
-            &quot;unit_price&quot;: &quot;3.49&quot;
-        },
-        {
-            &quot;external_id&quot;: &quot;movement-2&quot;,
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;CANCELLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-08T11:01:54.000000+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;US2660424076&quot;,
-            &quot;quantity&quot;: &quot;3&quot;,
-            &quot;unit_price&quot;: &quot;3.49&quot;
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;movement-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-08T10:15:53.000000+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2660424076&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.49&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;movement-2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CANCELLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-08T11:01:54.000000+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2660424076&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.49&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;: &quot;14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;external_id&quot;: &quot;movement-1&quot;,
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;PLACED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-08T10:15:53.000000+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;US2660424076&quot;,
-            &quot;quantity&quot;: &quot;3&quot;,
-            &quot;unit_price&quot;: &quot;3.49&quot;
-        },
-        {
-            &quot;external_id&quot;: &quot;movement-2&quot;,
-            &quot;type&quot;: &quot;BUY&quot;,
-            &quot;status&quot;: &quot;CANCELLED&quot;,
-            &quot;datetime&quot;: &quot;2022-06-08T11:01:54.000000+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;US2660424076&quot;,
-            &quot;quantity&quot;: &quot;3&quot;,
-            &quot;unit_price&quot;: &quot;3.49&quot;
-        }
-    ],
-    &quot;id&quot;: &quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;,
-    &quot;creation_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version&quot;: 1,
-    &quot;version_datetime&quot;: &quot;2021-10-03T08:00:16.734375+00:00&quot;,
-    &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-    &quot;deleted&quot;: false
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;movement-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-08T10:15:53.000000+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2660424076&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.49&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;movement-2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CANCELLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-08T11:01:54.000000+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2660424076&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.49&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FH2JNYAYQ4CTHQJ1MFDDGXZQ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-03T08:00:16.734375+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Notice that the <code>PLACED</code> and <code>CANCELLED</code> movements are identical, apart from their status and their datetime. The datetime is the time the order was <code>PLACED</code> and <code>CANCELLED</code> respectively.</p>
 </div>
 <h2 id="update-portfolio-holdings">Update portfolio holdings<a class="headerlink" href="#update-portfolio-holdings" title="Permanent link">&para;</a></h2>
 <p>To update the holdings you patch the portfolio.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">HTTP</label><label for="__tabbed_9_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-&quot;portfolio&quot;: {
-    &quot;$USD&quot;: 208.086729,
-    &quot;US78464A6644&quot;: 18.78,
-    &quot;US4642886612&quot;: 9.2243,
-    &quot;US46137V2410&quot;: 9,
-    &quot;US3160923039&quot;: 3,
-    &quot;US3160928731&quot;: 10,
-    &quot;US97717W5215&quot;: 6,
-    &quot;US4642861458&quot;: 4,
-    &quot;US46429B2676&quot;: 45.146,
-    &quot;US46434V7617&quot;: 9,
-    &quot;US4642865251&quot;: 7.6828,
-    &quot;US46434V4234&quot;: 3
-}
-
-```
+<span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">208.086729</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US78464A6644&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">18.78</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2243</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US46137V2410&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US3160923039&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US3160928731&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US97717W5215&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US4642861458&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US46429B2676&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.146</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US46434V7617&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US4642865251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.6828</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;US46434V4234&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X PATCH \                 
--H &quot;Content-Type: application/json&quot; \
--H &quot;Auhorization&quot;: &quot;{string}&quot;  \   
--d &#39;&quot;portfolo&quot;: { \
-    &quot;$USD&quot;: 208.086729, \
-    &quot;US78464A6644&quot;: 18.78, \
-    &quot;US4642886612&quot;: 9.2243, \
-    &quot;US46137V2410&quot;: 9, \
-    &quot;US3160923039&quot;: 3, \
-    &quot;US3160928731&quot;: 10, \
-    &quot;US97717W5215&quot;: 6, \
-    &quot;US4642861458&quot;: 4, \
-    &quot;US46429B2676&quot;: 45.146, \
-    &quot;US46434V7617&quot;: 9, \
-    &quot;US4642865251&quot;: 7.6828, \
-    &quot;US46434V4234&quot;: 3 \
-}&#39;  \
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X PATCH <span class="se">\ </span>                
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;{string}&quot;</span>  <span class="se">\ </span>  
+-d <span class="s1">&#39;&quot;portfolo&quot;: { \</span>
+<span class="s1">    &quot;$USD&quot;: 208.086729, \</span>
+<span class="s1">    &quot;US78464A6644&quot;: 18.78, \</span>
+<span class="s1">    &quot;US4642886612&quot;: 9.2243, \</span>
+<span class="s1">    &quot;US46137V2410&quot;: 9, \</span>
+<span class="s1">    &quot;US3160923039&quot;: 3, \</span>
+<span class="s1">    &quot;US3160928731&quot;: 10, \</span>
+<span class="s1">    &quot;US97717W5215&quot;: 6, \</span>
+<span class="s1">    &quot;US4642861458&quot;: 4, \</span>
+<span class="s1">    &quot;US46429B2676&quot;: 45.146, \</span>
+<span class="s1">    &quot;US46434V7617&quot;: 9, \</span>
+<span class="s1">    &quot;US4642865251&quot;: 7.6828, \</span>
+<span class="s1">    &quot;US46434V4234&quot;: 3 \</span>
+<span class="s1">}&#39;</span>  <span class="se">\</span>
 https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
-```
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>Response body</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>

@@ -953,80 +953,80 @@
 <h2 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h2>
 <p>Thematic search is based on a simple CRUD model. The entity <code>InstrumentGroups</code> aggregates 0..* <code>Instrument</code> objects. An InstrumentGroup is the category e.g. <em>Health Care</em> and holds properties to describe the category: name, image, description. The <code>Instrument</code> object is a financial instrument, identified by an ISIN (external_id), and also holds properties to describe the instrument.</p>
 <p><img alt="Instrument Groups Model" src="../../img/instrument_groups_model.jpg" /></p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /thematic-search/instrument-groups/ 
-    ?[limit=100]
-    &amp;[count=true]
-    &amp;[embed=instrument_ids] HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /thematic-search/instrument-groups/ </span>
+</span><span class="err">    ?[limit=100]</span>
+<span class="err">    &amp;[count=true]</span>
+<span class="err">    &amp;[embed=instrument_ids] HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;next&quot;: null,
-    &quot;offset&quot;: null,
-    &quot;results&quot;: [
-        {
-            &quot;external_id&quot;: &quot;unique_external_entity_id&quot;,
-            &quot;readable_by&quot;: [
-                &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-            ],
-            &quot;modifiable_by&quot;: [
-                &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-            ],
-            &quot;id&quot;: &quot;J01F3MQ2DPYXPS7JTHGXX4D09D3&quot;,
-            &quot;creation_datetime&quot;: &quot;2021-04-19T00:00:00+00:00&quot;,
-            &quot;version&quot;: 1,
-            &quot;version_datetime&quot;: &quot;2021-04-19T09:23:34.238210+00:00&quot;,
-            &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-            &quot;deleted&quot;: false,
-            &quot;_embedded&quot;: {},
-            &quot;name&quot;: {
-                &quot;en-US&quot;: &quot;Cloud Computing&quot;
-            },
-            &quot;category&quot;: {
-                &quot;en-US&quot;: &quot;Digital Disruption&quot;
-            },
-            &quot;image_uri&quot;: &quot;urn:ietf:rfc:2648&quot;,
-            &quot;description&quot;: {
-                &quot;en-US&quot;: &quot;Cloud Computing is the on-demand availability of computer system resources, especially data storage (cloud storage) and computing power.&quot;
-            },
-            &quot;instrument_ids&quot;: [
-                &quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;
-            ]
-        }
-    ],
-    &quot;_embedded&quot;: {
-        &quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;: {
-            &quot;external_id&quot;: &quot;US0378331005&quot;,
-            &quot;readable_by&quot;: [
-                &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-            ],
-            &quot;modifiable_by&quot;: [
-                &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-            ],
-            &quot;name&quot;: &quot;Appel BV. Ordinary Shares&quot;,
-            &quot;display_name&quot;: &quot;Appel BV&quot;,
-            &quot;tags&quot;: [],
-            &quot;type&quot;: &quot;STOCK&quot;,
-            &quot;image_uri&quot;: null,
-            &quot;id&quot;: &quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;,
-            &quot;creation_datetime&quot;: &quot;2021-04-19T00:00:00+00:00&quot;,
-            &quot;version&quot;: 1,
-            &quot;version_datetime&quot;: &quot;2021-04-19T09:21:47.127958+00:00&quot;,
-            &quot;version_authored_by_user_id&quot;: &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-            &quot;deleted&quot;: false,
-            &quot;_embedded&quot;: {}
-        }
-    }
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+</span><span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;J01F3MQ2DPYXPS7JTHGXX4D09D3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T09:23:34.238210+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cloud Computing&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Disruption&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:ietf:rfc:2648&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cloud Computing is the on-demand availability of computer system resources, especially data storage (cloud storage) and computing power.&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Appel BV. Ordinary Shares&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Appel BV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STOCK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T09:21:47.127958+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="embedding">Embedding<a class="headerlink" href="#embedding" title="Permanent link">&para;</a></h2>
 <p>You can add details about the <code>Instrument</code> objects to the <code>InstrumentGroup</code> objects collection by providing the <code>?embed={query}</code> query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated <code>_embedded</code> key at the root level, which contains a full rendition of the referenced entities. Read detailed info about embedding <strong><a href="../../advanced_topics/embedding/">here</a></strong>.</p>
 <h2 id="collections">Collections<a class="headerlink" href="#collections" title="Permanent link">&para;</a></h2>

@@ -1033,121 +1033,121 @@
 <p>At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the <a href="../authentication.md">First steps</a> chapter.</p>
 <h2 id="collection-response-format">Collection response format<a class="headerlink" href="#collection-response-format" title="Permanent link">&para;</a></h2>
 <p>Collections are paginated lists of entities. To request a collection issue a <code>GET</code> request against the entity root path e.g. <code>GET /users</code>, <code>GET /portfolios</code>, <code>GET /instrument_groups</code>.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/
-    ?embed=owned_by_user_id
-    &amp;limit=2 HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /portfolios/</span>
+</span><span class="err">    ?embed=owned_by_user_id</span>
+<span class="err">    &amp;limit=2 HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="s2">&quot;http://api.sandbox.investsuite.com/portfolios/?embed=owned_by_user_id&amp;limit=2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="mi">204</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="s2">&quot;10&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;AE820230000000000001918&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="p">],</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Child&#39;s education&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;REAL_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01F5G34T4FE6T1EH798FA0M170&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X3JH1QDFPD270BKSDTTX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EF46X564YMWFR8GTNBED16CN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;risk_profile_id&quot;</span><span class="p">:</span><span class="s2">&quot;K01EF46X76V5VB4E92FC1D01856&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;start_amount&quot;</span><span class="p">:</span><span class="mf">600.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;recurring_deposit_amount&quot;</span><span class="p">:</span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;end_datetime&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;proposed_risk_profile_id&quot;</span><span class="p">:</span><span class="s2">&quot;K01EF46X76V5VB4E92FC1D01856&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;tags&quot;</span><span class="p">:[</span><span class="w"></span>
 
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;next&quot;:&quot;http://api.sandbox.investsuite.com/portfolios/?embed=owned_by_user_id&amp;limit=2&quot;,
-    &quot;count&quot;:204,
-    &quot;offset&quot;:&quot;10&quot;,
-    &quot;results&quot;:[
-    {
-        &quot;external_id&quot;:&quot;AE820230000000000001918&quot;,
-        &quot;readable_by&quot;:[
-            &quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;
-        ],
-        &quot;modifiable_by&quot;:[
-            &quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;
-        ],
-        &quot;name&quot;:&quot;Child&#39;s education&quot;,
-        &quot;owned_by_user_id&quot;:&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;,
-        &quot;base_currency&quot;:&quot;USD&quot;,
-        &quot;money_type&quot;:&quot;REAL_MONEY&quot;,
-        &quot;config&quot;:{
-            &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-            &quot;manager_version&quot;:1,
-            &quot;manager_settings&quot;:{
-                &quot;policy_id&quot;:&quot;Y01F5G34T4FE6T1EH798FA0M170&quot;,
-                &quot;goal_id&quot;:&quot;L01EF46X3JH1QDFPD270BKSDTTX&quot;,
-                &quot;horizon_id&quot;:&quot;H01EF46X564YMWFR8GTNBED16CN&quot;,
-                &quot;risk_profile_id&quot;:&quot;K01EF46X76V5VB4E92FC1D01856&quot;,
-                &quot;divest_amount&quot;:null,
-                &quot;start_amount&quot;:600.0,
-                &quot;recurring_deposit_amount&quot;:500.0,
-                &quot;end_datetime&quot;:null,
-                &quot;active&quot;:true,
-                &quot;proposed_risk_profile_id&quot;:&quot;K01EF46X76V5VB4E92FC1D01856&quot;,
-                &quot;tags&quot;:[
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;risk_profile_score&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;background_image&quot;</span><span class="p">:</span><span class="s2">&quot;https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=82&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;background_color&quot;</span><span class="p">:</span><span class="kc">null</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;brokerage_account&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;brokerage_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;BrokerAccountKey&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;brokerage_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;BrokerAccountId&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bank_account_type&quot;</span><span class="p">:</span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="s2">&quot;AE820230000000000001918&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bank_id&quot;</span><span class="p">:</span><span class="kc">null</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;owned_by_user_ids&quot;</span><span class="p">:[</span><span class="w"></span>
 
-                ],
-                &quot;risk_profile_score&quot;:3,
-                &quot;background_image&quot;:&quot;https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=82&quot;,
-                &quot;background_color&quot;:null
-            }
-        },
-        &quot;brokerage_account&quot;:{
-            &quot;brokerage_portfolio_id&quot;:&quot;BrokerAccountKey&quot;,
-            &quot;brokerage_user_id&quot;:&quot;BrokerAccountId&quot;,
-            &quot;bank_account_type&quot;:&quot;IBAN&quot;,
-            &quot;bank_account_number&quot;:&quot;AE820230000000000001918&quot;,
-            &quot;bank_id&quot;:null
-        },
-        &quot;owned_by_user_ids&quot;:[
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
 
-        ],
-        &quot;portfolio&quot;:{
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;snapshot_datetime&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;archived&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F7KDVY6H718JNV91840DE5V4&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-07T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-07T14:26:21.231855+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:{</span><span class="w"></span>
 
-        },
-        &quot;snapshot_datetime&quot;:null,
-        &quot;archived&quot;:false,
-        &quot;funded_since&quot;:null,
-        &quot;id&quot;:&quot;P01F7KDVY6H718JNV91840DE5V4&quot;,
-        &quot;creation_datetime&quot;:&quot;2021-06-07T00:00:00+00:00&quot;,
-        &quot;version&quot;:2,
-        &quot;version_datetime&quot;:&quot;2021-06-07T14:26:21.231855+00:00&quot;,
-        &quot;version_authored_by_user_id&quot;:&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;,
-        &quot;deleted&quot;:false,
-        &quot;_embedded&quot;:{
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;WAITING_FOR_FUNDS&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-05-17T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-05-17T15:43:23.427412+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:{</span><span class="w"></span>
 
-        },
-        &quot;status&quot;:&quot;WAITING_FOR_FUNDS&quot;
-    }
-    ],
-    &quot;_embedded&quot;:{
-    &quot;U01ERYVVSZTKKYEEVX3Y6JECE83&quot;:{
-        &quot;external_id&quot;:null,
-        &quot;readable_by&quot;:[
-            &quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;,
-            &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-        ],
-        &quot;modifiable_by&quot;:[
-            &quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;,
-            &quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;
-        ],
-        &quot;id&quot;:&quot;U01F5XFY0S38KJYVHX0X3GJ4KWM&quot;,
-        &quot;creation_datetime&quot;:&quot;2021-05-17T00:00:00+00:00&quot;,
-        &quot;version&quot;:1,
-        &quot;version_datetime&quot;:&quot;2021-05-17T15:43:23.427412+00:00&quot;,
-        &quot;version_authored_by_user_id&quot;:&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;,
-        &quot;deleted&quot;:false,
-        &quot;_embedded&quot;:{
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="s2">&quot;Laurent&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="s2">&quot;Sorber&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="s2">&quot;laurent.sorber@gmail.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;brokerage_user_id&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;idp_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;a8c8b808-bad9-4acb-babf-aae52488e468&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;products&quot;</span><span class="p">:[</span><span class="w"></span>
 
-        },
-        &quot;first_name&quot;:&quot;Laurent&quot;,
-        &quot;last_name&quot;:&quot;Sorber&quot;,
-        &quot;email&quot;:&quot;laurent.sorber@gmail.com&quot;,
-        &quot;phone&quot;:null,
-        &quot;brokerage_user_id&quot;:null,
-        &quot;idp_user_id&quot;:&quot;a8c8b808-bad9-4acb-babf-aae52488e468&quot;,
-        &quot;language&quot;:&quot;en-US&quot;,
-        &quot;products&quot;:[
-
-        ]
-    }
-    }
-}    
-```
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w">    </span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="query-parameters">Query parameters<a class="headerlink" href="#query-parameters" title="Permanent link">&para;</a></h2>
 <p>Collection endpoints accept alongside the <code>embed</code> query parameter two parameters: limit and offset. </p>
 <table>
@@ -1178,15 +1178,17 @@ Authorization: Bearer {string}
 </table>
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
 <p>The API provides a structural search and filtering mechanism for all entities. We already opted to work with a query string parameter <code>query=email+eq+'jane.doe@example.com</code> instead of a POST body for more efficient client-side caching and ease of use for testing. The query syntax is a mix of both <a href="https://www.odata.org/">OData</a> and <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Apache Lucene Query Parser Syntax</a>.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios
-    ?query=lastmodified+in+[&#39;20200101&#39;+to+&#39;20240101&#39;] HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /portfolios</span>
+</span><span class="err">    ?query=lastmodified+in+[&#39;20200101&#39;+to+&#39;20240101&#39;] HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="fundamental-rules">Fundamental rules<a class="headerlink" href="#fundamental-rules" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Every entity type can be queried by issuing a <code>GET</code> request e.g. <code>GET users/?query=email+eq+'jane*'</code>.</li>

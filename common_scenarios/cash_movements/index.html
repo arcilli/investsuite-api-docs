@@ -1074,38 +1074,37 @@
 </ol>
 <p><strong>1. Notify InvestSuite on successful deposit</strong></p>
 <p>Call <code>POST /events/deposit/</code> to send a notification when your customer has transferred cash into their cash account and the transaction is settled on your end.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /events/deposit/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/deposit/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;data&quot;: {
-        &quot;amount&quot;: &quot;1000&quot;,
-        &quot;currency&quot;: &quot;USD&quot;,
-        &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/deposit/&#39; \
---header &#39;Content-Type: application/json&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
---data-raw &#39;{
-                &quot;data&quot;: {
-                    &quot;amount&quot;: &quot;1000&quot;,
-                    &quot;currency&quot;: &quot;USD&quot;,
-                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-                }
-            }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/deposit/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">                &quot;data&quot;: {</span>
+<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
+<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
+<span class="s1">                }</span>
+<span class="s1">            }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="broker-integration-by-the-client">Broker integration by the Client<a class="headerlink" href="#broker-integration-by-the-client" title="Permanent link">&para;</a></h3>
 <p>These are the steps performed to fund a portfolio, given the broker integration is handled by you:</p>
 <ol>
@@ -1117,159 +1116,157 @@ curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/d
 <li><strong>InvestSuite</strong> creates a notification to be sent to the client.</li>
 </ol>
 <p><strong>2. Create pending transaction</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;11&quot;
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTTP</label><label for="__tabbed_2_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,
-            &quot;status&quot;: &quot;PENDING&quot;,
-            &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-            &quot;quantity&quot;: 500.0,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-        &quot;movements&quot;: [
-            {
-                &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,
-                &quot;status&quot;: &quot;PENDING&quot;,
-                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-                &quot;instrument_id&quot;: &quot;$USD&quot;,
-                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-                &quot;quantity&quot;: 500.0,
-            }
-        ]
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,</span>
+<span class="s1">        &quot;movements&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,</span>
+<span class="s1">                &quot;status&quot;: &quot;PENDING&quot;,</span>
+<span class="s1">                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;$USD&quot;,</span>
+<span class="s1">                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,</span>
+<span class="s1">                &quot;quantity&quot;: 500.0,</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>3. Update transaction to settled</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">HTTP</label><label for="__tabbed_3_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;movements&quot;: [
-        {
-            &quot;status&quot;: &quot;SETTLED&quot;
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;movements&quot;: [
-            {
-                &quot;status&quot;: &quot;SETTLED&quot;,
-            }
-        ]
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;movements&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;status&quot;: &quot;SETTLED&quot;,</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>4. Update cash position</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">HTTP</label><label for="__tabbed_4_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;portfolio&quot;: {
-        &quot;$USD&quot;:10000,
-        &quot;US4642886612&quot;:0.76,
-        &quot;US78468R1014&quot;:3,
-        &quot;US4642863926&quot;:0.7381
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;portfolio&quot;: {
-            &quot;$USD&quot;:10000,
-            &quot;US4642886612&quot;:0.76,
-            &quot;US78468R1014&quot;:3,
-            &quot;US4642863926&quot;:0.7381
-        }
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;portfolio&quot;: {</span>
+<span class="s1">            &quot;$USD&quot;:10000,</span>
+<span class="s1">            &quot;US4642886612&quot;:0.76,</span>
+<span class="s1">            &quot;US78468R1014&quot;:3,</span>
+<span class="s1">            &quot;US4642863926&quot;:0.7381</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Updating holdings requires you to <strong>provide the complete overview of positions</strong>. In other words, if you update an invested portfolio
 with only <code>"portfolio": { "$USD":10000 }</code> InvestSuite will assume all other positions were sold.</p>
 </div>
 <p><strong>5. Instruct InvestSuite to send a notification</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /events/deposit/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">HTTP</label><label for="__tabbed_5_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/deposit/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;data&quot;: {
-        &quot;amount&quot;: &quot;1000&quot;,
-        &quot;currency&quot;: &quot;USD&quot;,
-        &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/deposit/&#39; \
---header &#39;Content-Type: application/json&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
---data-raw &#39;{
-                &quot;data&quot;: {
-                    &quot;amount&quot;: &quot;1000&quot;,
-                    &quot;currency&quot;: &quot;USD&quot;,
-                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-                }
-            }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/deposit/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">                &quot;data&quot;: {</span>
+<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
+<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
+<span class="s1">                }</span>
+<span class="s1">            }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="cash-withdrawal">Cash withdrawal<a class="headerlink" href="#cash-withdrawal" title="Permanent link">&para;</a></h2>
 <h3 id="robo-advisor">Robo Advisor<a class="headerlink" href="#robo-advisor" title="Permanent link">&para;</a></h3>
 <p>Cash withdrawal for Robo Advisor involves two phases:</p>
@@ -1299,59 +1296,58 @@ curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/d
 <p>As trigger to transfer the freed up cash you use the input from the broker, for instance be parsing end-of-day files.</p>
 </div>
 <p><strong>1. Set divest amount</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">HTTP</label><label for="__tabbed_6_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;manager&quot;: {
-        &quot;manager_settings&quot;: {
-            &quot;divest_amount&quot;: 500
-        }
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;manager&quot;: {
-            &quot;manager_settings&quot;: {
-                &quot;divest_amount&quot;: 500
-            }
-        }
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;manager&quot;: {</span>
+<span class="s1">            &quot;manager_settings&quot;: {</span>
+<span class="s1">                &quot;divest_amount&quot;: 500</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>7. Get counter account</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /users/U01234567890123456789012345/ HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">HTTP</label><label for="__tabbed_7_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>Response body</strong></p>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1374,38 +1370,37 @@ curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <strong>8. Notify InvestSuite on successful cash transfer</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /events/withdraw/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label><label for="__tabbed_8_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;data&quot;: {
-        &quot;amount&quot;: &quot;1000&quot;,
-        &quot;currency&quot;: &quot;USD&quot;,
-        &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/withdraw/&#39; \
---header &#39;Content-Type: application/json&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
---data-raw &#39;{
-                &quot;data&quot;: {
-                    &quot;amount&quot;: &quot;1000&quot;,
-                    &quot;currency&quot;: &quot;USD&quot;,
-                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-                }
-            }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/withdraw/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">                &quot;data&quot;: {</span>
+<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
+<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
+<span class="s1">                }</span>
+<span class="s1">            }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h4 id="broker-integration-by-the-client_1">Broker integration by the Client<a class="headerlink" href="#broker-integration-by-the-client_1" title="Permanent link">&para;</a></h4>
 <p>Steps to take when the clients issues an instruction to withdraw funds, and you as the Client are in charge of the integration with the broker:</p>
 <ol>
@@ -1421,59 +1416,58 @@ curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/w
 <li><strong>You</strong> reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  <strong>See below</strong>: Reset divest amount.</li>
 </ol>
 <p><strong>1. Set divest amount</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">HTTP</label><label for="__tabbed_9_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;manager&quot;: {
-        &quot;manager_settings&quot;: {
-            &quot;divest_amount&quot;: 500
-        }
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;manager&quot;: {
-            &quot;manager_settings&quot;: {
-                &quot;divest_amount&quot;: 500
-            }
-        }
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;manager&quot;: {</span>
+<span class="s1">            &quot;manager_settings&quot;: {</span>
+<span class="s1">                &quot;divest_amount&quot;: 500</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>5. Get counter account</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /users/U01234567890123456789012345/ HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">HTTP</label><label for="__tabbed_10_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>Response body</strong></p>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1496,162 +1490,159 @@ curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <strong>6. Notify InvestSuite on successful cash transfer</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /events/withdraw/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">HTTP</label><label for="__tabbed_11_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;data&quot;: {
-        &quot;amount&quot;: &quot;1000&quot;,
-        &quot;currency&quot;: &quot;USD&quot;,
-        &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/events/withdraw/&#39; \
---header &#39;Content-Type: application/json&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
---data-raw &#39;{
-                &quot;data&quot;: {
-                    &quot;amount&quot;: &quot;1000&quot;,
-                    &quot;currency&quot;: &quot;USD&quot;,
-                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-                }
-            }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/withdraw/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">                &quot;data&quot;: {</span>
+<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
+<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
+<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
+<span class="s1">                }</span>
+<span class="s1">            }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>9. Update cash position</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">HTTP</label><label for="__tabbed_12_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;portfolio&quot;: {
-        &quot;$USD&quot;:10000,
-        &quot;US4642886612&quot;:0.76,
-        &quot;US78468R1014&quot;:3,
-        &quot;US4642863926&quot;:0.7381
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;portfolio&quot;: {
-            &quot;$USD&quot;:10000,
-            &quot;US4642886612&quot;:0.76,
-            &quot;US78468R1014&quot;:3,
-            &quot;US4642863926&quot;:0.7381
-        }
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;portfolio&quot;: {</span>
+<span class="s1">            &quot;$USD&quot;:10000,</span>
+<span class="s1">            &quot;US4642886612&quot;:0.76,</span>
+<span class="s1">            &quot;US78468R1014&quot;:3,</span>
+<span class="s1">            &quot;US4642863926&quot;:0.7381</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Updating holdings requires you to <strong>provide the complete overview of positions</strong>. In other words, if you update an invested portfolio
 with only <code>"portfolio": { "$USD":10000 }</code> InvestSuite will assume all other positions were sold.</p>
 </div>
 <p><strong>8. Create transaction</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;11&quot;
-POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">HTTP</label><label for="__tabbed_13_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-    &quot;movements&quot;: [
-        {
-            &quot;type&quot;: &quot;CASH_WITHDRAWAL&quot;,
-            &quot;status&quot;: &quot;SETTLED&quot;,
-            &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-            &quot;instrument_id&quot;: &quot;$USD&quot;,
-            &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-            &quot;quantity&quot;: 500.0,
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_WITHDRAWAL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,
-        &quot;movements&quot;: [
-            {
-                &quot;type&quot;: &quot;CASH_WITHDRAWAL&quot;,
-                &quot;status&quot;: &quot;SETTLED&quot;,
-                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,
-                &quot;instrument_id&quot;: &quot;$USD&quot;,
-                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,
-                &quot;quantity&quot;: 500.0,
-            }
-        ]
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,</span>
+<span class="s1">        &quot;movements&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;type&quot;: &quot;CASH_WITHDRAWAL&quot;,</span>
+<span class="s1">                &quot;status&quot;: &quot;SETTLED&quot;,</span>
+<span class="s1">                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;$USD&quot;,</span>
+<span class="s1">                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,</span>
+<span class="s1">                &quot;quantity&quot;: 500.0,</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>10. Reset divest amount</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">HTTP</label><label for="__tabbed_14_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;manager&quot;: {
-        &quot;manager_settings&quot;: {
-            &quot;divest_amount&quot;: 0
-        }
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39; \
-    --header &#39;Authorization: Bearer {string}&#39; \
-    --header &#39;Content-Type: application/json&#39; \
-    --data-raw &#39;{
-        &quot;manager&quot;: {
-            &quot;manager_settings&quot;: {
-                &quot;divest_amount&quot;: 0
-            }
-        }
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;manager&quot;: {</span>
+<span class="s1">            &quot;manager_settings&quot;: {</span>
+<span class="s1">                &quot;divest_amount&quot;: 0</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="self-investor">Self Investor<a class="headerlink" href="#self-investor" title="Permanent link">&para;</a></h3>
 <p>For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps:</p>
 <ol>
@@ -1661,23 +1652,23 @@ curl --location --request PATCH &#39;https://api.sandbox.investsuite.com/portfol
 <li><strong>InvestSuite</strong> puts the message on a queue to send a push notification to the client.</li>
 </ol>
 <p><strong>2. Get counter account</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /users/U01234567890123456789012345/ HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">HTTP</label><label for="__tabbed_15_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39; \
---header &#39;Authorization: Bearer {string}&#39; \
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p><strong>Response body</strong></p>
 <p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1700,22 +1691,24 @@ curl --location --request GET &#39;https://api.sandbox.investsuite.com/users/U01
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <strong>3. Notify InvestSuite on successful cash transfer</strong></p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /events/withdraw/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">HTTP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;data&quot;: {
-        &quot;amount&quot;: &quot;1000&quot;,
-        &quot;currency&quot;: &quot;USD&quot;,
-        &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
+</div>
+</div>
+</div>
     
 
             </article>

@@ -955,28 +955,28 @@
 <li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
 </ul>
 <h2 id="get-example">GET example<a class="headerlink" href="#get-example" title="Permanent link">&para;</a></h2>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;GET&quot; \
-&quot;https://api.data.uat.investsuite.com/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/</span><span class="nv">$ENDPOINT_NAME</span><span class="s2">/?</span><span class="nv">$EXAMPLE_QUERY_PARAMS</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 </code></pre></div>
-
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-GET /$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS HTTP/1.1
-Host: api.data.uat.investsuite.com
-accept: application/json
-Content-Type: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -998,18 +998,20 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After the request, we get the following example response:</p>
-<p>=== "Response (Body Content JSON)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-[
-  {&quot;example-field&quot;: &quot;example_data&quot;},
-  {&quot;example-field&quot;: &quot;example_data&quot;},
-  ...  # truncate long responses of the same values for readability
-  {&quot;example-field&quot;: &quot;example_data&quot;},
-  {&quot;example-field&quot;: &quot;example_data&quot;},
-]
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="kc">trun</span><span class="err">ca</span><span class="kc">te</span><span class="w"> </span><span class="err">lo</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">respo</span><span class="kc">nses</span><span class="w"> </span><span class="err">o</span><span class="kc">f</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">readabili</span><span class="kc">t</span><span class="err">y</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
     
 

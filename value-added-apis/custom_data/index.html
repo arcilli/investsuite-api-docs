@@ -1047,69 +1047,69 @@
 <p>Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments.</p>
 <p>The endpoint accepts a batch of instruments at once, and has a range of predefined fields to upload data.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/reference/batch/&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{
-        &quot;data&quot;: [
-            {
-                &quot;instrument_id&quot;: &quot;US0378331005&quot;,
-                &quot;reference_data&quot;: {
-                    &quot;country&quot;: &quot;US&quot;,
-                    &quot;name&quot;: &quot;APPLE&quot;,
-                    &quot;roundlot_size&quot;: 1
-                }
-            },
-            {
-                &quot;instrument_id&quot;: &quot;US2546871060&quot;,
-                &quot;reference_data&quot;: {
-                    &quot;country&quot;: &quot;US&quot;,
-                    &quot;name&quot;: &quot;WALT DISNEY&quot;,
-                    &quot;roundlot_size&quot;: 1
-                }
-            }
-        ]
-    }&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/batch/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;data&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;US0378331005&quot;,</span>
+<span class="s1">                &quot;reference_data&quot;: {</span>
+<span class="s1">                    &quot;country&quot;: &quot;US&quot;,</span>
+<span class="s1">                    &quot;name&quot;: &quot;APPLE&quot;,</span>
+<span class="s1">                    &quot;roundlot_size&quot;: 1</span>
+<span class="s1">                }</span>
+<span class="s1">            },</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;US2546871060&quot;,</span>
+<span class="s1">                &quot;reference_data&quot;: {</span>
+<span class="s1">                    &quot;country&quot;: &quot;US&quot;,</span>
+<span class="s1">                    &quot;name&quot;: &quot;WALT DISNEY&quot;,</span>
+<span class="s1">                    &quot;roundlot_size&quot;: 1</span>
+<span class="s1">                }</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/reference/batch/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-accept: application/json
-Content-Type: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-
-{
-    &quot;data&quot;: [
-        {
-            &quot;instrument_id&quot;: &quot;US0378331005&quot;,
-            &quot;reference_data&quot;: {
-                &quot;country&quot;: &quot;US&quot;,
-                &quot;name&quot;: &quot;APPLE&quot;,
-                &quot;roundlot_size&quot;: 1
-            }
-        },
-        {
-            &quot;instrument_id&quot;: &quot;US2546871060&quot;,
-            &quot;reference_data&quot;: {
-                &quot;country&quot;: &quot;US&quot;,
-                &quot;name&quot;: &quot;WALT DISNEY&quot;,
-                &quot;roundlot_size&quot;: 1
-            }
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APPLE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2546871060&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WALT DISNEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1145,14 +1145,18 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_field_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1192,33 +1196,37 @@ X-Api-Key: $IVS_API_SECRET
 <p>Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments as <strong>Comma Separated Values (.CSV) file</strong>.</p>
 <p>The endpoint accepts a batch of instruments at once, and has a range of predefined fields to upload data.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Example CSV File"</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Example CSV File</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code>instrument_id,country,name,roundlot_size
 US0378331005,US,APPLE,1
 </code></pre></div>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/reference/csv/&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--H &quot;Content-Type: multipart/form-data&quot; \
--F &quot;file=@reference-data.csv;type=text/csv&quot;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Curl Request</label><label for="__tabbed_4_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/csv/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: multipart/form-data&quot;</span> <span class="se">\</span>
+-F <span class="s2">&quot;file=@reference-data.csv;type=text/csv&quot;</span>
 </code></pre></div>
-
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/reference/csv/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-accept: application/json
-Content-Type: multipart/form-data; filename=&quot;reference-data.csv&quot;
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/csv/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/form-data; filename=&quot;reference-data.csv&quot;</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1254,14 +1262,18 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_field_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1301,72 +1313,71 @@ X-Api-Key: $IVS_API_SECRET
 <p>Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type.</p>
 <p>The endpoint accepts a batch of instruments at once, for the a particular type of timeseries data. Let us look at an example.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the instrument/field-level. For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/batch/&quot; \                 
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{
-        &quot;data&quot;: [
-            {
-                &quot;instrument_id&quot;: &quot;US0378331005&quot;,
-                &quot;values&quot;: {
-                    &quot;2022-03-07&quot;: 158834,
-                    &quot;2022-03-08&quot;: 156979.4,
-                    &quot;2022-03-09&quot;: 162473.3
-                }
-            },
-            {
-                &quot;instrument_id&quot;: &quot;US2546871060&quot;,
-                &quot;values&quot;: {
-                    &quot;2022-03-07&quot;: 9615.215,
-                    &quot;2022-03-08&quot;: 9489.172,
-                    &quot;2022-03-09&quot;: 9626.016
-                }
-            }
-        ],
-        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;
-    }&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Curl Request</label><label for="__tabbed_6_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/batch/&quot;</span> <span class="se">\ </span>                
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;data&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;US0378331005&quot;,</span>
+<span class="s1">                &quot;values&quot;: {</span>
+<span class="s1">                    &quot;2022-03-07&quot;: 158834,</span>
+<span class="s1">                    &quot;2022-03-08&quot;: 156979.4,</span>
+<span class="s1">                    &quot;2022-03-09&quot;: 162473.3</span>
+<span class="s1">                }</span>
+<span class="s1">            },</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;US2546871060&quot;,</span>
+<span class="s1">                &quot;values&quot;: {</span>
+<span class="s1">                    &quot;2022-03-07&quot;: 9615.215,</span>
+<span class="s1">                    &quot;2022-03-08&quot;: 9489.172,</span>
+<span class="s1">                    &quot;2022-03-09&quot;: 9626.016</span>
+<span class="s1">                }</span>
+<span class="s1">            }</span>
+<span class="s1">        ],</span>
+<span class="s1">        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/timeseries/batch/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-Content-Type: application/json
-accept: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-
-{
-    &quot;data&quot;: [
-        {
-            &quot;instrument_id&quot;: &quot;US0378331005&quot;,
-            &quot;values&quot;: {
-                &quot;2022-03-07&quot;: 158834,
-                &quot;2022-03-08&quot;: 156979.4,
-                &quot;2022-03-09&quot;: 162473.3
-            }
-        },
-        {
-            &quot;instrument_id&quot;: &quot;US2546871060&quot;,
-            &quot;values&quot;: {
-                &quot;2022-03-07&quot;: 9615.215,
-                &quot;2022-03-08&quot;: 9489.172,
-                &quot;2022-03-09&quot;: 9626.016
-            }
-        }
-    ],
-    &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">158834</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">156979.4</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">162473.3</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2546871060&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9615.215</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9489.172</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9626.016</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;timeseries_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ADJUSTED_PRICE&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1409,14 +1420,18 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_date_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1458,93 +1473,93 @@ Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
 If you require composition data over different points in time (timeseries) use <a href="#custom-composition-timeseries-data">Custom Composition Timeseries Data</a>.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the composition type/instrument-level (i.e., the entire composition for a given type and instrument gets overwritten). For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/composition/batch/&quot; \                
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{
-  &quot;data&quot;: [{
-            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,
-            &quot;composition_data&quot;: {
-                &quot;asset_class&quot;: {
-                    &quot;equity&quot;: 1
-                },
-                &quot;currency&quot;: {
-                    &quot;gbp&quot;: 1
-                },
-                &quot;equity_region&quot;: {
-                    &quot;emerging&quot;: 0.1,
-                    &quot;europe_developed&quot;: 0.2,
-                    &quot;north_america&quot;: 0.7
-                }
-            }
-        },
-        {
-            &quot;instrument_id&quot;: &quot;IE00BWT41R00&quot;,
-            &quot;composition_data&quot;: {
-                &quot;equity_sector&quot;: {
-                    &quot;real_estate&quot;: 0.3,
-                    &quot;technology&quot;: 0.3,
-                    &quot;utilities&quot;: 0.2
-                },
-                &quot;fixed_income_type&quot;: {
-                    &quot;government&quot;: 1
-                }
-            }
-        }
-    ]
-}&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Curl Request</label><label for="__tabbed_8_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/batch/&quot;</span> <span class="se">\ </span>               
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">  &quot;data&quot;: [{</span>
+<span class="s1">            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,</span>
+<span class="s1">            &quot;composition_data&quot;: {</span>
+<span class="s1">                &quot;asset_class&quot;: {</span>
+<span class="s1">                    &quot;equity&quot;: 1</span>
+<span class="s1">                },</span>
+<span class="s1">                &quot;currency&quot;: {</span>
+<span class="s1">                    &quot;gbp&quot;: 1</span>
+<span class="s1">                },</span>
+<span class="s1">                &quot;equity_region&quot;: {</span>
+<span class="s1">                    &quot;emerging&quot;: 0.1,</span>
+<span class="s1">                    &quot;europe_developed&quot;: 0.2,</span>
+<span class="s1">                    &quot;north_america&quot;: 0.7</span>
+<span class="s1">                }</span>
+<span class="s1">            }</span>
+<span class="s1">        },</span>
+<span class="s1">        {</span>
+<span class="s1">            &quot;instrument_id&quot;: &quot;IE00BWT41R00&quot;,</span>
+<span class="s1">            &quot;composition_data&quot;: {</span>
+<span class="s1">                &quot;equity_sector&quot;: {</span>
+<span class="s1">                    &quot;real_estate&quot;: 0.3,</span>
+<span class="s1">                    &quot;technology&quot;: 0.3,</span>
+<span class="s1">                    &quot;utilities&quot;: 0.2</span>
+<span class="s1">                },</span>
+<span class="s1">                &quot;fixed_income_type&quot;: {</span>
+<span class="s1">                    &quot;government&quot;: 1</span>
+<span class="s1">                }</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    ]</span>
+<span class="s1">}&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/composition/batch/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-Content-Type: application/json
-accept: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-
-{
-    &quot;data&quot;: [{
-            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,
-            &quot;composition_data&quot;: {
-                &quot;asset_class&quot;: {
-                    &quot;equity&quot;: 1
-                },
-                &quot;currency&quot;: {
-                    &quot;gbp&quot;: 1
-                },
-                &quot;equity_region&quot;: {
-                    &quot;emerging&quot;: 0.1,
-                    &quot;europe_developed&quot;: 0.2,
-                    &quot;north_america&quot;: 0.7
-                }
-            }
-        },
-        {
-            &quot;instrument_id&quot;: &quot;IE00BWT41R00&quot;,
-            &quot;composition_data&quot;: {
-                &quot;equity_sector&quot;: {
-                    &quot;real_estate&quot;: 0.3,
-                    &quot;technology&quot;: 0.3,
-                    &quot;utilities&quot;: 0.2
-                },
-                &quot;fixed_income_type&quot;: {
-                    &quot;government&quot;: 1
-                }
-            }
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;gbp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;equity_region&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00BWT41R00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;equity_sector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;real_estate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;technology&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;utilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;fixed_income_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;government&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1580,7 +1595,11 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
@@ -1588,7 +1607,7 @@ X-Api-Key: $IVS_API_SECRET
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1628,89 +1647,89 @@ X-Api-Key: $IVS_API_SECRET
 <p>Composition timeseries data of an instrument provides a look-through of the underlying instruments according to certain composition types at certain dates. Examples are the asset class or country composition of a fund on a certain date. Using this endpoint, a client can upload composition data on different composition types for specific instruments, for certain dates (timeseries).</p>
 <p>The endpoint accepts a batch of instruments at once. Let us look at an example.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the composition type/instrument/date level (i.e., the entire composition for a given type and instrument on a give day gets overwritten). For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/&quot; \                 
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{
-        &quot;data&quot;: [
-            {
-            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,
-            &quot;composition_data&quot;: {
-                &quot;ASSET_CLASS&quot;: {
-                    &quot;2022-01-31&quot;: {
-                        &quot;equity&quot;: 0.5,
-                        &quot;money_market&quot;: 0.5
-                    },
-                    &quot;2022-02-28&quot;: {
-                        &quot;equity&quot;: 0.6,
-                        &quot;money_market&quot;: 0.4
-                    }
-                },
-                &quot;EQUITY_REGION&quot;: {
-                    &quot;2022-01-31&quot;: {
-                        &quot;europe&quot;: 0.3,
-                        &quot;north_america&quot;: 0.6,
-                        &quot;emerging_markets&quot;: 0.1
-                    },
-                    &quot;2022-02-28&quot;: {
-                        &quot;europe&quot;: 0.35,
-                        &quot;north_america&quot;: 0.65
-                    }
-                }
-            }
-            }
-        ]
-    }&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Curl Request</label><label for="__tabbed_10_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/&quot;</span> <span class="se">\ </span>                
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;data&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,</span>
+<span class="s1">            &quot;composition_data&quot;: {</span>
+<span class="s1">                &quot;ASSET_CLASS&quot;: {</span>
+<span class="s1">                    &quot;2022-01-31&quot;: {</span>
+<span class="s1">                        &quot;equity&quot;: 0.5,</span>
+<span class="s1">                        &quot;money_market&quot;: 0.5</span>
+<span class="s1">                    },</span>
+<span class="s1">                    &quot;2022-02-28&quot;: {</span>
+<span class="s1">                        &quot;equity&quot;: 0.6,</span>
+<span class="s1">                        &quot;money_market&quot;: 0.4</span>
+<span class="s1">                    }</span>
+<span class="s1">                },</span>
+<span class="s1">                &quot;EQUITY_REGION&quot;: {</span>
+<span class="s1">                    &quot;2022-01-31&quot;: {</span>
+<span class="s1">                        &quot;europe&quot;: 0.3,</span>
+<span class="s1">                        &quot;north_america&quot;: 0.6,</span>
+<span class="s1">                        &quot;emerging_markets&quot;: 0.1</span>
+<span class="s1">                    },</span>
+<span class="s1">                    &quot;2022-02-28&quot;: {</span>
+<span class="s1">                        &quot;europe&quot;: 0.35,</span>
+<span class="s1">                        &quot;north_america&quot;: 0.65</span>
+<span class="s1">                    }</span>
+<span class="s1">                }</span>
+<span class="s1">            }</span>
+<span class="s1">            }</span>
+<span class="s1">        ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition-timeseries/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/composition-timeseries/batch/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-Content-Type: application/json
-accept: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-
-{
-    &quot;data&quot;: [
-        {
-        &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,
-        &quot;composition_data&quot;: {
-            &quot;ASSET_CLASS&quot;: {
-                &quot;2022-01-31&quot;: {
-                    &quot;equity&quot;: 0.5,
-                    &quot;money_market&quot;: 0.5
-                },
-                &quot;2022-02-28&quot;: {
-                    &quot;equity&quot;: 0.6,
-                    &quot;money_market&quot;: 0.4
-                }
-            },
-            &quot;EQUITY_REGION&quot;: {
-                &quot;2022-01-31&quot;: {
-                    &quot;europe&quot;: 0.3,
-                    &quot;north_america&quot;: 0.6,
-                    &quot;emerging_markets&quot;: 0.1
-                },
-                &quot;2022-02-28&quot;: {
-                    &quot;europe&quot;: 0.35,
-                    &quot;north_america&quot;: 0.65
-                }
-            }
-        }
-        }
-    ]
-}
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-01-31&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-02-28&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;EQUITY_REGION&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-01-31&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;europe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;emerging_markets&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-02-28&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;europe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1746,7 +1765,11 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
@@ -1754,7 +1777,7 @@ X-Api-Key: $IVS_API_SECRET
 <span class="w">    </span><span class="nt">&quot;cache_date_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1801,71 +1824,70 @@ X-Api-Key: $IVS_API_SECRET
 <p>Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries).</p>
 <p>The endpoint accepts a batch of instruments at once. Let us look at an example.</p>
 <p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the day/fund-level (i.e., the entire day/fund gets overwritten with the uploaded data). For now, it is not possible to delete old values, only overwrite them.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/data/custom/attribution/batch/&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{&quot;data&quot;: [
-      {
-        &quot;fund_id&quot;: &quot;US78462F1030&quot;,
-        &quot;attribution_data&quot;: {
-          &quot;2022-03-08&quot;: {
-            &quot;US0378331005&quot;: -0.005838,
-            &quot;US88160R1014&quot;: 0.012317
-          },
-          &quot;2022-03-09&quot;: {
-            &quot;US0378331005&quot;: 0.017499,
-            &quot;US88160R1014&quot;: 0.020967
-          },
-          &quot;2022-03-10&quot;: {
-            &quot;US0378331005&quot;: -0.013593,
-            &quot;US88160R1014&quot;: -0.012032
-            }
-          }
-        }
-      ]
-    }&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Curl Request</label><label for="__tabbed_12_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/attribution/batch/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{&quot;data&quot;: [</span>
+<span class="s1">      {</span>
+<span class="s1">        &quot;fund_id&quot;: &quot;US78462F1030&quot;,</span>
+<span class="s1">        &quot;attribution_data&quot;: {</span>
+<span class="s1">          &quot;2022-03-08&quot;: {</span>
+<span class="s1">            &quot;US0378331005&quot;: -0.005838,</span>
+<span class="s1">            &quot;US88160R1014&quot;: 0.012317</span>
+<span class="s1">          },</span>
+<span class="s1">          &quot;2022-03-09&quot;: {</span>
+<span class="s1">            &quot;US0378331005&quot;: 0.017499,</span>
+<span class="s1">            &quot;US88160R1014&quot;: 0.020967</span>
+<span class="s1">          },</span>
+<span class="s1">          &quot;2022-03-10&quot;: {</span>
+<span class="s1">            &quot;US0378331005&quot;: -0.013593,</span>
+<span class="s1">            &quot;US88160R1014&quot;: -0.012032</span>
+<span class="s1">            }</span>
+<span class="s1">          }</span>
+<span class="s1">        }</span>
+<span class="s1">      ]</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/attribution/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /data/custom/attribution/batch/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-accept: application/json
-Content-Type: application/json
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-
-{
-    &quot;data&quot;: [
-        {
-            &quot;fund_id&quot;: &quot;US78462F1030&quot;,
-            &quot;attribution_data&quot;: {
-                &quot;2022-03-08&quot;: {
-                    &quot;US0378331005&quot;: -0.005838,
-                    &quot;US88160R1014&quot;: 0.012317
-                },
-                &quot;2022-03-09&quot;: {
-                    &quot;US0378331005&quot;: 0.017499,
-                    &quot;US88160R1014&quot;: 0.020967
-                },
-                &quot;2022-03-10&quot;: {
-                    &quot;US0378331005&quot;: -0.013593,
-                    &quot;US88160R1014&quot;: -0.012032
-                }
-            }
-        }
-    ]
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;fund_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78462F1030&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;attribution_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.005838</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012317</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017499</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020967</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2022-03-10&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.013593</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.012032</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1901,14 +1923,18 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_fund_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;cache_date_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>

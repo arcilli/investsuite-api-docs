@@ -1005,60 +1005,59 @@
 <p>Below, we elaborate further on how to use this endpoints in practice.</p>
 <h2 id="future-data-post">Future Data POST<a class="headerlink" href="#future-data-post" title="Permanent link">&para;</a></h2>
 <p>The endpoint has a range of predefined fields to query data for. Let us look at an example.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;POST&quot; \
-&quot;https://api.data.uat.investsuite.com/performance/future/&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
--d &#39;{
-        &quot;asset_classes&quot;: {
-        &quot;EQUITY&quot;: [0.8, 1],
-        &quot;FIXED_INCOME&quot;: [0, 0.2]
-        },
-        &quot;start_date&quot;: &quot;2022-01-31&quot;,
-        &quot;end_date&quot;: &quot;2022-12-31&quot;,
-        &quot;currency&quot;: &quot;EUR&quot;,
-        &quot;start_amount&quot;: 1000,
-        &quot;recurring_deposit_amount&quot;: 50,
-        &quot;recurring_deposit_frequency&quot;: &quot;M&quot;,
-        &quot;sample_frequency&quot;: &quot;M&quot;,
-        &quot;quantiles&quot;: [0.05, 0.5, 0.95],
-        &quot;use_expected_returns&quot;: false
-    }&#39;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/performance/future/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;asset_classes&quot;: {</span>
+<span class="s1">        &quot;EQUITY&quot;: [0.8, 1],</span>
+<span class="s1">        &quot;FIXED_INCOME&quot;: [0, 0.2]</span>
+<span class="s1">        },</span>
+<span class="s1">        &quot;start_date&quot;: &quot;2022-01-31&quot;,</span>
+<span class="s1">        &quot;end_date&quot;: &quot;2022-12-31&quot;,</span>
+<span class="s1">        &quot;currency&quot;: &quot;EUR&quot;,</span>
+<span class="s1">        &quot;start_amount&quot;: 1000,</span>
+<span class="s1">        &quot;recurring_deposit_amount&quot;: 50,</span>
+<span class="s1">        &quot;recurring_deposit_frequency&quot;: &quot;M&quot;,</span>
+<span class="s1">        &quot;sample_frequency&quot;: &quot;M&quot;,</span>
+<span class="s1">        &quot;quantiles&quot;: [0.05, 0.5, 0.95],</span>
+<span class="s1">        &quot;use_expected_returns&quot;: false</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/performance/future/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /performance/future/ HTTP/1.1
-Host: api.data.uat.investsuite.com
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-accept: application/json
-Content-Type: application/json
-
-{
-    &quot;asset_classes&quot;: {
-        &quot;EQUITY&quot;: [0.8, 1],
-        &quot;FIXED_INCOME&quot;: [0, 0.2]
-    },
-    &quot;start_date&quot;: &quot;2022-01-31&quot;,
-    &quot;end_date&quot;: &quot;2022-12-31&quot;,
-    &quot;currency&quot;: &quot;EUR&quot;,
-    &quot;start_amount&quot;: 1000,
-    &quot;recurring_deposit_amount&quot;: 50,
-    &quot;recurring_deposit_frequency&quot;: &quot;M&quot;,
-    &quot;sample_frequency&quot;: &quot;M&quot;,
-    &quot;quantiles&quot;: [0.05, 0.5, 0.95],
-    &quot;use_expected_returns&quot;: false
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;asset_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;EQUITY&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;FIXED_INCOME&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-31&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-12-31&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;recurring_deposit_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;recurring_deposit_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sample_frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;quantiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.95</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;use_expected_returns&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1199,7 +1198,11 @@ Content-Type: application/json
 </tbody>
 </table>
 <p>After uploading data, we get a response back:</p>
-<p>=== "Response (Body Content JSON)"
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1260,7 +1263,7 @@ Content-Type: application/json
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></p>
+</code></pre></div>
 <table>
 <thead>
 <tr>

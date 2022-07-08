@@ -1007,27 +1007,27 @@
 <p>To authenticate you need a tenant-user identifier and a secret key.
 Authenticate in the request header with your tenant-user identifier in the <code>X-TENANT-ID</code> header field and your secret key in the <code>X-Api-Key</code> header field. Reach out to your InvestSuite representative or send a mail to <a href="mailto:api@investsuite.com">api@investsuite.com</a> and we will set you up in no time.</p>
 <p>Example requests with authentication headers:</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;GET&quot; \
-&quot;https://api.data.uat.investsuite.com/&quot; \
--H &quot;accept: application/json&quot; \
--H &quot;Content-Type: application/json&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot;
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 </code></pre></div>
-
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-GET / HTTP/1.1
-Host: api.data.uat.investsuite.com
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-accept: application/json
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.</p>

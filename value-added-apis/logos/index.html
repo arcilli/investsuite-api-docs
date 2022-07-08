@@ -1005,28 +1005,28 @@
 <p>Our logo database is automatically collected with human-in-the-loop verification and periodic updates to catch out-of-date assets.</p>
 <h2 id="logo-get">Logo GET<a class="headerlink" href="#logo-get" title="Permanent link">&para;</a></h2>
 <p>Request a logo for an ISIN as .png image of a certain size with 1:1 square aspect ratio.</p>
-<p>=== "Curl Request"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X &quot;GET&quot; \
-&quot;https://api.data.uat.investsuite.com/logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128&quot; \
--H &quot;accept: */*&quot; \
--H &quot;Content-Type: image/png&quot; \
--H &quot;X-TENANT-ID: $TENANT_ID&quot; \
--H &quot;X-Api-Key: $IVS_API_SECRET&quot; \
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: */*&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: image/png&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 </code></pre></div>
-
-<p>=== "HTTP Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-GET /logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128 HTTP/1.1
-Host: api.data.uat.investsuite.com
-accept: */*
-Content-Type: image/png
-X-TENANT-ID: $TENANT_ID
-X-Api-Key: $IVS_API_SECRET
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">*/*</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">image/png</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1062,8 +1062,12 @@ X-Api-Key: $IVS_API_SECRET
 </tbody>
 </table>
 <p>After the request, we get the following example response:</p>
-<p>=== "Response (Body Image)"
-The image binary in <code>image/png</code> format.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Image)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>The image binary in <code>image/png</code> format.</p>
     
 
             </article>

@@ -1008,38 +1008,38 @@
 <h2 id="instrument-universe">Instrument universe<a class="headerlink" href="#instrument-universe" title="Permanent link">&para;</a></h2>
 <p>Financial instruments in general are assets that hold capital and can be traded in the market. Examples are shares, bonds, funds. To use StoryTeller, Optimizer, Self Investor, Robo Advisor you define an <em>instrument universe</em>. This is the collection of instruments that can be used to trade or report on. When you query <code>GET /financial-data/instruments/</code> the return will hold all instruments in the assigned universe.</p>
 <p>Getting the instrument universe is as simple as querying the whole Instruments collection.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-GET /financial-data/instruments/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {access_token_string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/financial-data/instruments/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {access_token_string}</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X GET &#39;https://api.sandbox.investsuite.com/financial-data/instruments/&#39; \
---H &#39;Authorization: Bearer {access_token_string}&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X GET <span class="s1">&#39;https://api.sandbox.investsuite.com/financial-data/instruments/&#39;</span> <span class="se">\</span>
+--H <span class="s1">&#39;Authorization: Bearer {access_token_string}&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="getting-instrument-details">Getting instrument details<a class="headerlink" href="#getting-instrument-details" title="Permanent link">&para;</a></h2>
 <p>To retrieve a single instrument request GET /financial-data/instruments/{instrument_id}/. This will return basic data on an instrument: its name, reference ID, type, end-of-day price and lookthrough data.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-GET /financial-data/instruments/BE0974293251/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {access_token_string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTTP</label><label for="__tabbed_2_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/financial-data/instruments/BE0974293251/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {access_token_string}</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X GET &#39;https://api.sandbox.investsuite.com/financial-data/instruments/BE0974293251/&#39; \
---H &#39;Authorization: Bearer {access_token_string}&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X GET <span class="s1">&#39;https://api.sandbox.investsuite.com/financial-data/instruments/BE0974293251/&#39;</span> <span class="se">\</span>
+--H <span class="s1">&#39;Authorization: Bearer {access_token_string}&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p>Response:
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE0974293251&quot;</span><span class="p">,</span><span class="w"></span>

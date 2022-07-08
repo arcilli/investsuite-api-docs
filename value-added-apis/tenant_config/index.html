@@ -1008,42 +1008,44 @@ This page is for internal documentation purposes.</p>
 </ul>
 <h2 id="data-model">Data Model<a class="headerlink" href="#data-model" title="Permanent link">&para;</a></h2>
 <p>A subsection per request type and subpath in the endpoint.</p>
-<p>=== "Example tenant_config.json"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-  &quot;UNIVERSES&quot;: [
-    {
-      &quot;NAME&quot;: &quot;EXAMPLE_UNIVERSE_1&quot;,
-      &quot;DATA_SOURCES&quot;: {
-        &quot;MORNINGSTAR&quot;: [
-          &quot;REFERENCE&quot;,
-          &quot;COMPOSITION&quot;
-        ],
-        &quot;DATASTREAM&quot;: [
-          &quot;REFERENCE&quot;,
-          &quot;TIMESERIES&quot;,
-          &quot;FUNDAMENTAL&quot;
-        ]
-      },
-      &quot;INSTRUMENTS&quot;: [
-        &quot;INSTRUMENT_ID_1&quot;
-        &quot;INSTRUMENT_ID_2&quot;
-      ],
-      &quot;INDICES&quot;: [
-        &quot;INDEX_ID_1&quot;,
-        &quot;INDEX_ID_2&quot;
-      ]
-    }
-  ],
-  &quot;ALLOWED_PROVIDERS&quot;: [
-    &quot;MORNINGSTAR&quot;,
-    &quot;DATASTREAM&quot;
-  ],
-  &quot;CLASSIFICATION_MAPPING&quot;: &quot;demo.com&quot;
-}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Example tenant_config.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;UNIVERSES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;NAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EXAMPLE_UNIVERSE_1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;DATA_SOURCES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MORNINGSTAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;COMPOSITION&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;DATASTREAM&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;TIMESERIES&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;FUNDAMENTAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;INSTRUMENTS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INSTRUMENT_ID_1&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INSTRUMENT_ID_2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;INDICES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INDEX_ID_1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INDEX_ID_2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;ALLOWED_PROVIDERS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;MORNINGSTAR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;DATASTREAM&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;CLASSIFICATION_MAPPING&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;demo.com&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>

@@ -1095,33 +1095,32 @@ Once you designed and configured a profiler together with InvestSuite, it is pos
 <p>The profile property values are initialized to a default value upon creation of the profile. This means that when all assessments in the profile are completed, but the user did not yet check the settings of the property values, a policy can already be determined.</p>
 <h2 id="create-profile">Create profile<a class="headerlink" href="#create-profile" title="Permanent link">&para;</a></h2>
 <p>When a user is created, it is possible to create a profile with the user ID. To create a profile for a user, a user ID and profiler ID are required. The user ID is the ID that is used by InvestSuite to uniquely identify the user. You can find the user ID by querying the <em>User</em> collection <code>GET /users/?query=…</code>, see the <a href="/docs/common_scenarios/users/#search">Search users</a> section for more information. The profiler ID identifies the profiler that will be used as template for the profile. This profiler is specific to the customer and is designed and configured together with InvestSuite. This profiler ID will be given to the customer after configuration. Let's try it out and create a profile for a specific <code>user_id</code> and <code>profiler_id</code>.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-POST /suitability-profiler/profiles/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/suitability-profiler/profiles/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;profiler_id&quot;: &quot;X01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,
-    &quot;user_id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;profiler_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;X01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/&#39; \                 
-    --header &quot;Content-Type: application/json&quot; \
-    --header &quot;Auhorization&quot;: &quot;Bearer {string}&quot;  \   
-    --data-raw &#39;{    
-            &quot;profiler_id&quot;: &quot;X01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,  
-            &quot;user_id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,  
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/&#39;</span> <span class="se">\ </span>                
+    --header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    --header <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;Bearer {string}&quot;</span>  <span class="se">\ </span>  
+    --data-raw <span class="s1">&#39;{    </span>
+<span class="s1">            &quot;profiler_id&quot;: &quot;X01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,  </span>
+<span class="s1">            &quot;user_id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;,  </span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1155,24 +1154,23 @@ curl --location --request POST &#39;https://api.sandbox.investsuite.com/suitabil
 The response contains the plain profile ID. This <code>profile_id</code> should be used in the url path of further requests.</p>
 <h2 id="conduct-an-assessment">Conduct an assessment<a class="headerlink" href="#conduct-an-assessment" title="Permanent link">&para;</a></h2>
 <p>When a profile is created for a user, we can start conducting the assessments in order to complete the profile. Each assessment is linked to a questionnaire, that determines what the assessment looks like. This questionnaire's <code>external_id</code> in combination with the ID of the created profile uniquely determine an assessment. These questionnaire IDs will be given to the customer after configuration. Let us give an example of how to retrieve an assessment.  </p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
-
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTTP</label><label for="__tabbed_2_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request GET &#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/&#39; \                 
---header &quot;Content-Type: application/json&quot; \
---header &quot;Auhorization&quot;: &quot;Bearer {string}&quot;  \   
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/questionnaires/DUMMY-External-ID/assessment/&#39;</span> <span class="se">\ </span>                
+--header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+--header <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;Bearer {string}&quot;</span>  <span class="se">\ </span>  
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1314,26 +1312,23 @@ curl --location --request GET &#39;https://api.sandbox.investsuite.com/suitabili
 </code></pre></div></p>
 <h2 id="get-a-profile-property-value">Get a profile property value<a class="headerlink" href="#get-a-profile-property-value" title="Permanent link">&para;</a></h2>
 <p>When a profile is created for a user, profile property values are initially set to a default value. The user can later on see these properties and change them if they like. For example, if the robo advisor offers the option to only invest in sharia compliant companies, a property value sharia_compliant can initially be set to false. If the user decides that they want to invest in only sharia compliant companies, this property can be set to true. Let's retrieve the property values together.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-GET /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
-
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">HTTP</label><label for="__tabbed_3_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request GET &#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/&#39; \                 
---header &quot;Content-Type: application/json&quot; \
---header &quot;Auhorization&quot;: &quot;Bearer {string}&quot;  \   
-
-
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/&#39;</span> <span class="se">\ </span>                
+--header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+--header <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;Bearer {string}&quot;</span>  <span class="se">\ </span>  
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
@@ -1364,31 +1359,31 @@ curl --location --request GET &#39;https://api.sandbox.investsuite.com/suitabili
 </code></pre></div></p>
 <h2 id="change-a-property-value">Change a property value<a class="headerlink" href="#change-a-property-value" title="Permanent link">&para;</a></h2>
 <p>The user can adjust its profile property values to make their portfolio more suitable to them. For example, if a user only wants to invest in Sharia compliant instruments, and the tenant supports this option, the profile property value corresponding to this option can be adjusted. Let's look at the below example.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP 
-PUT /suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
-Authorization: Bearer {string}
-{
-    &quot;type&quot;: &quot;BOOLEAN&quot;,
-    &quot;value&quot;: true,
-}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">HTTP</label><label for="__tabbed_4_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PUT</span> <span class="nn">/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+<span class="err">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BOOLEAN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request PUT &#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/&#39; \                 
---header &quot;Content-Type: application/json&quot; \
---header &quot;Auhorization&quot;: &quot;Bearer {string}&quot;  \   
---data-raw &#39;{   
-        &quot;type&quot;: &quot;BOOLEAN&quot;,  
-        &quot;value&quot;: true,  
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PUT <span class="s1">&#39;https://api.sandbox.investsuite.com/suitability-profiler/profiles/N01ARZ3NDEKTSV4RRFFQ69G5FAV/properties/ShariaCompliant/&#39;</span> <span class="se">\ </span>                
+--header <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+--header <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;Bearer {string}&quot;</span>  <span class="se">\ </span>  
+--data-raw <span class="s1">&#39;{   </span>
+<span class="s1">        &quot;type&quot;: &quot;BOOLEAN&quot;,  </span>
+<span class="s1">        &quot;value&quot;: true,  </span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>

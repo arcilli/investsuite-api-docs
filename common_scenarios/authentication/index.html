@@ -1016,31 +1016,30 @@
 <li>Add token: Issue a GET request with the access token.</li>
 </ol>
 <h2 id="login">Login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /auth/login/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/auth/login/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;access_key_id&quot;: &quot;{access_key}&quot;,
-    &quot;secret_access_key&quot;: &quot;{secret}&quot;
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;access_key_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{access_key}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;secret_access_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{secret}&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/auth/login/&#39; \
---header &#39;Content-Type: application/json&#39; \
---data-raw &#39;{
-        &quot;access_key_id&quot;:&quot;{access_key}&quot;,
-        &quot;secret_access_key&quot;:&quot;{secret}&quot;
-    }&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/auth/login/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;access_key_id&quot;:&quot;{access_key}&quot;,</span>
+<span class="s1">        &quot;secret_access_key&quot;:&quot;{secret}&quot;</span>
+<span class="s1">    }&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p>Response:
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="s2">&quot;{access_token_string}&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1051,44 +1050,44 @@ curl --location --request POST &#39;https://api.sandbox.investsuite.com/auth/log
 </code></pre></div></p>
 <h2 id="refresh-token">Refresh token<a class="headerlink" href="#refresh-token" title="Permanent link">&para;</a></h2>
 <p>Use the <code>/auth/refresh-token/</code>endpoint to silently prolong the session. This endpoint will return the same response as <code>/auth/login</code> does.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-POST /auth/refresh-token/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Content-Type: application/json
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTTP</label><label for="__tabbed_2_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/auth/refresh-token/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 
-{
-    &quot;refresh_token&quot;: &quot;{refresh_token_string}&quot;
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{refresh_token_string}&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl --location --request POST &#39;https://api.sandbox.investsuite.com/auth/refresh-token/&#39; \
---header &#39;Content-Type: application/json&#39; \
---data-raw &#39;{&quot;refresh_token&quot;: &quot;{refresh_token_string}&quot;}&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/auth/refresh-token/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+--data-raw <span class="s1">&#39;{&quot;refresh_token&quot;: &quot;{refresh_token_string}&quot;}&#39;</span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="add-token-to-requests">Add token to requests<a class="headerlink" href="#add-token-to-requests" title="Permanent link">&para;</a></h2>
 <p>You are obliged to use the JWT Web Token in all subsequent requests. This is the token that is returned in the <code>access_token</code> property. API requests without authentication will fail and return a <code>403 Access Forbidden</code>. JSON Web Tokens must be specified via an authorization header as a Bearer token, eg: <code>Authorization: Bearer 4eC39HqLyjWDarjtT1zdp7dc</code>.</p>
 <p>To try, replace {string} in the curl request below with the <code>access_token</code> you obtained above, and launch the command from your terminal.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP
-GET /users/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {access_token_string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">HTTP</label><label for="__tabbed_3_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/users/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {access_token_string}</span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X GET &#39;https://api.sandbox.investsuite.com/users/&#39; \
---H &#39;Authorization: Bearer {access_token_string}&#39;
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/&#39;</span> <span class="se">\</span>
+--H <span class="s1">&#39;Authorization: Bearer {access_token_string}&#39;</span>
 </code></pre></div>
+</div>
+</div>
+</div>
     
 
             </article>

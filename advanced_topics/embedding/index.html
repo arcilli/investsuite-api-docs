@@ -1035,272 +1035,272 @@
 </div>
 <h2 id="single-embedded-entity">Single embedded entity<a class="headerlink" href="#single-embedded-entity" title="Permanent link">&para;</a></h2>
 <p>Suppose an API client requires both data for a specific portfolio (<code>P01234567890123456789012345</code>) <em>and</em> data for the user that owns this particular portfolio. Without embedding, this would be a sequential two-step process, where the client first retrieves the portfolio in question:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/P01234567890123456789012345 HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/P01234567890123456789012345</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;readable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;modifiable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;external_id&quot;: &quot;my_external_portfolio_id&quot;,
-    &quot;name&quot;: &quot;Example Portfolio&quot;,
-    &quot;owned_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-    &quot;portfolio&quot;: {
-        ...
-    },
-    ...
-    &quot;id&quot;: &quot;P01234567890123456789012345&quot;,
-    ...
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_portfolio_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Portfolio&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <p>And then uses the <code>owned_by_user_id</code> field value (<code>U01234567890123456789012345</code>) in the response to query data for the owner, who turns out the be <code>John Doe</code>:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /users/U01234567890123456789012345 HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;9 10&quot;
-{
-    &quot;readable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;,
-    ],
-    &quot;modifiable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;,
-    ],
-    &quot;external_id&quot;: &quot;my_external_user_id&quot;,
-    &quot;first_name&quot;: &quot;John&quot;,
-    &quot;last_name&quot;: &quot;Doe&quot;,
-    &quot;email&quot;: &quot;john_doe@example.com&quot;,
-    ...
-    &quot;id&quot;: &quot;U01234567890123456789012345&quot;,
-    ...
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_user_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john_doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this example, unless the client already knows the <code>UserID</code> of the owner for this portfolio, the requests will by definition always be sequential because the required path parameter for the requests to <code>/users/</code> is not known until the first response is received.</p>
 </div>
 <p>With embedding, both requests can be rolled into a <strong>single operation</strong>, which adds the referenced entities to the <code>_embedded</code> key at the root of the response (see below). Note that this object contains a dictionary where the keys are the referenced <code>EntityID</code>s and the value is the data for that entity (in this case a <code>User</code> object). The client can now directly parse the information for the <code>UserID</code> appearing in the <code>owned_by_used_id</code> field from the <code>_embedded</code> object without having to perform a subsequent request to <code>/users/</code>.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/P01234567890123456789012345?embed=owned_by_user_id HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/P01234567890123456789012345?embed=owned_by_user_id</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10 18&quot;
-{
-    &quot;readable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;modifiable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;external_id&quot;: &quot;my_external_portfolio_id&quot;,
-    &quot;name&quot;: &quot;Example Portfolio&quot;,
-    &quot;owned_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-    &quot;portfolio&quot;: {
-        ...
-    },
-    ...
-    &quot;id&quot;: &quot;P01234567890123456789012345&quot;,
-    ...
-    &quot;_embedded&quot;: {
-        &quot;U01234567890123456789012345&quot;: {
-            &quot;readable_by&quot;: [
-                &quot;U01234567890123456789012345&quot;,
-            ],
-            &quot;modifiable_by&quot;: [
-                &quot;U01234567890123456789012345&quot;,
-            ],
-            &quot;external_id&quot;: &quot;my_external_user_id&quot;,
-            &quot;first_name&quot;: &quot;John&quot;,
-            &quot;last_name&quot;: &quot;Doe&quot;,
-            &quot;email&quot;: &quot;john_doe@example.com&quot;,
-            ...
-            &quot;id&quot;: &quot;U01234567890123456789012345&quot;,
-            ...
-        }
-    }
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_portfolio_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Portfolio&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U01234567890123456789012345&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_user_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john_doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>The amount of 'work' required to retrieve data can be significantly reduced on both sides if embedding is used cleverly. In the above example, the number of requests required from the client is cut in half, which speeds up the interaction considerably. At the same time, API resources are used efficiently, as per-request overhead can be avoided.</p>
 </div>
 <h2 id="multiple-embedded-entities">Multiple embedded entities<a class="headerlink" href="#multiple-embedded-entities" title="Permanent link">&para;</a></h2>
 <p>For the next example, assume that the client requires a portfolio, the owner of the portfolio, <em>and</em> the user that updated the portfolio most recently. This can be achieved by adding <strong>multiple response fields</strong> to the <code>embed=</code> param, separated by commas:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/P01234567890123456789012345?embed=owned_by_user_id,version_authored_by_user_id HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/P01234567890123456789012345?embed=owned_by_user_id,version_authored_by_user_id</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10 17 19&quot;
-{
-    &quot;readable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;modifiable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;external_id&quot;: &quot;my_external_portfolio_id&quot;,
-    &quot;name&quot;: &quot;Example Portfolio&quot;,
-    &quot;owned_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-    &quot;portfolio&quot;: {
-        ...
-    },
-    ...
-    &quot;id&quot;: &quot;P01234567890123456789012345&quot;,
-    ...
-    &quot;version_authored_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-    &quot;_embedded&quot;: {
-        &quot;U01234567890123456789012345&quot;: {
-            &quot;readable_by&quot;: [
-                &quot;U01234567890123456789012345&quot;,
-            ],
-            &quot;modifiable_by&quot;: [
-                &quot;U01234567890123456789012345&quot;,
-            ],
-            &quot;external_id&quot;: &quot;my_external_user_id&quot;,
-            &quot;first_name&quot;: &quot;John&quot;,
-            &quot;last_name&quot;: &quot;Doe&quot;,
-            &quot;email&quot;: &quot;john_doe@example.com&quot;,
-            ...
-            &quot;id&quot;: &quot;U01234567890123456789012345&quot;,
-            ...
-        }
-    }
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_portfolio_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Portfolio&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U01234567890123456789012345&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_user_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;john_doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In this case, the referenced entity comes up twice: both as the owner of the portfolio and as the author of the most recent version. As a result, the <code>_embedded</code> object only contains a single object (no repeated keys). This helps to further reduce repeated queries and unnecessary overhead.</p>
 </div>
 <h2 id="embedding-with-collections">Embedding with collections<a class="headerlink" href="#embedding-with-collections" title="Permanent link">&para;</a></h2>
 <p>Similar to single-entity responses, collections support embedding as well. If embedding is requested, the <code>_embedded</code> object will contain referenced entities for <strong>all objects returned in the collection</strong>. For instance, a client can request a list of 10 portfolios and directly embed the owners of all these portfolios. This is particularly useful when creating front-end views or collecting data for reporting purposes where multiple entities need to be joined together in bulk. This process also reduces overhead on the server side: 1 query to retrieve portfolios, and 1 query to filter for the list of users is a lot more efficient than requesting these entities sequentially from the client side.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/?embed=owned_by_user_id&amp;limit=10 HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/?embed=owned_by_user_id&amp;limit=10</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;6 11 18 22&quot;
-{
-    &quot;next&quot;: &quot;http://api.investsuite.com/portfolios/?embed=owned_by_user_id&amp;limit=10&amp;offset=P01234567890123456789012345&quot;,
-    &quot;offset&quot;: &quot;P01234567890123456789012345&quot;,
-    &quot;results&quot;: [
-        {
-            &quot;owned_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-            &quot;id&quot;: &quot;P01234567890123456789012345&quot;,
-            ...
-        },
-        {
-            &quot;owned_by_user_id&quot;: &quot;U98765432109876543210987654&quot;,
-            &quot;id&quot;: &quot;P98765432109876543210987654&quot;,
-            ...
-        },
-        ...
-    ],
-    &quot;_embedded&quot;: {
-        &quot;U01234567890123456789012345&quot;: {
-            &quot;first_name&quot;: &quot;John&quot;,
-            ...
-        },
-        &quot;U98765432109876543210987654&quot;: {
-            &quot;first_name&quot;: &quot;Jane&quot;,
-            ...
-        },
-        ...
-    }
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://api.investsuite.com/portfolios/?embed=owned_by_user_id&amp;limit=10&amp;offset=P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U98765432109876543210987654&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P98765432109876543210987654&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U01234567890123456789012345&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U98765432109876543210987654&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="embedding-a-reference-to-a-list-of-entities">Embedding a reference to a list of entities<a class="headerlink" href="#embedding-a-reference-to-a-list-of-entities" title="Permanent link">&para;</a></h2>
 <p>Finally, it is also possible to embed not just a single referenced entity, but an array pointing at multiple entity IDs. The <code>readable_by</code> and <code>modifiable_by</code> arrays in the standard entity response are a good example, as these can contain references to multiple (different) entities, such as users and user groups. Suppose the requirement is to retrieve all users that have read access to a certain portfolio, which again can be achieved with a single request. In the below response, user <code>Jane</code> has view-only permissions to the portfolio of <code>John</code>, who is the owner and has both read and write permissions:</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/P01234567890123456789012345?embed=readable_by HTTP/1.1
-Host: api.investsuite.com
-Accept: application/json
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label><label for="__tabbed_6_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/P01234567890123456789012345?embed=readable_by</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;3 4 18 22&quot;
-{
-    &quot;readable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;,
-        &quot;U98765432109876543210987654&quot;,
-    ],
-    &quot;modifiable_by&quot;: [
-        &quot;U01234567890123456789012345&quot;
-    ],
-    &quot;external_id&quot;: &quot;my_external_portfolio_id&quot;,
-    &quot;name&quot;: &quot;Example Portfolio&quot;,
-    &quot;owned_by_user_id&quot;: &quot;U01234567890123456789012345&quot;,
-    &quot;portfolio&quot;: {
-        ...
-    },
-    &quot;id&quot;: &quot;P01234567890123456789012345&quot;,
-    ...
-    &quot;_embedded&quot;: {
-        &quot;U01234567890123456789012345&quot;: {
-            &quot;first_name&quot;: &quot;John&quot;,
-            ...
-        },
-        &quot;U98765432109876543210987654&quot;: {
-            &quot;first_name&quot;: &quot;Jane&quot;,
-            ...
-        }
-    }
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="s2">&quot;U98765432109876543210987654&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_external_portfolio_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Example Portfolio&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U01234567890123456789012345&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;U98765432109876543210987654&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="err">...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <div class="admonition faq">
 <p class="admonition-title">What common errors can be encountered when working with embedding?</p>

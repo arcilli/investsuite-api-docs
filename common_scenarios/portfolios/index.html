@@ -1027,291 +1027,289 @@
 <p>A portfolio holds one or more investment products for instance stocks, ETFs or cryptocurrency. The composition of a portfolio depends on the investor’s goals, budget, risk appetite and the holding period. An investor can without advise decide what instruments a portfolio is made of. In this case it is a “self managed” portfolio. A portfolio can equally be composed by an algorithm such as the InvestSuite’s iVar algorithm. In that case the portfolio is managed by a Robo Advisor.</p>
 <p>Once you have created a portfolio you can create a portfolio and assign the portfolio as owner.</p>
 <h2 id="create-a-portfolio">Create a portfolio<a class="headerlink" href="#create-a-portfolio" title="Permanent link">&para;</a></h2>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-POST /portfolios/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">POST</span> <span class="nn">/portfolios/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_settings&quot;:{
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;,
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;
-        },
-        &quot;manager_version&quot;:1
-    },
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_user_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;&quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_version&quot;:1,
-        &quot;manager_settings&quot;:{
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;,
-            &quot;active&quot;:true
-        }
-    },
-    &quot;brokerage_account&quot;:null,
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-    &quot;snapshot_datetime&quot;:null,
-    &quot;archived&quot;:false,
-    &quot;funded_since&quot;:null,
-    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version&quot;:1,
-    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
-    &quot;deleted&quot;:false,
-    &quot;status&quot;:&quot;ACTIVE&quot;
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="nt">&quot;your-bank-portfolio-1&quot;&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;active&quot;</span><span class="p">:</span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;brokerage_account&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;snapshot_datetime&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;archived&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ACTIVE&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="get-a-portfolio">Get a portfolio<a class="headerlink" href="#get-a-portfolio" title="Permanent link">&para;</a></h2>
 <p>Add the InvestSuite ID to the path to retrieve a portfolio object.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
-    &quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_version&quot;:1,
-        &quot;manager_settings&quot;:{
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;
-        }
-    },
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-    &quot;snapshot_datetime&quot;:null,
-    &quot;archived&quot;:false,
-    &quot;funded_since&quot;:null,
-    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version&quot;:1,
-    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
-    &quot;deleted&quot;:false,
-    &quot;status&quot;:&quot;ACTIVE&quot;
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;snapshot_datetime&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;archived&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;ACTIVE&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
 <p>You can query each entity through a general endpoint e.g. <code>GET /portfolios/?query=…</code>. Learn more in the <a href="../../advanced_topics/collections/">Handling collection responses</a> section.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-GET /portfolios/
-    ?query=external_id+eq+&#39;your-bank-portfolio-1&#39; HTTP/1.1
-Host: api.sandbox.investsuite.com
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /portfolios/</span>
+</span><span class="err">    ?query=external_id+eq+&#39;your-bank-portfolio-1&#39; HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
-    &quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_version&quot;:1,
-        &quot;manager_settings&quot;:{
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;,
-        }
-    },
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-    &quot;snapshot_datetime&quot;:null,
-    &quot;funded_since&quot;:null,
-    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version&quot;:1,
-    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
-    &quot;deleted&quot;:false,
-    &quot;status&quot;:&quot;WAITING_FOR_FUNDS&quot;
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;snapshot_datetime&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;WAITING_FOR_FUNDS&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="change-patch-fields">Change ("patch") fields<a class="headerlink" href="#change-patch-fields" title="Permanent link">&para;</a></h2>
 <p>Given the right permissions you can update any object by issuing a <code>PATCH</code> request. </p>
 <p>Apart from the <code>manager</code> and <code>money_type</code> fields all portfolio fields can be updated. The manager field defines the type of portfolio management: self directed, under an advisory mandate, under a discretionary mandate. Once that is set it is not supposed to change. Same for the money_type. That field states if the portfolio manages real money or paper money. It’s obvious that this field cannot be switched at will.</p>
 <p>Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-&quot;config&quot;: {
-    &quot;manager_settings&quot;: {
-        &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;
-    }
-}
-```
+<span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
-{
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
-    &quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_version&quot;:1,
-        &quot;manager_settings&quot;:{
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;
-        }
-    },
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-    &quot;funded_since&quot;:null,
-    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version&quot;:2,
-    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
-    &quot;deleted&quot;:false,
-    &quot;status&quot;:&quot;WAITING_FOR_FUNDS&quot;
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;WAITING_FOR_FUNDS&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="delete-a-portfolio">Delete a portfolio<a class="headerlink" href="#delete-a-portfolio" title="Permanent link">&para;</a></h2>
 <p>Given the right permissions you can delete any object by issuing a <code>DELETE</code> request.</p>
-<p>=== "Request"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-DELETE /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
-```
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">DELETE</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
-
-<p>=== "Response (body)"</p>
-<div class="codehilite"><pre><span></span><code>```JSON
-{
-    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
-    &quot;name&quot;:&quot;General investing&quot;,
-    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
-    &quot;base_currency&quot;:&quot;USD&quot;,
-    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
-    &quot;config&quot;:{
-        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
-        &quot;manager_version&quot;:1,
-        &quot;manager_settings&quot;:{
-            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
-            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
-            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;
-        }
-    },
-    &quot;portfolio&quot;:{
-        &quot;$USD&quot;:10000
-    },
-    &quot;funded_since&quot;:null,
-    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version&quot;:2,
-    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
-    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
-    &quot;deleted&quot;:true,
-    &quot;status&quot;:&quot;WAITING_FOR_FUNDS&quot;
-}
-```
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;WAITING_FOR_FUNDS&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <h2 id="block-a-portfolio">Block a portfolio<a class="headerlink" href="#block-a-portfolio" title="Permanent link">&para;</a></h2>
 <p>Both for Self Investor portfolios as well as for Robo Advisor portfolios access can be blocked. In the case of Self Investor this means the customer can no longer trade, the account is blocked as it were. For Robo Advisor when the portfolio is blocked, the Robo Advisor will no longer compute optimisations to provide rebalancing recommendations.</p>
-<p>=== "HTTP"</p>
-<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
-PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-Host: api.sandbox.investsuite.com
-Accept-Encoding: gzip, deflate
-Connection: Keep-Alive
-Content-Type: application/json
-Authorization: Bearer {string}
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">HTTP</label><label for="__tabbed_6_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 
-{
-    &quot;manager&quot;: {
-        &quot;manager_settings&quot;: {
-            active: false
-        }
-    }
-}
-
-```
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="err">ac</span><span class="kc">t</span><span class="err">ive</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-
-<p>=== "curl"</p>
-<div class="codehilite"><pre><span></span><code>```bash
-curl -X PATCH \                 
--H &quot;Content-Type: application/json&quot; \
--H &quot;Auhorization&quot;: &quot;{string}&quot;  \   
--d &#39;{ &quot;config&quot;: { &quot;manager_settings&quot;: { active: false } } } }&#39; \
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X PATCH <span class="se">\ </span>                
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;{string}&quot;</span>  <span class="se">\ </span>  
+-d <span class="s1">&#39;{ &quot;config&quot;: { &quot;manager_settings&quot;: { active: false } } } }&#39;</span> <span class="se">\</span>
 https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
-```
 </code></pre></div>
-
+</div>
+</div>
+</div>
 <table>
 <thead>
 <tr>
