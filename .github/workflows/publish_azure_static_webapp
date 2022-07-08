@@ -1,0 +1,10 @@
+name: Publish Azure Static Web App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
