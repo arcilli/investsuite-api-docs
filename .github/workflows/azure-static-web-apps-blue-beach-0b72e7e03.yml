@@ -18,6 +18,21 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
+      
+      - name: Set up runtime
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip wheel
+          pip install -r requirements.txt
+          
+      - name: Publish docs
+        run: |
+          mkdocs gh-deploy --verbose --force
+          
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
