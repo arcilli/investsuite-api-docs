@@ -31,7 +31,7 @@ jobs:
           
       - name: Publish docs
         run: |
-          mkdocs gh-deploy --verbose --force
+          mkdocs build --verbose --force
           
       - name: Build And Deploy
         id: builddeploy
