@@ -10,7 +10,7 @@ site_description: >-
 # docs repository
 repo_name: View/Edit on GitHub
 repo_url: https://github.com/investsuite/investsuite-api-docs
-edit_uri: /investsuite/investsuite-api-docs/blob/master/docs
+edit_uri: edit/master/docs
 
 # copyright
 copyright: Copyright &copy; 2022 InvestSuite
@@ -63,8 +63,8 @@ markdown_extensions:
       permalink: true
   - admonition
   - pymdownx.details
-#  - pymdownx.tabbed:
-#      alternate_style: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences
   - codehilite:
       guess_lang: false
