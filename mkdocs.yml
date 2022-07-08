@@ -13,7 +13,7 @@ repo_url: https://github.com/investsuite/investsuite-api-docs
 edit_uri: /investsuite/investsuite-api-docs/blob/master/docs
 
 # copyright
-copyright: Copyright &copy; 2021 InvestSuite
+copyright: Copyright &copy; 2022 InvestSuite
 
 # mkdocs config
 theme:
