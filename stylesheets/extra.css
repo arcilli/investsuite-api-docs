@@ -1,0 +1,11 @@
+/* Custom InvestSuite color palette */
+[data-md-color-scheme="investsuite"] {
+    --md-primary-fg-color:        #e7285d;
+    --md-primary-fg-color--light: #F7C0BD;
+    --md-primary-fg-color--dark:  #ffffff;
+    --md-accent-fg-color:  #0000ff;
+  }
+
+.md-typeset h1 {
+  margin: 0 0 0.5em 0;
+}

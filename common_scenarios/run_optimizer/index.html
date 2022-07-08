@@ -1,0 +1,1498 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The InvestSuite API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
+      
+      
+        <meta name="author" content="InvestSuite">
+      
+      
+        <link rel="canonical" href="https://api.investsuite.com/docs/common_scenarios/run_optimizer/">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Optimize a portfolio - InvestSuite API documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="InvestSuite API documentation - Optimize a portfolio">
+<meta property="og:description" content="The InvestSuite API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
+<meta property="og:url" content="https://api.investsuite.com/docs/common_scenarios/run_optimizer/">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="investsuite" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#context" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="InvestSuite API documentation" class="md-header__button md-logo" aria-label="InvestSuite API documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            InvestSuite API documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Optimize a portfolio
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/investsuite/investsuite-api-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M448 336V48c0-26.51-21.5-48-48-48H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1 0-11.72-6.607-21.52-16-27.1v-81.36c9.8-9.64 16-22.24 16-36.44zM143.1 128h192c9.7 0 16.9 7.2 16.9 16s-7.2 16-16 16H143.1c-7.9 0-15.1-7.2-15.1-16s7.2-16 15.1-16zm0 64h192c9.7 0 16.9 7.2 16.9 16s-7.2 16-16 16H143.1c-7.9 0-15.1-7.2-15.1-16s7.2-16 15.1-16zM384 448H96c-17.67 0-32-14.33-32-32s14.33-32 32-32h288v64z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View/Edit on GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Introduction
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../authentication/" class="md-tabs__link md-tabs__link--active">
+        Common scenarios
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../robo/quick_start/" class="md-tabs__link">
+        Robo Advisor
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../self/quick_start/" class="md-tabs__link">
+        Self Investor
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../advanced_topics/collections/" class="md-tabs__link">
+        Advanced topics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../value-added-apis/authentication_usage/" class="md-tabs__link">
+        Value Added APIs
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://api.sandbox.investsuite.com/redoc" class="md-tabs__link">
+      InvestSuite API specification
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../changelog/" class="md-tabs__link">
+      Release notes
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="InvestSuite API documentation" class="md-nav__button md-logo" aria-label="InvestSuite API documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    InvestSuite API documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/investsuite/investsuite-api-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M448 336V48c0-26.51-21.5-48-48-48H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1 0-11.72-6.607-21.52-16-27.1v-81.36c9.8-9.64 16-22.24 16-36.44zM143.1 128h192c9.7 0 16.9 7.2 16.9 16s-7.2 16-16 16H143.1c-7.9 0-15.1-7.2-15.1-16s7.2-16 15.1-16zm0 64h192c9.7 0 16.9 7.2 16.9 16s-7.2 16-16 16H143.1c-7.9 0-15.1-7.2-15.1-16s7.2-16 15.1-16zM384 448H96c-17.67 0-32-14.33-32-32s14.33-32 32-32h288v64z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    View/Edit on GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Introduction" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Introduction
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        Glossary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Common scenarios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Common scenarios" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Common scenarios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../account_initiation/" class="md-nav__link">
+        Account initiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Optimize a portfolio
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Optimize a portfolio
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-setup" class="md-nav__link">
+    Basic setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#patch-portfolio" class="md-nav__link">
+    Patch portfolio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-optimizations" class="md-nav__link">
+    Get optimizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#portfolio-is-ok" class="md-nav__link">
+    Portfolio is OK
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronize_portfolios/" class="md-nav__link">
+        Synchronize portfolios
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cash_movements/" class="md-nav__link">
+        Funding and withdrawal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suitability_profiler/" class="md-nav__link">
+        Suitability profiler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial_data/" class="md-nav__link">
+        Financial data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        Manage users
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../portfolios/" class="md-nav__link">
+        Manage portfolios
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Robo Advisor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Robo Advisor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Robo Advisor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../robo/quick_start/" class="md-nav__link">
+        Quick start
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Self Investor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Self Investor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Self Investor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self/quick_start/" class="md-nav__link">
+        Quick start
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Advanced topics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Advanced topics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Advanced topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/collections/" class="md-nav__link">
+        Handling collection responses
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/errors/" class="md-nav__link">
+        A closer look at API errors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/embedding/" class="md-nav__link">
+        Embedding
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/onboarding/" class="md-nav__link">
+        Onboarding
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Value Added APIs
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Value Added APIs" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Value Added APIs
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
+        Authentication & Usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
+        Custom Data API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
+        Themes API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
+        Inspiration API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
+        Logos API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
+        Monte Carlo API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
+        Reference API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
+        Tenant Configuration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://api.sandbox.investsuite.com/redoc" class="md-nav__link">
+        InvestSuite API specification
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Release notes
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+    <h1>Optimize a portfolio</h1>
+    <div class="md-source-date">
+    <small>
+        <hr style="margin:0.5rem 0rem;">
+        
+    </small>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
+<script>timeago.render(document.querySelectorAll('.timeago'));</script>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>The Optimizer is an essential component of the InvestSuite Robo Advisor. It constructs out of an existing portfolio an optimal portfolio. For this, an algorithm is configured which will suggest a list of orders to be placed with the broker. These orders bring the portfolio in line with the optimal portfolio.</p>
+<p>The default algorithm underpinning the Optimizer is called <strong>iVar</strong>. InvestSuite has developed iVar as a human-centric measure of risk. It is a 4th-generation risk measure that addresses the shortcomings of traditional risk measures, with a clear and distinct focus on controlling risk - over maximising return. Next to iVaR, all contemporary risk measures such as volatility, Value-at-Risk and conditional Value-at-Risk are supported.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>What is iVaR?</strong> </p>
+<p>Traditional investment risk measures that are still used today, such as volatility, have historically been chosen because of their simple mathematical properties. They do not work well to describe the risk of real investment portfolios and are not consistent with what end investors perceive as risk.  Following the above observations, we developed a new, innovative risk measure which we call InvestSuite Value at Risk (iVaR). Our basic premise is that any instrument or portfolio providing strict monotonic growth (i.e., no losses) should be risk-less, regardless of the speed or consistency of the growth. The reason for this premise is that it matches the behaviour of a savings account, which also increases monotonically in value over time, and is considered risk-less by end investors. </p>
+</div>
+<h2 id="basic-setup">Basic setup<a class="headerlink" href="#basic-setup" title="Permanent link">&para;</a></h2>
+<p>The basic setup is straightforward:</p>
+<p><img alt="Optimizer Integration" src="../../img/investsuite_optimizer_api_integration_high_level.jpg" /></p>
+<ol>
+<li>From your program, or from a common mobile app, the portfolio's holdings are sent in a <code>PATCH</code> request. We pass that to the optimizer.</li>
+<li>You issue a <code>GET</code> request, at your pace, against <code>/portfolios/{id}/optimizations/current/</code>. When the latest optimization is computed - takes between 5 seconds and 2 minutes - you receive order recommendations.</li>
+<li>You place the orders with your broker. (unless we agreed that InvestSuite would connect to the broker)</li>
+</ol>
+<h2 id="patch-portfolio">Patch portfolio<a class="headerlink" href="#patch-portfolio" title="Permanent link">&para;</a></h2>
+<p>Portfolios managed in the InvestSuite platform are either composed by the investor, i.e. Self Execution, or by the Robo Advisor. Management by the Robo Advisor can be under two mandates: an advisory mandate or a discretionary mandate. In case of an advisory mandate the investor can intervene on the Robo Advisor's order recommendations. In case of a discretionary mandate the Robo Advisor is in full charge of the rebalancing process, and the investor enjoys a full "auto pilot" mode.</p>
+<p>Either way, each time a portfolio managed by the Robo Advisor is updated an optimization is triggered. In other words: <strong>to trigger the optimizer, patch the portfolio.</strong></p>
+<p>Prerequisites: prior to patching a portfolio, make sure there <em>is</em> a portfolio referencing a policy, see <a href="/docs/common_scenarios/account_initiation/#create-a-portfolio">Portfolio creation</a>. Below example patches the portfolio by updating the holdings.</p>
+<p>=== "Request"</p>
+<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
+PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+Host: api.sandbox.investsuite.com
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/json
+Authorization: Bearer {string}
+
+{
+    &quot;portfolio&quot;: {
+        &quot;$USD&quot;:10000,
+        &quot;US4642886612&quot;:0.76,
+        &quot;US78468R1014&quot;:3,
+        &quot;US4642863926&quot;:0.7381
+    }
+}
+```
+</code></pre></div>
+
+<p>=== "Response (body)"</p>
+<div class="codehilite"><pre><span></span><code>```JSON hl_lines=&quot;10&quot;
+{
+    &quot;external_id&quot;:&quot;your-bank-portfolio-1&quot;,
+    &quot;name&quot;:&quot;General investing&quot;,
+    &quot;owned_by_portfolio_id&quot;:&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;,
+    &quot;base_currency&quot;:&quot;USD&quot;,
+    &quot;money_type&quot;:&quot;PAPER_MONEY&quot;,
+    &quot;config&quot;:{
+        &quot;manager&quot;:&quot;ROBO_ADVISOR_DISCRETIONARY&quot;,
+        &quot;manager_version&quot;:1,
+        &quot;manager_settings&quot;:{
+            &quot;policy_id&quot;:&quot;Y01EF46X9XB437JS4678X0K529C&quot;,
+            &quot;goal_id&quot;:&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;,
+            &quot;horizon_id&quot;:&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;
+        }
+    },
+    &quot;portfolio&quot;:{
+        &quot;$USD&quot;:10000,
+        &quot;US4642886612&quot;:0.76,
+        &quot;US78468R1014&quot;:3,
+        &quot;US4642863926&quot;:0.7381
+    },
+    &quot;funded_since&quot;:null,
+    &quot;id&quot;:&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
+    &quot;creation_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
+    &quot;version&quot;:2,
+    &quot;version_datetime&quot;:&quot;2021-06-24T19:59:15.474241+00:00&quot;,
+    &quot;version_authored_by_portfolio_id&quot;:&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;,
+    &quot;deleted&quot;:false,
+    &quot;status&quot;:&quot;WAITING_FOR_FUNDS&quot;
+}
+```
+</code></pre></div>
+
+<p>This will now trigger an optimization.</p>
+<h2 id="get-optimizations">Get optimizations<a class="headerlink" href="#get-optimizations" title="Permanent link">&para;</a></h2>
+<p>Calculation of an optimization takes between 5 seconds and a couple of minutes depending on the complexity of the referenced investment policy, and the compute resources made available to the system. When calculation is in process the server returns a <code>202</code> response. Else the server returns a <code>200</code>, and an Optimization object.</p>
+<p>Given you assigned a policy and at least a cash position to the portfolio, you can now issue a <code>GET</code> request to retrieve order recommendations for the portfolio you just initiated.</p>
+<p>=== "HTTP"</p>
+<div class="codehilite"><pre><span></span><code>```HTTP hl_lines=&quot;1&quot;
+GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimizations/current/ HTTP/1.1
+Host: api.sandbox.investsuite.com
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/json
+Authorization: Bearer {string}
+```
+</code></pre></div>
+
+<p>=== "curl"</p>
+<div class="codehilite"><pre><span></span><code>```bash
+curl -X GET \                 
+-H &quot;Auhorization&quot;: &quot;{string}&quot;  \   
+https://api.sandbox.investsuite.com/portfolios/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimizations/current/
+```
+</code></pre></div>
+
+<p><strong>Response body upon calculation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Optimization is not available (yet). Could not get optimization for optimization_hash.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Entity &#39;None&#39; (version=None) not found for tenant &#39;None&#39;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;optimization_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8b22a2d4bdd142c6dca4ead3da80b4e8&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><strong>Response body after calculation</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;current_solution&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;objective_value&quot;</span><span class="p">:</span><span class="mf">-2.3899945188058256e-05</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mf">402.52</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;look_through&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;asset_classes&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;alternatives&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bonds&quot;</span><span class="p">:</span><span class="mf">1.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;commodities&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;stocks&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cash&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;regions&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bonds&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="mf">1.0</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;stocks&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bond_types&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sectors&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;basic_materials&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;consumer_cyclical&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;consumer_defensive&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;communication_services&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;financial_services&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;healthcare&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;industrials&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;real_estate&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;technology&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;utilities&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;optimal_solution&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;objective_value&quot;</span><span class="p">:</span><span class="mf">0.001359509844724587</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US46429B2676&quot;</span><span class="p">:</span><span class="mf">3.7190000000000003</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R2004&quot;</span><span class="p">:</span><span class="mf">3.0000000000000004</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mf">14.769662844999981</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;look_through&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;asset_classes&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;alternatives&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bonds&quot;</span><span class="p">:</span><span class="mf">0.7986485447656201</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;commodities&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;stocks&quot;</span><span class="p">:</span><span class="mf">0.20135145523437992</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cash&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;regions&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;bonds&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="mf">1.0</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;stocks&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="mf">0.09369676320272571</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="mf">0.1799403747870528</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="mf">0.7263628620102215</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bond_types&quot;</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sectors&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;basic_materials&quot;</span><span class="p">:</span><span class="mf">0.046054619609495716</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;consumer_cyclical&quot;</span><span class="p">:</span><span class="mf">0.13806308600212508</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;consumer_defensive&quot;</span><span class="p">:</span><span class="mf">0.07094628258129534</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;communication_services&quot;</span><span class="p">:</span><span class="mf">0.022473042495950425</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="mf">0.03446538322470511</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;financial_services&quot;</span><span class="p">:</span><span class="mf">0.16124155877170626</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;healthcare&quot;</span><span class="p">:</span><span class="mf">0.12224125679967916</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;industrials&quot;</span><span class="p">:</span><span class="mf">0.11992341101283713</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;real_estate&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;technology&quot;</span><span class="p">:</span><span class="mf">0.2563740870896863</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;utilities&quot;</span><span class="p">:</span><span class="mf">0.02821727241251957</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;portfolio_update&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;is_recommended&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;orders&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="mf">130.09</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="mf">0.4943420000000001</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="mf">130.31</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="mf">0.48090905500000003</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US46429B2676&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="mf">3.719</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="mf">26.58</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="mf">0.4942551</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;US78468R2004&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="mf">30.64</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="mf">0.4596</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;O01FGNGNS3R3836WB3JHD22J748&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T06:15:06.613287+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="s2">&quot;2021-09-28T06:15:06.613287+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w">   </span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Optimization ID  Unique ID for this portfolio.</td>
+<td><code>string ^O[0-9A-HJKMNP-TV-Z]{26}\Z</code></td>
+<td>O01FCB5EJQ9RWDK0SWRA17R87EN</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>{current|optimal_solution}-&gt;objective_value</code></td>
+<td>Objective Value describes the degree of optimality of the portfolio. Portfolio Optimizer tries to minimise the objective value.</td>
+<td><code>number</code></td>
+<td>0.00665</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>{current|optimal_solution}-&gt;holdings</code></td>
+<td>The holdings in the portfolio to be optimized, or in the optimal portfolio.</td>
+<td><code>object</code></td>
+<td><code>{"$USD":10000, "US0378331005": 20, "GB0005405286": 5}</code></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>{current|optimal_solution}-&gt;look_through</code></td>
+<td>The look through values of the portfolio before and after optimization.</td>
+<td><code>object</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>{current|optimal_solution}-&gt;portfolio_constraint_violations</code></td>
+<td>Percentage measure to indicate deviation from policy of the current and optimal solution.</td>
+<td><code>object</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>{current|optimal_solution}-&gt;benchmark_constraint_violations</code></td>
+<td>Percentage measure to indicate deviation from policy of the current and optimal solution.</td>
+<td><code>object</code></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;is_recommended</code></td>
+<td>Whether the portfolio update is recommended. True if there are reasons and applicable thresholds are passed, false otherwise.</td>
+<td><code>boolean</code></td>
+<td>TRUE</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;orders-&gt;shares</code></td>
+<td>he number of shares to buy (if positive) or sell (if negative).</td>
+<td><code>number</code></td>
+<td>20</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;orders-&gt;expected_share_price</code></td>
+<td>The share price at which the order is expected to be executed, expressed in the portfolio's base currency.</td>
+<td><code>number</code></td>
+<td>100</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;orders-&gt;expected_transaction_cost</code></td>
+<td>The expected transaction cost for this order, expressed in the portfolio's base currency.</td>
+<td><code>number</code></td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;reasons</code></td>
+<td>Reasons to update a portfolio</td>
+<td><code>object</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;reasons-&gt;portfolio_update_constraint_id</code></td>
+<td>The portfolio update constraint that is satisfied.</td>
+<td><code>string</code></td>
+<td>max_portfolio_constraint_violation_pctpoints</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;reasons-&gt;portfolio_update_constraint_value</code></td>
+<td>The value of the portfolio update constraint.</td>
+<td><code>number</code></td>
+<td>0.9</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>portfolio_update-&gt;reasons-&gt;portfolio_constraint_id</code></td>
+<td>The id of the corresponding portfolio constraint.</td>
+<td><code>string</code></td>
+<td>holdings.cash</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>creation_datetime</code></td>
+<td>The date and time the first version of the entity was created.</td>
+<td><code>date-time</code></td>
+<td>2025-06-04T15:23:15.328252+00:0</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="portfolio-is-ok">Portfolio is OK<a class="headerlink" href="#portfolio-is-ok" title="Permanent link">&para;</a></h2>
+<p>A PS...Given you have gotten this far you could now do a little test. You could update the portfolio again with the positions from the <code>optimal_solution.portfolio</code> object. To do this patch the portfolio again, just like you did above. The result should be that <code>portfolio_update</code> no longer holds recommended orders, or at least states that <code>"is_recommended": false</code>. This means the Portfolio is OK and does not need to be rebalanced.</p>
+    
+
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../account_initiation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Account initiation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Account initiation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../synchronize_portfolios/" class="md-footer__link md-footer__link--next" aria-label="Next: Synchronize portfolios" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Synchronize portfolios
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 InvestSuite
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://www.investsuite.com/" target="_blank" rel="noopener" title="www.investsuite.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.1-20.4-4.2-41.8-4.2-64 0-22.2 2.1-43.6 4.2-64h185.4c2.1 20.4 3.3 41.8 3.3 64zm151.9-64c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42.9 3.2-64 0-22-1.1-43.4-3.2-64h123.1zm-10.5-32H376.7c-10-63.86-29.8-117.38-55.3-151.558C399.8 29.09 463.4 85.94 493.4 160zm-149.1 0H167.7c6.1-36.4 15.5-68.62 27-94.65 10.5-23.61 22.2-40.74 33.5-51.54C239.4 3.178 248.7 0 256 0c7.3 0 16.6 3.178 27.8 13.81 11.3 10.8 23 27.93 33.5 51.54 11.5 26.03 20.9 58.25 27 94.65zm-325.69 0C48.59 85.94 112.2 29.09 190.6 8.442 165.1 42.62 145.3 96.14 135.3 160H18.61zm112.59 32c-2.1 20.6-4.1 42-4.1 64 0 21.1 2 43.4 4.1 64H8.065C2.8 299.5 0 278.1 0 256s2.8-43.5 8.065-64H131.2zm63.5 254.6c-11.5-26-20.9-58.2-27-94.6h176.6c-6.1 36.4-15.5 68.6-27 94.6-10.5 23.7-22.2 40.8-33.5 51.6-11.2 10.6-20.5 13.8-28.7 13.8-6.4 0-15.7-3.2-26.9-13.8-11.3-10.8-23-27.9-33.5-51.6zm-4.1 57C112.2 482.9 48.59 426.1 18.61 352H135.3c10 63.9 29.8 117.4 55.3 151.6zm130.8 0c25.5-34.2 45.3-87.7 55.3-151.6h116.7c-30 74.1-93.6 130.9-172 151.6z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:api@investsuite.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M464 64c26.5 0 48 21.49 48 48 0 15.1-7.1 29.3-19.2 38.4L275.2 313.6a32.1 32.1 0 0 1-38.4 0L19.2 150.4C7.113 141.3 0 127.1 0 112c0-26.51 21.49-48 48-48h416zM217.6 339.2a63.9 63.9 0 0 0 76.8 0L512 176v208c0 35.3-28.7 64-64 64H64c-35.35 0-64-28.7-64-64V176l217.6 163.2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/investsuite" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/investsuite" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/investsuite" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
+      
+    
+  </body>
+</html>
