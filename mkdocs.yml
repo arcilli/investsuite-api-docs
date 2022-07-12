@@ -114,6 +114,7 @@ nav:
     - Introduction:             value-added-apis/introduction.md
     - Authentication & Usage:   value-added-apis/authentication_usage.md
     - Custom Data API:          value-added-apis/custom_data.md
+    - X-Ray API:                value-added-apis/xray.md
     - ID Card API:              value-added-apis/idcard.md
     - Themes API:               value-added-apis/themes.md
     - Inspiration API:          value-added-apis/inspiration.md
