@@ -2,11 +2,7 @@
 title: Onboarding
 ---
 
-!!! warning
-    This page is under construction
-## Context
-
-An Onboarding process varies wildly from client to client, but typically involves the following steps in any order:
+An onboarding process varies wildly from client to client, but typically involves the following steps in any order:
 
 * Strong identify verification (eg. through a national ID provider)
 * Capture additional information (Anti Money-Laundering (AML) checks, tax information, ...)
@@ -29,15 +25,18 @@ The former is the preferred scenario as it requires less integration work and pr
 ## Scenario 1: API Onboarding
 ### Create User
 
-**Use Case** 
+The User onboards outside of InvestSuite: a third party application takes care of KYC checks, AML checks, contract signing, etc. after which the client middleware creates the user in InvestSuite.
 
-The User onboards outside of InvestSuite: a third party application takes care of KYC checks, AML checks and contract signing, after which the user is created in InvestSuite.
+### Requirements
 
-**Sequence Diagram**
+- Two endpoints for InvestSuite to redirect to: Sign Up, Sign In
+- Middleware creates a User
+- Middleware updates the Portfolio once the User is created in all downstream systems
+
 ![onboarding_signup](../common_scenarios/onboarding_signup.svg)
 
 
-**API Calls**
+**Relevant API Calls**
 
 RED001: A basic HTTP redirect to a web page which hosts the onboarding solution. This call is unauthenticated.
 - RST001: POST /users
@@ -118,13 +117,11 @@ Under construction
 
 ## Scenario 2: In-App Onboarding
 
+!!! warning
+    This section is under construction
+
 ### Create User
 
-Under construction
 ### Create Self Investor Portfolio
 
-Under construction
-
 ### Create Robo Advisor Portfolio
-
-Under construction

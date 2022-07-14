@@ -1,5 +1,3 @@
-title API Onboarding 
-
 participant "InvestSuite Application" as _app
 participant "InvestSuite API" as _ivsapi
 participant "Client Onboarding Solution" as _onb_sol
