@@ -2,7 +2,7 @@
 title: Handling collection responses
 ---
 
-At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [First steps](../authentication.md) chapter.
+At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [First steps](../common_scenarios/authentication.md) chapter.
 
 ## Collection response format
 

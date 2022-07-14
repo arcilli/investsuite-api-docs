@@ -1,0 +1,1 @@
+This section handles topics that are common to all InvestSuite products.
