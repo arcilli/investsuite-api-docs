@@ -2,142 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://api.investsuite.com/docs/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/changelog/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/glossary/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/advanced_topics/collections/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/advanced_topics/embedding/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/advanced_topics/errors/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/advanced_topics/onboarding/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/account_initiation/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/authentication/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/cash_movements/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/financial_data/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/portfolios/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/run_optimizer/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/suitability_profiler/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/synchronize_portfolios/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/thematic_search/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/common_scenarios/users/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/robo/quick_start/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/self/quick_start/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/authentication_usage/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/custom_data/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/inspiration/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/logos/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/monte_carlo/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/reference/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/template/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/tenant_config/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://api.investsuite.com/docs/value-added-apis/themes/</loc>
-         <lastmod>2022-07-08</lastmod>
+         <lastmod>2022-07-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
