@@ -76,7 +76,7 @@ plugins:
 
 nav:
   - Getting started:
-    - Introduction:             getting_started/introduction.md
+    - Introduction:             index.md
     - Product Range:            getting_started/product_range.md
     - Architecture:             getting_started/solution.architecture.md
     - Glossary:                 getting_started/glossary.md
