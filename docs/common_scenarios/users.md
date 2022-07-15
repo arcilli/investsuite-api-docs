@@ -254,6 +254,8 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
 
 ### Update the counter account
 
+Counter Account: see [Glossary](../getting_started/glossary.md#accounts).
+
 You can optionally add a counter account during user creation; or afterwards by patching the user object. This is used to display to your customer the account that is funded in case of a withdrawal instruction. 
 
 === "HTTP"
