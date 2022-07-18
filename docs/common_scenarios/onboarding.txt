@@ -21,7 +21,7 @@ opt If Client Managed Identity Provider
     _clt->_idp:Create User
 end
 
-_clt->_ivs:**(USR001)** Create User\nPOST /users/\n\nDepending on contract structure,\nset the appropriate User.Status
+_clt->_ivs:**(USR001)** Create User\nPOST /users/\n\n- If one contract for all products, status = ACTIVE\n- If one contract per product, status = WAITING_FOR_SIGNATURE\n- If IdP is managed by InvestSuite, add ?create_idp_user=true
 
 opt If InvestSuite Managed Identity Provider
     _ivs->_idp:Create User
@@ -49,7 +49,7 @@ _ivs->_clt:**(ONB004)** User is redirected to the Onboarding Solution (authentic
 deactivate _ivs
 activate _clt
 _clt->_clt:Contracting flow
-_ivs<-_clt:**(USR002)** PATCH /users/{id}\nwith status
+_ivs<-_clt:**(USR002)** PATCH /users/{id}\nwith status = ACTIVE
 
 _ivs<-_clt:**(ONB002)** User continues in app
 deactivate _clt
@@ -63,7 +63,7 @@ _ivs->_ivs:Create Portfolio (PAPER_MONEY)
 _ivs->_clt:**(PTF001)** Event: Portfolio Created
 note right of _clt:Depending on your backoffice needs/capabilies, \nwe recommend to skip the PAPER_MONEY portfolios
 _ivs->_ivs:Suitability Profiling
-note over _ivs:User can use his PAPER_MONEY portfolio as long as he wants
+note over _ivs:User can use PAPER_MONEY portfolio\nas long as (s)he wants
 _ivs->_ivs:User activates portfolio\n- Delete PAPER_MONEY Portfolio\n- Create REAL_MONEY Portfolio
 
 else Self Investor Only
