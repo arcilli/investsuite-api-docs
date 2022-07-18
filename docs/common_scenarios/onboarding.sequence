@@ -1,0 +1,78 @@
+participant "InvestSuite\nFrontend + API" as _ivs
+participant "Client\nOnboarding Solution + Middleware" as _clt
+participant "Identity Provider" as _idp
+
+activate _ivs
+
+_ivs->_clt:User clicks 'Sign Up'\nIs redirected to the Onboarding Solution (unauthenticated)\n\n(Webview or Redirect)
+
+deactivate _ivs
+
+activate _clt
+
+_clt->_clt:Strong identitiy verification (eg. through a national ID provider)\nCapture additional information (AML, tax, ...)\nSetting a withdrawal IBAN\nMiFID Checks
+_clt->_clt:Create User in downstream systems\n(eg. CRM, Core Banking, ...)
+
+opt If one contract for all products
+    _clt->_clt:Contracting flow:\n- Create the PDF contract file (for all products)\n- Create a signing package at Document Signing Solution\n- Redirect Document Signing Solution to sign the package\n- User signs the package with strong authentication\n- Retrieve the signed PDF (package)\n- Allow user to download the PDF (optional)\n- Store the PDF in the digital archive
+end
+
+opt If Client Managed Identity Provider
+    _clt->_idp:Create User
+end
+
+_clt->_ivs:Create User\nPOST /users/\n\nDepending on contract structure,\nset the appropriate User.Status
+
+opt If InvestSuite Managed Identity Provider
+    _ivs->_idp:Create User
+end
+
+_clt<--_ivs:return (ivs_user_id)
+_clt->_clt:Store the ivs_user_id in the middleware for future use
+_ivs<-_clt:User continues in app
+
+deactivate _clt
+activate _ivs
+
+_ivs->_idp:User clicks 'Sign In'\n\n(OpenID Compliant Scheme)
+
+_idp->_idp:User activation within IdP
+
+_ivs<--_idp:return with JWT\n\n(OpenID Scheme to accessToken, refreshToken...)
+
+_ivs->_ivs:Complete app enrollment\n(Optional disclaimers, PIN, Face ID, Notifications...)
+
+opt If one contract per product and contract is not signed
+
+
+_ivs->_clt:User is redirected to the Onboarding Solution (authenticated)\n\n(Webview or Redirect)
+deactivate _ivs
+activate _clt
+_clt->_clt:Contracting flow
+_ivs<-_clt:PATCH /users/{id}\nwith status
+
+_ivs<-_clt:User continues in app
+deactivate _clt
+activate _ivs
+end
+
+
+
+alt Robo Advisor Only
+_ivs->_ivs:Create Portfolio (PAPER_MONEY)
+_ivs->_clt:Event: Portfolio Created
+note right of _clt:Depending on your backoffice needs/capabilies, \nwe recommend to skip the PAPER_MONEY portfolios
+_ivs->_ivs:Suitability Profiling
+note over _ivs:User can use his PAPER_MONEY portfolio as long as he wants
+_ivs->_ivs:User activates portfolio\n- Delete PAPER_MONEY Portfolio\n- Create REAL_MONEY Portfolio
+
+else Self Investor Only
+_ivs->_ivs:Create Portfolio (REAL_MONEY)
+
+end
+
+_ivs->_clt:Event: Portfolio Created
+note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
+_clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
+_ivs<-_clt:Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
+
