@@ -48,6 +48,10 @@ Portfolio Stats
 :question_mark: not found in InvestSuite API documentation - About 
 Contains stats about multiple instruments -->
 
+## Money
+
+- Paper Money (Robo Advisor only): Robo Advisor has a demo mode: the option of a 'virtual portfolio' that uses 'paper money'. The app is fully functional and will show how the portfolio holdings and value evolve, but this is not backed with actual money.
+- Real Money: real, actual money (in contrast to paper money).
 
 
 
