@@ -4,7 +4,7 @@ participant "Identity Provider" as _idp
 
 activate _ivs
 
-_ivs->_clt:User clicks 'Sign Up'\nIs redirected to the Onboarding Solution (unauthenticated)\n\n(Webview or Redirect)
+_ivs->_clt:**(ONB001)** User clicks 'Sign Up'\nIs redirected to the Onboarding Solution (unauthenticated)\n\n(Webview or Redirect)
 
 deactivate _ivs
 
@@ -21,7 +21,7 @@ opt If Client Managed Identity Provider
     _clt->_idp:Create User
 end
 
-_clt->_ivs:Create User\nPOST /users/\n\nDepending on contract structure,\nset the appropriate User.Status
+_clt->_ivs:**(USR001)** Create User\nPOST /users/\n\nDepending on contract structure,\nset the appropriate User.Status
 
 opt If InvestSuite Managed Identity Provider
     _ivs->_idp:Create User
@@ -29,12 +29,12 @@ end
 
 _clt<--_ivs:return (ivs_user_id)
 _clt->_clt:Store the ivs_user_id in the middleware for future use
-_ivs<-_clt:User continues in app
+_ivs<-_clt:**(ONB002)** User continues in app
 
 deactivate _clt
 activate _ivs
 
-_ivs->_idp:User clicks 'Sign In'\n\n(OpenID Compliant Scheme)
+_ivs->_idp:**(ONB003)** User clicks 'Sign In'\n\n(OpenID Compliant Scheme)
 
 _idp->_idp:User activation within IdP
 
@@ -45,13 +45,13 @@ _ivs->_ivs:Complete app enrollment\n(Optional disclaimers, PIN, Face ID, Notific
 opt If one contract per product and contract is not signed
 
 
-_ivs->_clt:User is redirected to the Onboarding Solution (authenticated)\n\n(Webview or Redirect)
+_ivs->_clt:**(ONB004)** User is redirected to the Onboarding Solution (authenticated)\n\n(Webview or Redirect)
 deactivate _ivs
 activate _clt
 _clt->_clt:Contracting flow
-_ivs<-_clt:PATCH /users/{id}\nwith status
+_ivs<-_clt:**(USR002)** PATCH /users/{id}\nwith status
 
-_ivs<-_clt:User continues in app
+_ivs<-_clt:**(ONB002)** User continues in app
 deactivate _clt
 activate _ivs
 end
@@ -60,7 +60,7 @@ end
 
 alt Robo Advisor Only
 _ivs->_ivs:Create Portfolio (PAPER_MONEY)
-_ivs->_clt:Event: Portfolio Created
+_ivs->_clt:**(PTF001)** Event: Portfolio Created
 note right of _clt:Depending on your backoffice needs/capabilies, \nwe recommend to skip the PAPER_MONEY portfolios
 _ivs->_ivs:Suitability Profiling
 note over _ivs:User can use his PAPER_MONEY portfolio as long as he wants
@@ -71,8 +71,8 @@ _ivs->_ivs:Create Portfolio (REAL_MONEY)
 
 end
 
-_ivs->_clt:Event: Portfolio Created
+_ivs->_clt:**(PTF001)** Event: Portfolio Created
 note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
 _clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
-_ivs<-_clt:Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
+_ivs<-_clt:**(PTF002)** Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
 
