@@ -74,6 +74,7 @@ Depending on which products the User uses, fields become required from a fuction
             bank_id: "IDQMIE2D"
         },
         "language": "en-US"
+        "status": "WAITING_FOR_VERIFICATION"
     }
 
     ```
@@ -106,7 +107,7 @@ Field | Description | Data type | Example | Required
 `language` | The preferred communication language of the user. | | | No
 `counter_account > bank_account_number_type` | Type of the bank account number, typically an IBAN number. | | | Required if the user uses InvestSuite's front-end applications for investing.
 `counter_account > bank_account_number` | Account number of the user to which money withdrawn from the user's portfolio will be settled. | | | Required if the user uses InvestSuite's front-end applications for investing. Displayed in the withdrawal screen of the InvestSuite app. | request body
-`status` | The status of the user. See [Status](../TODO.md) | | | No
+`status` | The status of the user. See [Status](#update-the-status) | | | No
 
 The user is now visible in the Admin Console:
 
@@ -309,6 +310,36 @@ Field | Description | Data type | Example | Required
 `bank_account_number_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
 `bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
 `bank_id_type` | Bank identifier code type. | `string AnyOf("BIC", "ABA")` | BIC | no
+
+### Update the status
+
+The user status is used throughout the onboarding process, and defines where the user is in that process. Some capabilities may be unaccessible as long as the user is not fully onboarded.
+
+=== "Request"
+
+    ```HTTP
+    PATCH /users/U01F8YW5NJXMF78PMFKXTE2R7Q7 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    {
+        "status": "WAITING_FOR_SIGNATURE"
+    }
+
+    ```
+
+**State Transitions**
+!!! Note
+    
+    The API does not enforce a specific sequence.
+    
+![User.Status](user_status.jpg)
+<!-- Source: https://miro.com/app/board/uXjVOJ6Msys=/?moveToWidget=3458764529579357726&cot=14 -->
+
+<!-- TODO Describe statusses
+TODO Describe status if mulitple contracts -->
 
 ## Delete a user
 
