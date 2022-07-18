@@ -76,7 +76,45 @@ Field | Description | Data type | Example | Required
 
 ### Typical Self Investor portfolio
 
-See the [example above](#minimum-portfolio), but with the `config.manager` set to `USER_MANAGED`.
+=== "Request"
+
+    ```HTTP hl_lines="11 13"
+    POST /portfolios/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    {
+        "name":"General investing",
+        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency":"USD",
+        "money_type":"REAL_MONEY",
+        "config":{
+            "manager":"USER_MANAGED",
+            "manager_version":1,
+            "manager_settings":{
+            }
+        },
+        "brokerage_account":{
+            "bank_account_type":"IBAN",
+            "bank_account_number":"BE01234567891234"
+            "payment_reference":"32154796"
+        }
+    }
+    ```
+
+!!! warning
+
+    Self Investor only supports `REAL_MONEY` as `money_type` 
+
+Field | Description | How to provide
+--- | --- | ---
+brokerage_account > bank_account_type | Type of the bank account number, typically an IBAN number. | request body
+brokerage_account > bank_account_number | Account number of the account to which the user should transfer money for funding the portfolio. This can be a pooled account or an account specifically for the portfolio. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the funding screen of the InvestSuite app. | request body
+brokerage_account > payment_reference | Payment reference the user needs to add to the bank transfer for funding the portfolio. Required if the user uses InvestSuite's front-end applications for investing and the portfolio is funded through a pooled account. Displayed in the funding screen of the InvestSuite app. | request body
+
+<!-- TODO clarify payment reference etc omnibus account -->
 
 Explore the 'User Managed Portfolio settings' in `config.manager_settings` in the [API documentation](https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post) for all available options.
 
@@ -86,7 +124,7 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="12 13 14"
     POST /portfolios/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
