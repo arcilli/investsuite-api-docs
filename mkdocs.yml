@@ -84,7 +84,6 @@ nav:
     - Introduction:             common_scenarios/introduction.md
     - Authentication:           common_scenarios/authentication.md
     - Object Model:             common_scenarios/object_model.md
-    - Account initiation:       common_scenarios/account_initiation.md    # TODO REMOVE
     - Onboarding:               common_scenarios/onboarding.md
     - Funding and withdrawal:   common_scenarios/cash_movements.md
     - Suitability profiler:     common_scenarios/suitability_profiler.md
