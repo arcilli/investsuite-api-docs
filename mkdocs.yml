@@ -82,18 +82,20 @@ nav:
     - Glossary:                 getting_started/glossary.md
   - Common scenarios:
     - Introduction:             common_scenarios/introduction.md
-    - Authentication:           common_scenarios/authentication.md
-    - Object Model:             common_scenarios/object_model.md
+    # Business Scenarios
     - Onboarding:               common_scenarios/onboarding.md
     - Funding and withdrawal:   common_scenarios/cash_movements.md
     - Suitability profiler:     common_scenarios/suitability_profiler.md
+    # Technical Enablers
+    - Authentication:           common_scenarios/authentication.md
+    - Object Model:             common_scenarios/object_model.md
     - Financial data:           common_scenarios/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
     - Manage users:             common_scenarios/users.md
     - Manage portfolios:        common_scenarios/portfolios.md
     - Synchronize portfolios:   common_scenarios/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
     - Collection responses:     common_scenarios/collections.md # Search
     - Embedding:                common_scenarios/embedding.md
-    - API errors :              common_scenarios/errors.md
+    - API errors:               common_scenarios/errors.md
     # - Search
     # - Identifiers
     # - Policies
