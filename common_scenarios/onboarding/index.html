@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/common_scenarios/onboarding/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#context" class="md-skip">
+        <a href="#considerations" class="md-skip">
           Skip to content
         </a>
       
@@ -304,9 +304,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-nav__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -366,34 +364,6 @@
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         Introduction
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/product_range/" class="md-nav__link">
-        Product Range
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/solution.architecture/" class="md-nav__link">
-        Architecture
       </a>
     </li>
   
@@ -468,48 +438,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
-        Authentication
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Object Model
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../account_initiation/" class="md-nav__link">
-        Account initiation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -542,8 +470,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#context" class="md-nav__link">
-    Context
+  <a href="#considerations" class="md-nav__link">
+    Considerations
   </a>
   
 </li>
@@ -553,66 +481,12 @@
     Scenario 1: API Onboarding
   </a>
   
-    <nav class="md-nav" aria-label="Scenario 1: API Onboarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-user" class="md-nav__link">
-    Create User
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-self-investor-portfolio" class="md-nav__link">
-    Create Self Investor Portfolio
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-robo-advisor-portfolio" class="md-nav__link">
-    Create Robo Advisor Portfolio
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
   <a href="#scenario-2-in-app-onboarding" class="md-nav__link">
     Scenario 2: In-App Onboarding
   </a>
-  
-    <nav class="md-nav" aria-label="Scenario 2: In-App Onboarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-user_1" class="md-nav__link">
-    Create User
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-self-investor-portfolio_1" class="md-nav__link">
-    Create Self Investor Portfolio
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-robo-advisor-portfolio_1" class="md-nav__link">
-    Create Robo Advisor Portfolio
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -659,6 +533,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object_model.md" class="md-nav__link">
+        Object Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
@@ -674,7 +576,7 @@
   
     <li class="md-nav__item">
       <a href="../users/" class="md-nav__link">
-        Manage Users
+        Manage users
       </a>
     </li>
   
@@ -688,7 +590,7 @@
   
     <li class="md-nav__item">
       <a href="../portfolios/" class="md-nav__link">
-        Manage Portfolios
+        Manage portfolios
       </a>
     </li>
   
@@ -1092,6 +994,51 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#considerations" class="md-nav__link">
+    Considerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-1-api-onboarding" class="md-nav__link">
+    Scenario 1: API Onboarding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario-2-in-app-onboarding" class="md-nav__link">
+    Scenario 2: In-App Onboarding
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -1105,164 +1052,106 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>An Onboarding process varies wildly from client to client, but typically involves the following steps in any order:</p>
+<p>An onboarding process varies wildly from client to client, but typically involves the following steps in any order:</p>
 <ul>
-<li>Strong identifity verification (eg. through a national ID provider)</li>
-<li>Capture additional information (Anti Money-Laundering (AML) checks, tax information, ...)</li>
+<li>Strong identify verification (eg. through a national ID provider)</li>
+<li>Capture additional information (Anti Money-Laundering (AML), tax information, ...)</li>
+<li>AML Checks &amp; approval/denial of client</li>
 <li>Setting a withdrawal IBAN</li>
-<li>Suitability test</li>
-<li>MiFID Checks</li>
+<li>MiFID Checks (eg. ex-ante costs)</li>
+<li>Legal disclaimers</li>
 <li>Signing a contract</li>
+<li>Suitability test</li>
 <li>Creation of a User in InvestSuite</li>
 <li>Creation of a Portfolio in InvestSuite, with the User as owner</li>
 </ul>
 <p>Broadly speaking, the Onboarding process happens either outside the InvestSuite application (Scenario 1, also referred to as 'API Onboarding') or inside InvestSuite (Scenario 2, also referred to as 'In-App Onboarding').</p>
-<p>The former is the preferred scenario as it requires less integration work and provides a smoother experience for your existing users.</p>
+<p>The former is the preferred scenario as it requires less integration work, allows re-use of an existing onboarding solution and provides a smoother experience for your existing users.</p>
+<h2 id="considerations">Considerations<a class="headerlink" href="#considerations" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If multiple products are in scope (eg. Robo Advisor and Self Investor), will the customer sign one contract for all products or one contract per product?</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>One contract</th>
+<th>Multiple contracts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implications</td>
+<td>- Check with legal/compliance whether one contract for multiple mandates is allowed</td>
+<td>- Middleware needs to handle product type (more complex) <br> - User status is more complex (to incorporate different products)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Will InvestSuite manage the Identity Provider (packaged within the InvestSuite platform) or will the Client (see the Supported 3rd Party list)? <!-- TODO Add Link --></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>InvestSuite Managed IdP</th>
+<th>Client Managed IdP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implications</td>
+<td>- How to onboard existing users, if in scope?</td>
+<td>- Middleware needs to handle user creation</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Will the backoffice systems support the Robo Advisor <a href="../../getting_started/glossary/#money">'paper money'</a> portfolios?</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Yes</th>
+<th>No</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implications</td>
+<td>- Take special care to not intermingle real and paper money through the integration layer</td>
+<td>- Discard the 'portfolio created' event for paper portfolios</td>
+</tr>
+</tbody>
+</table>
 <h2 id="scenario-1-api-onboarding">Scenario 1: API Onboarding<a class="headerlink" href="#scenario-1-api-onboarding" title="Permanent link">&para;</a></h2>
-<h3 id="create-user">Create User<a class="headerlink" href="#create-user" title="Permanent link">&para;</a></h3>
-<p><strong>Use Case</strong> </p>
-<p>The User onboards outside of InvestSuite / via your application. This means KYC checks, AML checks and contract signing are done through your application. Only after this, the user is created at InvestSuite.</p>
-<p><strong>How-To</strong></p>
-<p>The below table shows the minimum required data you provide as an input when creating a user through the InvestSuite API.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>How to provide</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>create_idp_user</td>
-<td>Set to <code>TRUE</code> if InvestSuite creates the user at the identity provider.</td>
-<td>query parameter</td>
-</tr>
-<tr>
-<td>external_id</td>
-<td>Your identifier for the user.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>The first name of the user. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the app.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>The last name of the user. Required if InvestSuite creates the user at the identity provider.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>email</td>
-<td>The email address of the user. Required if InvestSuite creates the user at the identity provider.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>The mobile phone number of the user. Required if InvestSuite creates the user at the identity provider, only if 2-factor authentication is foreseen.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>language</td>
-<td>The preferred communication language of the user.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>counter_account &gt; bank_account_number_type</td>
-<td>Type of the bank account number, typically an IBAN number. Required if the user uses InvestSuite's front-end applications for investing.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>counter_account &gt; bank_account_number</td>
-<td>Account number of the user to which money withdrawn from the user's portfolio will be settled. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the withdrawal screen of the InvestSuite app.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>status</td>
-<td>The status of the user. Always <code>ACTIVE</code> for this onboarding scenario.</td>
-<td>request body</td>
-</tr>
-</tbody>
-</table>
-<p>For the detailed specification of our endpoints, go to <a href="https://api.sandbox.investsuite.com/redoc">InvestSuite API specification</a>. </p>
-<h3 id="create-self-investor-portfolio">Create Self Investor Portfolio<a class="headerlink" href="#create-self-investor-portfolio" title="Permanent link">&para;</a></h3>
-<p><strong>Use Case</strong> </p>
-<p>You create a Self Investor portfolio for a fully onboarded user. The user is already created in InvestSuite.</p>
-<p><strong>How-To</strong></p>
-<p>The below table shows the minimum required data you provide as an input when creating a portfolio through the InvestSuite API.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>How to provide</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>external_id</td>
-<td>Your identifier for the portfolio.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>name</td>
-<td>The portfolio name. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the InvestSuite app.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>owned_by_user_id</td>
-<td>The portfolio owner's user id.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>base_currency</td>
-<td>The base currency of the portfolio.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>money_type</td>
-<td>Always <code>REAL_MONEY</code> for a Self Investor portfolio.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>config &gt; manager</td>
-<td>Always <code>SELF_MANAGED</code> for a Self Investor portfolio.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>config &gt; manager_version</td>
-<td>Always <code>1</code> for a Self Investor portfolio.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>brokerage_account &gt; bank_account_type</td>
-<td>Type of the bank account number, typically an IBAN number.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>brokerage_account &gt; bank_account_number</td>
-<td>Account number of the account to which the user should transfer money for funding the portfolio. This can be a pooled account or an account specifically for the portfolio. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the funding screen of the InvestSuite app.</td>
-<td>request body</td>
-</tr>
-<tr>
-<td>brokerage_account &gt; payment_reference</td>
-<td>Payment reference the user needs to add to the bank transfer for funding the portfolio. Required if the user uses InvestSuite's front-end applications for investing and the portfolio is funded through a pooled account. Displayed in the funding screen of the InvestSuite app.</td>
-<td>request body</td>
-</tr>
-</tbody>
-</table>
-<p>For the detailed specification of our endpoints, go to <a href="https://api.sandbox.investsuite.com/redoc">InvestSuite API specification</a>. </p>
-<h3 id="create-robo-advisor-portfolio">Create Robo Advisor Portfolio<a class="headerlink" href="#create-robo-advisor-portfolio" title="Permanent link">&para;</a></h3>
-<p>Under construction</p>
+<p>The User onboards outside of InvestSuite: the 'Client Onboarding Solution' takes care of all requirements, and interacts with InvestSuite for two steps:</p>
+<ol>
+<li>Creating and updating the User</li>
+<li>Updating the Portfolio</li>
+</ol>
+<p><img alt="onboarding_signup" src="../onboarding.svg" /></p>
+<p>Integrations:</p>
+<ul>
+<li><strong>ONB001 (Outbound)</strong> An HTTP redirect (or webview) to a page which hosts the onboarding solution. This call is unauthenticated.</li>
+<li><strong>ONB002 (Inbound)</strong> The Onboarding Solution redirects the user back to InvestSuite, either through a HTTP redirect or through a written message.</li>
+<li><strong>ONB003 (Outbound)</strong> OpenID Connect Sign In flow. Returns a JWT token.</li>
+<li><strong>ONB004 (Outbound)</strong> An HTTP redirect (or webview) to a page which hosts the contract signature component.</li>
+<li><strong>USR001 (Inbound)</strong> Create the User. See <a href="../users/#create-a-user">here</a> for the full signature. <ul>
+<li>If only one contract is used, set the <code>status</code> to <code>ACTIVE</code>. Otherwise, set it to <code>WAITING_FOR_SIGNATURE</code>. </li>
+<li>If the IdP is managed by InvestSuite, also specify the <a href="../users/#create-a-login"><code>create_idp_user</code></a> query parameter.</li>
+</ul>
+</li>
+<li><strong>USR002 (Inbound)</strong> Update the User status. See <a href="../users/#update-the-status">here</a> for the full signature.</li>
+<li><strong>PTF001 (Outbound)</strong> An event signals the middleware that a new Portfolio has been created. </li>
+</ul>
+<!-- TODO events page -->
+<ul>
+<li><strong>PTF002 (Inbound)</strong> Update the Portfolio's brokerage account. See <a href="../portfolios/#update-the-brokerage-account">here</a> for the full signature.</li>
+</ul>
 <h2 id="scenario-2-in-app-onboarding">Scenario 2: In-App Onboarding<a class="headerlink" href="#scenario-2-in-app-onboarding" title="Permanent link">&para;</a></h2>
-<h3 id="create-user_1">Create User<a class="headerlink" href="#create-user_1" title="Permanent link">&para;</a></h3>
-<p>Under construction</p>
-<h3 id="create-self-investor-portfolio_1">Create Self Investor Portfolio<a class="headerlink" href="#create-self-investor-portfolio_1" title="Permanent link">&para;</a></h3>
-<p>Under construction</p>
-<h3 id="create-robo-advisor-portfolio_1">Create Robo Advisor Portfolio<a class="headerlink" href="#create-robo-advisor-portfolio_1" title="Permanent link">&para;</a></h3>
-<p>Under construction</p>
+<p>Talk to your sales representative.</p>
     
 
             </article>
@@ -1278,7 +1167,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../account_initiation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Account initiation" rel="prev">
+        <a href="../introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1287,7 +1176,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Account initiation
+              Introduction
             </div>
           </div>
         </a>
@@ -1380,7 +1269,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>

@@ -15,11 +15,11 @@
         <link rel="canonical" href="https://docs.investsuite.com/common_scenarios/users/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
-        <title>Create and manage users - InvestSuite Integration API documentation</title>
+        <title>Manage users - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,7 +55,7 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Manage Users">
+<meta property="og:title" content="InvestSuite Integration API documentation - Manage users">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
 <meta property="og:url" content="https://docs.investsuite.com/common_scenarios/users/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-a-user" class="md-skip">
+        <a href="#context" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Create and manage users
+              Manage users
             
           </span>
         </div>
@@ -304,9 +304,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-nav__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -366,34 +364,6 @@
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         Introduction
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/product_range/" class="md-nav__link">
-        Product Range
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/solution.architecture/" class="md-nav__link">
-        Architecture
       </a>
     </li>
   
@@ -470,48 +440,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
-        Authentication
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Object Model
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../account_initiation/" class="md-nav__link">
-        Account initiation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../onboarding/" class="md-nav__link">
         Onboarding
       </a>
@@ -554,6 +482,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object_model.md" class="md-nav__link">
+        Object Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
@@ -576,12 +532,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Manage Users
+          Manage users
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Manage Users
+        Manage users
       </a>
       
         
@@ -598,8 +554,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-a-user" class="md-nav__link">
     Create a user
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimum-user" class="md-nav__link">
+    Minimum user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-user" class="md-nav__link">
+    Typical user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-login" class="md-nav__link">
+    Create a login
   </a>
   
 </li>
@@ -612,22 +602,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#change-patch-fields" class="md-nav__link">
-    Change ("patch") fields
+  <a href="#update-a-user" class="md-nav__link">
+    Update a user
+  </a>
+  
+    <nav class="md-nav" aria-label="Update a user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-language" class="md-nav__link">
+    Update the language
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#search" class="md-nav__link">
-    Search
+        
+          <li class="md-nav__item">
+  <a href="#update-the-counter-account" class="md-nav__link">
+    Update the counter account
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-status" class="md-nav__link">
+    Update the status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#delete-a-user" class="md-nav__link">
     Delete a user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-users" class="md-nav__link">
+    Query users
   </a>
   
 </li>
@@ -648,7 +665,7 @@
   
     <li class="md-nav__item">
       <a href="../portfolios/" class="md-nav__link">
-        Manage Portfolios
+        Manage portfolios
       </a>
     </li>
   
@@ -1052,11 +1069,131 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-user" class="md-nav__link">
+    Create a user
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimum-user" class="md-nav__link">
+    Minimum user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typical-user" class="md-nav__link">
+    Typical user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-login" class="md-nav__link">
+    Create a login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-user" class="md-nav__link">
+    Get a user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-a-user" class="md-nav__link">
+    Update a user
+  </a>
+  
+    <nav class="md-nav" aria-label="Update a user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-language" class="md-nav__link">
+    Update the language
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-counter-account" class="md-nav__link">
+    Update the counter account
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-status" class="md-nav__link">
+    Update the status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-user" class="md-nav__link">
+    Delete a user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-users" class="md-nav__link">
+    Query users
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>Create and manage users</h1>
+    <h1>Manage users</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1065,44 +1202,85 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>This page lists all operations that can be performed on the User object, see See <a href="../../getting_started/glossary/">Glossary</a>.</p>
 <h2 id="create-a-user">Create a user<a class="headerlink" href="#create-a-user" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<p>Typically a User is created with a name and an External ID, but none are required by the API and all can be updated later, as needed or as allowed by law.</p>
+<p>Depending on which products the User uses, fields become required from a fuctional point of view. For example, you can create a user without a name, but when using Self Investor (or any other application with a frontend), the user will not be able to use that product if no name is specified.</p>
+<h3 id="minimum-user">Minimum user<a class="headerlink" href="#minimum-user" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label><label for="__tabbed_1_3">Response (Body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">POST</span> <span class="nn">/users/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/users/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">{</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="se">\ </span>                
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;{string}&quot;</span>  <span class="se">\ </span>  
+-d <span class="s1">&#39;{  \   </span>
+<span class="s1">    }&#39;</span>
+https://api.sandbox.investsuite.com/users/
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;null&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAITING_FOR_VERIFICATION&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="typical-user">Typical user<a class="headerlink" href="#typical-user" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/users/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+<span class="err">{</span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_identity_id_2809&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+123456789&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;counter_account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="err">ba</span><span class="kc">n</span><span class="err">k_accou</span><span class="kc">nt</span><span class="err">_</span><span class="kc">nu</span><span class="err">mber</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE01234567891234&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="err">ba</span><span class="kc">n</span><span class="err">k_accou</span><span class="kc">nt</span><span class="err">_</span><span class="kc">t</span><span class="err">ype</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="err">ba</span><span class="kc">n</span><span class="err">k_id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDQMIE2D&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="nt">&quot;en-US&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAITING_FOR_VERIFICATION&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_identity_id_2809&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jane.doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+123456789&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -1110,13 +1288,163 @@
 </div>
 </div>
 </div>
-<h2 id="get-a-user">Get a user<a class="headerlink" href="#get-a-user" title="Permanent link">&para;</a></h2>
-<p>Add the InvestSuite ID to the path to retrieve a user object.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>external_id</code></td>
+<td>A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in your system to identify this entity.</td>
+<td><code>string &lt;= 64 characters</code></td>
+<td>unique_external_entity_id</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td>The first name of the user.</td>
+<td><code>string &lt;= 128 characters</code></td>
+<td>Ashok</td>
+<td>Required if the user uses InvestSuite's front-end applications for investing. Displayed in the app.</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td>The last name of the user.</td>
+<td><code>string &lt;= 128 characters</code></td>
+<td>Kumar</td>
+<td>Required if the user uses InvestSuite's front-end applications for investing. Displayed in the app.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>The email address of the user.</td>
+<td></td>
+<td></td>
+<td>Required if InvestSuite creates the user at the identity provider.</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>The mobile phone number of the user.</td>
+<td></td>
+<td></td>
+<td>Required if InvestSuite creates the user at the identity provider, only if 2-factor authentication is foreseen.</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>The preferred communication language of the user.</td>
+<td></td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>counter_account &gt; bank_account_number_type</code></td>
+<td>Type of the bank account number, typically an IBAN number.</td>
+<td></td>
+<td></td>
+<td>Required if the user uses InvestSuite's front-end applications for investing.</td>
+</tr>
+<tr>
+<td><code>counter_account &gt; bank_account_number</code></td>
+<td>Account number of the user to which money withdrawn from the user's portfolio will be settled.</td>
+<td></td>
+<td></td>
+<td>Required if the user uses InvestSuite's front-end applications for investing. Displayed in the withdrawal screen of the InvestSuite app.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>The status of the user. See <a href="#update-the-status">Status</a></td>
+<td></td>
+<td></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The user is now visible in the Admin Console:</p>
+<p><img alt="InvestSuite Admin Console" src="../../img/admin_console.png" /></p>
+<h2 id="create-a-login">Create a login<a class="headerlink" href="#create-a-login" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Only applicable if the identity provider (IdP) is managed by InvestSuite (see Onboarding).</p>
+</div>
+<p>To create credentials for the user to log in, specify the <code>create_idp_user</code> query parameter and the <code>email</code> and <code>phone</code> fields.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The IdP will probably require that <code>email</code> and <code>phone</code> are unique.</p>
+<p>These fields are <em>write once</em>. You cannot update them.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">HTTP</label><label for="__tabbed_3_2">curl</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/users/?create_idp_user=true</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X POST <span class="se">\ </span>                
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;{string}&quot;</span>  <span class="se">\ </span>  
+-d <span class="s1">&#39;{  \   </span>
+<span class="s1">        &quot;external_id&quot;: &quot;unique_external_entity_id&quot;,  \   </span>
+<span class="s1">        &quot;first_name&quot;: &quot;Ashok&quot;, \</span>
+<span class="s1">        &quot;last_name&quot;: &quot;Kumar&quot;, \</span>
+<span class="s1">        &quot;email&quot;: &quot;ashok.kumar@example.com&quot;, \</span>
+<span class="s1">        &quot;phone&quot;: &quot;+123456789&quot;</span>
+<span class="s1">    }&#39;</span>
+https://api.sandbox.investsuite.com/users/?create_idp_user<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td>The e-mail address of the user. Unique and write once.</td>
+<td><code>email</code></td>
+<td>ashok.kumar@example.com</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>The mobile phone number of the user in international format. Unique and write once.</td>
+<td><code>string (^\+[1-9][0-9]{7,15}\Z)</code></td>
+<td>+123456789</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>After creating the user, the IdP is responsible for completing the registration on its behalf. Typically this involves the IdP sending an email to reset the password and complete additional details.</p>
+<p><img alt="IdP integration" src="../../img/idp-integration.jpg" /></p>
+<h2 id="get-a-user">Get a user<a class="headerlink" href="#get-a-user" title="Permanent link">&para;</a></h2>
+<p>Add the InvestSuite ID to the path to retrieve a user object.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
 </div>
@@ -1130,8 +1458,8 @@
 <span class="w">        </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
@@ -1148,60 +1476,25 @@
 </div>
 </div>
 </div>
-<h2 id="change-patch-fields">Change ("patch") fields<a class="headerlink" href="#change-patch-fields" title="Permanent link">&para;</a></h2>
-<p>Given the right permissions you can update any object issuing a <code>PATCH</code> request. </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.</p>
+<h2 id="update-a-user">Update a user<a class="headerlink" href="#update-a-user" title="Permanent link">&para;</a></h2>
+<p>Given the right permissions you can update any object by issuing a <code>PATCH</code> request.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all fields can be updated, eg. the <code>phone</code> and <code>email</code> fields can only be set once. You can update these fields: <code>external_id</code>, <code>first_name</code>, <code>last_name</code>, <code>counter_account</code>, <code>language</code>.</p>
 </div>
-<p>Screenshot Admin Console</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response (body)</label></div>
+<h3 id="update-the-language">Update the language<a class="headerlink" href="#update-the-language" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
 <span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
 <span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
+<span class="err">{</span>
 <span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;be-NL&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jane.doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+123456789&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You cannot update any user field. The <code>phone</code> and <code>email</code> fields can only be set once. You can update these fields: <code>external_id</code>, <code>first_name</code>, <code>last_name</code>, <code>counter_account</code>, <code>language</code></p>
-</div>
-<h2 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h2>
-<p>You can query each entity collection with the <code>query</code> parameter e.g. <code>GET /users/?query=…</code>. Learn more in the <a href="/advanced_topics/collections/">Handling collection responses</a> section.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /users</span>
-</span><span class="err">    ?query=email+eq+&#39;jane*&#39; HTTP/1.1</span>
-<span class="err">Host: api.sandbox.investsuite.com</span>
-<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1217,15 +1510,132 @@
 <span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jane.doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+123456789&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;be-NL&quot;</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="update-the-counter-account">Update the counter account<a class="headerlink" href="#update-the-counter-account" title="Permanent link">&para;</a></h3>
+<p>Counter Account: see <a href="../../getting_started/glossary/#accounts">Glossary</a>.</p>
+<p>You can optionally add a counter account during user creation; or afterwards by patching the user object. This is used to display to your customer the account that is funded in case of a withdrawal instruction. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">HTTP</label><label for="__tabbed_6_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/users/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;counter_account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE01234567891234&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bank_account_number_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bank_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDQMIE2D&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bank_id_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIC&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/users/&#39;</span> <span class="se">\</span>
+--header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Auhorization&quot;</span>: <span class="s2">&quot;{string}&quot;</span>  <span class="se">\ </span>  
+--data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;external_id&quot;: &quot;unique_external_entity_id&quot;,</span>
+<span class="s1">        &quot;first_name&quot;: &quot;Ashok&quot;,</span>
+<span class="s1">        &quot;last_name&quot;: &quot;Kumar&quot;,</span>
+<span class="s1">        &quot;email&quot;: &quot;ashok.kumar@example.com&quot;,</span>
+<span class="s1">        &quot;phone&quot;: &quot;+12345667&quot;,</span>
+<span class="s1">        &quot;counter_account&quot;: {</span>
+<span class="s1">            &quot;bank_account_number&quot;: &quot;BE01234567891234&quot;,</span>
+<span class="s1">            &quot;bank_account_number_type&quot;: &quot;IBAN&quot;,</span>
+<span class="s1">            &quot;bank_id&quot;: &quot;IDQMIE2D&quot;,</span>
+<span class="s1">            &quot;bank_id_type&quot;: &quot;BIC&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bank_account_number</code></td>
+<td>Account number of the user for withdrawal instructions.</td>
+<td><code>string ^[A-Z]{2}[A-Z0-9]{14,30}\Z</code></td>
+<td>BE01234567891234</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>bank_account_number_type</code></td>
+<td>Type of the bank account number that is associated with this portfolio, typically an IBAN number.</td>
+<td><code>enum("ABA", "IBAN")</code></td>
+<td>IBAN</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>bank_id</code></td>
+<td>Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier.</td>
+<td><code>string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")</code></td>
+<td>IDQMIE2D</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>bank_id_type</code></td>
+<td>Bank identifier code type.</td>
+<td><code>string AnyOf("BIC", "ABA")</code></td>
+<td>BIC</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-the-status">Update the status<a class="headerlink" href="#update-the-status" title="Permanent link">&para;</a></h3>
+<p>The user status is used throughout the onboarding process, and defines where the user is in that process. Some capabilities may be unaccessible as long as the user is not fully onboarded.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+<span class="err">{</span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAITING_FOR_SIGNATURE&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 </div>
+<p><strong>State Transitions</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The API does not enforce a specific sequence.</p>
+</div>
+<p><img alt="User.Status" src="../user_status.jpg" /></p>
+<!-- Source: https://miro.com/app/board/uXjVOJ6Msys=/?moveToWidget=3458764529579357726&cot=14 -->
+
+<!-- TODO Describe statusses
+TODO Describe status if mulitple contracts -->
+
 <h2 id="delete-a-user">Delete a user<a class="headerlink" href="#delete-a-user" title="Permanent link">&para;</a></h2>
 <p>Given the right permissions you can delete any object by issuing a <code>DELETE</code> request.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Request</label><label for="__tabbed_8_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">DELETE</span> <span class="nn">/users/U01F8YW5NJXMF78PMFKXTE2R7Q7</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1245,6 +1655,36 @@
 <span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jane.doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+123456789&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="query-users">Query users<a class="headerlink" href="#query-users" title="Permanent link">&para;</a></h2>
+<p>You can query each entity collection with the <code>query</code> parameter e.g. <code>GET /users/?query=…</code>. Learn more in the <a href="../collections/">Handling collection responses</a> section.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Request</label><label for="__tabbed_9_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /users</span>
+</span><span class="err">    ?query=email+eq+&#39;jane*&#39; HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jane&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doe&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jane.doe@example.com&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1286,13 +1726,13 @@
       
       
         
-        <a href="../portfolios/" class="md-footer__link md-footer__link--next" aria-label="Next: Manage Portfolios" rel="next">
+        <a href="../portfolios/" class="md-footer__link md-footer__link--next" aria-label="Next: Manage portfolios" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Manage Portfolios
+              Manage portfolios
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -1372,7 +1812,7 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/common_scenarios/synchronize_portfolios/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
     
     
       
@@ -304,9 +304,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-nav__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -366,34 +364,6 @@
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
         Introduction
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/product_range/" class="md-nav__link">
-        Product Range
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting_started/solution.architecture/" class="md-nav__link">
-        Architecture
       </a>
     </li>
   
@@ -470,48 +440,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
-        Authentication
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
-        Object Model
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../account_initiation/" class="md-nav__link">
-        Account initiation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../onboarding/" class="md-nav__link">
         Onboarding
       </a>
@@ -554,6 +482,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../authentication/" class="md-nav__link">
+        Authentication
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../object_model.md" class="md-nav__link">
+        Object Model
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
@@ -569,7 +525,7 @@
   
     <li class="md-nav__item">
       <a href="../users/" class="md-nav__link">
-        Manage Users
+        Manage users
       </a>
     </li>
   
@@ -583,7 +539,7 @@
   
     <li class="md-nav__item">
       <a href="../portfolios/" class="md-nav__link">
-        Manage Portfolios
+        Manage portfolios
       </a>
     </li>
   
@@ -1113,6 +1069,126 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+    <nav class="md-nav" aria-label="Context">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transactions-definition" class="md-nav__link">
+    Transactions definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#holdings-definition" class="md-nav__link">
+    Holdings definition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#send-transaction" class="md-nav__link">
+    Send transaction
+  </a>
+  
+    <nav class="md-nav" aria-label="Send transaction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-buy-transactions" class="md-nav__link">
+    1. Buy transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sell-transactions" class="md-nav__link">
+    2. Sell transactions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cash-movements" class="md-nav__link">
+    3. Cash movements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-costs-and-charges" class="md-nav__link">
+    4. Costs and charges
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-corporate-actions" class="md-nav__link">
+    5. Corporate actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-transaction-status" class="md-nav__link">
+    Update transaction status
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cancel-a-placed-order" class="md-nav__link">
+    Cancel a placed order
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-portfolio-holdings" class="md-nav__link">
+    Update portfolio holdings
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -1135,10 +1211,10 @@
 <p>Holdings are positions in a portfolio. Holdings are the assets out of which a portfolo is composed. Holdings can be either investment products or cash holdings. Cash holdings are expressed in their currency.</p>
 <p>Example:
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;US92189F1066&quot;</span><span class="p">:</span><span class="mi">127</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;US3160923039&quot;</span><span class="p">:</span><span class="mi">57</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;US3160928731&quot;</span><span class="p">:</span><span class="mi">398</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;$EUR&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;BE92189F1066&quot;</span><span class="p">:</span><span class="mi">127</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;NL3160923039&quot;</span><span class="p">:</span><span class="mi">57</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;FR3160928731&quot;</span><span class="p">:</span><span class="mi">398</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <h2 id="send-transaction">Send transaction<a class="headerlink" href="#send-transaction" title="Permanent link">&para;</a></h2>
@@ -1869,7 +1945,7 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../portfolios/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Manage Portfolios" rel="prev">
+        <a href="../portfolios/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Manage portfolios" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1878,7 +1954,7 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
               <span class="md-footer__direction">
                 Previous
               </span>
-              Manage Portfolios
+              Manage portfolios
             </div>
           </div>
         </a>
@@ -1971,7 +2047,7 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
