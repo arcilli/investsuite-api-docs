@@ -19,10 +19,10 @@ Holdings are positions in a portfolio. Holdings are the assets out of which a po
 Example:
 ```JSON
 {
-    "$USD": 12000,
-    "US92189F1066":127,
-    "US3160923039":57,
-    "US3160928731":398
+    "$EUR": 12000,
+    "BE92189F1066":127,
+    "NL3160923039":57,
+    "FR3160928731":398
 }
 ```
 

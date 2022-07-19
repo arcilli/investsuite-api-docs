@@ -2,17 +2,16 @@
 title: Glossary
 ---
 
-## Client
-You, the bank, the customer of InvestSuite.
+This page defines the InvestSuite standard terminology that is throughout our business operations.
 
-## Customer
-The customer and the user are synonymous for your (the bank's) customer, the end-user. This is mostly used in functional/business contexts.
+## Client / Customer / User
+InvestSuite is a B2B4C Company. To avoid confusion between InvestSuite's client and InvestSuite client's client, the following convention is used throughout this documentation:
 
-## User
-The User is synonymous for Customer, but is typically used in technical contexts.
-
-- The User is the owner of one or more Portfolios
-- Access to InvestSuite products is controlled on a User level within the InvestSuite console
+- **Client**: InvestSuite's customer, typically a bank or financial institution. The B2**B** party.
+- **Customer**: the Client's customer, the end-user, typically a person. The B2B4**C** party. This is typically used in functional/business contexts.
+- **User**: synonymous for Customer, but typically used in more technical contexts:
+    - The User is the owner of one or more Portfolios
+    - Access to InvestSuite products is controlled on a User level within the InvestSuite console
 
 Refer to [Creating a User](../common_scenarios/account_initiation/#create-a-user).
 
@@ -22,23 +21,24 @@ TODO -->
 <!-- ### Report
 TODO -->
 
-## Account (of a User)
-A counter account that is funded in case of a withdrawal instruction.
+## Accounts
 
-An Account is owned by a User.
+- The **Counter Account** of a **user** is the bank account that is funded in case of a withdrawal instruction.
 
-Refer to [Account Initiation](../common_scenarios/account_initiation/).
+- The **Broker Account** of a **portfolio** is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
+
+Refer to [Account Initiation](../common_scenarios/account_initiation.md).
 
 ## Portfolio (of a User)
-An (investment) portfolio is a collection of financial assets grouped with the aim of earning a profit. 
-These assets are referred to as **holdings**. Holdings are **positions** in a portfolio. Holdings are the assets out of which a portfolio is composed. 
+An (investment) portfolio is a collection of financial assets (instruments). 
+These assets are referred to as **holdings**. Holdings are **positions** in a portfolio.
 Holdings can either be **investment products** or **cash holdings**. Cash holdings are expressed in their **currency**.
 
-Alongside holdings, portfolio objects contain general info (eg. portfolio name like 'My Retirement Portfolio', for displaying to the user), and configuration settings to manage the portfolio (eg. a boolean to indicate that trading is allowed, the risk profile the customer had set for the portfolio).
-
-<!-- :question_mark: Holdings == Instruments? -->
+A Portfolio also contains metadata (eg. portfolio name like 'My Retirement Portfolio', for displaying to the user), configuration settings to manage the portfolio (eg. a boolean to indicate that trading is allowed, the risk profile the customer had set for the portfolio, ...).
 
 A Portfolio is owned by a User.
+
+A Portfolio is either managed by the User (ie. through Self Investor) or managed for the user (ie. through Robo Advisor).
 
 Refer to [Create a Portfolio](../common_scenarios/account_initiation/#create-a-portfolio).
 
@@ -47,16 +47,12 @@ Portfolio Stats
 :question_mark: not found in InvestSuite API documentation - About 
 Contains stats about multiple instruments -->
 
-## Accounts (of a Portfolio)
+## Money
 
-<!-- :question_mark: relationship to User.Account? -->
+- Paper Money (Robo Advisor only): Robo Advisor has a demo mode: the option of a 'virtual portfolio' that uses 'paper money'. The app is fully functional and will show how the portfolio holdings and value evolve, but this is not backed with actual money.
+- Real Money: real, actual money (in contrast to paper money).
 
-Refers to
 
-- Brokerage Account
-- (Counter) Bank Account
-
-<!-- Refer to -->
 
 ## Risk Profile (of a Portfolio)
 

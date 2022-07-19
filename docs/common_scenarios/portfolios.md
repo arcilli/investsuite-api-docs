@@ -1,23 +1,136 @@
 ---
-title: Create and manage portfolios
+title: Manage portfolios
 ---
 
-A portfolio holds one or more investment products for instance stocks, ETFs or cryptocurrency. The composition of a portfolio depends on the investor’s goals, budget, risk appetite and the holding period. An investor can without advise decide what instruments a portfolio is made of. In this case it is a “self managed” portfolio. A portfolio can equally be composed by an algorithm such as the InvestSuite’s iVar algorithm. In that case the portfolio is managed by a Robo Advisor.
+## Context
 
-Once you have created a portfolio you can create a portfolio and assign the portfolio as owner.
-
+This page lists all operations that can be performed on the Portfolio object, see See [Glossary](../getting_started/glossary.md).
 ## Create a portfolio
+### Minimum portfolio
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP
     POST /portfolios/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
     Connection: Keep-Alive
     Content-Type: application/json
     Authorization: Bearer {string}
+    {
+        "name":"General investing",
+        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency":"USD",
+        "money_type":"PAPER_MONEY",
+        "config":{
+            "manager":"ROBO_ADVISOR_DISCRETIONARY",
+            "manager_version":1,
+            "manager_settings":{
+            }
+        }
+    }
+    ```
 
+=== "Response (body)"
+
+    ```JSON
+    {
+        "name":"General investing",
+        "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency":"USD",
+        "money_type":"PAPER_MONEY",
+        "config":{
+            "manager":"ROBO_ADVISOR_DISCRETIONARY",
+            "manager_version":1,
+            "manager_settings":{
+                "active":true
+            }
+        },
+        "brokerage_account":null,
+        "archived":false,
+        "funded_since":null,
+        "id":"P01F8ZSNV0J45R9DFZ3D7D8C26F",
+        "creation_datetime":"2021-06-24T19:59:15.474241+00:00",
+        "version":1,
+        "version_datetime":"2021-06-24T19:59:15.474241+00:00",
+        "version_authored_by_portfolio_id":"U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+        "deleted":false,
+        "status":"ACTIVE"
+    }
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`name` | The display name of the portfolio set by the user. | `string <= 128 characters` | My Portfolio-1 | yes
+`owned_by_user_id` | The portfolio owner's user ID. This field is required firstly to get to the account of the owner for cash withdrawals, and secondly to group portfolios by owner. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
+`base_currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
+`money_type` | Defines whether this is a 'virtual' portfolio or not. In a virtual portfolio buying and selling decisions are simulated, rather than placed as actual orders through a broker. ! Write once | `enum("REAL_MONEY", "PAPER_MONEY")` | REAL_MONEY | yes
+`config->manager` | The manager type is either: self managed, or managed by the Robo Advisor under an advisory or discretionary mandate. For **Self Investor** select `USER_MANAGED` ! Write once. | `enum("USER_MANAGED", "ROBO_ADVISOR_ADVISORY", "ROBO_ADVISOR_DISCRETIONARY")` | ROBO_ADVISOR_DISCRETIONARY | yes
+`config->manager_version` | Which major version of the selected portfolio manager to use. | `integer >= 1` | 1 | yes
+
+!!! warning
+
+    The `money_type` cannot be changed: a paper money portfolio cannot be converted to a real money portfolio (by design).
+
+    This has implications when portfolios are created programmatically, for example during onboarding. Special care is needed when the ID is stored in the middleware.
+
+### Typical Self Investor portfolio
+
+=== "Request"
+
+    ```HTTP hl_lines="11 13"
+    POST /portfolios/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    {
+        "name":"General investing",
+        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency":"USD",
+        "money_type":"REAL_MONEY",
+        "config":{
+            "manager":"USER_MANAGED",
+            "manager_version":1,
+            "manager_settings":{
+            }
+        },
+        "brokerage_account":{
+            "bank_account_type":"IBAN",
+            "bank_account_number":"BE01234567891234"
+            "payment_reference":"32154796"
+        }
+    }
+    ```
+
+!!! warning
+
+    Self Investor only supports `REAL_MONEY` as `money_type` 
+
+Field | Description | How to provide
+--- | --- | ---
+brokerage_account > bank_account_type | Type of the bank account number, typically an IBAN number. | request body
+brokerage_account > bank_account_number | Account number of the account to which the user should transfer money for funding the portfolio. This can be a pooled account or an account specifically for the portfolio. Required if the user uses InvestSuite's front-end applications for investing. Displayed in the funding screen of the InvestSuite app. | request body
+brokerage_account > payment_reference | Payment reference the user needs to add to the bank transfer for funding the portfolio. Required if the user uses InvestSuite's front-end applications for investing and the portfolio is funded through a pooled account. Displayed in the funding screen of the InvestSuite app. | request body
+
+<!-- TODO clarify payment reference etc omnibus account -->
+
+Explore the 'User Managed Portfolio settings' in `config.manager_settings` in the [API documentation](https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post) for all available options.
+
+### Typical Robo Advisor portfolio
+
+A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. See [the Robo Advisor section](../robo/introduction.md) for more information on these.
+
+=== "Request"
+
+    ```HTTP hl_lines="12 13 14"
+    POST /portfolios/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
     {
         "base_currency":"USD",
         "config":{
@@ -37,14 +150,14 @@ Once you have created a portfolio you can create a portfolio and assign the port
             "$USD":10000
         },
     }
-
     ```
 
 === "Response (body)"
 
     ```JSON
     {
-        "external_id":"your-bank-portfolio-1""name":"General investing",
+        "external_id":"your-bank-portfolio-1",
+        "name":"General investing",
         "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
         "base_currency":"USD",
         "money_type":"PAPER_MONEY",
@@ -74,6 +187,9 @@ Once you have created a portfolio you can create a portfolio and assign the port
         "status":"ACTIVE"
     }
     ```
+
+Explore the 'Robo Advisor Managed portfolio settings' in `config.manager_settings` in the [API documentation](https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post) for all available options.
+
 ## Get a portfolio
 
 Add the InvestSuite ID to the path to retrieve a portfolio object.
@@ -120,63 +236,24 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
     }
     ```
 
-## Search
+## Update a portfolio
 
-You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](../../advanced_topics/collections/) section.
+Given the right permissions you can update any object by issuing a `PATCH` request.
 
-=== "Request"
+!!! warning
+    
+    The following fields cannot be updated: 
+    
+    - The `manager` field defines the type of portfolio management: self directed, under an advisory mandate, under a discretionary mandate.
+    - The `money_type` field states if the portfolio manages real money or paper money.
 
-    ```HTTP hl_lines="1"
-    GET /portfolios/
-        ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Authorization: Bearer {string}
-    ```
+### Update the portfolio manager settings
 
-=== "Response (body)"
-
-    ```JSON hl_lines="10"
-    {
-        "external_id":"your-bank-portfolio-1",
-        "name":"General investing",
-        "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "base_currency":"USD",
-        "money_type":"PAPER_MONEY",
-        "config":{
-            "manager":"ROBO_ADVISOR_DISCRETIONARY",
-            "manager_version":1,
-            "manager_settings":{
-                "policy_id":"Y01EF46X9XB437JS4678X0K529C",
-                "goal_id":"L01EF46X4872VVN0QRW4XF2ZP6W",
-                "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ",
-            }
-        },
-        "portfolio":{
-            "$USD":10000
-        },
-        "snapshot_datetime":null,
-        "funded_since":null,
-        "id":"P01F8ZSNV0J45R9DFZ3D7D8C26F",
-        "creation_datetime":"2021-06-24T19:59:15.474241+00:00",
-        "version":1,
-        "version_datetime":"2021-06-24T19:59:15.474241+00:00",
-        "version_authored_by_portfolio_id":"U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-        "deleted":false,
-        "status":"WAITING_FOR_FUNDS"
-    }
-    ```
-
-## Change ("patch") fields
-
-Given the right permissions you can update any object by issuing a `PATCH` request. 
-
-Apart from the `manager` and `money_type` fields all portfolio fields can be updated. The manager field defines the type of portfolio management: self directed, under an advisory mandate, under a discretionary mandate. Once that is set it is not supposed to change. Same for the money_type. That field states if the portfolio manages real money or paper money. It’s obvious that this field cannot be switched at will.
-
-Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
+Below table lists the applicable portfolio manager parameters. The properties can be updated by issueing a corresponding PATCH request (see example below). See the API specification for more information.
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="10"
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
@@ -221,6 +298,75 @@ Objects in the InvestSuite system are immutable. Every change leads to a new ver
         "deleted":false,
         "status":"WAITING_FOR_FUNDS"
     }
+    ```
+
+|  | Robo Advisor Managed Portfolio | User (Self Investor) Managed Portfolio |
+|---|---|---|
+| broker_provider | ● | ● |
+| active | ● | ● |
+| tags | ● | ● |
+| background_image | ● | ● |
+| background_color | ● | ● |
+| commission_profile | ● | ● |
+| policy_id | ● | - |
+| goal_id | ● | - |
+| horizon_id | ● | - |
+| risk_profile_id | ● | - |
+| proposed_risk_id | ● | - |
+| risk_profile_score | ● | - |
+| suitability_profile_id | ● | - |
+| divest_amount | ● | - |
+| start_amount | ● | - |
+| recurring_deposit_amount | ● | - |
+| end_datetime | ● | - |
+| optimization_cooldown_end | ● | - |
+
+### Update the brokerage account
+
+Brokerage Account: see [Glossary](../getting_started/glossary.md#accounts).
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`brokerage_account` | Account information associated with this portfolio | `Object` |  | no
+`brokerage_account->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
+`brokerage_account->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
+`brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
+
+### Block a portfolio
+
+Portfolio access can be blocked:
+
+- Blocked Self Investor portfolios can no longer trade.
+- Blocked Robo Advisor portfolios will no longer be optimized (ie. positions remain as-is and are not rebalanced).
+
+=== "HTTP"
+
+    ```HTTP hl_lines="11"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "manager": {
+            "manager_settings": {
+                active: false
+            }
+        }
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl -X PATCH \                 
+    -H "Content-Type: application/json" \
+    -H "Auhorization": "{string}"  \   
+    -d '{ "config": { "manager_settings": { active: false } } } }' \
+    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```
 
 ## Delete a portfolio
@@ -270,41 +416,48 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
     }
     ```
 
-## Block a portfolio
+## Query portfolios
 
-Both for Self Investor portfolios as well as for Robo Advisor portfolios access can be blocked. In the case of Self Investor this means the customer can no longer trade, the account is blocked as it were. For Robo Advisor when the portfolio is blocked, the Robo Advisor will no longer compute optimisations to provide rebalancing recommendations.
+You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](./collections.md) section.
 
-=== "HTTP"
+=== "Request"
 
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    ```HTTP hl_lines="2"
+    GET /portfolios/
+        ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
     Authorization: Bearer {string}
+    ```
 
+=== "Response (body)"
+
+    ```JSON hl_lines="10"
     {
-        "manager": {
-            "manager_settings": {
-                active: false
+        "external_id":"your-bank-portfolio-1",
+        "name":"General investing",
+        "owned_by_portfolio_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency":"USD",
+        "money_type":"PAPER_MONEY",
+        "config":{
+            "manager":"ROBO_ADVISOR_DISCRETIONARY",
+            "manager_version":1,
+            "manager_settings":{
+                "policy_id":"Y01EF46X9XB437JS4678X0K529C",
+                "goal_id":"L01EF46X4872VVN0QRW4XF2ZP6W",
+                "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ",
             }
-        }
+        },
+        "portfolio":{
+            "$USD":10000
+        },
+        "snapshot_datetime":null,
+        "funded_since":null,
+        "id":"P01F8ZSNV0J45R9DFZ3D7D8C26F",
+        "creation_datetime":"2021-06-24T19:59:15.474241+00:00",
+        "version":1,
+        "version_datetime":"2021-06-24T19:59:15.474241+00:00",
+        "version_authored_by_portfolio_id":"U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+        "deleted":false,
+        "status":"WAITING_FOR_FUNDS"
     }
-
     ```
-
-=== "curl"
-
-    ```bash
-    curl -X PATCH \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    -d '{ "config": { "manager_settings": { active: false } } } }' \
-    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
-    ```
-
-Manager | Description | Data type | Example | Required
-------- | ----------- | --------- | ------- | --------
-Self Investor | The active field for Self Investor is used to block users from placing orders, and potentially of access to any other features. | `boolean (default: false)` | false | no
-Robo Advisor | Whether the optimizer service is active for this portfolio. When this field is set to true, the Robo Advisor will compute optimizations once a day and provide rebalancing recommendations. | `boolean (default: false)` | false | no
