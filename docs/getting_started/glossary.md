@@ -2,17 +2,16 @@
 title: Glossary
 ---
 
-## Client
-You, the bank, the customer of InvestSuite.
+This page defines the InvestSuite standard terminology that is throughout our business operations.
 
-## Customer
-The customer and the user are synonymous for your (the bank's) customer, the end-user. This is mostly used in functional/business contexts.
+## Client / Customer / User
+InvestSuite is a B2B4C Company. To avoid confusion between InvestSuite's client and InvestSuite client's client, the following convention is used throughout this documentation:
 
-## User
-The User is synonymous for Customer, but is typically used in technical contexts.
-
-- The User is the owner of one or more Portfolios
-- Access to InvestSuite products is controlled on a User level within the InvestSuite console
+- **Client**: InvestSuite's customer, typically a bank or financial institution. The B2**B** party.
+- **Customer**: the Client's customer, the end-user, typically a person. The B2B4**C** party. This is typically used in functional/business contexts.
+- **User**: synonymous for Customer, but typically used in more technical contexts:
+    - The User is the owner of one or more Portfolios
+    - Access to InvestSuite products is controlled on a User level within the InvestSuite console
 
 Refer to [Creating a User](../common_scenarios/account_initiation/#create-a-user).
 
