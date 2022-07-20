@@ -2,7 +2,7 @@
 title: Glossary
 ---
 
-This page defines the InvestSuite standard terminology that is throughout our business operations.
+This page defines the InvestSuite standard terminology that is used throughout our business operations.
 
 ## Client / Customer / User
 InvestSuite is a B2B4C Company. To avoid confusion between InvestSuite's client and InvestSuite client's client, the following convention is used throughout this documentation:
