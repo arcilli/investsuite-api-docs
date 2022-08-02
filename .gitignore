@@ -1,3 +1,5 @@
 styles/Microsoft/
 styles/Readability/
 !styles/Vocab/Base/accept.txt
+
+.envs/
