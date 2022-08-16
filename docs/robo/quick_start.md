@@ -568,7 +568,7 @@ Next update the portfolio to hold the acquired positions. This will trigger the 
     Content-Type: application/json
     Authorization: Bearer {string}
 
-    "holdings": {
+    "portfolio": {
         "$USD": 208.086729,
         "US78464A6644": 18.78,
         "US4642886612": 9.2243,
