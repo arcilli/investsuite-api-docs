@@ -1303,13 +1303,6 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><code>movements-&gt;quantity_type</code></td>
-<td>The type in which the quantity is expressed. Amongst others currency and funds quantities are expressed as <code>AMOUNT</code>. Equity and other sorts of securities as <code>SHARES</code>.</td>
-<td><code>Enum("SHARES", "AMOUNT")</code></td>
-<td>SHARES</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><code>movements-&gt;quantity</code></td>
 <td>Quantity of the movement expressed in units of the instrument. If the instrument_id is a cash type such as $USD, the quantity indicates a cash amount. If the instrument_id is an investible product such as IE0031442068, the quantity indicates a share amount. Fractional amounts are supported for instruments such as ETFs.Quantity is positive when adding a quantity of an instrument to the portfolio and negative when removing a quantity of an instrument from a portfolio.</td>
 <td><code>number</code></td>
