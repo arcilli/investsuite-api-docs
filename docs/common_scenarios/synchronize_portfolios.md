@@ -293,7 +293,6 @@ Costs and charges come in various forms. There are items in the `type` Enum that
                 "status": "SETTLED",
                 "datetime": "2021-10-03T08:00:16.733954+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": -0.1035719,
             }
         ]
@@ -342,7 +341,6 @@ Example `WITHHOLDING_TAX`:
                 "status": "SETTLED",
                 "datetime": "2021-10-03T08:00:16.733954+00:00",
                 "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
                 "quantity": -0.1035719,
             }
         ]
