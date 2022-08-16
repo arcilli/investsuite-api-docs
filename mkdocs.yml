@@ -123,4 +123,5 @@ nav:
     - Reference API:            value-added-apis/reference.md
     - Tenant Configuration:     value-added-apis/tenant_config.md
   - API specification:          "https://api.sandbox.investsuite.com/redoc"
+  - Swagger:                    "https://api.sandbox.investsuite.com/docs"
   - Release notes:              changelog.md
