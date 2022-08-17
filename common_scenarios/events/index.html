@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/idcard/">
+        <link rel="canonical" href="https://docs.investsuite.com/common_scenarios/events/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
     
     
       
-        <title>ID Card API - InvestSuite Integration API documentation</title>
+        <title>Events - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,9 +55,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - ID Card API">
+<meta property="og:title" content="InvestSuite Integration API documentation - Events">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/idcard/">
+<meta property="og:url" content="https://docs.investsuite.com/common_scenarios/events/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#event-driven" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ID Card API
+              Events
             
           </span>
         </div>
@@ -198,13 +198,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../common_scenarios/introduction/" class="md-tabs__link">
+      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
         Common scenarios
       </a>
     </li>
@@ -246,15 +248,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -408,12 +408,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -436,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -450,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/onboarding/" class="md-nav__link">
+      <a href="../onboarding/" class="md-nav__link">
         Onboarding
       </a>
     </li>
@@ -464,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/cash_movements/" class="md-nav__link">
+      <a href="../cash_movements/" class="md-nav__link">
         Funding and withdrawal
       </a>
     </li>
@@ -478,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/suitability_profiler/" class="md-nav__link">
+      <a href="../suitability_profiler/" class="md-nav__link">
         Suitability profiler
       </a>
     </li>
@@ -492,7 +494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/authentication/" class="md-nav__link">
+      <a href="../authentication/" class="md-nav__link">
         Authentication
       </a>
     </li>
@@ -506,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/object_model.md" class="md-nav__link">
+      <a href="../object_model.md" class="md-nav__link">
         Object Model
       </a>
     </li>
@@ -520,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/financial_data/" class="md-nav__link">
+      <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
     </li>
@@ -534,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/users/" class="md-nav__link">
+      <a href="../users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -548,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/portfolios/" class="md-nav__link">
+      <a href="../portfolios/" class="md-nav__link">
         Manage portfolios
       </a>
     </li>
@@ -562,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/synchronize_portfolios/" class="md-nav__link">
+      <a href="../synchronize_portfolios/" class="md-nav__link">
         Synchronize portfolios
       </a>
     </li>
@@ -576,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/collections/" class="md-nav__link">
+      <a href="../collections/" class="md-nav__link">
         Collection responses
       </a>
     </li>
@@ -588,11 +590,231 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../common_scenarios/events/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Events
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Events
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven" class="md-nav__link">
+    Event Driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architectural-concept" class="md-nav__link">
+    Architectural concept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolios" class="md-nav__link">
+    Portfolios
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-divest-amount" class="md-nav__link">
+    Withdrawal (divest amount)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal" class="md-nav__link">
+    Removal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    Users
+  </a>
+  
+    <nav class="md-nav" aria-label="Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation_1" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update_1" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-number-update" class="md-nav__link">
+    Account number update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimisations" class="md-nav__link">
+    Optimisations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimisations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_2" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-choice-update" class="md-nav__link">
+    Owner choice update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    Profiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result-update" class="md-nav__link">
+    Result update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment-result-update" class="md-nav__link">
+    Assessment result update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reports" class="md-nav__link">
+    Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_3" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polling" class="md-nav__link">
+    Polling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -604,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/embedding/" class="md-nav__link">
+      <a href="../embedding/" class="md-nav__link">
         Embedding
       </a>
     </li>
@@ -618,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common_scenarios/errors/" class="md-nav__link">
+      <a href="../errors/" class="md-nav__link">
         API errors
       </a>
     </li>
@@ -762,14 +984,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
@@ -792,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -806,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -820,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -834,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -846,62 +1066,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ID Card API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-id-cards-based-on-a-list-of-identifiers" class="md-nav__link">
-    Get ID cards based on a list of identifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-id-cards-for-an-entire-universe" class="md-nav__link">
-    Get ID cards for an entire universe
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -913,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -927,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -941,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logos/" class="md-nav__link">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
     </li>
@@ -955,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -969,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -983,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -1067,22 +1236,191 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#event-driven" class="md-nav__link">
+    Event Driven
   </a>
+  
+    <nav class="md-nav" aria-label="Event Driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architectural-concept" class="md-nav__link">
+    Architectural concept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolios" class="md-nav__link">
+    Portfolios
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-divest-amount" class="md-nav__link">
+    Withdrawal (divest amount)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removal" class="md-nav__link">
+    Removal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    Users
+  </a>
+  
+    <nav class="md-nav" aria-label="Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation_1" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update_1" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#account-number-update" class="md-nav__link">
+    Account number update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimisations" class="md-nav__link">
+    Optimisations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimisations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_2" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-choice-update" class="md-nav__link">
+    Owner choice update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    Profiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#result-update" class="md-nav__link">
+    Result update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assessment-result-update" class="md-nav__link">
+    Assessment result update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reports" class="md-nav__link">
+    Reports
+  </a>
+  
+    <nav class="md-nav" aria-label="Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_3" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-id-cards-based-on-a-list-of-identifiers" class="md-nav__link">
-    Get ID cards based on a list of identifiers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-id-cards-for-an-entire-universe" class="md-nav__link">
-    Get ID cards for an entire universe
+  <a href="#polling" class="md-nav__link">
+    Polling
   </a>
   
 </li>
@@ -1098,7 +1436,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>ID Card API</h1>
+    <h1>Events</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1107,399 +1445,282 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Get a list of instrument ID Cards.</p>
-<p>ID cards can be retrieved based on either a list of identifiers (ISINS or RICs), or for an entire universe</p>
+<p>The API supports two patterns for events integrations:</p>
+<ol>
+<li>Event-driven: the client system responds to an event that is sent by the InvestSuite system (asynchronously) <strong>(preferred)</strong></li>
+<li>Polling: the client regularly polls the events REST endpoint</li>
+</ol>
+<h2 id="event-driven">Event Driven<a class="headerlink" href="#event-driven" title="Permanent link">&para;</a></h2>
+<h3 id="architectural-concept">Architectural concept<a class="headerlink" href="#architectural-concept" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/ID-Card">ID Card API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/ID%20Card/">ID Card API Swagger UI Interface</a></li>
+<li>InvestSuite posts events on one single topic of the client's event queue</li>
+<li>Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...</li>
 </ul>
-<h2 id="get-id-cards-based-on-a-list-of-identifiers">Get ID cards based on a list of identifiers<a class="headerlink" href="#get-id-cards-based-on-a-list-of-identifiers" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/id-card/query/&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{&quot;instrument_ids&quot;: [&quot;A.Z&quot;]}&#39;</span>
+<h3 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>The strategy is to signal that an event has happened, not to include all information that the middleware may possibly require (as these requirements may vary wildly and may introduce breaking changes). Therefore, an additional REST API call may be required to get additional data.</p>
+</li>
+<li>
+<p>All events will use this envelope, with the actual information in <code>data</code>.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: string, 
+  &quot;created&quot;: timestamp, 
+  &quot;version&quot;: string,
+  &quot;subject&quot;: string,
+  &quot;action&quot;: string, 
+  &quot;data&quot;: dict
+}
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/id-card/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>An ID uniquely identifying the event</td>
+</tr>
+<tr>
+<td>created</td>
+<td>timestamp</td>
+<td>The timestamp of the creation of the event</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>The version of the event object. For now, this will always be "1.0.0"</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>A string representing a subject, always referring to an entity (see <a href="entities.md">Entities Overview</a>)</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>The action on the topic entity that triggers the event, for example 'creation'</td>
+</tr>
+<tr>
+<td>data</td>
+<td>dict</td>
+<td>A dictionary that contains specific fields, depending on the type, see below for the exhaustive list.</td>
+</tr>
+</tbody>
+</table>
+<!-- TODO: add link to Entities -->
 
-<span class="p">{</span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;A.Z&quot;</span><span class="p">]}</span><span class="w"></span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are deliberately using ‘subject’ i.o. ‘topic’, since 1/ the integration pattern with 3rd parties is that we will post all messages on 1 topic (so this will be confusing) and 2/ this field can, potentially in the future, be broader than only entities</p>
+</div>
+<h3 id="portfolios">Portfolios<a class="headerlink" href="#portfolios" title="Permanent link">&para;</a></h3>
+<h4 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.creation</code></p>
+<p>When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.</p>
+<p>It is up to the b2b client to check if the portfolio is “paper_money” or “real_money” based on this event. This to decide if they need to proceed with setup at their side.</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;creation&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;owned_by_user_id&quot; : &quot;a-user-id&quot;
+}
 </code></pre></div>
-</div>
-</div>
-</div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>instrument_ids</code></td>
-<td>The instruments to retrieve ID card data for. Can be either a list of ISINs or a list of RICs.</td>
-<td>List[str]</td>
-<td>["A.Z"]</td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
-<h2 id="get-id-cards-for-an-entire-universe">Get ID cards for an entire universe<a class="headerlink" href="#get-id-cards-for-an-entire-universe" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Curl Request</label><label for="__tabbed_2_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/id-card/universe/&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+<h4 id="status-update">Status update<a class="headerlink" href="#status-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.status-update</code></p>
+<p>Every time a status of a portfolio gets updated an event will be sent to the b2b client.</p>
+<p>Possible values for the status field:</p>
+<ul>
+<li>WAITING_FOR_ACCOUNT: brokerage accounts are to be added by the b2b client</li>
+<li>WAITING_FOR_POLICY: user is still going through the risk profiling, so a policy was not yet determined.</li>
+<li>WAITING_FOR_FUNDS: waiting for incoming funds to arrive. This can be a trigger for the b2b client to push the client to make a transfer if this status isn’t updated within a certain timeframe.</li>
+<li>ACTIVE: portfolio is in use</li>
+<li>INACTIVE</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;status-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;value&quot; : &quot;INACTIVE&quot;
+  }
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/id-card/universe/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<p>Possible values for the value field:</p>
+<ul>
+<li>WAITING_FOR_POLICY</li>
+<li>WAITING_FOR_ACCOUNT</li>
+<li>WAITING_FOR_FUNDS</li>
+<li>ACTIVE</li>
+<li>INACTIVE</li>
+</ul>
+<h4 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.funding</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
+  &quot;value&quot;: 500, 
+  &quot;currency&quot;: &quot;EUR&quot;
+}
 </code></pre></div>
-</div>
-</div>
-</div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>universe_name</code></td>
-<td>The universe name to retrieve ID card data for. If omitted, data for the entire tenant universe will be returned.</td>
-<td><code>str</code></td>
-<td><code>robo_universe</code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;A.Z&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ANALYST_CONSENSUS_PRICE_TARGET&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">149.7857</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ANALYST_RECOMMENDATIONS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;BUY&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;HOLD&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;OUTPERFORM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.0</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ANALYST_RECOMMENDATION_COUNT&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">16.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ANALYST_UPWARD_POTENTIAL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">25.648603305091843</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;CURRENCY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DEBT_EQUITY_LATEST&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">56.71613</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DESCRIPTION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Agilent Technologies, Inc. is engaged in providing application-focused solutions that include instruments, software, services and consumables for the entire laboratory workflow. The Company operates in the life sciences, diagnostics and applied chemical markets. Its life sciences and applied markets business provides application-focused solutions that include instruments and software that enable customers to identify, quantify and analyze the physical and biological properties of substances and products. Its diagnostics and genomics business includes the genomics, nucleic acid contract manufacturing and research and development, pathology, companion diagnostics, reagent partnership and biomolecular analysis businesses. Its Agilent CrossLab business spans the entire lab with its range of services portfolio, which is designed to improve customer outcomes. Its product categories include liquid chromatography (LC) systems and components, atomic absorption (AA) instruments and others.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DIVIDEND_PAYOUT_RATIO_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">19.31908</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DIV_YIELD_CURRENT&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.70464</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DIV_YIELD_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.66437</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;DPS_PER_FY&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;EPS_GROWTH_LAST_5Y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">22.92492</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;EPS_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.14678</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;EQUITY_INDUSTRY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Advanced Medical Equipment &amp; Technology&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;EQUITY_SECTOR&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Healthcare&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;FINANCIAL_HEALTH_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;GROWTH_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ISIN&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US00846U1016&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;MARKET_CAP&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">35588077791.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;MOMENTUM_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;NAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Agilent Technologies Ord Shs&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;NET_PROFIT_MARGIN_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">19.35039</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;NUMBER_OF_EMPLOYEES&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">17400.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;PRICE_BOOK_LATEST&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.95896</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;PRICE_EARNINGS_EX_EXTRA_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">28.74761</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;PRICE_SALES_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.45564</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;PROFITABILITY_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ROE_TTM&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">25.43294</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;SIZE_LABEL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LARGE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;STABILITY_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;VALUE_GROWTH_LABEL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GROWTH&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;VALUE_STARS&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="err">...</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<h4 id="withdrawal-divest-amount">Withdrawal (divest amount)<a class="headerlink" href="#withdrawal-divest-amount" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.withdrawal</code></p>
+<p>Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.</p>
+<p>Every update to this amount will trigger an event towards the b2b client.</p>
+<p>Divest amount:</p>
+<p>= 1e100 → means full withdrawal.</p>
+<p>= specific amount → partial withdrawal</p>
+<p>Note: value is the total amount that is requested for withdrawal, not the incremental value (eg. in case of two quickly subsequent withdrawal requests, where the first is not yet settled)</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;divest-amount-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;divest_amount&quot; : 1.234,
+    &quot;currency&quot; : &quot;a-currency-code&quot;
+  }
+}
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td>Holds all ID Card data. It contains a dictionary with the requested instrument identifiers as keys, and as values dicts with the ID card data fields (see fields below)</td>
-<td><code>dict</code></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ANALYST_CONSENSUS_PRICE_TARGET</code></td>
-<td>Analyst consensus stock price target</td>
-<td>dict with currency and price fields</td>
-<td>{"currency": "USD", "price": 149.7857}</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ANALYST_RECOMMENDATIONS</code></td>
-<td>Number of analyst recommendations per recommendation</td>
-<td>dict with counts per recommendation</td>
-<td>{"BUY": 6.0, "HOLD": 3.0, "OUTPERFORM": 7.0}</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ANALYST_RECOMMENDATION_COUNT</code></td>
-<td>Total number of analyst recommendations</td>
-<td><code>float</code></td>
-<td>16.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ANALYST_UPWARD_POTENTIAL</code></td>
-<td>Return (in percent) if the current price would move to the analyst consensus price target</td>
-<td><code>float</code></td>
-<td>25.648603305091843</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>CURRENCY</code></td>
-<td>Listing currency</td>
-<td><code>str</code></td>
-<td>"USD"</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DEBT_EQUITY_LATEST</code></td>
-<td>Debt to Equity ratio based on latest company filings</td>
-<td><code>float</code></td>
-<td>56.71613</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DESCRIPTION</code></td>
-<td>Company description</td>
-<td><code>str</code></td>
-<td>"Agilent Technologies, Inc. is engaged in providing application-focused solutions that include instruments, software, services and consumables for the entire laboratory workflow. The Company operates in the life sciences, diagnostics and applied chemical markets. Its life sciences and applied markets business provides application-focused solutions that include instruments and software that enable customers to identify, quantify and analyze the physical and biological properties of substances and products. Its diagnostics and genomics business includes the genomics, nucleic acid contract manufacturing and research and development, pathology, companion diagnostics, reagent partnership and biomolecular analysis businesses. Its Agilent CrossLab business spans the entire lab with its range of services portfolio, which is designed to improve customer outcomes. Its product categories include liquid chromatography (LC) systems and components, atomic absorption (AA) instruments and others."</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DIVIDEND_PAYOUT_RATIO_TTM</code></td>
-<td>Percentage of earnings that have been paid out as dividend in the last 2 months</td>
-<td><code>float</code></td>
-<td>19.31908</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DIV_YIELD_CURRENT</code></td>
-<td>Current company dividend yield (based on latest dividend information) in %</td>
-<td><code>float</code></td>
-<td>0.70464</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DIV_YIELD_TTM</code></td>
-<td>Dividends paid out in the last 12 months divided by current price, converted to %</td>
-<td><code>float</code></td>
-<td>0.66437</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>DPS_PER_FY</code></td>
-<td>Dividends per fiscal year</td>
-<td>dict with an amount and currency per fiscal year. null if no dividends were paid out</td>
-<td>null</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>EPS_GROWTH_LAST_5Y</code></td>
-<td>Compounded annual EPS growth over the last 5 years (in %)</td>
-<td><code>float</code></td>
-<td>22.92492</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>EPS_TTM</code></td>
-<td>Earnings per share over the last trailing 12 months</td>
-<td><code>float</code></td>
-<td>4.14678</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>EQUITY_INDUSTRY</code></td>
-<td>Industry that the stock belongs to (corresponds to the 4th level in the TRBC hierarchy)</td>
-<td><code>str</code></td>
-<td>Advanced Medical Equipment &amp; Technology</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>EQUITY_SECTOR</code></td>
-<td>Sector that the stock belongs to (corresponds to the first level in the TRBC hierarchy)</td>
-<td><code>str</code></td>
-<td>Healthcare</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>FINANCIAL_HEALTH_STARS</code></td>
-<td>Number of financial health stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>5.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>GROWTH_STARS</code></td>
-<td>Number of growth stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>5.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ISIN</code></td>
-<td>Instrument ISIN code</td>
-<td><code>str</code></td>
-<td>US00846U1016</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>MARKET_CAP</code></td>
-<td>Company market capitalisation (in the units of CURRENCY)</td>
-<td><code>float</code></td>
-<td>35588077791.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>MOMENTUM_STARS</code></td>
-<td>Number of momentum stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>4.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>NAME</code></td>
-<td>Instrument name</td>
-<td><code>str</code></td>
-<td>Agilent Technologies Ord Shs</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>NET_PROFIT_MARGIN_TTM</code></td>
-<td>Net Profit Margin, calculated as the Income After Taxes for the trailing 12 months divided by Total Revenue for the same period (in %)</td>
-<td><code>float</code></td>
-<td>19.35039</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>NUMBER_OF_EMPLOYEES</code></td>
-<td>Number of employees</td>
-<td><code>float</code></td>
-<td>17400.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>PRICE_BOOK_LATEST</code></td>
-<td>Latest price to book ratio</td>
-<td><code>float</code></td>
-<td>6.95896</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>PRICE_EARNINGS_EX_EXTRA_TTM</code></td>
-<td>Price to earnings ratio (based on trailing 12-month earnings), excluding extraordinary items</td>
-<td><code>float</code></td>
-<td>28.74761</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>PRICE_SALES_TTM</code></td>
-<td>Price to sales ratio (based on trailing 12-month sales)</td>
-<td><code>float</code></td>
-<td>5.45564</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>PROFITABILITY_STARS</code></td>
-<td>Number of profitability stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>5.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>ROE_TTM</code></td>
-<td>Return on Equity (ROE), based on trailing 12-month earnings</td>
-<td><code>float</code></td>
-<td>25.43294</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>SIZE_LABEL</code></td>
-<td>Size Label (LARGE / MID / SMALL) based on InvestSuite's size category methodology</td>
-<td><code>str</code></td>
-<td>LARGE</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>STABILITY_STARS</code></td>
-<td>Number of stability stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>5.0</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>VALUE_GROWTH_LABEL</code></td>
-<td>Value Growth Label (VALUE / GROWTH) based on InvestSuite's size category methodology</td>
-<td><code>str</code></td>
-<td>GROWTH</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><code>VALUE_STARS</code></td>
-<td>Number of value stars according to the InvestSuite X-Ray calculations</td>
-<td><code>float</code></td>
-<td>4.0</td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
+<h4 id="removal">Removal<a class="headerlink" href="#removal" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.removal</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
+}
+</code></pre></div>
+<h3 id="users">Users<a class="headerlink" href="#users" title="Permanent link">&para;</a></h3>
+<h4 id="creation_1">Creation<a class="headerlink" href="#creation_1" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>users.creation</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;, 
+  &quot;user_data&quot;: {
+    &quot;email&quot;: &quot;ashok.kumar@example.com&quot;, 
+    &quot;phone&quot;: &quot;+12345667&quot;, 
+    &quot;first_name&quot;: &quot;Ashok&quot;, 
+    &quot;last_name&quot;: &quot;Kumar&quot;
+  }
+}
+</code></pre></div>
+<h4 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>users.status-update</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;, 
+  &quot;value&quot;: &quot;WAITING_FOR_SIGNATURE&quot;
+}
+</code></pre></div>
+<h4 id="account-number-update">Account number update<a class="headerlink" href="#account-number-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>users.account-number-update</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;U01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;, 
+  &quot;value&quot;: &quot;BE01234567891234&quot;
+}
+</code></pre></div>
+<h3 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h3>
+<h4 id="status-update_2">Status update<a class="headerlink" href="#status-update_2" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>optimisations.status-update</code></p>
+<p>When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.</p>
+<p>Fields:</p>
+<ul>
+<li>
+<p>is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).</p>
+</li>
+<li>
+<p>Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED</p>
+</li>
+</ul>
+<p>NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;optimizations&quot;,
+  &quot;action&quot; : &quot;status-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;an-optimization-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;is_recommended&quot; : true,
+    &quot;value&quot; : &quot;SUCCESS&quot;
+  }
+</code></pre></div>
+<h4 id="owner-choice-update">Owner choice update<a class="headerlink" href="#owner-choice-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>optimisations.owner-choice-update</code></p>
+<p>This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).</p>
+<p>In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”</p>
+<p>The id can be used to fetch the optimisation.</p>
+<ul>
+<li>Possible values for the status field are ACCEPT, REJECT, REOPTIMIZE, IGNORED</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;optimizations&quot;,
+  &quot;action&quot; : &quot;owner-choice-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;an-optimization-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;value&quot; : &quot;ACCEPT&quot;
+  }
+}
+</code></pre></div>
+<h3 id="profiles">Profiles<a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h3>
+<p>See also the section on <a href="../suitability_profiler/">Suitability Profiler</a>.</p>
+<h4 id="result-update">Result update<a class="headerlink" href="#result-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>profiles.result-update</code></p>
+<p>Sent upon completion of ALL Assessments</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;X01FWDZGKEV3S7SKAX90637H077&quot;, 
+  &quot;linked_portfolio_id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
+}
+</code></pre></div>
+<h4 id="assessment-result-update">Assessment result update<a class="headerlink" href="#assessment-result-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>profiles.assessment-result-update</code></p>
+<p>Sent upon completion of AN Assessment</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;X01FWDZGKEV3S7SKAX90637H077&quot;, 
+  &quot;questionnaire_id&quot;: &quot;Q123&quot;
+}
+</code></pre></div>
+<h3 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h3>
+<h4 id="status-update_3">Status update<a class="headerlink" href="#status-update_3" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>reports.status-update</code></p>
+<ul>
+<li>Possible values for the <code>value</code> field are READY, FAILED</li>
+<li>Possible values for the <code>output_format</code> field are WEB, PDF, VIDEO</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;R01FWDZGKEV3S7SKAX90637H077&quot;,
+  &quot;value&quot;: &quot;READY&quot;, 
+  &quot;output_format&quot;: &quot;VIDEO&quot;
+}
+</code></pre></div>
+<h2 id="polling">Polling<a class="headerlink" href="#polling" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is still under development</p>
+</div>
+<!-- ### Architectural Concept
+
+### The REST Event Endpoint
+
+TODO -->
     
 
             </article>
@@ -1515,7 +1736,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../xray/" class="md-footer__link md-footer__link--prev" aria-label="Previous: X-Ray API" rel="prev">
+        <a href="../collections/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Collection responses" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1524,20 +1745,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              X-Ray API
+              Collection responses
             </div>
           </div>
         </a>
       
       
         
-        <a href="../themes/" class="md-footer__link md-footer__link--next" aria-label="Next: Themes API" rel="next">
+        <a href="../embedding/" class="md-footer__link md-footer__link--next" aria-label="Next: Embedding" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Themes API
+              Embedding
             </div>
           </div>
           <div class="md-footer__button md-icon">
