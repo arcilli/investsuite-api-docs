@@ -151,7 +151,7 @@ Note: value is the total amount that is requested for withdrawal, not the increm
 }
 ```
 
-#### Removal
+<!-- #### Removal
 
 Fully qualified name: `portfolios.removal`
 
@@ -159,9 +159,9 @@ Fully qualified name: `portfolios.removal`
 {
   "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
 }
-```
+``` -->
 
-### Users
+<!-- ### Users
 
 #### Creation
 
@@ -198,7 +198,7 @@ Fully qualified name: `users.account-number-update`
   "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
   "value": "BE01234567891234"
 }
-```
+``` -->
 
 ### Optimisations
 
@@ -258,7 +258,7 @@ The id can be used to fetch the optimisation.
 }
 ```
 
-### Profiles
+<!-- ### Profiles
 
 See also the section on [Suitability Profiler](suitability_profiler.md).
 
@@ -303,7 +303,7 @@ Fully qualified name: `reports.status-update`
   "value": "READY", 
   "output_format": "VIDEO"
 }
-```
+``` -->
 
 
 ## Polling
