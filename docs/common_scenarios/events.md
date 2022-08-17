@@ -2,18 +2,28 @@
 title: Events
 ---
 
-## Message Bus Events
+The API supports two patterns for events integrations:
+
+1. Event-driven: the client system responds to an event that is sent by the InvestSuite system (asynchronously) **(preferred)**
+2. Polling: the client regularly polls the events REST endpoint
+
+## Event Driven
 
 ### Architectural concept
 
 - InvestSuite can post events on the event bus of the client to signal an event
 - Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...
 
+### Principles
+
+- Envelope
+- The strategy is not to include all information in the event, we signal that something has happened, use the corresponding REST API call to get more information
+
 ### Portfolios
 
 #### Creation
 
-Name: `portfolio.creation`
+Name: `portfolios.creation`
 
 When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.
 
@@ -35,11 +45,12 @@ It is up to the b2b client to check if the portfolio is “paper_money” or “
 
 #### Status update
 
-Name: `portfolio.status-update`
+Name: `portfolios.status-update`
 
 Every time a status of a portfolio gets updated an event will be sent to the b2b client.
 
 Possible values for the status field:
+
 - WAITING_FOR_ACCOUNT: brokerage accounts are to be added by the b2b client
 - WAITING_FOR_POLICY: user is still going through the risk profiling, so a policy was not yet determined.
 - WAITING_FOR_FUNDS: waiting for incoming funds to arrive. This can be a trigger for the b2b client to push the client to make a transfer if this status isn’t updated within a certain timeframe.
@@ -61,6 +72,7 @@ Possible values for the status field:
 ```
 
 Possible values for the value field:
+
 - WAITING_FOR_POLICY
 - WAITING_FOR_ACCOUNT
 - WAITING_FOR_FUNDS
@@ -69,7 +81,7 @@ Possible values for the value field:
 
 #### Funding
 
-Name: `portfolio.funding`
+Name: `portfolios.funding`
 
 ```
 {
@@ -81,7 +93,7 @@ Name: `portfolio.funding`
 
 #### Withdrawal (divest amount)
 
-Name: `portfolio.withdrawal`
+Name: `portfolios.withdrawal`
 
 Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.
 
@@ -113,7 +125,7 @@ Note: value is the total amount that is requested for withdrawal, not the increm
 
 #### Removal
 
-Name: `portfolio.removal`
+Name: `portfolios.removal`
 
 ```
 {
@@ -121,9 +133,161 @@ Name: `portfolio.removal`
 }
 ```
 
+### Users
 
-## REST Event Endpoint
+#### Creation
 
-TODO
+Name: `users.creation`
+
+```
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "user_data": {
+    "email": "ashok.kumar@example.com", 
+    "phone": "+12345667", 
+    "first_name": "Ashok", 
+    "last_name": "Kumar"
+  }
+}
+```
+#### Status update
+
+Name: `users.status-update`
+
+```
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "value": "WAITING_FOR_SIGNATURE"
+}
+```
+
+#### Account number update
+
+Name: `users.account-number-update`
+
+```
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "value": "BE01234567891234"
+}
+```
+
+### Optimisations
+
+#### Status update
+
+Name: `optimisations.status-update`
+
+When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.
+
+Fields:
+
+- is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).
+
+- Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED
+  
+NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.
+
+```
+{
+  "id" : "an-event-id",
+  "created" : "-1000000000-01-01T00:00:00Z",
+  "version" : "1.0.0",
+  "subject" : "optimizations",
+  "action" : "status-update",
+  "data" : {
+    "id" : "an-optimization-id",
+    "external_id" : "an-external-id",
+    "is_recommended" : true,
+    "value" : "SUCCESS"
+  }
+```
+
+#### Owner choice update
+
+Name: `optimisations.owner-choice-update`
+
+This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).
+
+In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”
+
+The id can be used to fetch the optimisation.
+
+- Possible values for the status field are ACCEPT, REJECT, REOPTIMIZE, IGNORED
+
+```
+{
+  "id" : "an-event-id",
+  "created" : "-1000000000-01-01T00:00:00Z",
+  "version" : "1.0.0",
+  "subject" : "optimizations",
+  "action" : "owner-choice-update",
+  "data" : {
+    "id" : "an-optimization-id",
+    "external_id" : "an-external-id",
+    "value" : "ACCEPT"
+  }
+}
+```
+
+### Profiles
+
+See also the section on [Suitability Profiler](suitability_profiler.md).
+
+#### Result update
+
+Name: `profiles.result-update`
+
+Sent upon completion of ALL Assessments
+
+```
+{
+  "id": "X01FWDZGKEV3S7SKAX90637H077", 
+  "linked_portfolio_id": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
+}
+```
+
+#### Assessment result update
+
+Name: `profiles.assessment-result-update`
+
+Sent upon completion of AN Assessment
+
+```
+{
+  "id": "X01FWDZGKEV3S7SKAX90637H077", 
+  "questionnaire_id": "Q123"
+}
+```
+
+#### Reports
+
+##### Status update
+
+Name: `reports.status-update`
+
+- Possible values for the `value` field are READY, FAILED
+- Possible values for the `output_format` field are WEB, PDF, VIDEO
+
+```
+{
+  "id": "R01FWDZGKEV3S7SKAX90637H077",
+  "value": "READY", 
+  "output_format": "VIDEO"
+}
+```
+
+
+## Polling
+
+!!! warning
+
+    This is still under development
+
+<!-- ### Architectural Concept
+
+### The REST Event Endpoint
+
+TODO -->
 
 
