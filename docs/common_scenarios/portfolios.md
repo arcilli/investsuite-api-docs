@@ -325,12 +325,94 @@ Below table lists the applicable portfolio manager parameters. The properties ca
 
 Brokerage Account: see [Glossary](../getting_started/glossary.md#accounts).
 
+=== "Request"
+
+    ```HTTP hl_lines="9 10"
+    PATCH /portfolios/P1234JSJDFJSIDDKJDI2334J3IJ/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    "brokerage_account": {
+        "bank_account_type": "IBAN",
+        "bank_account_number": "BE19000000001212",
+        "bank_id": null,
+        "payment_reference": null
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON hl_lines="41 42"
+    {
+    "external_id": "your-external-id",
+    "readable_by": [
+        "U1234JSJDFJSIDDKJDI2334J3IJ"
+    ],
+    "modifiable_by": [
+        "U1234JSJDFJSIDDKJDI2334J3IJ"
+    ],
+    "name": "Child's education",
+    "owned_by_user_id": "U1234JSJDFJSIDDKJDI2334J3IJ",
+    "base_currency": "USD",
+    "money_type": "REAL_MONEY",
+    "portfolio": {},
+    "config": {
+        "manager": "ROBO_ADVISOR_DISCRETIONARY",
+        "manager_version": 1,
+        "manager_settings": {
+            "broker_provider": null,
+            "policy_id": "Y01ESJVZJBHJKPQWQACBD8X9M3Z",
+            "goal_id": "L01ESJVTZCZBG1E9G7545N4H3TX",
+            "horizon_id": "H01ESJVWTJDJPG4E2C83GSY4JHB",
+            "risk_profile_id": "K01ESJVY0XE6VM1H97DZRAFCHM1",
+            "divest_amount": null,
+            "start_amount": 2000,
+            "recurring_deposit_amount": 500,
+            "end_datetime": null,
+            "active": true,
+            "suitability_profile_id": null,
+            "proposed_risk_profile_id": "K01ESJVY0XE6VM1H97DZRAFCHM1",
+            "tags": [],
+            "risk_profile_score": 3,
+            "background_image": "image-url",
+            "background_color": null,
+            "commission_profile": null,
+            "optimization_cooldown_end": null
+        }
+    },
+    "brokerage_account": {
+        "brokerage_portfolio_id": null,
+        "brokerage_user_id": null,
+        "bank_account_type": "IBAN",
+        "bank_account_number": "BE19000000001212",
+        "bank_id": null,
+        "payment_reference": null
+    },
+    "funded_since": null,
+    "owned_by_user_ids": [],
+    "snapshot_datetime": "2022-08-18T05:14:31.904742+00:00",
+    "archived": false,
+    "start_datetime": "2022-07-26T14:31:06.976215+00:00",
+    "id": "P1234JSJDFJSIDDKJDI2334J3IJ",
+    "creation_datetime": "2022-07-26T14:31:06.976215+00:00",
+    "version": 15,
+    "version_datetime": "2022-08-18T05:14:31.926372+00:00",
+    "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "deleted": false,
+    "status": "WAITING_FOR_FUNDS",
+     }
+    ```
+
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `brokerage_account` | Account information associated with this portfolio | `Object` |  | no
 `brokerage_account->bank_account_number` | Account number of the portfolio owner's bank account associated with this portfolio for payment instructions. | `string ^[A-Z]{2}[A-Z0-9]{14,30}\Z` | BE01234567891234 | yes
 `brokerage_account->bank_account_type` | Type of the bank account number that is associated with this portfolio, typically an IBAN number. | `enum("ABA", "IBAN")` | IBAN | yes
 `brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
+`payment_reference` | Needed when all customers need to wire money to the same bank account | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")`  |  | no
 
 ### Block a portfolio
 
