@@ -4,6 +4,8 @@ title: A closer look at API errors
 
 Errors happen. If that is the case the API returns a `4**` error if it assumes that the error is caused by your application, or a `5**` in case of a server error. If there is no error anticipated the API returns a 2** code.
 
+In general, `4**` errors are not retryable. `5**` errors should be escalated to InvestSuite.
+
 ### Error codes
 
 Code | Status | Description
