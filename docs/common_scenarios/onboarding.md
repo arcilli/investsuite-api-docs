@@ -58,8 +58,7 @@ Integrations:
     - If only one contract is used, set the `status` to `ACTIVE`. Otherwise, set it to `WAITING_FOR_SIGNATURE`. 
     - If the IdP is managed by InvestSuite, also specify the [`create_idp_user`](users.md#create-a-login) query parameter.
 - **USR002 (Inbound)** Update the User status. See [here](users.md#update-the-status) for the full signature.
-- **PTF001 (Outbound)** An event signals the middleware that a new Portfolio has been created. 
-<!-- TODO events page -->
+- **PTF001 (Outbound)** An event signals the middleware that a new Portfolio has been created. See [here](events.md#creation) for the full signature.
 - **PTF002 (Inbound)** Update the Portfolio's brokerage account. See [here](portfolios.md#update-the-brokerage-account) for the full signature.
 
 ## Scenario 2: In-App Onboarding
