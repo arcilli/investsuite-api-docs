@@ -97,6 +97,7 @@ Possible values for the status field:
     "external_id" : "an-external-id",
     "value" : "INACTIVE"
   }
+}
 ```
 
 Possible values for the value field:
@@ -225,6 +226,7 @@ NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.
   "action" : "status-update",
   "data" : {
     "id" : "an-optimization-id",
+    “portfolio_id” : “a-portfolio-id”,
     "external_id" : "an-external-id",
     "is_recommended" : true,
     "value" : "SUCCESS"
@@ -252,6 +254,7 @@ The id can be used to fetch the optimisation.
   "action" : "owner-choice-update",
   "data" : {
     "id" : "an-optimization-id",
+    “portfolio_id” : “a-portfolio-id”,
     "external_id" : "an-external-id",
     "value" : "ACCEPT"
   }
