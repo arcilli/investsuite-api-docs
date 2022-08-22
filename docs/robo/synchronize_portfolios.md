@@ -51,14 +51,13 @@ Some common transactions to pass to InvestSuite are:
 
 #### 1. Buy transactions
 
-A buy transaction describes the properties of a buy order. It consists of three movements:
-- one describing the instrument to be purchased at the time of placement,
-- a second describing the instrument purchased at the time of settlemet,
-- a third the amount that was transferred from the cash account to buy the instrument.
+A buy transaction describes the properties of a buy order.  The following API calls are typically made during the lifecycle:
+
+1.1. The creation of the transaction when the order is `PLACED`
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="10 11"
     POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -72,22 +71,7 @@ A buy transaction describes the properties of a buy order. It consists of three 
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
-                "quantity": 1
-            },
-            {
-                "type": "BUY",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
                 "quantity": 7
-            },
-            {
-                "type": "SELL",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -206.57
             }
         ]
     }
@@ -104,22 +88,7 @@ A buy transaction describes the properties of a buy order. It consists of three 
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
-                "quantity": 1
-            },
-            {
-                "type": "BUY",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
                 "quantity": 7
-            },
-            {
-                "type": "SELL",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -206.57
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -129,19 +98,352 @@ A buy transaction describes the properties of a buy order. It consists of three 
         "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "deleted": false
     }
-    ```    
+    ```  
 
-#### 2. Sell transactions
 
-A sell transaction describes the properties a sell order. It is the reverse of a buy transaction It consists of three movements:
-- one describing the instrument to be disposed as planned,
-- a second when the sell instruction was settled,
-- the third the amount to be transferred when the instrument is traded.
+1.2. (Optionally) the update (`PATCH`) of the transaction when the order is `EXECUTED`
+
+A portfolio that has `PLACED` orders is blocked from entering new transactions. Optionally, the middleware can also update the transaction with an intermediary `EXCUTED` step (effectively unblocking the portfolio). Alternatively the middleware can only update the transaction when the order is `SETTLED` (see next section).
+
+This example also shows the introduction of the transaction fee and the the tax associated with the order.
+
+!!! warning
+
+    Since the `movements` object is nested, the full nested object (ie. including the initial `PLACED` movement) must be contained in the PATCH request.
+
+
+<!-- !!! warning
+
+    The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
 
 === "Request"
 
-    ```HTTP
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    ```HTTP hl_lines="17 18 25 26 32 33 39 40"
+    PATCH /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            },
+            {
+                "type": "BUY",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            },
+            {
+                "type": "BUY",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            }
+        ],
+        "id": "T01FHCP1CZ9F1S207KJHNA5V244",
+        "creation_datetime": "2021-10-07T06:11:22.217585+00:00",
+        "version": 2,
+        "version_datetime": "2021-10-08T06:15:51.106890+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
+
+
+1.3 The update of the transaction when the order is `SETTLED`
+
+=== "Request"
+
+    ```HTTP hl_lines="46 47 54 55 61 62 68 69"
+    PATCH /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            },
+            {
+                "type": "BUY",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            },
+            {
+                "type": "BUY",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            },
+            {
+                "type": "BUY",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            },
+            {
+                "type": "BUY",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
+            }
+        ],
+        "id": "T01FHCP1CZ9F1S207KJHNA5V244",
+        "creation_datetime": "2021-10-07T06:11:22.217585+00:00",
+        "version": 2,
+        "version_datetime": "2021-10-08T06:15:51.106890+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
+
+#### 2. Sell transactions
+
+!!! info
+
+    A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example above, other than `type` is `SELL` (not `BUY`) and the signs of the cash movement inversed. For brevity, the optional `EXECUTED` status is omitted.
+
+A sell transaction describes the properties of a sell order. The following API calls are typically made during the lifecycle:
+
+2.1. The creation of the transaction when the order is `PLACED`
+
+=== "Request"
+
+    ```HTTP hl_lines="10 11"
+    POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "SELL",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "your-transaction-id-1",
+        "movements": [
+            {
+                "type": "SELL",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 7
+            }
+        ],
+        "id": "T01FHCP1CZ9F1S207KJHNA5V244",
+        "creation_datetime": "2021-10-07T06:11:22.217585+00:00",
+        "version": 2,
+        "version_datetime": "2021-10-08T06:15:51.106890+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```  
+
+2.2. The update of the transaction when the order is `SETTLED`
+
+=== "Request"
+
+    ```HTTP hl_lines="17 18 25 26 32 33 39 40"
+    PATCH /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244 HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
@@ -159,7 +461,7 @@ A sell transaction describes the properties a sell order. It is the reverse of a
             {
                 "type": "SELL",
                 "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
+                "datetime": "2022-06-12T07:52:26.341Z",
                 "instrument_id": "LU78468R1014",
                 "unit_price": 29.51,
                 "quantity": -7
@@ -167,9 +469,23 @@ A sell transaction describes the properties a sell order. It is the reverse of a
             {
                 "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
+                "datetime": "2022-06-12T07:52:26.341Z",
                 "instrument_id": "$USD",
                 "quantity": 206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
             }
         ]
     }
@@ -182,26 +498,69 @@ A sell transaction describes the properties a sell order. It is the reverse of a
         "external_id": "your-transaction-id-1",
         "movements": [
             {
-                "type": "SELL",
+                "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
-                "quantity": -7
+                "quantity": 7
+            },
+            {
+                "type": "BUY",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
             },
             {
                 "type": "SELL",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
-                "quantity": -7
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "EXECUTED",
+                "datetime": "2022-06-10T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
             },
             {
                 "type": "BUY",
                 "status": "SETTLED",
-                "datetime": "2022-06-12T07:49:26.341Z",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": 7
+            },
+            {
+                "type": "SELL",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": 206.57
+                "quantity": -206.57
+            },
+            {
+                "type": "TRANSACTION_FEE",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -3
+            },
+            {
+                "type": "OTHER_TAX",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "$USD",
+                "quantity": -0.15
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -211,8 +570,7 @@ A sell transaction describes the properties a sell order. It is the reverse of a
         "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "deleted": false
     }
-    ```    
-
+    ```
 #### 3. Cash movements
 
 Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
