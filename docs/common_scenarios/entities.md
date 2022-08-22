@@ -1,14 +1,72 @@
 ---
-title: Collections
+title: Business Objects
 ---
 
 ## Introduction
 
-Collections are paginated lists of entities. 
+This page describes the business objects used by InvestSuite, and the interactions that are possible on them.
 
-<!-- TODO Add list to entities -->
+The business objects are also referred to as (a collection of) entities.
 
-To request a collection, send a a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+### Concepts
+
+**Internal ID**
+
+The first letter of the internal ID of an entity is defined by its type, eg. the ID of a Portfolio will always start with a `P`.
+
+**External ID**
+
+Entities have an `external_id` field. The field is not required, but if it is provided, it must be unique.
+
+**Immutability**
+
+Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
+
+### List of entities
+
+Collections (also referred to as entities) refer to InvestSuite's business objects, for example `User`, `Portfolio`, `Optimization`, ...
+
+<!-- TODO
+    # A: Risk Profile Question Answer (deprecated)
+    # B: Suitability Profiler User Property Assignment
+    # C: Suitability Profiler Cooldown
+    # D: Suitability Profiler User Property
+    # E: Suitability Profiler Question
+    # F: Portfolio Group
+    # G: UserGroup
+    # H: Horizon
+    # I: Instrument
+    # J: InstrumentGroup
+    # K: Risk Profile
+    # L: Goal
+    # M: Suitability Profiler Questionnaire
+    # N: Suitability Profiler Profile
+    # O: Optimization
+    # P: Portfolio
+    # Q: Risk Profile Question (deprecated)
+    # R: Risk Profile Question Response (previously: Role, deprecated)
+    # S: Portfolio Report
+    # T: Transaction
+    # U: User
+    # V: Portfolio Valuation
+    # W: Suitability Profiler Profile roperty
+    # X: Suitability Profiler Profiler
+    # Y: Policy
+    # Z: Agreement
+ -->
+
+## Querying business objects
+
+To request a collection, send a `GET` request to the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+
+Collection endpoints accept the following parameters:
+
+Parameter | Description
+--------- | -----------
+limit     | Example: `limit=50`. Allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100.
+offset    |  Example `offset=50`. To be used in combination with the `limit` parameter, the offset defines the number of records that need to be skipped.
+embed     | Example: `embed=field_name_1,field_name_2`. Optional comma-separated list of field names for which the referenced entity is to be included in the _embedded object of the response. See [Embedding](embedding.md).
+query    | Example: `query=email+eq+'jane.doe@example.com`. See below.
 
 === "Request"
 
@@ -125,18 +183,7 @@ To request a collection, send a a `GET` request against the entity root path e.g
     }    
     ```
 
-### Collection parameters
-
-Collection endpoints accept the following parameters:
-
-Parameter | Description
---------- | -----------
-limit     | Example: `limit=50`) Allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100.
-offset    |  Example `offset=50` To be used in combination with the `limit` parameter, the offset defines the number of records that need to be skipped.
-embed     | Example: `embed=field_name_1,field_name_2` Optional comma-separated list of field names for which the referenced entity is to be included in the _embedded object of the response. See [Embedding](embedding.md).
-search    | Example: `query=email+eq+'jane.doe@example.com` See below.
-
-## Querying collections
+### Query syntax
 
 The API provides a structural search and filtering mechanism for all entities. We already opted to work with a query string parameter `query=email+eq+'jane.doe@example.com` instead of a POST body for more efficient client-side caching and ease of use for testing. The query syntax is a mix of both [OData](https://www.odata.org/) and [Apache Lucene Query Parser Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 
@@ -149,10 +196,10 @@ The API provides a structural search and filtering mechanism for all entities. W
     Authorization: Bearer {string}
     ```
 
-### Fundamental rules
+!!! info
 
-- Every entity type can be queried by issuing a `GET` request e.g. `GET users/?query=email+eq+'jane*'`.
-- The query string must be URL encoded. This implies that spaces would be transformed to `%20`, but for improved legibility we recommend using `+` instead
+    - Every entity type can be queried by issuing a `GET` request e.g. `GET users/?query=email+eq+'jane*'`.
+    - The query string must be URL encoded. This implies that spaces would be transformed to `%20`, but for improved legibility we recommend using `+` instead
 
 ### Operators
 
