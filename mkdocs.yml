@@ -88,11 +88,10 @@ nav:
     - Suitability profiler:     common_scenarios/suitability_profiler.md
     # Technical Enablers
     - Authentication:           common_scenarios/authentication.md
-    - Object Model:             common_scenarios/object_model.md
+    - Business objects:         common_scenarios/entities.md
     - Financial data:           common_scenarios/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
     - Manage users:             common_scenarios/users.md
     - Manage portfolios:        common_scenarios/portfolios.md
-    - Collections:              common_scenarios/collections.md # Search
     - Events:                   common_scenarios/events.md
     - Embedding:                common_scenarios/embedding.md
     - API errors:               common_scenarios/errors.md
