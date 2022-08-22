@@ -247,7 +247,9 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
     - The `manager` field defines the type of portfolio management: self directed, under an advisory mandate, under a discretionary mandate.
     - The `money_type` field states if the portfolio manages real money or paper money.
 
-### Update the portfolio manager settings
+### Holdings and transactions
+
+### Manager settings
 
 Below table lists the applicable portfolio manager parameters. The properties can be updated by issueing a corresponding PATCH request (see example below). See the API specification for more information.
 
@@ -321,7 +323,7 @@ Below table lists the applicable portfolio manager parameters. The properties ca
 | end_datetime | ● | - |
 | optimization_cooldown_end | ● | - |
 
-### Update the brokerage account
+### Brokerage account
 
 Brokerage Account: see [Glossary](../getting_started/glossary.md#accounts).
 
