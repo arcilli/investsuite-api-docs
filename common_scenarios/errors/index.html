@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/common_scenarios/errors/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.0">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
@@ -1108,6 +1108,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
 <p>Errors happen. If that is the case the API returns a <code>4**</code> error if it assumes that the error is caused by your application, or a <code>5**</code> in case of a server error. If there is no error anticipated the API returns a 2** code.</p>
+<p>In general, <code>4**</code> errors are not retryable. <code>5**</code> errors should be escalated to InvestSuite.</p>
 <h3 id="error-codes">Error codes<a class="headerlink" href="#error-codes" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
