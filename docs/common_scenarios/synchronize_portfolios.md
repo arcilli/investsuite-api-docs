@@ -43,11 +43,11 @@ Field | Description | Data type | Example | Required
 `movements->trade_type` | Indicate if a movement is cancelled or rebook, particularly applicable to cash movements for dividends. | `enum("CANCEL", "REBOOK", "INSTRUMENT_CHANGE", "CORRECTION")` | REBOOK | no
 `movements->status` | The status of the movement. Movement are in final state e.g. EXECUTED, or in progress e.g. PLANNED, SETTLED, NOT_EXECUTED... | `Enum("PLANNED", "PENDING", "PLACED", "EXECUTED", "SETTLED", "NOT_EXECUTED", "EXPIRED", "CANCELLED")` | SETTLED | yes
 `movements->datetime` | The date and time on which the movement was registered. | `date-time` | 2025-06-04T15:23:15.328252+00:00 | yes
-`movements->instrument_id` | Identifier of the instrument involved in this movement. ‘$’ prefix in case of a cash movement where the instrumentId is a currency. ISIN in case of a securities movement where the instrumentId refers to an actual instrument. | `String ^(\$[A-Z]{3}|[A-Z]{2}[A-Z0-9]{9}[0-9]|[A-Z]{1` | US4642865251 | yes
+`movements->instrument_id` | Identifier of the instrument involved in this movement. ‘$’ prefix in case of a cash movement where the instrumentId is a currency. ISIN in case of a securities movement where the instrumentId refers to an actual instrument. | `String ^(\$[A-Z]{3}|[A-Z]{2}[A-Z0-9]{9}[0-9]|[A-Z]{1` | LU4642865251 | yes
 `movements->quantity` |  Quantity of the movement expressed in units of the instrument. If the instrument_id is a cash type such as $USD, the quantity indicates a cash amount. If the instrument_id is an investible product such as IE0031442068, the quantity indicates a share amount. Fractional amounts are supported for instruments such as ETFs.Quantity is positive when adding a quantity of an instrument to the portfolio and negative when removing a quantity of an instrument from a portfolio.	| `number` | 5 | yes
 `movements->unit_price` | The instrument's price per unit expressed in the instrument's currency in case the instrument is a security. For the cash movement of a cash dividend to store the dividend value. | `number` | 1000 | no
 `movement->description` | An optional description for this movement. This string can contain any additional details of the movement type and can be set by the client. | `string` | STAMP_DUTY | no
-`movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | US4642865251 | no
+`movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | LU4642865251 | no
 
 Some common transactions to pass to InvestSuite are:
 
@@ -79,14 +79,14 @@ A buy transaction describes the properties of a buy order. It consists of three 
                 "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "quantity": 1
             },
             {
                 "type": "BUY",
                 "status": "SETTLED",
                 "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "unit_price": 29.51,
                 "quantity": 7
             },
@@ -111,14 +111,14 @@ A buy transaction describes the properties of a buy order. It consists of three 
                 "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "quantity": 1
             },
             {
                 "type": "BUY",
                 "status": "SETTLED",
                 "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "unit_price": 29.51,
                 "quantity": 7
             },
@@ -161,14 +161,14 @@ A sell transaction describes the properties a sell order. It is the reverse of a
                 "type": "SELL",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "quantity": -7
             },
             {
                 "type": "SELL",
                 "status": "SETTLED",
                 "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "unit_price": 29.51,
                 "quantity": -7
             },
@@ -193,14 +193,14 @@ A sell transaction describes the properties a sell order. It is the reverse of a
                 "type": "SELL",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "quantity": -7
             },
             {
                 "type": "SELL",
                 "status": "SETTLED",
                 "datetime": "2022-06-12T07:49:26.341Z",
-                "instrument_id": "US78468R1014",
+                "instrument_id": "LU78468R1014",
                 "unit_price": 29.51,
                 "quantity": -7
             },
@@ -393,7 +393,7 @@ Corporate actions are registered as transactions as they will lead to movements 
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 0.0785,
-                "reference_instrument_id": "US78464A6727",
+                "reference_instrument_id": "LU78464A6727",
             }
         ]
     }
@@ -411,7 +411,7 @@ Corporate actions are registered as transactions as they will lead to movements 
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 0.0785,
-                "reference_instrument_id": "US78464A6727",
+                "reference_instrument_id": "LU78464A6727",
             }
         ],
         "id": "T01FGZK41MJ4NJXKZ27VJC0HGS9",
@@ -443,7 +443,7 @@ After a transaction is posted in its initial state, in subsequent phases the sta
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 0.0785,
-                "reference_instrument_id": "US78464A6727",
+                "reference_instrument_id": "LU78464A6727",
             }
         ]
     }
@@ -461,7 +461,7 @@ After a transaction is posted in its initial state, in subsequent phases the sta
                 "datetime": "2021-10-01T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 0.0785,
-                "reference_instrument_id": "US78464A6727",
+                "reference_instrument_id": "LU78464A6727",
             }
         ],
         "id": "T01FGZK41MJ4NJXKZ27VJC0HGS9",
@@ -491,7 +491,7 @@ Given a current status with a `PLACED` order:
         "type": "BUY",
         "status": "PLACED",
         "datetime": "2022-06-08T10:15:53.000000+00:00",
-        "instrument_id": "US2660424076",
+        "instrument_id": "LU2660424076",
         "quantity": "3",
         "unit_price": "3.49"
     },
@@ -501,7 +501,7 @@ Given a current status with a `PLACED` order:
             "type": "BUY",
             "status": "PLACED",
             "datetime": "2022-06-08T10:15:53.000000+00:00",
-            "instrument_id": "US2660424076",
+            "instrument_id": "LU2660424076",
             "quantity": "3",
             "unit_price": "3.49"
         }
@@ -527,7 +527,7 @@ To register a cancellation you add one movement to the current list of movements
                 "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-08T10:15:53.000000+00:00",
-                "instrument_id": "US2660424076",
+                "instrument_id": "LU2660424076",
                 "quantity": "3",
                 "unit_price": "3.49"
             },
@@ -536,7 +536,7 @@ To register a cancellation you add one movement to the current list of movements
                 "type": "BUY",
                 "status": "CANCELLED",
                 "datetime": "2022-06-08T11:01:54.000000+00:00",
-                "instrument_id": "US2660424076",
+                "instrument_id": "LU2660424076",
                 "quantity": "3",
                 "unit_price": "3.49"
             }
@@ -555,7 +555,7 @@ To register a cancellation you add one movement to the current list of movements
                 "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-08T10:15:53.000000+00:00",
-                "instrument_id": "US2660424076",
+                "instrument_id": "LU2660424076",
                 "quantity": "3",
                 "unit_price": "3.49"
             },
@@ -564,7 +564,7 @@ To register a cancellation you add one movement to the current list of movements
                 "type": "BUY",
                 "status": "CANCELLED",
                 "datetime": "2022-06-08T11:01:54.000000+00:00",
-                "instrument_id": "US2660424076",
+                "instrument_id": "LU2660424076",
                 "quantity": "3",
                 "unit_price": "3.49"
             }
@@ -585,7 +585,7 @@ To register a cancellation you add one movement to the current list of movements
 
 To update the holdings you patch the portfolio.
 
-=== "HTTP"
+=== "Request"
 
     ```HTTP
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
@@ -597,82 +597,59 @@ To update the holdings you patch the portfolio.
 
     "portfolio": {
         "$USD": 208.086729,
-        "US78464A6644": 18.78,
-        "US4642886612": 9.2243,
-        "US46137V2410": 9,
-        "US3160923039": 3,
-        "US3160928731": 10,
-        "US97717W5215": 6,
-        "US4642861458": 4,
-        "US46429B2676": 45.146,
-        "US46434V7617": 9,
-        "US4642865251": 7.6828,
-        "US46434V4234": 3
+        "LU78464A6644": 18.78,
+        "LU4642886612": 9.2243,
+        "LU46137V2410": 9,
+        "LU3160923039": 3,
+        "LU3160928731": 10,
+        "LU97717W5215": 6,
+        "LU4642861458": 4,
+        "LU46429B2676": 45.146,
+        "LU46434V7617": 9,
+        "LU4642865251": 7.6828,
+        "LU46434V4234": 3
     }
 
     ```
 
-=== "curl"
+=== "Response (body)"
 
-    ```bash
-    curl -X PATCH \                 
-    -H "Content-Type: application/json" \
-    -H "Auhorization": "{string}"  \   
-    -d '"portfolo": { \
-        "$USD": 208.086729, \
-        "US78464A6644": 18.78, \
-        "US4642886612": 9.2243, \
-        "US46137V2410": 9, \
-        "US3160923039": 3, \
-        "US3160928731": 10, \
-        "US97717W5215": 6, \
-        "US4642861458": 4, \
-        "US46429B2676": 45.146, \
-        "US46434V7617": 9, \
-        "US4642865251": 7.6828, \
-        "US46434V4234": 3 \
-    }'  \
-    https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
+    ```JSON
+    {
+        "external_id": "your-bank-portfolio-1",
+        "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency": "USD",
+        "money_type": "PAPER_MONEY",
+        "config":{
+            "manager": "ROBO_ADVISOR_DISCRETIONARY",
+            "manager_version":1,
+            "manager_settings": {
+                "policy_id": "Y01EF46X9XB437JS4678X0K529C",
+                "active": true
+            }
+        },
+        "portfolio": {
+            "$USD": 208.086729,
+            "LU78464A6644": 18.78,
+            "LU4642886612": 9.2243,
+            "LU46137V2410": 9,
+            "LU3160923039": 3,
+            "LU3160928731": 10,
+            "LU97717W5215": 6,
+            "LU4642861458": 4,
+            "LU46429B2676": 45.146,
+            "LU46434V7617": 9,
+            "LU4642865251": 7.6828,
+            "LU46434V4234": 3
+        },
+        "snapshot_datetime": null,
+        "funded_since": null,
+        "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+        "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
+        "version": 3,
+        "version_datetime": "2021-06-24T19:59:15.474241+00:00",
+        "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+        "deleted": false,
+        "status": "ACTIVE"
+    }
     ```
-
-**Response body**
-
-```JSON
-{
-    "external_id": "your-bank-portfolio-1",
-    "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    "base_currency": "USD",
-    "money_type": "PAPER_MONEY",
-    "config":{
-        "manager": "ROBO_ADVISOR_DISCRETIONARY",
-        "manager_version":1,
-        "manager_settings": {
-            "policy_id": "Y01EF46X9XB437JS4678X0K529C",
-            "active": true
-        }
-    },
-    "portfolio": {
-        "$USD": 208.086729,
-        "US78464A6644": 18.78,
-        "US4642886612": 9.2243,
-        "US46137V2410": 9,
-        "US3160923039": 3,
-        "US3160928731": 10,
-        "US97717W5215": 6,
-        "US4642861458": 4,
-        "US46429B2676": 45.146,
-        "US46434V7617": 9,
-        "US4642865251": 7.6828,
-        "US46434V4234": 3
-    },
-    "snapshot_datetime": null,
-    "funded_since": null,
-    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version": 3,
-    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-    "deleted": false,
-    "status": "ACTIVE"
-}
-```
