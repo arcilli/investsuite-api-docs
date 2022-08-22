@@ -12,7 +12,7 @@ The business objects are also referred to as (a collection of) entities.
 
 **Internal ID**
 
-The first letter of the internal ID of an entity is defined by its type, eg. the ID of a Portfolio will always start with a `P`. 
+The first letter of the internal ID of an entity is defined by its type, eg. the ID of a Portfolio will always start with a `P`.
 
 **External ID**
 
