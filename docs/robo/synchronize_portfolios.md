@@ -2,35 +2,25 @@
 title: Synchronize portfolios
 ---
 
+!!! warning
+
+    This page applies to Robo Advisor (not Self Investor).
+
 ## Context
 
-Synchronizing a portfolio involves taking the holdings and the transactions for a portfolio from your brokerage and custody system and passing them to InvestSuite. As an API client you are responsible for keeping the holdings and transactions in sync between the broker / custody system and the InvestSuite platform. The master data source for both the positions and the transactions is that of the broker / custody provider. For Robo Advisor you copy the holdings and transactions into the InvestSuite system on a recurring bases, for instance once a day. For Self Investor this synchronization should run in near real time.
+The broker/custodian is the master system for [holdings (positions) and transactions](../getting_started/glossary.md). These need to be kept in sync, on a periodic basis (eg. nightly).
 
-### Transactions definition
+In case the integration between the broker/custodian is handled by the Client, the middleware needs to do this. This page lists how.
 
-Transactions are a combination of movements that describe an exchange or trade. In the context of investing these transactions relate to funds and securities transferred into, and from an account. A bank or other licensed entity engages in transactions on behalf of invididuals or organizations. The  bank therefore uses some sort of an exchange. Each transaction is recorded in a ledger.
+!!! tip
 
-Transactions can be investment transactions as well as cash transactions. Investment transactions relate to the purchase and sale of securities. Cash transactions mainly describe a deposit of cash in the portfolio, or a divestment. Other forms of cash transactions are those with respect to fees and taxes. A third important of set of transactions consider corporate action such as for instance a stock split or distribution of dividends.
+    **Order of API calls**
 
-### Holdings definition
+    We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
 
-Holdings are positions in a portfolio. Holdings are the assets out of which a portfolo is composed. Holdings can be either investment products or cash holdings. Cash holdings are expressed in their currency.
-
-Example:
-```JSON
-{
-    "$EUR": 12000,
-    "BE92189F1066":127,
-    "NL3160923039":57,
-    "FR3160928731":398
-}
-```
-
-## Send transaction
+## Transactions
 
 Transactions are synchronized to calculate the performance and return of a portfolio, to report to the customer, and to monitor the status of some transactions for instance to exchange if a `BUY` transaction is _pending_, _executed_ or _settled_.
-
-For Robo Advisor it is usually sufficient to synchronize transactions on a daily bases. For Self Investor synchronization it is required to notify InvestSuite in realtime. To facilitate this, as an alternative to using the InvestSuite API REST interfaces you can send commands to a (Kafka) message broker. Reach out if you wish to discuss this setup.
 
 The specification for the Transaction entity is more extensive than described below. For the full specification please refer to the [API specifications documentation](https://api.sandbox.investsuite.com/redoc).
 
@@ -57,7 +47,9 @@ Some common transactions to pass to InvestSuite are:
 4. Costs and charges
 5. Dividend payments
 
-### 1. Buy transactions
+### Create a transaction
+
+#### 1. Buy transactions
 
 A buy transaction describes the properties of a buy order. It consists of three movements:
 - one describing the instrument to be purchased at the time of placement,
@@ -139,7 +131,7 @@ A buy transaction describes the properties of a buy order. It consists of three 
     }
     ```    
 
-### 2. Sell transactions
+#### 2. Sell transactions
 
 A sell transaction describes the properties a sell order. It is the reverse of a buy transaction It consists of three movements:
 - one describing the instrument to be disposed as planned,
@@ -221,7 +213,7 @@ A sell transaction describes the properties a sell order. It is the reverse of a
     }
     ```    
 
-### 3. Cash movements
+#### 3. Cash movements
 
 Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
@@ -272,7 +264,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
     }
     ```   
 
-### 4. Costs and charges
+#### 4. Costs and charges
 
 Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
 
@@ -370,7 +362,7 @@ Example `WITHHOLDING_TAX`:
     }
     ```
 
-### 5. Corporate actions
+#### 5. Corporate actions
 
 Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.
 
@@ -423,7 +415,7 @@ Corporate actions are registered as transactions as they will lead to movements 
     }
     ```
 
-## Update transaction status
+### Update transaction status
 
 After a transaction is posted in its initial state, in subsequent phases the status of the transaction changes. Most (common) transactions go from `PLANNED` to `PENDING` to `PLACED` to `EXECUTED` to `SETTLED`. In case an error occurs or a stakeholder intervenes transactions can end up in a `NOT_EXECUTED`, `EXPIRED` or `CANCELLED` state. To change the status of a transaction you issue a `PATCH` request.
 
@@ -473,7 +465,7 @@ After a transaction is posted in its initial state, in subsequent phases the sta
     }
     ```
 
-## Cancel a placed order
+### Cancel a placed order
 
 To turn a `PLACED` into a cancelled one, you patch the movements of the transactions with the current `PLACED` movement to a new movement with status `CANCELLED`.
 
@@ -513,7 +505,7 @@ To register a cancellation you add one movement to the current list of movements
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="19 20 21 22 23 24 25"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -523,7 +515,7 @@ To register a cancellation you add one movement to the current list of movements
         "external_id": "14031738752",
         "movements": [
             {
-                "external_id": "movement-1",
+                "external_id": "my-movement-1",
                 "type": "BUY",
                 "status": "PLACED",
                 "datetime": "2022-06-08T10:15:53.000000+00:00",
@@ -532,7 +524,7 @@ To register a cancellation you add one movement to the current list of movements
                 "unit_price": "3.49"
             },
             {
-                "external_id": "movement-2",
+                "external_id": "my-movement-2",
                 "type": "BUY",
                 "status": "CANCELLED",
                 "datetime": "2022-06-08T11:01:54.000000+00:00",
@@ -581,7 +573,7 @@ To register a cancellation you add one movement to the current list of movements
 !!! Info
     Notice that the `PLACED` and `CANCELLED` movements are identical, apart from their status and their datetime. The datetime is the time the order was `PLACED` and `CANCELLED` respectively.
 
-## Update portfolio holdings
+## Holdings
 
 To update the holdings you patch the portfolio.
 
