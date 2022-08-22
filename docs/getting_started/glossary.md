@@ -53,9 +53,14 @@ Contains stats about multiple instruments -->
 ### Holdings, Orders, Transactions and Movements
 
 - **Holdings** are positions (assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
-- An **order** is sent to the market, resulting in one or more **transactions**.
-- Transactions are a combination of **movements** (trade) that describe an exchange or trade.
-- A transaction can result in one or more movements, and typically results in an change in portfolio holdings.
+- An **order** is sent to the market, resulting in one or more transactions.
+- **Transactions** are a combination of movements that describe an exchange or trade. The following types of transactions exist:
+    - *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
+    - *Cash* transactions: a deposit of cash, a divestment, fees or tax.
+    - *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
+    - *Security Transfer* transaction: at least 1 trade (= securities movement)
+    - *Administrative* transaction
+- A transaction can result in one or more movements. A **movement** is a change that impacts the holdings of a portfolio.
 
 !!! Info
 
@@ -65,13 +70,8 @@ Contains stats about multiple instruments -->
 
     The two are (by design) not linked, and providing a consistent view to the user needs to be handled by the broker or middleware.
 
-The following types of transactions exist:
 
-- *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
-- *Cash* transactions: a deposit of cash, a divestment, fees or tax.
-- *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
-- *Security Transfer* transaction: at least 1 trade (= securities movement)
-- *Administrative* transaction
+
 
 <!-- Documentation EOD file storage of transactions in IVS databases - Google Docs -->
 
