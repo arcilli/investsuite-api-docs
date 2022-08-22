@@ -92,8 +92,7 @@ nav:
     - Financial data:           common_scenarios/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
     - Manage users:             common_scenarios/users.md
     - Manage portfolios:        common_scenarios/portfolios.md
-    - Synchronize portfolios:   common_scenarios/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
-    - Collection responses:     common_scenarios/collections.md # Search
+    - Collections:              common_scenarios/collections.md # Search
     - Events:                   common_scenarios/events.md
     - Embedding:                common_scenarios/embedding.md
     - API errors:               common_scenarios/errors.md
@@ -109,6 +108,7 @@ nav:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
     - Optimize a portfolio:     robo/run_optimizer.md # TODO MERGE?
+    - Synchronize a portfolio:  robo/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
   - Self Investor:
     - Introduction:             self/introduction.md
   - Value Added APIs:

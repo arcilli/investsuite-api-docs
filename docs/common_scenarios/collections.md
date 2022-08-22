@@ -1,16 +1,18 @@
 ---
-title: Handling collection responses
+title: Collections
 ---
 
-At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [First steps](../common_scenarios/authentication.md) chapter.
+## Introduction
 
-## Collection response format
+Collections are paginated lists of entities. 
 
-Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+<!-- TODO Add list to entities -->
+
+To request a collection, send a a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="1 2 3"
     GET /portfolios/
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
@@ -123,9 +125,9 @@ Collections are paginated lists of entities. To request a collection issue a `GE
     }    
     ```
 
-## Query parameters
+### Collection parameters
 
-Collection endpoints accept alongside the `embed` query parameter two parameters: limit and offset. 
+Collection endpoints accept the following parameters:
 
 Parameter | Description
 --------- | -----------
@@ -134,13 +136,13 @@ offset    |  Example `offset=50` To be used in combination with the `limit` para
 embed     | Example: `embed=field_name_1,field_name_2` Optional comma-separated list of field names for which the referenced entity is to be included in the _embedded object of the response. See [Embedding](embedding.md).
 search    | Example: `query=email+eq+'jane.doe@example.com` See below.
 
-## Search
+## Querying collections
 
 The API provides a structural search and filtering mechanism for all entities. We already opted to work with a query string parameter `query=email+eq+'jane.doe@example.com` instead of a POST body for more efficient client-side caching and ease of use for testing. The query syntax is a mix of both [OData](https://www.odata.org/) and [Apache Lucene Query Parser Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="2"
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
     Host: api.sandbox.investsuite.com
