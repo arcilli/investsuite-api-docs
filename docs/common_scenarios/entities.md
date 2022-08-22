@@ -22,7 +22,7 @@ Entities have an `external_id` field. The field is not required, but if it is pr
 
 Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
 
-### List of entities
+### List of business objects
 
 Collections (also referred to as entities) refer to InvestSuite's business objects, for example `User`, `Portfolio`, `Optimization`, ...
 
@@ -57,7 +57,7 @@ Collections (also referred to as entities) refer to InvestSuite's business objec
 
 ## Querying business objects
 
-To request a collection, send a `GET` request to the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+To query a specific business object, send a `GET` request to the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
 
 Collection endpoints accept the following parameters:
 
