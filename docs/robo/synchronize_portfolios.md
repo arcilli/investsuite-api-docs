@@ -4,17 +4,13 @@ title: Synchronize portfolios
 
 !!! warning
 
-    This page applies to Robo Advisor (not Self Investor).
+    This page applies only to [Robo Advisor with Broker/Custodian integration by Client](../getting_started/architecture.md#robo-advisor-with-brokercustodian-integration).
 
 ## Context
 
-The broker/custodian is the master system for [holdings (positions) and transactions](../getting_started/glossary.md). These need to be kept in sync, on a periodic basis (eg. nightly).
+The broker/custodian is the master system for [holdings (positions) and transactions](../getting_started/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync, on a periodic basis (eg. nightly). This page describes how the client middleware should do this.
 
-In case the integration between the broker/custodian is handled by the Client, the middleware needs to do this. This page lists how.
-
-!!! tip
-
-    **Order of API calls**
+!!! tip "Order of API calls"
 
     We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
 
@@ -53,7 +49,7 @@ Some common transactions to pass to InvestSuite are:
 
 A buy transaction describes the properties of a buy order.  The following API calls are typically made during the lifecycle:
 
-1.1. The creation of the transaction when the order is `PLACED`
+1.1. Creation of the transaction when the order is `PLACED`
 
 === "Request"
 
@@ -101,16 +97,18 @@ A buy transaction describes the properties of a buy order.  The following API ca
     ```  
 
 
-1.2. (Optionally) the update (`PATCH`) of the transaction when the order is `EXECUTED`
+1.2. (Optionally) Update the transaction when the order is `EXECUTED`
 
-A portfolio that has `PLACED` orders is blocked from entering new transactions. Optionally, the middleware can also update the transaction with an intermediary `EXCUTED` step (effectively unblocking the portfolio). Alternatively the middleware can only update the transaction when the order is `SETTLED` (see next section).
+**Why optional?** A portfolio that has orders in `PLACED` status (ie. not yet executed or settled) is not reoptimized. Since settlement can take a couple of days. If the portfolio should be optimized ahead of the settlement of the transactions, update the transaction with the `EXECUTED` status.
 
-This example also shows the introduction of the transaction fee and the the tax associated with the order.
+!!! info "Costs and charges"
+    This example also shows the introduction of the transaction fee and the the tax associated with the order. 
+    
+    For costs and charges that are *not* associated with the transaction (eg. monthly fee) see [below](#4-costs-and-charges).
 
 !!! warning
 
     Since the `movements` object is nested, the full nested object (ie. including the initial `PLACED` movement) must be contained in the PATCH request.
-
 
 <!-- !!! warning
 
@@ -220,11 +218,15 @@ This example also shows the introduction of the transaction fee and the the tax 
     ```
 
 
-1.3 The update of the transaction when the order is `SETTLED`
+1.3 Update of the transaction when the order is `SETTLED`
+
+!!! warning
+
+    Only update the `status` of a movement, do not append a new movement with an updated `status`. See the example below.
 
 === "Request"
 
-    ```HTTP hl_lines="46 47 54 55 61 62 68 69"
+    ```HTTP hl_lines="18 26 33 40"
     PATCH /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244 HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -239,35 +241,6 @@ This example also shows the introduction of the transaction fee and the the tax 
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
                 "quantity": 7
-            },
-            {
-                "type": "BUY",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
-                "quantity": 7
-            },
-            {
-                "type": "SELL",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -206.57
-            },
-            {
-                "type": "TRANSACTION_FEE",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -3
-            },
-            {
-                "type": "OTHER_TAX",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -0.15
             },
             {
                 "type": "BUY",
@@ -314,35 +287,6 @@ This example also shows the introduction of the transaction fee and the the tax 
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
                 "quantity": 7
-            },
-            {
-                "type": "BUY",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
-                "quantity": 7
-            },
-            {
-                "type": "SELL",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -206.57
-            },
-            {
-                "type": "TRANSACTION_FEE",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -3
-            },
-            {
-                "type": "OTHER_TAX",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -0.15
             },
             {
                 "type": "BUY",
@@ -391,7 +335,7 @@ This example also shows the introduction of the transaction fee and the the tax 
 
 A sell transaction describes the properties of a sell order. The following API calls are typically made during the lifecycle:
 
-2.1. The creation of the transaction when the order is `PLACED`
+2.1. Creation of the transaction when the order is `PLACED`
 
 === "Request"
 
@@ -438,7 +382,7 @@ A sell transaction describes the properties of a sell order. The following API c
     }
     ```  
 
-2.2. The update of the transaction when the order is `SETTLED`
+2.2. Update of the transaction when the order is `SETTLED`
 
 === "Request"
 
@@ -498,55 +442,26 @@ A sell transaction describes the properties of a sell order. The following API c
         "external_id": "your-transaction-id-1",
         "movements": [
             {
-                "type": "BUY",
+                "type": "SELL",
                 "status": "PLACED",
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
-                "quantity": 7
-            },
-            {
-                "type": "BUY",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
-                "quantity": 7
-            },
-            {
-                "type": "SELL",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -206.57
-            },
-            {
-                "type": "TRANSACTION_FEE",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -3
-            },
-            {
-                "type": "OTHER_TAX",
-                "status": "EXECUTED",
-                "datetime": "2022-06-10T07:52:26.341Z",
-                "instrument_id": "$USD",
-                "quantity": -0.15
-            },
-            {
-                "type": "BUY",
-                "status": "SETTLED",
-                "datetime": "2022-06-12T07:52:26.341Z",
-                "instrument_id": "LU78468R1014",
-                "unit_price": 29.51,
-                "quantity": 7
+                "quantity": -7
             },
             {
                 "type": "SELL",
                 "status": "SETTLED",
                 "datetime": "2022-06-12T07:52:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "unit_price": 29.51,
+                "quantity": -7
+            },
+            {
+                "type": "BUY",
+                "status": "SETTLED",
+                "datetime": "2022-06-12T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -206.57
+                "quantity": 206.57
             },
             {
                 "type": "TRANSACTION_FEE",
@@ -625,6 +540,13 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
 #### 4. Costs and charges
 
 Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
+
+!!! info "Costs and charges"
+    These are the costs and charges that are *not* associated with a transaction.
+
+    For costs and charges that are associated with a transaction, see [above](#1-buy-transactions).
+    
+
 
 === "Request"
 
