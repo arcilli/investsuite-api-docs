@@ -78,7 +78,7 @@ nav:
   - Getting started:
     - Introduction:             index.md
     # - Product Range:            getting_started/product_range.md
-    # - Architecture:             getting_started/solution.architecture.md
+    - Architecture:             getting_started/architecture.md
     - Glossary:                 getting_started/glossary.md
   - Common scenarios:
     - Introduction:             common_scenarios/introduction.md
