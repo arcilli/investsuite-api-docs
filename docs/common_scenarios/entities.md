@@ -21,40 +21,6 @@ Entities have an `external_id` field. The field is not required, but if it is pr
 **Immutability**
 
 Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
-
-### List of business objects
-
-Collections (also referred to as entities) refer to InvestSuite's business objects, for example `User`, `Portfolio`, `Optimization`, ...
-
-<!-- TODO
-    # A: Risk Profile Question Answer (deprecated)
-    # B: Suitability Profiler User Property Assignment
-    # C: Suitability Profiler Cooldown
-    # D: Suitability Profiler User Property
-    # E: Suitability Profiler Question
-    # F: Portfolio Group
-    # G: UserGroup
-    # H: Horizon
-    # I: Instrument
-    # J: InstrumentGroup
-    # K: Risk Profile
-    # L: Goal
-    # M: Suitability Profiler Questionnaire
-    # N: Suitability Profiler Profile
-    # O: Optimization
-    # P: Portfolio
-    # Q: Risk Profile Question (deprecated)
-    # R: Risk Profile Question Response (previously: Role, deprecated)
-    # S: Portfolio Report
-    # T: Transaction
-    # U: User
-    # V: Portfolio Valuation
-    # W: Suitability Profiler Profile roperty
-    # X: Suitability Profiler Profiler
-    # Y: Policy
-    # Z: Agreement
- -->
-
 ## Querying business objects
 
 To query a specific business object, send a `GET` request to the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
@@ -233,3 +199,101 @@ The sorting operator always comes as the last term, except when there is a selec
 - Order descending: orderby {attribute_name} desc e.g. `orderby+age+desc`
 - Multiple attributes: orderby {attribute_name} desc, {attribute_name2} asc e.g. `orderby+age+desc,+firstname`
 - Attributes names can be nested e.g. `orderby+manager.bank_account`.
+
+## List of business objects
+
+The most frequently used objects are `User`, `Portfolio`, `Optimization`, ...
+
+### Transaction
+
+See the [glossary](../getting_started/glossary.md#holdings-orders-transactions-and-movements) for the definition.
+
+#### Types
+The following types of transactions exist:
+
+- *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
+- *Cash* transactions: a deposit of cash, a divestment, fees or tax.
+- *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
+- *Security Transfer* transaction: at least 1 trade (= securities movement)
+- *Administrative* transaction
+
+#### Status
+
+The Status of a Transaction is determined by the statuses of the Movements it comprises. 
+<!-- https://investsuite.slack.com/archives/CDYGVNQKE/p1661328253880169?thread_ts=1661250223.596519&cid=CDYGVNQKE -->
+
+#### Movements
+
+- A Transaction has one or more Movements.
+- A Transaction has one Primary Movement: the one that 'triggers' the other movement.
+
+There are two groups of Movements, determined by its status. A Transaction contains the latest version in each group.
+
+<!-- ```mermaid
+erDiagram
+    Transaction
+    Movement ||--|| Transaction: primary_movement
+    Movement ||--|{ Transaction: movements
+``` -->
+
+<!-- ##### Status -->
+
+<!-- A Transaction contains the latest version of every Movement (determined by its status), but there are two distinct status groups that determine what is the latest status: 
+
+1. PLANNED -> PENDING -> PLACED
+2. CANCELLED / NOT_EXECUTED / EXPIRED / [EXECUTED -> SETTLED]. 
+
+In a Transaction, you can have a latest Movement in status group (1) and one or more corresponding latest Movements in status group (2). -->
+
+<!-- https://investsuite.slack.com/archives/CDYGVNQKE/p1661327434299829?thread_ts=1661250223.596519&cid=CDYGVNQKE -->
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    groupOne: Group 1
+    groupTwo: Group 2
+    state groupOne {
+        direction LR
+        PLANNED --> PENDING
+        PENDING --> PLACED
+    }
+    state groupTwo {
+        direction lR
+      [*] --> CANCELLED
+      [*] --> NOT_EXECUTED
+      [*] --> EXPIRED
+      [*] --> EXECUTED
+      EXECUTED --> SETTLED
+    }
+```
+
+<!-- TODO
+    # A: Risk Profile Question Answer (deprecated)
+    # B: Suitability Profiler User Property Assignment
+    # C: Suitability Profiler Cooldown
+    # D: Suitability Profiler User Property
+    # E: Suitability Profiler Question
+    # F: Portfolio Group
+    # G: UserGroup
+    # H: Horizon
+    # I: Instrument
+    # J: InstrumentGroup
+    # K: Risk Profile
+    # L: Goal
+    # M: Suitability Profiler Questionnaire
+    # N: Suitability Profiler Profile
+    # O: Optimization
+    # P: Portfolio
+    # Q: Risk Profile Question (deprecated)
+    # R: Risk Profile Question Response (previously: Role, deprecated)
+    # S: Portfolio Report
+    # T: Transaction
+    # U: User
+    # V: Portfolio Valuation
+    # W: Suitability Profiler Profile roperty
+    # X: Suitability Profiler Profiler
+    # Y: Policy
+    # Z: Agreement
+ -->
+
+ 
