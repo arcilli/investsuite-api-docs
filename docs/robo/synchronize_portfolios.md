@@ -49,7 +49,7 @@ Some common transactions to pass to InvestSuite are:
 
 A buy transaction describes the properties of a buy order.  The following API calls are typically made during the lifecycle:
 
-1.1. Creation of the transaction when the order is `PLACED`
+*1.1. Creation of the transaction when the order is `PLACED`*
 
 === "Request"
 
@@ -97,7 +97,7 @@ A buy transaction describes the properties of a buy order.  The following API ca
     ```  
 
 
-1.2. (Optionally) Update the transaction when the order is `EXECUTED`
+*1.2. (Optionally) Update the transaction when the order is `EXECUTED`*
 
 **Why optional?** A portfolio that has orders in `PLACED` status (ie. not yet executed or settled) is not reoptimized. Since settlement can take a couple of days. If the portfolio should be optimized ahead of the settlement of the transactions, update the transaction with the `EXECUTED` status.
 
@@ -108,7 +108,7 @@ A buy transaction describes the properties of a buy order.  The following API ca
 
 !!! warning
 
-    Since the `movements` object is nested, the full nested object (ie. including the initial `PLACED` movement) must be contained in the PATCH request.
+    Include the full nested `movements` object (ie. including the initial `PLACED` movement) in the `PATCH` request.
 
 <!-- !!! warning
 
@@ -218,7 +218,7 @@ A buy transaction describes the properties of a buy order.  The following API ca
     ```
 
 
-1.3 Update of the transaction when the order is `SETTLED`
+*1.3 Update of the transaction when the order is `SETTLED`*
 
 !!! warning
 
