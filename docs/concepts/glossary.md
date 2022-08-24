@@ -54,19 +54,19 @@ Contains stats about multiple instruments -->
 - **Holdings** are positions (assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
 - An **order** is sent to the market, resulting in one or more transactions.
 - **Transactions** are a combination of movements that describe an exchange or trade.
-- A transaction can result in one or more movements: a **movement** is a change that impacts the holdings of a portfolio.
+- A **movement** is a change that impacts the holdings of a portfolio.
 
 !!! info "How are transactions and holdings related?"
 
-    Transactions are used for performance calculation (eg. TWR). 
+    Transactions are used for performance and return calculation (eg. TWR) on a portfolio. 
 
-    Holdings are used for display purposes to the user.
+    Holdings are used to display to the user what is inside the portfolio.
 
     The two are (by design) not linked, and providing a consistent view to the user needs to be handled by the broker or middleware.
 
 <!-- Documentation EOD file storage of transactions in IVS databases - Google Docs -->
 <!-- See also [Synchronizing Portfolios](../robo/synchronize_portfolios.md). -->
-See also [the Transaction business object](entities.md#transaction).
+Refer to [Transactions](transactions.md).
 
 ## Suitability Profile, Risk Profile (of a Portfolio)
 We refer to a Suitablity Profile (linked to a Portfolio) as either

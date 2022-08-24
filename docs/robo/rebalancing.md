@@ -46,6 +46,7 @@ Depending on the following criteria, the rebalancing process is different:
 When the Client integrates with the Broker, an Optimization is triggered when the Portfolio object is patched (with Holdings or Transactions):
 
 - A funding happens, see [Funding](../scenarios/cash_movements.md#broker-integration-by-the-client).
+<!-- - TODO what else? -->
 
 #### InvestSuite integrates with broker
 
@@ -61,15 +62,17 @@ The client (the external optimizer) decides when it runs.
 
 When an Optimization is recommended (the `portfolio_update.is_recommended` field on the Optimization is `true`), the Optimization is considered ready to be executed.
 
-The Portfolio is blocked from being reoptimized.
-
 <!-- TODO quid owner_choice and status? -->
 
 #### Advisory mandate
 
 When the Optimization is accepted by the user (the `owner_choice` field on the Optimization is `ACCEPT`), the Optimization is considered ready to be executed.
 
-The Portfolio is blocked from being reoptimized.
+#### 2a. Portfolio blocked
+
+When an Optimization is considered ready to be executed, the Portfolio is blocked from being reoptimized.
+
+<!-- Quid discretionary, if i reject? -->
 
 ### 3. Orders of Optimization sent to the broker
 
@@ -77,7 +80,7 @@ The Portfolio is blocked from being reoptimized.
 
 #### Client integrates with broker
 
-*1. The Client middleware sends the Orders listed in the `portfolio_update.orders` object to the broker.*
+*3.1. The Client middleware sends the Orders listed in the `portfolio_update.orders` object to the broker.*
 
 Example:
 
@@ -114,13 +117,33 @@ Content-Type: application/json
 }
 ```
 
+*3a. The Client middleware creates corresponding Transactions in InvestSuite.*
+
+!!! warning
+
+    This needs to be handled with care.
+
+    See [Transactions](../concepts/transactions.md) on how to create corresponding Transactions in InvestSuite.
+
 #### InvestSuite integrates with the broker
 
 InvestSuite sends the orders to the broker and keeps them up to date.
 
-**3a. Transactions are created in InvestSuite**
-
 ### 4. Orders are executed or settled
 
-#### 4a. Transactions are updated in InvestSuite
-#### 4b. The Portfolio is unblocked from being reoptimized
+#### Client integrates with the broker
+
+The Client middelware updates the corresponding Transactions in InvestSuite.
+
+!!! warning
+
+    This needs to be handled with care.
+
+    See [Transactions](../concepts/transactions.md) on how to create corresponding Transactions in InvestSuite.
+
+#### InvestSuite integrates with the broker
+
+InvestSuite keeps the orders up to date.
+#### 4a. The Portfolio is unblocked from being reoptimized
+
+When all Transactions of an Optimization have a status `SETTLED`, the Portfolio is unblocked from being reoptimized.

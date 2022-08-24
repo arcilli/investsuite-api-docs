@@ -1,26 +1,120 @@
 ---
-title: Synchronize portfolios
+title: Transactions
 ---
-
-!!! warning
-
-    This page applies only to [Robo Advisor with Broker/Custodian integration by Client](../concepts/architecture.md#robo-advisor-with-brokercustodian-integration).
 
 ## Context
 
-The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync, on a periodic basis (eg. nightly). This page describes how the client middleware should do this.
+The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync.
+
+In case the Client middelware needs to do this (see [integration architecture](architecture.md)), this page describes how.
 
 !!! tip "Order of API calls"
 
     We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
 
-## Transactions
+## Concepts
 
-Transactions are synchronized to calculate the performance and return of a portfolio, to report to the customer, and to monitor the status of some transactions for instance to exchange if a `BUY` transaction is _pending_, _executed_ or _settled_.
+!!! info "Definition"
 
-The specification for the Transaction entity is more extensive than described below. For the full specification please refer to the [API specifications documentation](https://api.sandbox.investsuite.com/redoc).
+    See the [Glossary](../concepts/glossary.md#holdings-orders-transactions-and-movements) for a definition.
 
-Field | Description | Data type | Example | Required
+```mermaid
+erDiagram
+    User
+    Portfolio {
+        object holdings
+    }
+    Optimization {
+        bool is_recommended
+        object orders
+    }
+    Transaction {
+        string type
+    }
+    Movement {
+        string type
+        string status
+    }
+
+    User ||--|{ Portfolio: has
+    Portfolio ||--|| Optimization: has
+    Portfolio ||--|{ Transaction: has
+    Transaction ||--|{ Movement: movements
+    Transaction ||--|| Movement: primary_movement
+```
+
+### Transactions
+
+#### Types
+The following types of transactions exist:
+
+- *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
+- *Cash* transactions: a deposit of cash, a divestment, fees or tax.
+- *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
+- *Security Transfer* transaction: at least 1 trade (= securities movement)
+- *Administrative* transaction
+
+#### Status
+
+The Status of a Transaction is determined by the statuses of the Movements it comprises. 
+<!-- https://investsuite.slack.com/archives/CDYGVNQKE/p1661328253880169?thread_ts=1661250223.596519&cid=CDYGVNQKE -->
+
+### Movements
+
+- A Transaction has one or more Movements.
+- A Transaction has one Primary Movement: the one that 'triggers' the other movement.
+
+#### Types
+The following types of movements exist: `CASH_DEPOSIT`, `CASH_DIVIDEND`, `CASH_WITHDRAWAL`, `COUPON`, `BUY`, `SELL`, `CORPORATE_ACTION_IN`, `CORPORATE_ACTION_OUT`, `REVERSE_STOCK_SPLIT`, `STOCK_DIVIDEND`, `STOCK_SPLIT`, `TRANSFER_IN`, `TRANSFER_OUT`, `CUSTODY_FEE`, `INSTRUMENT_ENTRY_EXIT_FEE`, `MANAGEMENT_FEE`, `OTHER_FEE`, `OTHER_TAX`, `SERVICE_ENTRY_EXIT_FEE`, `TRANSACTION_FEE`, `WITHHOLDING_TAX`.
+
+#### Status
+A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED`, `SETTLED`, `CANCELLED`, `NOT_EXECUTED`, `EXPIRED`.
+
+### Updating Transactions
+
+Transactions are updated by creating or updating the associated movements. 
+
+!!! warning "Patching with the correct movements"
+
+    The InvestSuite Transaction model is very flexible to support various scenarios. Special care is needed when PATCHing a Transaction with new movements, or you may not achieve the desired effect.
+
+For example a Buy Transaction:
+
+1. When placed, it will only have one movement with `PLACED`.
+2. When it is executed, PATCH the Transaction with the original `PLACED` movement and an *additional* movement with status `EXECUTED`.
+3. When it is settled, PATCH the Transaction with the original `PLACED` movement, and update the status field of the additional movement to `SETTLED`.
+
+In general, use the following diagram to determine which movements to keep in a PATCH:
+<!-- There are two groups of Movements, determined by its status. A Transaction contains the latest version in each group. -->
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    groupOne: Keep the movement with the latest status, if it exists.
+    groupTwo: Also keep the movement with the latest status, if it exists.
+    state groupOne {
+        direction LR
+        [*] --> PLANNED
+        PLANNED --> PENDING
+        PENDING --> PLACED
+    }
+    state groupTwo {
+    direction LR
+      [*] --> CANCELLED
+      [*] --> NOT_EXECUTED
+      [*] --> EXPIRED
+      [*] --> EXECUTED
+      EXECUTED --> SETTLED
+    }
+```
+
+!!! info
+
+    The [Buy transaction](#1-buy-transactions) lays this out step by step.
+
+<!-- TODO remove this table -->
+
+<!-- Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `external_id` | A unique external identifier for this entity, also referred to as Reference ID. This identifier can be any string used in the client's system to identify this entity. This field is not checked for uniqueness. | `string <= 64 characters` | your-object-id | no
 `order_type` | Defines for orders if it is a market or a limit order. | `Enum("MARKET","LIMIT")` | MARKET | no
@@ -33,19 +127,11 @@ Field | Description | Data type | Example | Required
 `movements->quantity` |  Quantity of the movement expressed in units of the instrument. If the instrument_id is a cash type such as $USD, the quantity indicates a cash amount. If the instrument_id is an investible product such as IE0031442068, the quantity indicates a share amount. Fractional amounts are supported for instruments such as ETFs.Quantity is positive when adding a quantity of an instrument to the portfolio and negative when removing a quantity of an instrument from a portfolio.	| `number` | 5 | yes
 `movements->unit_price` | The instrument's price per unit expressed in the instrument's currency in case the instrument is a security. For the cash movement of a cash dividend to store the dividend value. | `number` | 1000 | no
 `movement->description` | An optional description for this movement. This string can contain any additional details of the movement type and can be set by the client. | `string` | STAMP_DUTY | no
-`movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | LU4642865251 | no
+`movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | LU4642865251 | no -->
 
-Some common transactions to pass to InvestSuite are:
+## Scenarios
 
-1. Buy transactions
-2. Sell transactions
-3. Cash movements
-4. Costs and charges
-5. Dividend payments
-
-### Create a transaction
-
-#### 1. Buy transactions
+### 1. Buy transactions
 
 A buy transaction describes the properties of a buy order.  The following API calls are typically made during the lifecycle:
 
@@ -327,7 +413,7 @@ A buy transaction describes the properties of a buy order.  The following API ca
     }
     ```
 
-#### 2. Sell transactions
+### 2. Sell transactions
 
 !!! info
 
@@ -335,7 +421,7 @@ A buy transaction describes the properties of a buy order.  The following API ca
 
 A sell transaction describes the properties of a sell order. The following API calls are typically made during the lifecycle:
 
-2.1. Creation of the transaction when the order is `PLACED`
+*2.1. Creation of the transaction when the order is `PLACED`*
 
 === "Request"
 
@@ -382,7 +468,7 @@ A sell transaction describes the properties of a sell order. The following API c
     }
     ```  
 
-2.2. Update of the transaction when the order is `SETTLED`
+*2.2. Update of the transaction when the order is `SETTLED`*
 
 === "Request"
 
@@ -486,7 +572,7 @@ A sell transaction describes the properties of a sell order. The following API c
         "deleted": false
     }
     ```
-#### 3. Cash movements
+### 3. Cash movements
 
 Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
@@ -537,7 +623,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
     }
     ```   
 
-#### 4. Costs and charges
+### 4. Costs and charges
 
 Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
 
@@ -642,7 +728,7 @@ Example `WITHHOLDING_TAX`:
     }
     ```
 
-#### 5. Corporate actions
+### 5. Corporate actions
 
 Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.
 
@@ -658,56 +744,6 @@ Corporate actions are registered as transactions as they will lead to movements 
 
     {
         "external_id": "your-corporate-action-1",
-        "movements": [
-            {
-                "type": "CASH_DIVIDEND",
-                "status": "SETTLED",
-                "datetime": "2021-10-01T00:00:00+00:00",
-                "instrument_id": "$USD",
-                "quantity": 0.0785,
-                "reference_instrument_id": "LU78464A6727",
-            }
-        ]
-    }
-    ```
-
-=== "Response (body)"
-
-    ```JSON
-    {
-        "external_id": "your-corporate-action-1",
-        "movements": [
-            {
-                "type": "CASH_DIVIDEND",
-                "status": "SETTLED",
-                "datetime": "2021-10-01T00:00:00+00:00",
-                "instrument_id": "$USD",
-                "quantity": 0.0785,
-                "reference_instrument_id": "LU78464A6727",
-            }
-        ],
-        "id": "T01FGZK41MJ4NJXKZ27VJC0HGS9",
-        "creation_datetime": "2021-10-02T04:10:15.570586+00:00",
-        "version": 1,
-        "version_datetime": "2021-10-02T04:10:15.570586+00:00",
-        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        "deleted": false
-    }
-    ```
-
-### Update transaction status
-
-After a transaction is posted in its initial state, in subsequent phases the status of the transaction changes. Most (common) transactions go from `PLANNED` to `PENDING` to `PLACED` to `EXECUTED` to `SETTLED`. In case an error occurs or a stakeholder intervenes transactions can end up in a `NOT_EXECUTED`, `EXPIRED` or `CANCELLED` state. To change the status of a transaction you issue a `PATCH` request.
-
-=== "Request"
-
-    ```HTTP
-    PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FGZK41MJ4NJXKZ27VJC0HGS9/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
         "movements": [
             {
                 "type": "CASH_DIVIDEND",
@@ -852,76 +888,3 @@ To register a cancellation you add one movement to the current list of movements
 
 !!! Info
     Notice that the `PLACED` and `CANCELLED` movements are identical, apart from their status and their datetime. The datetime is the time the order was `PLACED` and `CANCELLED` respectively.
-
-## Holdings
-
-To update the holdings you patch the portfolio.
-
-=== "Request"
-
-    ```HTTP
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    "portfolio": {
-        "$USD": 208.086729,
-        "LU78464A6644": 18.78,
-        "LU4642886612": 9.2243,
-        "LU46137V2410": 9,
-        "LU3160923039": 3,
-        "LU3160928731": 10,
-        "LU97717W5215": 6,
-        "LU4642861458": 4,
-        "LU46429B2676": 45.146,
-        "LU46434V7617": 9,
-        "LU4642865251": 7.6828,
-        "LU46434V4234": 3
-    }
-
-    ```
-
-=== "Response (body)"
-
-    ```JSON
-    {
-        "external_id": "your-bank-portfolio-1",
-        "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "base_currency": "USD",
-        "money_type": "PAPER_MONEY",
-        "config":{
-            "manager": "ROBO_ADVISOR_DISCRETIONARY",
-            "manager_version":1,
-            "manager_settings": {
-                "policy_id": "Y01EF46X9XB437JS4678X0K529C",
-                "active": true
-            }
-        },
-        "portfolio": {
-            "$USD": 208.086729,
-            "LU78464A6644": 18.78,
-            "LU4642886612": 9.2243,
-            "LU46137V2410": 9,
-            "LU3160923039": 3,
-            "LU3160928731": 10,
-            "LU97717W5215": 6,
-            "LU4642861458": 4,
-            "LU46429B2676": 45.146,
-            "LU46434V7617": 9,
-            "LU4642865251": 7.6828,
-            "LU46434V4234": 3
-        },
-        "snapshot_datetime": null,
-        "funded_since": null,
-        "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-        "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version": 3,
-        "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-        "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-        "deleted": false,
-        "status": "ACTIVE"
-    }
-    ```

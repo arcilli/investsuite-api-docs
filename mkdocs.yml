@@ -115,7 +115,7 @@ nav:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
     - Optimize a portfolio:     robo/run_optimizer.md # TODO MERGE?
-    - Synchronize a portfolio:  robo/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
+    # - Synchronize a portfolio:  robo/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
     - Rebalancing:              robo/rebalancing.md
 
   - Self Investor:
