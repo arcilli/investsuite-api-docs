@@ -65,10 +65,18 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - codehilite:
       guess_lang: false
   - footnotes
+
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - search:
@@ -78,8 +86,8 @@ nav:
   - Getting started:
     - Introduction:             index.md
     # - Product Range:            getting_started/product_range.md
-    - Architecture:             getting_started/architecture.md
     - Glossary:                 getting_started/glossary.md
+    - Architecture:             getting_started/architecture.md
   - Common scenarios:
     - Introduction:             common_scenarios/introduction.md
     # Business Scenarios
