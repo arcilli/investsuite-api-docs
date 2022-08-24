@@ -4,11 +4,11 @@ title: Synchronize portfolios
 
 !!! warning
 
-    This page applies only to [Robo Advisor with Broker/Custodian integration by Client](../getting_started/architecture.md#robo-advisor-with-brokercustodian-integration).
+    This page applies only to [Robo Advisor with Broker/Custodian integration by Client](../concepts/architecture.md#robo-advisor-with-brokercustodian-integration).
 
 ## Context
 
-The broker/custodian is the master system for [holdings (positions) and transactions](../getting_started/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync, on a periodic basis (eg. nightly). This page describes how the client middleware should do this.
+The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync, on a periodic basis (eg. nightly). This page describes how the client middleware should do this.
 
 !!! tip "Order of API calls"
 

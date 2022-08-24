@@ -4,7 +4,7 @@ title: Manage portfolios
 
 ## Context
 
-This page lists all operations that can be performed on the Portfolio object, see See [Glossary](../getting_started/glossary.md).
+This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
 ## Create a portfolio
 ### Minimum portfolio
 
@@ -325,7 +325,7 @@ Below table lists the applicable portfolio manager parameters. The properties ca
 
 ### Brokerage account
 
-Brokerage Account: see [Glossary](../getting_started/glossary.md#accounts).
+Brokerage Account: see [Glossary](glossary.md#accounts).
 
 === "Request"
 
@@ -502,7 +502,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 ## Query portfolios
 
-You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](./collections.md) section.
+You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](entities.md#querying-business-objects) section.
 
 === "Request"
 
