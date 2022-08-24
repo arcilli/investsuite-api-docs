@@ -84,10 +84,12 @@ Refer to [Optimize a portfolio](../common_scenarios/run_optimizer/).
 ## Entities
 The business objects of InvestSuite.
 
-Refer to [Business Objects](entities.md)
+Refer to [Business Objects](entities.md).
 
 ## Rebalancing
 Generating orders to modify a portfolio to bring it back into an optimal state or in line with the model portfolio.
+
+Refer to [Rebalancing](../robo/rebalancing.md).
 
 ## Reconciliation
 The process of ensuring the portfolio holdings and transactions are in sync between the broker/custodian and Robo Advisor.
@@ -101,6 +103,13 @@ This is part of the input for Optimizer to construct the Portfolio.
 The investment horizon. The total length of time that an investor expects to hold a security or a portfolio.
 
 This is part of the input for Optimizer to construct the Portfolio.
+
+## Mandate
+
+- **Discretionary** (Robo Advisor only): No action from the user required to execute the recommended orders.
+- **Advisory** (Robo Advisor only): The user needs to approve the recommended optimization before the orders can be executed.
+- **Execution-only** (Self Investor only): The user decides what orders to execute.
+
 
 
 <!-- 
