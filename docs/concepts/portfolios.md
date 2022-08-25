@@ -255,6 +255,14 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
 
 To update the holdings you patch the `portfolio` field in the Portfolio object.
 
+!!! warning "Consistency"
+
+    Holdings are not updated when Transactions are created in the Portfolio. The middleware is responsible of keeping these consistent. This is by design to allow flexibility.
+
+!!! warning "Nested object"
+
+    As with all nested objects, include the full object (ie. all holdings) when issuing the PATCH.
+
 === "Request"
 
     ```HTTP hl_lines="1 8"
