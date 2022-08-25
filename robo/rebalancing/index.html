@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/template/">
+        <link rel="canonical" href="https://docs.investsuite.com/robo/rebalancing/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
-        <title>Endpoint Name Title - InvestSuite Integration API documentation</title>
+        <title>Rebalancing - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,9 +55,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Endpoint Name Title">
+<meta property="og:title" content="InvestSuite Integration API documentation - Rebalancing (process)">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/template/">
+<meta property="og:url" content="https://docs.investsuite.com/robo/rebalancing/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Endpoint Name Title
+              Rebalancing
             
           </span>
         </div>
@@ -214,13 +214,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../robo/introduction/" class="md-tabs__link">
+      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
         Robo Advisor
       </a>
     </li>
@@ -252,7 +254,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -610,12 +612,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -638,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -652,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/quick_start/" class="md-nav__link">
+      <a href="../quick_start/" class="md-nav__link">
         Quick start
       </a>
     </li>
@@ -666,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/run_optimizer/" class="md-nav__link">
+      <a href="../run_optimizer/" class="md-nav__link">
         Optimize a portfolio
       </a>
     </li>
@@ -678,11 +682,190 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../robo/rebalancing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Rebalancing (process)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Rebalancing (process)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process" class="md-nav__link">
+    Process
+  </a>
+  
+    <nav class="md-nav" aria-label="Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-optimization-is-triggered" class="md-nav__link">
+    1. Optimization is triggered
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Optimization is triggered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-broker" class="md-nav__link">
+    Client integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-broker" class="md-nav__link">
+    InvestSuite integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-optimizer" class="md-nav__link">
+    External Optimizer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-optimization-is-ready-to-be-executed" class="md-nav__link">
+    2. Optimization is ready to be executed
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Optimization is ready to be executed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-mandate" class="md-nav__link">
+    Discretionary mandate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advisory-mandate" class="md-nav__link">
+    Advisory mandate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio-blocked" class="md-nav__link">
+    Portfolio blocked
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-orders-of-optimization-sent-to-the-broker" class="md-nav__link">
+    3. Orders of Optimization sent to the broker
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Orders of Optimization sent to the broker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-broker_1" class="md-nav__link">
+    Client integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-the-broker" class="md-nav__link">
+    InvestSuite integrates with the broker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-orders-are-executed-or-settled" class="md-nav__link">
+    4. Orders are executed or settled
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Orders are executed or settled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-the-broker" class="md-nav__link">
+    Client integrates with the broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-the-broker_1" class="md-nav__link">
+    InvestSuite integrates with the broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-portfolio-is-unblocked-from-being-reoptimized" class="md-nav__link">
+    The Portfolio is unblocked from being reoptimized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -694,7 +877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/optimization/" class="md-nav__link">
+      <a href="../optimization/" class="md-nav__link">
         Optimization (object)
       </a>
     </li>
@@ -790,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -804,7 +987,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -818,7 +1001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -832,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -846,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idcard/" class="md-nav__link">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
     </li>
@@ -860,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -874,7 +1057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -888,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logos/" class="md-nav__link">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
     </li>
@@ -902,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -916,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -930,7 +1113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -999,24 +1182,146 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#overview" class="md-nav__link">
+    Overview
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-example" class="md-nav__link">
-    GET example
+  <a href="#process" class="md-nav__link">
+    Process
   </a>
   
-    <nav class="md-nav" aria-label="GET example">
+    <nav class="md-nav" aria-label="Process">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exceptions" class="md-nav__link">
-    Exceptions
+  <a href="#1-optimization-is-triggered" class="md-nav__link">
+    1. Optimization is triggered
   </a>
+  
+    <nav class="md-nav" aria-label="1. Optimization is triggered">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-broker" class="md-nav__link">
+    Client integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-broker" class="md-nav__link">
+    InvestSuite integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-optimizer" class="md-nav__link">
+    External Optimizer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-optimization-is-ready-to-be-executed" class="md-nav__link">
+    2. Optimization is ready to be executed
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Optimization is ready to be executed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-mandate" class="md-nav__link">
+    Discretionary mandate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advisory-mandate" class="md-nav__link">
+    Advisory mandate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio-blocked" class="md-nav__link">
+    Portfolio blocked
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-orders-of-optimization-sent-to-the-broker" class="md-nav__link">
+    3. Orders of Optimization sent to the broker
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Orders of Optimization sent to the broker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-broker_1" class="md-nav__link">
+    Client integrates with broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-the-broker" class="md-nav__link">
+    InvestSuite integrates with the broker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-orders-are-executed-or-settled" class="md-nav__link">
+    4. Orders are executed or settled
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Orders are executed or settled">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-integrates-with-the-broker" class="md-nav__link">
+    Client integrates with the broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#investsuite-integrates-with-the-broker_1" class="md-nav__link">
+    InvestSuite integrates with the broker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-portfolio-is-unblocked-from-being-reoptimized" class="md-nav__link">
+    The Portfolio is unblocked from being reoptimized
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1036,7 +1341,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>Endpoint Name Title</h1>
+    <h1>Rebalancing</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1045,71 +1350,80 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Describe the service here in natural language and provide documentation and UI link:</p>
+<div class="admonition info">
+<p class="admonition-title">Definition</p>
+<p>See the <a href="../../concepts/glossary/#rebalancing">Glossary</a> for a definition.</p>
+</div>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The following diagram describes the rebalancing process at a high level.</p>
+<p><img alt="" src="../rebalancing.jpg" /></p>
+<!-- Source: https://miro.com/app/board/uXjVOX6Q5tA=/?moveToWidget=3458764520791874643&cot=14 -->
+
+<h2 id="process">Process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
+<p>Depending on the following criteria, the rebalancing process is different:</p>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/{}">Themes API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
+<li>Broker/Custodian integration: by InvestSuite or by the Client</li>
+<li>Mandate: Advisory or Discretionary</li>
+<li>Portfolio Optimizer: by InvestSuite or by the Client</li>
 </ul>
-<h2 id="get-example">GET example<a class="headerlink" href="#get-example" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/</span><span class="nv">$ENDPOINT_NAME</span><span class="s2">/?</span><span class="nv">$EXAMPLE_QUERY_PARAMS</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>{example-query-params}</code></td>
-<td>Description.</td>
-<td>data type: <code>possible|values</code></td>
-<td>Example</td>
-<td>Yes/No, default <code>false</code></td>
-</tr>
-</tbody>
-</table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="err">...</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="kc">trun</span><span class="err">ca</span><span class="kc">te</span><span class="w"> </span><span class="err">lo</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">respo</span><span class="kc">nses</span><span class="w"> </span><span class="err">o</span><span class="kc">f</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">readabili</span><span class="kc">t</span><span class="err">y</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
+<!-- | Broker/Custodian Integration | Mandate | Optimizer | Process Flow |
+|---|---|---|---|
+| Client | Discretionary | InvestSuite | (1) |
+| Client | Discretionary | Client | (2) |
+| Client | Advisory | InvestSuite | (3) |
+| Client | Advisory | Client | (4) |
+| InvestSuite | Discretionary | InvestSuite | (5) |
+| InvestSuite | Discretionary | Client | (6) |
+| InvestSuite | Advisory | InvestSuite | (7) |
+| InvestSuite | Advisory | Client | (8) |
+
+!!! info "Detailed process flow"
+
+    Talk to your sales representative for a detailed process flow.
+
+    Refer to https://investsuite.atlassian.net/wiki/spaces/PM/pages/2647752766/Rebalancing+in+Robo+Investor -->
+
+<h3 id="1-optimization-is-triggered">1. Optimization is triggered<a class="headerlink" href="#1-optimization-is-triggered" title="Permanent link">&para;</a></h3>
+<h4 id="client-integrates-with-broker">Client integrates with broker<a class="headerlink" href="#client-integrates-with-broker" title="Permanent link">&para;</a></h4>
+<p>When the Client integrates with the Broker, an Optimization is triggered when the Portfolio object is patched (with Holdings or Transactions):</p>
+<ul>
+<li>A funding happens, see <a href="../../scenarios/cash_movements/#broker-integration-by-the-client">Funding</a>.</li>
+</ul>
+<!-- - TODO what else? -->
+
+<h4 id="investsuite-integrates-with-broker">InvestSuite integrates with broker<a class="headerlink" href="#investsuite-integrates-with-broker" title="Permanent link">&para;</a></h4>
+<p>When InvestSuite integrates with the Broker, an Optimization is triggered by a nightly batch job, run by InvestSuite.</p>
+<h4 id="external-optimizer">External Optimizer<a class="headerlink" href="#external-optimizer" title="Permanent link">&para;</a></h4>
+<p>The client (the external optimizer) decides when it runs.</p>
+<h3 id="2-optimization-is-ready-to-be-executed">2. Optimization is ready to be executed<a class="headerlink" href="#2-optimization-is-ready-to-be-executed" title="Permanent link">&para;</a></h3>
+<h4 id="discretionary-mandate">Discretionary mandate<a class="headerlink" href="#discretionary-mandate" title="Permanent link">&para;</a></h4>
+<p>When an Optimization is recommended (the <code>portfolio_update.is_recommended</code> field on the Optimization is <code>true</code>), the Optimization is considered ready to be executed.</p>
+<!-- TODO quid owner_choice and status? -->
+
+<h4 id="advisory-mandate">Advisory mandate<a class="headerlink" href="#advisory-mandate" title="Permanent link">&para;</a></h4>
+<p>When the Optimization is accepted by the user (the <code>owner_choice</code> field on the Optimization is <code>ACCEPT</code>), the Optimization is considered ready to be executed.</p>
+<h4 id="portfolio-blocked">Portfolio blocked<a class="headerlink" href="#portfolio-blocked" title="Permanent link">&para;</a></h4>
+<p>When an Optimization is considered ready to be executed, the Portfolio is blocked from being reoptimized.</p>
+<h3 id="3-orders-of-optimization-sent-to-the-broker">3. Orders of Optimization sent to the broker<a class="headerlink" href="#3-orders-of-optimization-sent-to-the-broker" title="Permanent link">&para;</a></h3>
+<!-- TODO what is the trigger here? an event? or a batch job? or a query? what criteria -->
+
+<h4 id="client-integrates-with-broker_1">Client integrates with broker<a class="headerlink" href="#client-integrates-with-broker_1" title="Permanent link">&para;</a></h4>
+<p>The Client middleware sends the Orders of the Optimization to the broker, and updates InvestSuite:</p>
+<ol>
+<li>The Client middleware gets the Orders from the Optimization object, see <a href="../optimization/#get-the-latest-optimization-of-a-portfolio">here</a>.</li>
+<li>The Client middleware sends the Orders to the broker.</li>
+<li>The Client middleware creates corresponding Transactions in InvestSuite, see <a href="../../concepts/transactions/#create-a-transaction">here</a>.</li>
+</ol>
+<h4 id="investsuite-integrates-with-the-broker">InvestSuite integrates with the broker<a class="headerlink" href="#investsuite-integrates-with-the-broker" title="Permanent link">&para;</a></h4>
+<p>InvestSuite sends the orders to the broker and keeps them up to date.</p>
+<h3 id="4-orders-are-executed-or-settled">4. Orders are executed or settled<a class="headerlink" href="#4-orders-are-executed-or-settled" title="Permanent link">&para;</a></h3>
+<h4 id="client-integrates-with-the-broker">Client integrates with the broker<a class="headerlink" href="#client-integrates-with-the-broker" title="Permanent link">&para;</a></h4>
+<p>The Client middleware updates the corresponding Transactions in InvestSuite, see <a href="../../concepts/transactions/#update-transaction">here</a>.</p>
+<h4 id="investsuite-integrates-with-the-broker_1">InvestSuite integrates with the broker<a class="headerlink" href="#investsuite-integrates-with-the-broker_1" title="Permanent link">&para;</a></h4>
+<p>InvestSuite keeps the orders up to date.</p>
+<h4 id="the-portfolio-is-unblocked-from-being-reoptimized">The Portfolio is unblocked from being reoptimized<a class="headerlink" href="#the-portfolio-is-unblocked-from-being-reoptimized" title="Permanent link">&para;</a></h4>
+<p>When all Transactions of an Optimization have a status <code>SETTLED</code>, the Portfolio is unblocked from being reoptimized.</p>
+<!-- also cancelled/expired/... -->
     
 
             </article>
@@ -1120,6 +1434,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../run_optimizer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Optimize a portfolio" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Optimize a portfolio
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../optimization/" class="md-footer__link md-footer__link--next" aria-label="Next: Optimization (object)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Optimization (object)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

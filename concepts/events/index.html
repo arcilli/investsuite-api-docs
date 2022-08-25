@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/template/">
+        <link rel="canonical" href="https://docs.investsuite.com/concepts/events/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
-        <title>Endpoint Name Title - InvestSuite Integration API documentation</title>
+        <title>Events - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,9 +55,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Endpoint Name Title">
+<meta property="og:title" content="InvestSuite Integration API documentation - Events">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/template/">
+<meta property="og:url" content="https://docs.investsuite.com/concepts/events/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#event-driven" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Endpoint Name Title
+              Events
             
           </span>
         </div>
@@ -182,13 +182,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
         Concepts
       </a>
     </li>
@@ -252,7 +254,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -332,12 +334,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
       
       
@@ -374,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/glossary/" class="md-nav__link">
+      <a href="../glossary/" class="md-nav__link">
         Glossary
       </a>
     </li>
@@ -388,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/architecture.md" class="md-nav__link">
+      <a href="../architecture.md" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -402,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/authentication/" class="md-nav__link">
+      <a href="../authentication/" class="md-nav__link">
         Authentication
       </a>
     </li>
@@ -416,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/financial_data/" class="md-nav__link">
+      <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
     </li>
@@ -428,11 +432,143 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../concepts/events/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Events
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Events
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven" class="md-nav__link">
+    Event Driven
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Driven">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architectural-concept" class="md-nav__link">
+    Architectural concept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolios" class="md-nav__link">
+    Portfolios
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-divest-amount" class="md-nav__link">
+    Withdrawal (divest amount)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimisations" class="md-nav__link">
+    Optimisations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimisations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_1" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-choice-update" class="md-nav__link">
+    Owner choice update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polling" class="md-nav__link">
+    Polling
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -444,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/embedding/" class="md-nav__link">
+      <a href="../embedding/" class="md-nav__link">
         Embedding
       </a>
     </li>
@@ -458,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/errors/" class="md-nav__link">
+      <a href="../errors/" class="md-nav__link">
         API errors
       </a>
     </li>
@@ -472,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/entities/" class="md-nav__link">
+      <a href="../entities/" class="md-nav__link">
         Business objects
       </a>
     </li>
@@ -486,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/users/" class="md-nav__link">
+      <a href="../users/" class="md-nav__link">
         User (object)
       </a>
     </li>
@@ -500,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/portfolios/" class="md-nav__link">
+      <a href="../portfolios/" class="md-nav__link">
         Portfolio (object)
       </a>
     </li>
@@ -514,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/transactions/" class="md-nav__link">
+      <a href="../transactions/" class="md-nav__link">
         Transaction (object)
       </a>
     </li>
@@ -790,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -804,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -818,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -832,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -846,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idcard/" class="md-nav__link">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
     </li>
@@ -860,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -874,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -888,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logos/" class="md-nav__link">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
     </li>
@@ -902,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -916,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -930,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -999,29 +1135,104 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#event-driven" class="md-nav__link">
+    Event Driven
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-example" class="md-nav__link">
-    GET example
-  </a>
-  
-    <nav class="md-nav" aria-label="GET example">
+    <nav class="md-nav" aria-label="Event Driven">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exceptions" class="md-nav__link">
-    Exceptions
+  <a href="#architectural-concept" class="md-nav__link">
+    Architectural concept
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principles" class="md-nav__link">
+    Principles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolios" class="md-nav__link">
+    Portfolios
+  </a>
+  
+    <nav class="md-nav" aria-label="Portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation" class="md-nav__link">
+    Creation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-update" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-divest-amount" class="md-nav__link">
+    Withdrawal (divest amount)
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimisations" class="md-nav__link">
+    Optimisations
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimisations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status-update_1" class="md-nav__link">
+    Status update
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#owner-choice-update" class="md-nav__link">
+    Owner choice update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polling" class="md-nav__link">
+    Polling
+  </a>
   
 </li>
       
@@ -1036,7 +1247,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>Endpoint Name Title</h1>
+    <h1>Events</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1045,71 +1256,308 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Describe the service here in natural language and provide documentation and UI link:</p>
+<p>The API supports two patterns for events integrations:</p>
+<ol>
+<li>Event-driven: the client system responds to an event that is sent by the InvestSuite system (asynchronously) <strong>(preferred)</strong></li>
+<li>Polling: the client regularly polls the events REST endpoint</li>
+</ol>
+<h2 id="event-driven">Event Driven<a class="headerlink" href="#event-driven" title="Permanent link">&para;</a></h2>
+<h3 id="architectural-concept">Architectural concept<a class="headerlink" href="#architectural-concept" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/{}">Themes API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
+<li>InvestSuite posts events on one single topic of the client's event queue</li>
+<li>Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...</li>
 </ul>
-<h2 id="get-example">GET example<a class="headerlink" href="#get-example" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/</span><span class="nv">$ENDPOINT_NAME</span><span class="s2">/?</span><span class="nv">$EXAMPLE_QUERY_PARAMS</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+<h3 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>The strategy is to signal that an event has happened, not to include all information that the middleware may possibly require (as these requirements may vary wildly and may introduce breaking changes). Therefore, an additional REST API call may be required to get additional data.</p>
+</li>
+<li>
+<p>All events will use this envelope, with the actual information in <code>data</code>.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: string, 
+  &quot;created&quot;: timestamp, 
+  &quot;version&quot;: string,
+  &quot;subject&quot;: string,
+  &quot;action&quot;: string, 
+  &quot;data&quot;: dict
+}
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 <table>
 <thead>
 <tr>
 <th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
+<th>Type</th>
+<th>Content</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>{example-query-params}</code></td>
-<td>Description.</td>
-<td>data type: <code>possible|values</code></td>
-<td>Example</td>
-<td>Yes/No, default <code>false</code></td>
+<td>id</td>
+<td>string</td>
+<td>An ID uniquely identifying the event</td>
+</tr>
+<tr>
+<td>created</td>
+<td>timestamp</td>
+<td>The timestamp of the creation of the event</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>The version of the event object. For now, this will always be "1.0.0"</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>A string representing a subject, always referring to an entity (see <a href="../entities/">Entities Overview</a>)</td>
+</tr>
+<tr>
+<td>action</td>
+<td>string</td>
+<td>The action on the topic entity that triggers the event, for example 'creation'</td>
+</tr>
+<tr>
+<td>data</td>
+<td>dict</td>
+<td>A dictionary that contains specific fields, depending on the type, see below for the exhaustive list.</td>
 </tr>
 </tbody>
 </table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="err">...</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="kc">trun</span><span class="err">ca</span><span class="kc">te</span><span class="w"> </span><span class="err">lo</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">respo</span><span class="kc">nses</span><span class="w"> </span><span class="err">o</span><span class="kc">f</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">readabili</span><span class="kc">t</span><span class="err">y</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<!-- TODO: add link to Entities -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are deliberately using ‘subject’ i.o. ‘topic’, since 1/ the integration pattern with 3rd parties is that we will post all messages on 1 topic (so this will be confusing) and 2/ this field can, potentially in the future, be broader than only entities</p>
+</div>
+<h3 id="portfolios">Portfolios<a class="headerlink" href="#portfolios" title="Permanent link">&para;</a></h3>
+<h4 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.creation</code></p>
+<p>When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.</p>
+<p>It is up to the b2b client to check if the portfolio is “paper_money” or “real_money” based on this event. This to decide if they need to proceed with setup at their side.</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;creation&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;owned_by_user_id&quot; : &quot;a-user-id&quot;
+}
 </code></pre></div>
+<h4 id="status-update">Status update<a class="headerlink" href="#status-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.status-update</code></p>
+<p>Every time a status of a portfolio gets updated an event will be sent to the b2b client.</p>
+<p>Possible values for the status field:</p>
+<ul>
+<li>WAITING_FOR_ACCOUNT: brokerage accounts are to be added by the b2b client</li>
+<li>WAITING_FOR_POLICY: user is still going through the risk profiling, so a policy was not yet determined.</li>
+<li>WAITING_FOR_FUNDS: waiting for incoming funds to arrive. This can be a trigger for the b2b client to push the client to make a transfer if this status isn’t updated within a certain timeframe.</li>
+<li>ACTIVE: portfolio is in use</li>
+<li>INACTIVE</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;status-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;value&quot; : &quot;INACTIVE&quot;
+  }
+}
+</code></pre></div>
+<p>Possible values for the value field:</p>
+<ul>
+<li>WAITING_FOR_POLICY</li>
+<li>WAITING_FOR_ACCOUNT</li>
+<li>WAITING_FOR_FUNDS</li>
+<li>ACTIVE</li>
+<li>INACTIVE</li>
+</ul>
+<h4 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.funding</code></p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
+  &quot;value&quot;: 500, 
+  &quot;currency&quot;: &quot;EUR&quot;
+}
+</code></pre></div>
+<h4 id="withdrawal-divest-amount">Withdrawal (divest amount)<a class="headerlink" href="#withdrawal-divest-amount" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>portfolios.withdrawal</code></p>
+<p>Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.</p>
+<p>Every update to this amount will trigger an event towards the b2b client.</p>
+<p>Divest amount:</p>
+<p>= 1e100 → means full withdrawal.</p>
+<p>= specific amount → partial withdrawal</p>
+<p>Note: value is the total amount that is requested for withdrawal, not the incremental value (eg. in case of two quickly subsequent withdrawal requests, where the first is not yet settled)</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;portfolios&quot;,
+  &quot;action&quot; : &quot;divest-amount-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;a-portfolio-id&quot;,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;divest_amount&quot; : 1.234,
+    &quot;currency&quot; : &quot;a-currency-code&quot;
+  }
+}
+</code></pre></div>
+<!-- #### Removal
+
+Fully qualified name: `portfolios.removal`
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
+}
+``` --&gt;
+
+&lt;!-- ### Users
+
+#### Creation
+
+Fully qualified name: `users.creation`
+</code></pre></div>
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "user_data": {
+    "email": "ashok.kumar@example.com", 
+    "phone": "+12345667", 
+    "first_name": "Ashok", 
+    "last_name": "Kumar"
+  }
+}
+<div class="highlight"><pre><span></span><code>#### Status update
+
+Fully qualified name: `users.status-update`
+</code></pre></div>
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "value": "WAITING_FOR_SIGNATURE"
+}
+<div class="highlight"><pre><span></span><code>#### Account number update
+
+Fully qualified name: `users.account-number-update`
+</code></pre></div>
+{
+  "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV", 
+  "value": "BE01234567891234"
+}
+``` -->
+
+<h3 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h3>
+<h4 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>optimisations.status-update</code></p>
+<p>When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.</p>
+<p>Fields:</p>
+<ul>
+<li>
+<p>is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).</p>
+</li>
+<li>
+<p>Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED</p>
+</li>
+</ul>
+<p>NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.</p>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;optimizations&quot;,
+  &quot;action&quot; : &quot;status-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;an-optimization-id&quot;,
+    “portfolio_id” : “a-portfolio-id”,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;is_recommended&quot; : true,
+    &quot;value&quot; : &quot;SUCCESS&quot;
+  }
+</code></pre></div>
+<h4 id="owner-choice-update">Owner choice update<a class="headerlink" href="#owner-choice-update" title="Permanent link">&para;</a></h4>
+<p>Fully qualified name: <code>optimisations.owner-choice-update</code></p>
+<p>This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).</p>
+<p>In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”</p>
+<p>The id can be used to fetch the optimisation.</p>
+<ul>
+<li>Possible values for the status field are ACCEPT, REJECT, REOPTIMIZE, IGNORED</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot; : &quot;an-event-id&quot;,
+  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
+  &quot;version&quot; : &quot;1.0.0&quot;,
+  &quot;subject&quot; : &quot;optimizations&quot;,
+  &quot;action&quot; : &quot;owner-choice-update&quot;,
+  &quot;data&quot; : {
+    &quot;id&quot; : &quot;an-optimization-id&quot;,
+    “portfolio_id” : “a-portfolio-id”,
+    &quot;external_id&quot; : &quot;an-external-id&quot;,
+    &quot;value&quot; : &quot;ACCEPT&quot;
+  }
+}
+</code></pre></div>
+<!-- ### Profiles
+
+See also the section on [Suitability Profiler](suitability_profiler.md).
+
+#### Result update
+
+Fully qualified name: `profiles.result-update`
+
+Sent upon completion of ALL Assessments
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;X01FWDZGKEV3S7SKAX90637H077&quot;, 
+  &quot;linked_portfolio_id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;
+}
+</code></pre></div>
+
+#### Assessment result update
+
+Fully qualified name: `profiles.assessment-result-update`
+
+Sent upon completion of AN Assessment
+
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;X01FWDZGKEV3S7SKAX90637H077&quot;, 
+  &quot;questionnaire_id&quot;: &quot;Q123&quot;
+}
+</code></pre></div>
+
+### Reports
+
+#### Status update
+
+Fully qualified name: `reports.status-update`
+
+- Possible values for the `value` field are READY, FAILED
+- Possible values for the `output_format` field are WEB, PDF, VIDEO
+
+```
+{
+  "id": "R01FWDZGKEV3S7SKAX90637H077",
+  "value": "READY", 
+  "output_format": "VIDEO"
+}
+``` -->
+
+<h2 id="polling">Polling<a class="headerlink" href="#polling" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is still under development</p>
 </div>
-</div>
-</div>
-<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
+<!-- ### Architectural Concept
+
+### The REST Event Endpoint
+
+TODO -->
     
 
             </article>
@@ -1120,6 +1568,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../financial_data/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Financial data" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Financial data
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../embedding/" class="md-footer__link md-footer__link--next" aria-label="Next: Embedding" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Embedding
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

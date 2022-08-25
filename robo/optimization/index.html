@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/template/">
+        <link rel="canonical" href="https://docs.investsuite.com/robo/optimization/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
-        <title>Endpoint Name Title - InvestSuite Integration API documentation</title>
+        <title>Managing Optimizations - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,9 +55,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Endpoint Name Title">
+<meta property="og:title" content="InvestSuite Integration API documentation - Optimization (object)">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/template/">
+<meta property="og:url" content="https://docs.investsuite.com/robo/optimization/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#get-the-latest-optimization-of-a-portfolio" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Endpoint Name Title
+              Managing Optimizations
             
           </span>
         </div>
@@ -214,13 +214,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../robo/introduction/" class="md-tabs__link">
+      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
         Robo Advisor
       </a>
     </li>
@@ -252,7 +254,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -610,12 +612,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -638,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -652,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/quick_start/" class="md-nav__link">
+      <a href="../quick_start/" class="md-nav__link">
         Quick start
       </a>
     </li>
@@ -666,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/run_optimizer/" class="md-nav__link">
+      <a href="../run_optimizer/" class="md-nav__link">
         Optimize a portfolio
       </a>
     </li>
@@ -680,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/rebalancing/" class="md-nav__link">
+      <a href="../rebalancing/" class="md-nav__link">
         Rebalancing (process)
       </a>
     </li>
@@ -692,11 +696,48 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../robo/optimization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Optimization (object)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Optimization (object)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-latest-optimization-of-a-portfolio" class="md-nav__link">
+    Get the latest optimization of a portfolio
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -790,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -804,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -818,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -832,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -846,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idcard/" class="md-nav__link">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
     </li>
@@ -860,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -874,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -888,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logos/" class="md-nav__link">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
     </li>
@@ -902,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -916,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -930,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -999,29 +1040,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#get-the-latest-optimization-of-a-portfolio" class="md-nav__link">
+    Get the latest optimization of a portfolio
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-example" class="md-nav__link">
-    GET example
-  </a>
-  
-    <nav class="md-nav" aria-label="GET example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exceptions" class="md-nav__link">
-    Exceptions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1036,7 +1057,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>Endpoint Name Title</h1>
+    <h1>Managing Optimizations</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1045,71 +1066,42 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Describe the service here in natural language and provide documentation and UI link:</p>
-<ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/{}">Themes API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
-</ul>
-<h2 id="get-example">GET example<a class="headerlink" href="#get-example" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/</span><span class="nv">$ENDPOINT_NAME</span><span class="s2">/?</span><span class="nv">$EXAMPLE_QUERY_PARAMS</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
-</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Definition</p>
+<p>See the <a href="../../concepts/glossary/#optimization-of-a-portfolio">Glossary</a> for a definition.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<h2 id="get-the-latest-optimization-of-a-portfolio">Get the latest optimization of a portfolio<a class="headerlink" href="#get-the-latest-optimization-of-a-portfolio" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/portfolios/{id}/optimizations/current</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio_update&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;is_recommended&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;orders&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;IE00B44Z5B48&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UNITS&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">123.45</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;LU0378818131&quot;</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-434.56</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;shares&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-8</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;expected_share_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">54.32</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;expected_transaction_cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</div>
-</div>
-</div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>{example-query-params}</code></td>
-<td>Description.</td>
-<td>data type: <code>possible|values</code></td>
-<td>Example</td>
-<td>Yes/No, default <code>false</code></td>
-</tr>
-</tbody>
-</table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="err">...</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="kc">trun</span><span class="err">ca</span><span class="kc">te</span><span class="w"> </span><span class="err">lo</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">respo</span><span class="kc">nses</span><span class="w"> </span><span class="err">o</span><span class="kc">f</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">readabili</span><span class="kc">t</span><span class="err">y</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
     
 
             </article>
@@ -1120,6 +1112,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../rebalancing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Rebalancing (process)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Rebalancing (process)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../self/introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Introduction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

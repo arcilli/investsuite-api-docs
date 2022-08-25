@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/template/">
+        <link rel="canonical" href="https://docs.investsuite.com/concepts/errors/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
     
     
       
-        <title>Endpoint Name Title - InvestSuite Integration API documentation</title>
+        <title>A closer look at API errors - InvestSuite Integration API documentation</title>
       
     
     
@@ -55,9 +55,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Endpoint Name Title">
+<meta property="og:title" content="InvestSuite Integration API documentation - API errors">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/template/">
+<meta property="og:url" content="https://docs.investsuite.com/concepts/errors/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#error-codes" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Endpoint Name Title
+              A closer look at API errors
             
           </span>
         </div>
@@ -182,13 +182,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link md-tabs__link--active">
         Concepts
       </a>
     </li>
@@ -252,7 +254,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -332,12 +334,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
       
       
       
@@ -374,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/glossary/" class="md-nav__link">
+      <a href="../glossary/" class="md-nav__link">
         Glossary
       </a>
     </li>
@@ -388,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/architecture.md" class="md-nav__link">
+      <a href="../architecture.md" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -402,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/authentication/" class="md-nav__link">
+      <a href="../authentication/" class="md-nav__link">
         Authentication
       </a>
     </li>
@@ -416,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/financial_data/" class="md-nav__link">
+      <a href="../financial_data/" class="md-nav__link">
         Financial data
       </a>
     </li>
@@ -430,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/events/" class="md-nav__link">
+      <a href="../events/" class="md-nav__link">
         Events
       </a>
     </li>
@@ -444,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/embedding/" class="md-nav__link">
+      <a href="../embedding/" class="md-nav__link">
         Embedding
       </a>
     </li>
@@ -456,11 +460,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../concepts/errors/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          API errors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         API errors
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#error-codes" class="md-nav__link">
+    Error codes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-a-400-bad-request" class="md-nav__link">
+    Example of a 400 Bad Request
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-a-401-unauthorised-response" class="md-nav__link">
+    Example of a 401 Unauthorised response
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -472,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/entities/" class="md-nav__link">
+      <a href="../entities/" class="md-nav__link">
         Business objects
       </a>
     </li>
@@ -486,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/users/" class="md-nav__link">
+      <a href="../users/" class="md-nav__link">
         User (object)
       </a>
     </li>
@@ -500,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/portfolios/" class="md-nav__link">
+      <a href="../portfolios/" class="md-nav__link">
         Portfolio (object)
       </a>
     </li>
@@ -514,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/transactions/" class="md-nav__link">
+      <a href="../transactions/" class="md-nav__link">
         Transaction (object)
       </a>
     </li>
@@ -790,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -804,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -818,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -832,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -846,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idcard/" class="md-nav__link">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
     </li>
@@ -860,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -874,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -888,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../logos/" class="md-nav__link">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
     </li>
@@ -902,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -916,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -930,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -999,29 +1054,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#error-codes" class="md-nav__link">
+    Error codes
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-example" class="md-nav__link">
-    GET example
-  </a>
-  
-    <nav class="md-nav" aria-label="GET example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exceptions" class="md-nav__link">
-    Exceptions
+  <a href="#example-of-a-400-bad-request" class="md-nav__link">
+    Example of a 400 Bad Request
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-a-401-unauthorised-response" class="md-nav__link">
+    Example of a 401 Unauthorised response
+  </a>
   
 </li>
       
@@ -1036,7 +1085,7 @@
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-    <h1>Endpoint Name Title</h1>
+    <h1>A closer look at API errors</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1045,71 +1094,93 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Describe the service here in natural language and provide documentation and UI link:</p>
-<ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/{}">Themes API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
-</ul>
-<h2 id="get-example">GET example<a class="headerlink" href="#get-example" title="Permanent link">&para;</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/</span><span class="nv">$ENDPOINT_NAME</span><span class="s2">/?</span><span class="nv">$EXAMPLE_QUERY_PARAMS</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+<p>Errors happen. If that is the case the API returns a <code>4**</code> error if it assumes that the error is caused by your application, or a <code>5**</code> in case of a server error. If there is no error anticipated the API returns a 2** code.</p>
+<p>In general, <code>4**</code> errors are not retryable. <code>5**</code> errors should be escalated to InvestSuite.</p>
+<h3 id="error-codes">Error codes<a class="headerlink" href="#error-codes" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Field</th>
+<th>Code</th>
+<th>Status</th>
 <th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>{example-query-params}</code></td>
-<td>Description.</td>
-<td>data type: <code>possible|values</code></td>
-<td>Example</td>
-<td>Yes/No, default <code>false</code></td>
+<td>200</td>
+<td>Successful response</td>
+<td>The request was successfully completed.</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>A new resource was successfully created.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>The request was invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>The request did not include an authentication token or the authentication token was expired.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>The client did not have permission to access the requested resource.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The requested resource was not found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Business Logic Error</td>
+<td>There is a conflict in the request, or the request would create a conflict with the resource</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Validation error</td>
+<td>The request was understood but a validation error prevented the server to process the request. If this is the case the API adds context to the response body (see example below).</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>The request was not completed due to an internal error on the server side.</td>
 </tr>
 </tbody>
 </table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="err">...</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="kc">trun</span><span class="err">ca</span><span class="kc">te</span><span class="w"> </span><span class="err">lo</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">respo</span><span class="kc">nses</span><span class="w"> </span><span class="err">o</span><span class="kc">f</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">values</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">readabili</span><span class="kc">t</span><span class="err">y</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="p">{</span><span class="nt">&quot;example-field&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example_data&quot;</span><span class="p">},</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<h3 id="example-of-a-400-bad-request">Example of a 400 Bad Request<a class="headerlink" href="#example-of-a-400-bad-request" title="Permanent link">&para;</a></h3>
+<p>When a validation error occurs the reason and the location are documented in the response body.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bad request&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;loc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;rik_profile_id&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;extra fields not permitted&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value_error.extra&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;rik_profile_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;K01FJCEA3TBBXNPP6GYZ2688EE3&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h3>
+<h3 id="example-of-a-401-unauthorised-response">Example of a 401 Unauthorised response<a class="headerlink" href="#example-of-a-401-unauthorised-response" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JWT invalid&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8d3cc569-00e1-9cdf-96b3-ed394f402fd3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-19T15:06:19.855057+00:00&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
     
 
             </article>
@@ -1120,6 +1191,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../embedding/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Embedding" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Embedding
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../entities/" class="md-footer__link md-footer__link--next" aria-label="Next: Business objects" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Business objects
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
