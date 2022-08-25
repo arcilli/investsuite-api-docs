@@ -1527,8 +1527,16 @@
 <p class="admonition-title">Optimization ID</p>
 <p>For Orders that originate from an Optimization, include the <code>optimization_id</code>.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Quantity type</p>
+<p>Funds are typically bought per amount, not per unit.</p>
+<p>The convention is that the <code>quantity</code> field is set to 1, the amount in the <code>unit_price</code> field and (optionally) specify the <code>unit_price_currency</code>.</p>
+<p>See the "Request (Amount)" example below.</p>
+</div>
+<!-- NOTE this is in use at Odea and ARC -->
+
 <h4 id="buy">Buy<a class="headerlink" href="#buy" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request (Units)</label><label for="__tabbed_1_2">Request (Amount)</label><label for="__tabbed_1_3">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1538,18 +1546,38 @@
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="w"></span>
-</span><span class="w">    </span><span class="nt">&quot;order_type&quot;</span><span class="w"></span>
-
 <span class="hll"><span class="w">    </span><span class="nt">&quot;optimization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="hll"><span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LU78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;optimization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PLACED&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-06-10T07:49:26.341Z&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LU78468R1014&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;unit_price&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;unit_price_currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="w"></span>
+</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
