@@ -2,6 +2,10 @@
 title: Transactions
 ---
 
+!!! info "Definition"
+
+    See the [Glossary](../concepts/glossary.md#holdings-orders-transactions-and-movements) for a definition.
+
 ## Context
 
 The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync with InvestSuite.
@@ -13,10 +17,6 @@ In case the Client middelware needs to do this (see [integration architecture](a
     We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
 
 ## Concepts
-
-!!! info "Definition"
-
-    See the [Glossary](../concepts/glossary.md#holdings-orders-transactions-and-movements) for a definition.
 
 ```mermaid
 erDiagram
@@ -359,7 +359,7 @@ Corporate actions are registered as transactions as they will lead to movements 
         "deleted": false
     }
     ```
-    
+
 !!! warning "Update Portfolio holdings"
 
     Also [update the Portfolio holdings](portfolios.md#holdings) after this call.

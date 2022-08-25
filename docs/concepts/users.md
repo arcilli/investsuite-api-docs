@@ -1,6 +1,11 @@
 ---
 title: Manage users
 ---
+
+!!! info "Definition"
+
+    See the [Glossary](../concepts/glossary.md#client-customer-and-user) for a definition.
+
 ## Context
 
 This page lists all operations that can be performed on the User object, see See [Glossary](glossary.md).

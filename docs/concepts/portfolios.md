@@ -2,6 +2,10 @@
 title: Manage portfolios
 ---
 
+!!! info "Definition"
+
+    See the [Glossary](../concepts/glossary.md#portfolio-of-a-user) for a definition.
+
 ## Context
 
 This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
@@ -275,7 +279,6 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
         "LU4642865251": 7.6828,
         "LU46434V4234": 3
     }
-
     ```
 
 === "Response (body)"
