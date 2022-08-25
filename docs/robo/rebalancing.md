@@ -68,11 +68,9 @@ When an Optimization is recommended (the `portfolio_update.is_recommended` field
 
 When the Optimization is accepted by the user (the `owner_choice` field on the Optimization is `ACCEPT`), the Optimization is considered ready to be executed.
 
-#### 2a. Portfolio blocked
+#### Portfolio blocked
 
 When an Optimization is considered ready to be executed, the Portfolio is blocked from being reoptimized.
-
-<!-- Quid discretionary, if i reject? -->
 
 ### 3. Orders of Optimization sent to the broker
 
@@ -80,50 +78,11 @@ When an Optimization is considered ready to be executed, the Portfolio is blocke
 
 #### Client integrates with broker
 
-*3.1. The Client middleware sends the Orders listed in the `portfolio_update.orders` object to the broker.*
+The Client middleware sends the Orders of the Optimization to the broker, and updates InvestSuite:
 
-Example:
-
-```HTTP
-GET /portfolios/{id}/optimizations/current HTTP/1.1
-Content-Type: application/json
-
-{
-    ...
-    "portfolio_update":
-    {
-        "is_recommended": true,
-        "orders": 
-        {
-            "IE00B44Z5B48": 
-            {
-                "quantity_type": "UNITS",
-                "quantity": 5,
-                "shares": 5,
-                "expected_share_price": 123.45,
-                "expected_transaction_cost": 25
-            },
-            "LU0378818131": 
-            {
-                "quantity_type": "AMOUNT",
-                "quantity": -434.56,
-                "shares": -8,
-                "expected_share_price": 54.32,
-                "expected_transaction_cost": 35
-            }
-        
-        }
-    }
-}
-```
-
-*3a. The Client middleware creates corresponding Transactions in InvestSuite.*
-
-!!! warning
-
-    This needs to be handled with care.
-
-    See [Transactions](../concepts/transactions.md) on how to create corresponding Transactions in InvestSuite.
+1. The Client middleware gets the Orders from the Optimization object, see [here](optimization.md#get-the-latest-optimization-of-a-portfolio).
+2. The Client middleware sends the Orders to the broker.
+3. The Client middleware creates corresponding Transactions in InvestSuite, see [here](../concepts/transactions.md#create-a-transaction).
 
 #### InvestSuite integrates with the broker
 
@@ -133,17 +92,13 @@ InvestSuite sends the orders to the broker and keeps them up to date.
 
 #### Client integrates with the broker
 
-The Client middelware updates the corresponding Transactions in InvestSuite.
-
-!!! warning
-
-    This needs to be handled with care.
-
-    See [Transactions](../concepts/transactions.md) on how to create corresponding Transactions in InvestSuite.
+The Client middleware updates the corresponding Transactions in InvestSuite, see [here](../concepts/transactions.md#update-transaction).
 
 #### InvestSuite integrates with the broker
 
 InvestSuite keeps the orders up to date.
-#### 4a. The Portfolio is unblocked from being reoptimized
+#### The Portfolio is unblocked from being reoptimized
 
 When all Transactions of an Optimization have a status `SETTLED`, the Portfolio is unblocked from being reoptimized.
+
+<!-- also cancelled/expired/... -->

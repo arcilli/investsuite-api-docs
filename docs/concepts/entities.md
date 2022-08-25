@@ -208,10 +208,15 @@ The sorting operator always comes as the last term, except when there is a selec
 
 ## List of business objects
 
+Common:
+
 - [Users](users.md)
 - [Portfolio](portfolios.md)
-- Optimization
 - [Transaction](transactions.md)
+
+Robo Advisor only:
+
+- [Optimization](../robo/optimization.md)
 
 
 
