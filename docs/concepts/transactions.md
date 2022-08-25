@@ -87,9 +87,18 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     For Orders that originate from an Optimization, include the `optimization_id`.
 
+!!! warning "Quantity type"
+
+    Funds are typically bought per amount, not per unit.
+
+    The convention is that the `quantity` field is set to 1, the amount in the `unit_price` field and (optionally) specify the `unit_price_currency`.
+
+    See the "Request (Amount)" example below.
+<!-- NOTE this is in use at Odea and ARC -->
+
 #### Buy
 
-=== "Request"
+=== "Request (Units)"
 
     ```HTTP hl_lines="8 11 12"
     POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
@@ -99,9 +108,6 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
-        "type"
-        "order_type"
-
         "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "movements": [
             {
@@ -110,6 +116,31 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
                 "datetime": "2022-06-10T07:49:26.341Z",
                 "instrument_id": "LU78468R1014",
                 "quantity": 7
+            }
+        ]
+    }
+    ```
+
+=== "Request (Amount)"
+
+    ```HTTP hl_lines="15 16 17"
+    POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "your-transaction-id-1",
+        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "movements": [
+            {
+                "type": "BUY",
+                "status": "PLACED",
+                "datetime": "2022-06-10T07:49:26.341Z",
+                "instrument_id": "LU78468R1014",
+                "quantity": 1,
+                "unit_price": "1000",
+                "unit_price_currency": "EUR"
             }
         ]
     }
