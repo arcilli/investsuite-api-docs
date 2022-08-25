@@ -16,7 +16,13 @@ The first letter of the internal ID of an entity is defined by its type, eg. the
 
 **External ID**
 
+!!! info "Middleware"
+
+    The `external_id` typically maps to the id in the Client middleware.
+
 Entities have an `external_id` field. The field is not required, but if it is provided, it must be unique.
+
+
 
 **Immutability**
 
