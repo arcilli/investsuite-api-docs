@@ -91,7 +91,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 === "Request"
 
-    ```HTTP hl_lines="11 12"
+    ```HTTP hl_lines="8 11 12"
     POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -99,6 +99,9 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
+        "type"
+        "order_type"
+
         "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "movements": [
             {
@@ -143,7 +146,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 === "Request"
 
-    ```HTTP hl_lines="10 11"
+    ```HTTP hl_lines="8 11 12"
     POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -151,6 +154,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
+        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "movements": [
             {
                 "type": "SELL",
@@ -237,7 +241,11 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
         "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "deleted": false
     }
-    ```   
+    ```
+
+!!! warning "Update Portfolio holdings"
+
+    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
 #### Costs and Charges
 
@@ -251,7 +259,7 @@ Costs and charges come in various forms. There are items in the `type` Enum that
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="11"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -295,53 +303,9 @@ Costs and charges come in various forms. There are items in the `type` Enum that
     }
     ```
 
-Example `WITHHOLDING_TAX`:
+!!! warning "Update Portfolio holdings"
 
-=== "Request"
-
-    ```HTTP
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "external_id": "14031738752",
-        "movements": [
-            {
-                "external_id": "14031738752",
-                "type": "WITHHOLDING_TAX",
-                "status": "SETTLED",
-                "datetime": "2021-10-03T08:00:16.733954+00:00",
-                "instrument_id": "$USD",
-                "quantity": -0.1035719,
-            }
-        ]
-    }
-    ```
-
-=== "Response (body)"
-
-    ```JSON
-    {
-        "external_id": "14031738752",
-        "movements": [
-            {
-                "type": "WITHHOLDING_TAX",
-                "status": "SETTLED",
-                "datetime": "2021-10-03T08:00:16.733954+00:00",
-                "instrument_id": "$USD",
-                "quantity": -0.1035719
-            }
-        ],
-        "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
-        "creation_datetime": "2021-10-03T08:00:16.734375+00:00",
-        "version": 1,
-        "version_datetime": "2021-10-03T08:00:16.734375+00:00",
-        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        "deleted": false
-    }
-    ```
+    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
 ### Corporate Action
 
@@ -351,7 +315,7 @@ Corporate actions are registered as transactions as they will lead to movements 
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="10"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -395,6 +359,10 @@ Corporate actions are registered as transactions as they will lead to movements 
         "deleted": false
     }
     ```
+    
+!!! warning "Update Portfolio holdings"
+
+    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
 ## Update transaction
 
