@@ -1580,6 +1580,14 @@
 </div>
 <h3 id="holdings">Holdings<a class="headerlink" href="#holdings" title="Permanent link">&para;</a></h3>
 <p>To update the holdings you patch the <code>portfolio</code> field in the Portfolio object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Consistency</p>
+<p>Holdings are not updated when Transactions are created in the Portfolio. The middleware is responsible of keeping these consistent. This is by design to allow flexibility.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Nested object</p>
+<p>As with all nested objects, include the full object (ie. all holdings) when issuing the PATCH.</p>
+</div>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
