@@ -65,39 +65,39 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - codehilite:
       guess_lang: false
   - footnotes
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - search:
       lang: en
 
 nav:
-  - Getting started:
+  - Concepts:
     - Introduction:             index.md
-    # - Product Range:            getting_started/product_range.md
-    # - Architecture:             getting_started/solution.architecture.md
-    - Glossary:                 getting_started/glossary.md
-  - Common scenarios:
-    - Introduction:             common_scenarios/introduction.md
-    # Business Scenarios
-    - Onboarding:               common_scenarios/onboarding.md
-    - Funding and withdrawal:   common_scenarios/cash_movements.md
-    - Suitability profiler:     common_scenarios/suitability_profiler.md
-    # Technical Enablers
-    - Authentication:           common_scenarios/authentication.md
-    - Object Model:             common_scenarios/object_model.md
-    - Financial data:           common_scenarios/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
-    - Manage users:             common_scenarios/users.md
-    - Manage portfolios:        common_scenarios/portfolios.md
-    - Synchronize portfolios:   common_scenarios/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
-    - Collection responses:     common_scenarios/collections.md # Search
-    - Events:                   common_scenarios/events.md
-    - Embedding:                common_scenarios/embedding.md
-    - API errors:               common_scenarios/errors.md
-    # - Search
+    - Glossary:                 concepts/glossary.md
+    - Architecture:             concepts/architecture.md
+
+    - Authentication:           concepts/authentication.md
+    - Financial data:           concepts/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
+    - Events:                   concepts/events.md
+    - Embedding:                concepts/embedding.md
+    - API errors:               concepts/errors.md
+  
+    - Business objects:         concepts/entities.md
+    - User (object):                    concepts/users.md
+    - Portfolio (object):               concepts/portfolios.md
+    - Transaction (object):             concepts/transactions.md
+  
     # - Identifiers
     # - Policies
     # - Versioning
@@ -105,12 +105,23 @@ nav:
     # - Rate limiting: advanced_topics/rate_limiting.md
     # - Idempotency: advanced_topics/idempotency.md
     # - Asynchronous operations: advanced_topics/async.md
+
+  - Scenarios:
+    - Onboarding (process):               scenarios/onboarding.md
+    - Funding & withdrawal (process):   scenarios/cash_movements.md
+    - Suitability profiler:     scenarios/suitability_profiler.md
+    
   - Robo Advisor:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
     - Optimize a portfolio:     robo/run_optimizer.md # TODO MERGE?
+    # - Synchronize a portfolio:  robo/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
+    - Rebalancing (process):              robo/rebalancing.md
+    - Optimization (object):             robo/optimization.md
+
   - Self Investor:
     - Introduction:             self/introduction.md
+
   - Value Added APIs:
     - Introduction:             value-added-apis/introduction.md
     - Authentication & Usage:   value-added-apis/authentication_usage.md
@@ -123,6 +134,6 @@ nav:
     - Monte Carlo API:          value-added-apis/monte_carlo.md
     - Reference API:            value-added-apis/reference.md
     - Tenant Configuration:     value-added-apis/tenant_config.md
+
   - API specification:          "https://api.sandbox.investsuite.com/redoc"
-  - Swagger:                    "https://api.sandbox.investsuite.com/docs"
   - Release notes:              changelog.md

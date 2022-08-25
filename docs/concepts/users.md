@@ -1,9 +1,14 @@
 ---
 title: Manage users
 ---
+
+!!! info "Definition"
+
+    See the [Glossary](../concepts/glossary.md#client-customer-and-user) for a definition.
+
 ## Context
 
-This page lists all operations that can be performed on the User object, see See [Glossary](../getting_started/glossary.md).
+This page lists all operations that can be performed on the User object, see See [Glossary](glossary.md).
 
 ## Create a user
 
@@ -255,7 +260,7 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
 
 ### Update the counter account
 
-Counter Account: see [Glossary](../getting_started/glossary.md#accounts).
+Counter Account: see [Glossary](glossary.md#accounts).
 
 You can optionally add a counter account during user creation; or afterwards by patching the user object. This is used to display to your customer the account that is funded in case of a withdrawal instruction. 
 
@@ -377,7 +382,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 ## Query users
 
-You can query each entity collection with the `query` parameter e.g. `GET /users/?query=…`. Learn more in the [Handling collection responses](./collections.md) section.
+You can query each entity collection with the `query` parameter e.g. `GET /users/?query=…`. Learn more in the [Handling collection responses](./entities.md#querying-business-objects) section.
 
 === "Request"
 

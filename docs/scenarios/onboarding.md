@@ -33,7 +33,7 @@ The former is the preferred scenario as it requires less integration work, allow
 |---|---|---|
 | Implications | - How to onboard existing users, if in scope? | - Middleware needs to handle user creation  |
 
-- Will the backoffice systems support the Robo Advisor ['paper money'](../getting_started/glossary.md#money) portfolios?
+- Will the backoffice systems support the Robo Advisor ['paper money'](../concepts/glossary.md#money) portfolios?
 
 |  | Yes | No |
 |---|---|---|
@@ -54,12 +54,12 @@ Integrations:
 - **ONB002 (Inbound)** The Onboarding Solution redirects the user back to InvestSuite, either through a HTTP redirect or through a written message.
 - **ONB003 (Outbound)** OpenID Connect Sign In flow. Returns a JWT token.
 - **ONB004 (Outbound)** An HTTP redirect (or webview) to a page which hosts the contract signature component.
-- **USR001 (Inbound)** Create the User. See [here](users.md#create-a-user) for the full signature. 
+- **USR001 (Inbound)** Create the User. See [here](../concepts/users.md#create-a-user) for the full signature. 
     - If only one contract is used, set the `status` to `ACTIVE`. Otherwise, set it to `WAITING_FOR_SIGNATURE`. 
-    - If the IdP is managed by InvestSuite, also specify the [`create_idp_user`](users.md#create-a-login) query parameter.
-- **USR002 (Inbound)** Update the User status. See [here](users.md#update-the-status) for the full signature.
-- **PTF001 (Outbound)** An event signals the middleware that a new Portfolio has been created. See [here](events.md#creation) for the full signature.
-- **PTF002 (Inbound)** Update the Portfolio's brokerage account. See [here](portfolios.md#update-the-brokerage-account) for the full signature.
+    - If the IdP is managed by InvestSuite, also specify the [`create_idp_user`](../concepts/users.md#create-a-login) query parameter.
+- **USR002 (Inbound)** Update the User status. See [here](../concepts/users.md#update-the-status) for the full signature.
+- **PTF001 (Outbound)** An event signals the middleware that a new Portfolio has been created. See [here](../concepts/events.md#creation) for the full signature.
+- **PTF002 (Inbound)** Update the Portfolio's brokerage account. See [here](../concepts/portfolios.md#update-the-brokerage-account) for the full signature.
 
 ## Scenario 2: In-App Onboarding
 

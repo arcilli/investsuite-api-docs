@@ -2,9 +2,13 @@
 title: Manage portfolios
 ---
 
+!!! info "Definition"
+
+    See the [Glossary](../concepts/glossary.md#portfolio-of-a-user) for a definition.
+
 ## Context
 
-This page lists all operations that can be performed on the Portfolio object, see See [Glossary](../getting_started/glossary.md).
+This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
 ## Create a portfolio
 ### Minimum portfolio
 
@@ -247,7 +251,83 @@ Given the right permissions you can update any object by issuing a `PATCH` reque
     - The `manager` field defines the type of portfolio management: self directed, under an advisory mandate, under a discretionary mandate.
     - The `money_type` field states if the portfolio manages real money or paper money.
 
-### Update the portfolio manager settings
+### Holdings
+
+To update the holdings you patch the `portfolio` field in the Portfolio object.
+
+=== "Request"
+
+    ```HTTP hl_lines="1 8"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    "portfolio": {
+        "$USD": 208.086729,
+        "LU78464A6644": 18.78,
+        "LU4642886612": 9.2243,
+        "LU46137V2410": 9,
+        "LU3160923039": 3,
+        "LU3160928731": 10,
+        "LU97717W5215": 6,
+        "LU4642861458": 4,
+        "LU46429B2676": 45.146,
+        "LU46434V7617": 9,
+        "LU4642865251": 7.6828,
+        "LU46434V4234": 3
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "your-bank-portfolio-1",
+        "owned_by_user_id": "U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+        "base_currency": "USD",
+        "money_type": "PAPER_MONEY",
+        "config":{
+            "manager": "ROBO_ADVISOR_DISCRETIONARY",
+            "manager_version":1,
+            "manager_settings": {
+                "policy_id": "Y01EF46X9XB437JS4678X0K529C",
+                "active": true
+            }
+        },
+        "portfolio": {
+            "$USD": 208.086729,
+            "LU78464A6644": 18.78,
+            "LU4642886612": 9.2243,
+            "LU46137V2410": 9,
+            "LU3160923039": 3,
+            "LU3160928731": 10,
+            "LU97717W5215": 6,
+            "LU4642861458": 4,
+            "LU46429B2676": 45.146,
+            "LU46434V7617": 9,
+            "LU4642865251": 7.6828,
+            "LU46434V4234": 3
+        },
+        "snapshot_datetime": null,
+        "funded_since": null,
+        "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+        "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
+        "version": 3,
+        "version_datetime": "2021-06-24T19:59:15.474241+00:00",
+        "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
+        "deleted": false,
+        "status": "ACTIVE"
+    }
+    ```
+
+### Transactions
+
+See [Transactions](transactions.md).
+
+### Manager settings
 
 Below table lists the applicable portfolio manager parameters. The properties can be updated by issueing a corresponding PATCH request (see example below). See the API specification for more information.
 
@@ -321,9 +401,9 @@ Below table lists the applicable portfolio manager parameters. The properties ca
 | end_datetime | ● | - |
 | optimization_cooldown_end | ● | - |
 
-### Update the brokerage account
+### Brokerage account
 
-Brokerage Account: see [Glossary](../getting_started/glossary.md#accounts).
+Brokerage Account: see [Glossary](glossary.md#accounts).
 
 === "Request"
 
@@ -500,7 +580,7 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 ## Query portfolios
 
-You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](./collections.md) section.
+You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](entities.md#querying-business-objects) section.
 
 === "Request"
 

@@ -1,16 +1,48 @@
 ---
-title: Handling collection responses
+title: Business Objects
 ---
 
-At this point, you have moved beyond the common scenarios and are ready to learn more about the inner workings of the InvestSuite API. Most of the topics allow you to run scenarios or to try out yourselves. Such requires authentication data. Reach out to your representative and we will provide you with credentials in no time. Find out how to authenticate in the [First steps](../common_scenarios/authentication.md) chapter.
+## Introduction
 
-## Collection response format
+This page describes the business objects used by InvestSuite, and the interactions that are possible on them.
 
-Collections are paginated lists of entities. To request a collection issue a `GET` request against the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+The business objects are also referred to as (a collection of) entities.
+
+### Concepts
+
+**Internal ID**
+
+The first letter of the internal ID of an entity is defined by its type, eg. the ID of a Portfolio will always start with a `P`.
+
+**External ID**
+
+!!! info "Middleware"
+
+    The `external_id` typically maps to the id in the Client middleware.
+
+Entities have an `external_id` field. The field is not required, but if it is provided, it must be unique.
+
+
+
+**Immutability**
+
+Objects in the InvestSuite system are immutable. Every change leads to a new version so that a log exists of who performed which change at which moment. The version number is returned alongside other metadata fields. Use the Admin Console to access this log and to view diffs between versions.
+## Querying business objects
+
+To query a specific business object, send a `GET` request to the entity root path e.g. `GET /users`, `GET /portfolios`, `GET /instrument_groups`.
+
+Collection endpoints accept the following parameters:
+
+Parameter | Description
+--------- | -----------
+limit     | Example: `limit=50`. Allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100.
+offset    |  Example `offset=50`. To be used in combination with the `limit` parameter, the offset defines the number of records that need to be skipped.
+embed     | Example: `embed=field_name_1,field_name_2`. Optional comma-separated list of field names for which the referenced entity is to be included in the _embedded object of the response. See [Embedding](embedding.md).
+query    | Example: `query=email+eq+'jane.doe@example.com`. See below.
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="1 2 3"
     GET /portfolios/
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
@@ -123,34 +155,23 @@ Collections are paginated lists of entities. To request a collection issue a `GE
     }    
     ```
 
-## Query parameters
-
-Collection endpoints accept alongside the `embed` query parameter two parameters: limit and offset. 
-
-Parameter | Description
---------- | -----------
-limit     | Example: `limit=50`) Allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is `20 items`. The maximum size is 100.
-offset    |  Example `offset=50` To be used in combination with the `limit` parameter, the offset defines the number of records that need to be skipped.
-embed     | Example: `embed=field_name_1,field_name_2` Optional comma-separated list of field names for which the referenced entity is to be included in the _embedded object of the response. See [Embedding](embedding.md).
-search    | Example: `query=email+eq+'jane.doe@example.com` See below.
-
-## Search
+### Query syntax
 
 The API provides a structural search and filtering mechanism for all entities. We already opted to work with a query string parameter `query=email+eq+'jane.doe@example.com` instead of a POST body for more efficient client-side caching and ease of use for testing. The query syntax is a mix of both [OData](https://www.odata.org/) and [Apache Lucene Query Parser Syntax](https://lucene.apache.org/core/2_9_4/queryparsersyntax.html).
 
 === "Request"
 
-    ```HTTP hl_lines="1"
+    ```HTTP hl_lines="2"
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
     Host: api.sandbox.investsuite.com
     Authorization: Bearer {string}
     ```
 
-### Fundamental rules
+!!! info
 
-- Every entity type can be queried by issuing a `GET` request e.g. `GET users/?query=email+eq+'jane*'`.
-- The query string must be URL encoded. This implies that spaces would be transformed to `%20`, but for improved legibility we recommend using `+` instead
+    - Every entity type can be queried by issuing a `GET` request e.g. `GET users/?query=email+eq+'jane*'`.
+    - The query string must be URL encoded. This implies that spaces would be transformed to `%20`, but for improved legibility we recommend using `+` instead
 
 ### Operators
 
@@ -184,3 +205,59 @@ The sorting operator always comes as the last term, except when there is a selec
 - Order descending: orderby {attribute_name} desc e.g. `orderby+age+desc`
 - Multiple attributes: orderby {attribute_name} desc, {attribute_name2} asc e.g. `orderby+age+desc,+firstname`
 - Attributes names can be nested e.g. `orderby+manager.bank_account`.
+
+## List of business objects
+
+Common:
+
+- [Users](users.md)
+- [Portfolio](portfolios.md)
+- [Transaction](transactions.md)
+
+Robo Advisor only:
+
+- [Optimization](../robo/optimization.md)
+
+
+
+
+<!-- A Transaction contains the latest version of every Movement (determined by its status), but there are two distinct status groups that determine what is the latest status: 
+
+1. PLANNED -> PENDING -> PLACED
+2. CANCELLED / NOT_EXECUTED / EXPIRED / [EXECUTED -> SETTLED]. 
+
+In a Transaction, you can have a latest Movement in status group (1) and one or more corresponding latest Movements in status group (2). -->
+
+<!-- https://investsuite.slack.com/archives/CDYGVNQKE/p1661327434299829?thread_ts=1661250223.596519&cid=CDYGVNQKE -->
+
+
+
+
+<!-- TODO
+    # A: Risk Profile Question Answer (deprecated)
+    # B: Suitability Profiler User Property Assignment
+    # C: Suitability Profiler Cooldown
+    # D: Suitability Profiler User Property
+    # E: Suitability Profiler Question
+    # F: Portfolio Group
+    # G: UserGroup
+    # H: Horizon
+    # I: Instrument
+    # J: InstrumentGroup
+    # K: Risk Profile
+    # L: Goal
+    # M: Suitability Profiler Questionnaire
+    # N: Suitability Profiler Profile
+    # O: Optimization
+    # P: Portfolio
+    # Q: Risk Profile Question (deprecated)
+    # R: Risk Profile Question Response (previously: Role, deprecated)
+    # S: Portfolio Report
+    # T: Transaction
+    # U: User
+    # V: Portfolio Valuation
+    # W: Suitability Profiler Profile roperty
+    # X: Suitability Profiler Profiler
+    # Y: Policy
+    # Z: Agreement
+ -->

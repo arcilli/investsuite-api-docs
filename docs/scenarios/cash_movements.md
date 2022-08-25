@@ -246,7 +246,7 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
 6. **InvestSuite** updates the divest amount to `0`.
 7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
 8. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
-9. **InvestSuite** puts the message on a queue to send a push notification to the client.
+9.  **InvestSuite** puts the message on a queue to send a push notification to the client.
 
 !!! Info
     As trigger to transfer the freed up cash you use the input from the broker, for instance be parsing end-of-day files.
@@ -368,15 +368,18 @@ Steps to take when the clients issues an instruction to withdraw funds, and Inve
 Steps to take when the clients issues an instruction to withdraw funds, and you as the Client are in charge of the integration with the broker:
 
 1. **You** (or InvestSuite in case the app is managed by InvestSuite) update the portfolio `divest_amount` by issuing a PATCH request against `/portfolios/{portfolioId}` when the client sets a divest amount in the app. **See below**: Set divest amount.
+<!-- TODO the withdrawal request event is fired -->
 2. **InvestSuite** asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.
+<!-- TODO the optimisations.status-update event is fired -->
+<!-- if event -> GET PORTFOLIO. If cash holidings >= divest amount, execute the transfer / patch holdings / post transactions. If not - wait. -->
 3. In case of a advisory mandate (as opposed to a discretionary mandate, see [Portfolio creation](/common_scenarios/account_initiation/#create-a-portfolio)) the user confirms the sell orders. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. **You** place the sell orders at the broker.
-7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-8. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
-9. **InvestSuite** puts the message on a queue to send a push notification to the client.
-10. **You** create a `SETTLED` transaction, referring to the transaction ID created by the broker in the `external_id` attribute. **See below**: Create transaction.
-11. **You** update the portfolio's cash position. **See below**: Update cash position.
-12. **You** reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  **See below**: Reset divest amount.
+5. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
+6. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
+7. **InvestSuite** puts the message on a queue to send a push notification to the client.
+8.  **You** create a `SETTLED` transaction, referring to the transaction ID created by the broker in the `external_id` attribute. **See below**: Create transaction.
+9.  **You** update the portfolio's cash position. **See below**: Update cash position.
+10. **You** reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  **See below**: Reset divest amount.
 
 **1. Set divest amount**
 
