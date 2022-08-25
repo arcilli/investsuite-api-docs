@@ -28,12 +28,14 @@ erDiagram
         object holdings
     }
     Optimization {
+        string id
         bool is_recommended
         object orders
     }
     Transaction {
         string external_id
         string type
+        string optimization_id
     }
     Movement {
         string external_id
@@ -42,7 +44,7 @@ erDiagram
     }
 
     User ||--|{ Portfolio: owns
-    Portfolio ||--|| Optimization: has
+    Portfolio ||--|| Optimization: "has (Robo Advisor only)"
     Portfolio ||--|{ Transaction: has
     Transaction ||--|{ Movement: movements
     Transaction ||--|| Movement: primary_movement
@@ -81,11 +83,15 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 ### Order `PLACED`
 
+!!! warning "Optimization ID"
+
+    For Orders that originate from an Optimization, include the `optimization_id`.
+
 #### Buy
 
 === "Request"
 
-    ```HTTP hl_lines="10 11"
+    ```HTTP hl_lines="11 12"
     POST /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -93,6 +99,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
+        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
         "movements": [
             {
                 "type": "BUY",
