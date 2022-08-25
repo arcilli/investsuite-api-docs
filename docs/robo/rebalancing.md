@@ -92,7 +92,8 @@ InvestSuite sends the orders to the broker and keeps them up to date.
 
 #### Client integrates with the broker
 
-The Client middleware updates the corresponding Transactions in InvestSuite, see [here](../concepts/transactions.md#update-transaction).
+1. The Client middleware updates the corresponding Transactions in InvestSuite, see [here](../concepts/transactions.md#update-transaction).
+2. The Client middleware updates the Portfolio holdings, see [here](../concepts/portfolios.md#holdings).
 
 #### InvestSuite integrates with the broker
 
