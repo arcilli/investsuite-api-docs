@@ -42,6 +42,8 @@ INFO     -  [17:14:14] Serving on http://127.0.0.1:8000/docs/
 ### Style guide
 
 - Avoid the usage of 'you' as this is ambiguous. Instead, use InvestSuite and the Client.
+- Use 'Sentence case' in titles: use "Portfolio creation" i.o. "Portfolio Creation".
+- Entities are capitalized throughout the doc, eg. use 'the Optimization of a Portfolio is done'.
   
 ## Deployment
 
