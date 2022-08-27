@@ -449,7 +449,7 @@ stateDiagram-v2
     
     For costs and charges that are *not* associated with the transaction (eg. monthly fee) see the [Costs and Charges Transaction](#4-costs-and-charges).
 
-!!! warning "What `movements` to include?"
+!!! question "What `movements` to include?"
 
     Note that the original `PLACED` movement is included.
 
