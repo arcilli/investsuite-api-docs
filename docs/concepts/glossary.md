@@ -26,6 +26,8 @@ TODO -->
 
 - The **Broker Account** of a **portfolio** is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
 
+<!-- TODO quid 'investor account' at the bank -->
+
 Refer to [Account Initiation](../common_scenarios/account_initiation.md). 
 <!-- TODO -->
 
