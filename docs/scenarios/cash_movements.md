@@ -2,116 +2,68 @@
 title: Funding and withdrawal
 ---
 
-!!! Info
-    Applicable to: Robo Advisor, Self Investor
-
 There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: you or InvestSuite), and (3) the selected product (Robo Advisor or Self Investor) you undertake one or several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a user notification. Below we describe in detail which actions to take, and which ones are taken on your behalf depending on the scenario.
 
-## Funding a portfolio
+## Funding
 
 Funding a portfolio requires you to perform just one, or four steps depending on whether you or InvestSuite is integrated with the broker.
 
 ### Broker integration by InvestSuite
 
-These are the steps performed to fund a portfolio, given the broker integration is handled by InvestSuite:
-
-1. **You** notify InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (**see below**: Notify InvestSuite on successful deposit).
-2. **InvestSuite** moves the cash at the broker from the bank's home account to the individual's subaccount, given there is sufficient funding in the home account.
-3. **InvestSuite** creates a `PENDING` transaction in the InvestSuite system, referring to the transaction ID created by the broker.
-4. **InvestSuite**, once the transaction is settled at the broker, updates the portfolio's cash holding and the transaction status.
+1. The **Client Middleware** notifies InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
+2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount.
+3. **InvestSuite** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field.
+4. Once the Transaction is settled at the broker, **InvestSuite** updates the Portfolio's cash holding and the Transaction status.
 5. **InvestSuite** creates a notification to be sent to the client.
 
-**1. Notify InvestSuite on successful deposit**
+```mermaid
+    sequenceDiagram
 
-Call `POST /events/deposit/` to send a notification when your customer has transferred cash into their cash account and the transaction is settled on your end.
+    actor _c as Customer
+    participant _ivs as InvestSuite
+    participant _clt as Bank with<br>Client Middleware
+    participant _bc as Broker/Custodian
+    
+    _c ->> _clt: Customer funds his investor account
+    _clt ->> _ivs: 1. POST /events/deposit
+    _ivs ->> _bc: 2. Move cash from bank's home account to customer's subaccount
+    _bc -->> _ivs: transaction_id
+    _ivs ->> _ivs: 3. PENDING Transaction with<br>external_id = transaction_id 
+    _bc ->> _ivs: Transaction SETTLED
+    _ivs ->> _ivs: 4. Update Portfolio Holdings<br>and Transaction SETTLED
+    _ivs ->> _c: 5. Notification
+```
 
-=== "HTTP"
-
-    ```HTTP
-    POST /events/deposit/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-
-    {
-        "data": {
-            "amount": "1000",
-            "currency": "USD",
-            "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/events/deposit/' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer {string}' \
-    --data-raw '{
-                    "data": {
-                        "amount": "1000",
-                        "currency": "USD",
-                        "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-                    }
-                }'
-    ```
 ### Broker integration by the Client
 
-These are the steps performed to fund a portfolio, given the broker integration is handled by you:
+1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
+2. The **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
+3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED`. **See below**: Update transaction to settled.
+4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)).
+5. The **Client Middleware** call `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
+6. **InvestSuite** creates a notification to be sent to the client.
 
-1. **You**, in the event of a successful funding of the investor account at your end, move the cash at the broker from the bank's home account to the individual's subaccount.
-3. **You** create a `PENDING` transaction in the InvestSuite system, referring to the transaction ID created by the broker in the `external_id` attribute. **See below**: Create pending transaction.
-2. **You** update the transaction changing the status to `SETTLED` once the transaction is settled at the broker. **See below**: Update transaction to settled.
-3. **You** update the portfolio's cash position. **See below**: Update cash position.
-4. **You** call `POST /events/deposit/`. **See below**: Instruct InvestSuite to send a notification.
-5. **InvestSuite** creates a notification to be sent to the client.
+```mermaid
+    sequenceDiagram
 
-**2. Create pending transaction**
+    actor _c as Customer
+    participant _ivs as InvestSuite
+    participant _clt as Bank with<br>Client Middleware
+    participant _bc as Broker/Custodian
+    
+    _c ->> _clt: Customer funds his investor account
+    _clt ->> _bc: 1. Move cash<br>from bank's home account to<br>customer's subaccount
+    _bc -->> _clt: external_id
+    _clt ->> _ivs: 2. POST /portfolio/{id}/transactions/<br>with type: CASH_DEPOSIT,<br>status: PENDING, external_id
+    _ivs -->> _clt: id
+    _bc ->> _clt: Transaction SETTLED
+    _clt ->> _ivs: 3. PATCH /portfolio/{id}/transactions/{id}/<br>with status: SETTLED
+    _clt ->> _ivs: 4. PATCH /portfolio Holdings
+    _clt ->> _ivs: 5. POST /events/deposit
+    _ivs ->> _c: 6. Notification
+```
 
-=== "HTTP"
 
-    ```HTTP hl_lines="11"
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
-        "movements": [
-            {
-                "type": "CASH_DEPOSIT",
-                "status": "PENDING",
-                "datetime": "2021-10-06T00:00:00+00:00",
-                "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": 500.0,
-            }
-        ]
-    }
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
-            "movements": [
-                {
-                    "type": "CASH_DEPOSIT",
-                    "status": "PENDING",
-                    "datetime": "2021-10-06T00:00:00+00:00",
-                    "instrument_id": "$USD",
-                    "quantity_type": "AMOUNT",
-                    "quantity": 500.0,
-                }
-            ]
-        }'
-    ```
 
 **3. Update transaction to settled**
 
@@ -146,44 +98,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
             ]
         }'
     ```
-**4. Update cash position**
 
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "portfolio": {
-            "$USD":10000,
-            "US4642886612":0.76,
-            "US78468R1014":3,
-            "US4642863926":0.7381
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "portfolio": {
-                "$USD":10000,
-                "US4642886612":0.76,
-                "US78468R1014":3,
-                "US4642863926":0.7381
-            }
-        }'
-    ```
 
 !!! Warning
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
@@ -222,7 +137,7 @@ These are the steps performed to fund a portfolio, given the broker integration 
                     }
                 }'
     ```
-## Cash withdrawal
+## Withdrawal
 
 ### Robo Advisor
 
