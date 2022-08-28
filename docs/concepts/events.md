@@ -2,34 +2,39 @@
 title: Events
 ---
 
-The API supports two patterns for events integrations:
+Asynchronous interactions between InvestSuite and the Client Middleware can happen in multiple ways, depending on the direction. The below table summarizes the capabilities:
 
-1. Event-driven: the client system responds to an event that is sent by the InvestSuite system (asynchronously) **(preferred)**
-2. Polling: the client regularly polls the events REST endpoint
+|  | Inbound InvestSuite | Outbound InvestSuite |
+|---|---|---|
+| Event Driven | *Not supported* | The Client Middleware responds to an event that is sent by the InvestSuite system |
+| REST `/events/` Endpoint | The Client Middleware notifies InvestSuite of an event through the `POST /events/` endpoint | **Under development** The Client Middleware regularly polls the `GET /events/` endpoint |
 
 ## Event Driven
 
-### Architectural concept
+### Outbound
+
+#### Architectural concept
 
 - InvestSuite posts events on one single topic of the client's event queue
 - Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...
 
-### Principles
+#### Principles
 
 1. The strategy is to signal that an event has happened, not to include all information that the middleware may possibly require (as these requirements may vary wildly and may introduce breaking changes). Therefore, an additional REST API call may be required to get additional data.
 
 2. All events will use this envelope, with the actual information in `data`.
 
-```
-{
-  "id": string, 
-  "created": timestamp, 
-  "version": string,
-  "subject": string,
-  "action": string, 
-  "data": dict
-}
-```
+=== "Event body"
+  ```JSON
+  {
+    "id": string, 
+    "created": timestamp, 
+    "version": string,
+    "subject": string,
+    "action": string, 
+    "data": dict
+  }
+  ```
 
 | Field | Type | Content |
 |---|---|---|
@@ -47,9 +52,9 @@ The API supports two patterns for events integrations:
 
 
 
-### Portfolios
+#### Portfolios
 
-#### Creation
+##### Creation
 
 Fully qualified name: `portfolios.creation`
 
@@ -57,21 +62,22 @@ When IVS supplies the the front-end application to the b2b client they should be
 
 It is up to the b2b client to check if the portfolio is “paper_money” or “real_money” based on this event. This to decide if they need to proceed with setup at their side.
 
-```
-{
-  "id" : "an-event-id",
-  "created" : "-1000000000-01-01T00:00:00Z",
-  "version" : "1.0.0",
-  "subject" : "portfolios",
-  "action" : "creation",
-  "data" : {
-    "id" : "a-portfolio-id",
-    "external_id" : "an-external-id",
-    "owned_by_user_id" : "a-user-id"
-}
-```
+=== "Event body"
+  ```JSON
+  {
+    "id" : "an-event-id",
+    "created" : "-1000000000-01-01T00:00:00Z",
+    "version" : "1.0.0",
+    "subject" : "portfolios",
+    "action" : "creation",
+    "data" : {
+      "id" : "a-portfolio-id",
+      "external_id" : "an-external-id",
+      "owned_by_user_id" : "a-user-id"
+  }
+  ```
 
-#### Status update
+##### Status update
 
 Fully qualified name: `portfolios.status-update`
 
@@ -85,20 +91,21 @@ Possible values for the status field:
 - ACTIVE: portfolio is in use
 - INACTIVE
 
-```
-{
-  "id" : "an-event-id",
-  "created" : "-1000000000-01-01T00:00:00Z",
-  "version" : "1.0.0",
-  "subject" : "portfolios",
-  "action" : "status-update",
-  "data" : {
-    "id" : "a-portfolio-id",
-    "external_id" : "an-external-id",
-    "value" : "INACTIVE"
+=== "Event body"
+  ```JSON
+  {
+    "id" : "an-event-id",
+    "created" : "-1000000000-01-01T00:00:00Z",
+    "version" : "1.0.0",
+    "subject" : "portfolios",
+    "action" : "status-update",
+    "data" : {
+      "id" : "a-portfolio-id",
+      "external_id" : "an-external-id",
+      "value" : "INACTIVE"
+    }
   }
-}
-```
+  ```
 
 Possible values for the value field:
 
@@ -108,19 +115,20 @@ Possible values for the value field:
 - ACTIVE
 - INACTIVE
 
-#### Funding
+##### Funding
 
 Fully qualified name: `portfolios.funding`
 
-```
-{
-  "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-  "value": 500, 
-  "currency": "EUR"
-}
-```
+=== "Data body"
+  ```JSON
+  {
+    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
+    "value": 500, 
+    "currency": "EUR"
+  }
+  ```
 
-#### Withdrawal (divest amount)
+##### Withdrawal
 
 Fully qualified name: `portfolios.withdrawal`
 
@@ -130,27 +138,27 @@ Every update to this amount will trigger an event towards the b2b client.
 
 Divest amount:
 
-= 1e100 → means full withdrawal.
-
-= specific amount → partial withdrawal
+- 1e100 → full withdrawal.
+- a specific amount → partial withdrawal
 
 Note: value is the total amount that is requested for withdrawal, not the incremental value (eg. in case of two quickly subsequent withdrawal requests, where the first is not yet settled)
 
-```
-{
-  "id" : "an-event-id",
-  "created" : "-1000000000-01-01T00:00:00Z",
-  "version" : "1.0.0",
-  "subject" : "portfolios",
-  "action" : "divest-amount-update",
-  "data" : {
-    "id" : "a-portfolio-id",
-    "external_id" : "an-external-id",
-    "divest_amount" : 1.234,
-    "currency" : "a-currency-code"
+=== "Event body"
+  ```JSON
+  {
+    "id" : "an-event-id",
+    "created" : "-1000000000-01-01T00:00:00Z",
+    "version" : "1.0.0",
+    "subject" : "portfolios",
+    "action" : "divest-amount-update",
+    "data" : {
+      "id" : "a-portfolio-id",
+      "external_id" : "an-external-id",
+      "divest_amount" : 1.234,
+      "currency" : "a-currency-code"
+    }
   }
-}
-```
+  ```
 
 <!-- #### Removal
 
@@ -201,9 +209,9 @@ Fully qualified name: `users.account-number-update`
 }
 ``` -->
 
-### Optimisations
+#### Optimisations
 
-#### Status update
+##### Status update
 
 Fully qualified name: `optimisations.status-update`
 
@@ -214,26 +222,28 @@ Fields:
 - is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).
 
 - Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED
-  
-NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.
 
-```
-{
-  "id" : "an-event-id",
-  "created" : "-1000000000-01-01T00:00:00Z",
-  "version" : "1.0.0",
-  "subject" : "optimizations",
-  "action" : "status-update",
-  "data" : {
-    "id" : "an-optimization-id",
-    “portfolio_id” : “a-portfolio-id”,
-    "external_id" : "an-external-id",
-    "is_recommended" : true,
-    "value" : "SUCCESS"
-  }
-```
+!!! info
+    In v1.0.0 (aug 2022) only status “SUCCESS” is used.
 
-#### Owner choice update
+=== "Event body"
+  ```JSON
+  {
+    "id" : "an-event-id",
+    "created" : "-1000000000-01-01T00:00:00Z",
+    "version" : "1.0.0",
+    "subject" : "optimizations",
+    "action" : "status-update",
+    "data" : {
+      "id" : "an-optimization-id",
+      "portfolio_id" : "a-portfolio-id",
+      "external_id" : "an-external-id",
+      "is_recommended" : true,
+      "value" : "SUCCESS"
+    }
+  ```
+
+##### Owner choice update
 
 Fully qualified name: `optimisations.owner-choice-update`
 
@@ -243,23 +253,24 @@ In this case an optimisation may only be executed when the owner choice has been
 
 The id can be used to fetch the optimisation.
 
-- Possible values for the status field are ACCEPT, REJECT, REOPTIMIZE, IGNORED
+- Possible values for the status field are `ACCEPT`, `REJECT`, `REOPTIMIZE`, `IGNORED`
 
-```
-{
-  "id" : "an-event-id",
-  "created" : "-1000000000-01-01T00:00:00Z",
-  "version" : "1.0.0",
-  "subject" : "optimizations",
-  "action" : "owner-choice-update",
-  "data" : {
-    "id" : "an-optimization-id",
-    “portfolio_id” : “a-portfolio-id”,
-    "external_id" : "an-external-id",
-    "value" : "ACCEPT"
+=== "Event body"
+  ```JSON
+  {
+    "id" : "an-event-id",
+    "created" : "-1000000000-01-01T00:00:00Z",
+    "version" : "1.0.0",
+    "subject" : "optimizations",
+    "action" : "owner-choice-update",
+    "data" : {
+      "id" : "an-optimization-id",
+      "portfolio_id" : "a-portfolio-id",
+      "external_id" : "an-external-id",
+      "value" : "ACCEPT"
+    }
   }
-}
-```
+  ```
 
 <!-- ### Profiles
 
@@ -306,19 +317,45 @@ Fully qualified name: `reports.status-update`
   "value": "READY", 
   "output_format": "VIDEO"
 }
-``` -->
+``` 
+-->
 
 
-## Polling
+## REST `/events/` endpoint
+
+### Inbound
+
+#### Deposit event
+
+=== "HTTP"
+
+  ```HTTP hl_lines="1 4"
+  POST /events/deposit/ HTTP/1.1
+  Host: api.sandbox.investsuite.com
+  Content-Type: application/json
+  Idempotency-Key: "LVRYWG833Vp2FIIG"
+
+  {
+      "data": {
+          "amount": "1000",
+          "currency": "USD",
+          "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
+      }
+  }
+  ```
+
+!!! warning
+  
+    We strongly suggest using the `idempotency-key` to avoid double deposits.
+
+
+
+
+### Outbound
+
+<!-- #### Get events -->
 
 !!! warning
 
     This is still under development
-
-<!-- ### Architectural Concept
-
-### The REST Event Endpoint
-
-TODO -->
-
 
