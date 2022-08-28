@@ -223,15 +223,13 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 ### Cash
 
-#### Withdrawal
-
 Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
-Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH_WITHDRAWAL"` and `"quantity": -500`.
+#### Funding
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="10 14"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -242,10 +240,38 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
         "movements": [
             {
                 "type": "CASH_DEPOSIT",
-                "status": "SETTLED",
+                "status": "PENDING",    // or "SETTLED"
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 500.0,
+            }
+        ]
+    }
+    ```
+
+!!! warning "Update Portfolio holdings"
+
+    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
+
+#### Withdrawal
+
+=== "Request"
+
+    ```HTTP hl_lines="10 14"
+    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
+        "movements": [
+            {
+                "type": "CASH_WITHDRAWAL",
+                "status": "PENDING",    // or "SETTLED"
+                "datetime": "2021-10-06T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "quantity": -500.0,
             }
         ]
     }
@@ -258,11 +284,11 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
         "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
         "movements": [
             {
-                "type": "CASH_DEPOSIT",
+                "type": "CASH_WITHDRAWAL",
                 "status": "SETTLED",
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity": 500.0,
+                "quantity": -500.0,
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -276,7 +302,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
 
 !!! warning "Update Portfolio holdings"
 
-    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
+    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
 
 #### Costs and Charges
 
@@ -421,9 +447,15 @@ stateDiagram-v2
     direction LR
     groupOne: Keep the movement with the latest status, if it exists.
     groupTwo: Also keep the movement with the latest status, if it exists.
+
+    [*] --> groupOne
+    [*] --> groupTwo
+    groupOne --> groupTwo
+
+    
+
     state groupOne {
         direction LR
-        [*] --> PLANNED
         PLANNED --> PENDING
         PENDING --> PLACED
     }
