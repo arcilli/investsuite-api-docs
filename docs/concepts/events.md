@@ -115,7 +115,7 @@ Possible values for the value field:
 - ACTIVE
 - INACTIVE
 
-##### Funding
+<!-- ##### Funding
 
 Fully qualified name: `portfolios.funding`
 
@@ -126,7 +126,7 @@ Fully qualified name: `portfolios.funding`
     "value": 500, 
     "currency": "EUR"
   }
-  ```
+  ``` -->
 
 ##### Withdrawal
 
@@ -348,6 +348,30 @@ Fully qualified name: `reports.status-update`
   
     We strongly suggest using the `idempotency-key` to avoid double deposits.
 
+
+#### Withdrawal executed event
+
+=== "HTTP"
+
+  ```HTTP hl_lines="1 4"
+  POST /events/deposit/ HTTP/1.1
+  Host: api.sandbox.investsuite.com
+  Content-Type: application/json
+  Idempotency-Key: "LVRYWG833Vp2FIIG"
+
+  {
+      "data": {
+          "amount": "1000",
+          "currency": "USD",
+          "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
+      }
+  }
+
+  ```
+
+!!! warning
+  
+    We strongly suggest using the `idempotency-key` to avoid double deposits.
 
 
 

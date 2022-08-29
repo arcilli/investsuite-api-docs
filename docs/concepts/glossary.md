@@ -22,9 +22,9 @@ TODO -->
 TODO -->
 
 ## Accounts
-- The **Counter Account** of a **user** is the bank account that is funded in case of a withdrawal instruction.
+- The **Counter Account** of a **user** is the bank account that is funded in case of a withdrawal instruction. This can be at a 3rd party bank.
 
-- The **Broker Account** of a **portfolio** is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
+- The **Broker Account** of a **portfolio** (also known as the **investor account**) is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
 
 <!-- TODO quid 'investor account' at the bank -->
 

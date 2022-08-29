@@ -64,7 +64,6 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 ```
 
 
-
 **3. Update transaction to settled**
 
 === "HTTP"
@@ -97,30 +96,6 @@ Funding a portfolio requires you to perform just one, or four steps depending on
                 }
             ]
         }'
-    ```
-
-
-!!! Warning
-    Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
-    with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
-
-**5. Instruct InvestSuite to send a notification**
-
-=== "HTTP"
-
-    ```HTTP
-    POST /events/deposit/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-
-    {
-        "data": {
-            "amount": "1000",
-            "currency": "USD",
-            "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-        }
-    }
-
     ```
 
 === "curl"
@@ -536,69 +511,46 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 
 ### Self Investor
 
+#### Saxo
+
 For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps:
 
 1. **InvestSuite** captures in the app the client withdraw instruction, and passes the instruction on to the broker.
-2. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-3. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
+2. **You** transfer the freed up cash from the broker to the client's `counter_account` (see [here](../concepts/users.md#get-a-user)).
+3. **You** notify InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
 4. **InvestSuite** puts the message on a queue to send a push notification to the client.
 
-**2. Get counter account**
+#### Broker/Custodian Agnostic
 
-=== "HTTP"
+```mermaid
+    sequenceDiagram
 
-    ```HTTP hl_lines="1"
-    GET /users/U01234567890123456789012345/ HTTP/1.1
-    Host: api.investsuite.com
-    Accept: application/json
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    ```
+    actor _c as Customer
+    participant _ivs as InvestSuite
+    participant _bca as Broker/Custodian Integration
+    participant _bc as Broker/Custodian
+    
+    _c ->> _ivs: Customer withdraws
+    _ivs ->> _ivs: Create cash Transaction
+    _ivs ->> _bca: TransferCash
+    activate _bca
+        _bca ->> _bc: Manage corresponding cash position
+        _bc -->> _bca: transaction_id
+        _bca -->> _ivs: transaction_id, FAILED / PLACED / CONFIRMED
+    deactivate _bca
 
-=== "curl"
+    _ivs ->> _ivs: Update cash Transaction<br>with external_id and status
+    _ivs ->> _c: Notification
 
-    ```bash
-    curl --location --request GET 'https://api.sandbox.investsuite.com/users/U01234567890123456789012345/' \
-    --header 'Authorization: Bearer {string}' \
-    ```
-**Response body**
+    loop Nightly reconciliation process
+        _ivs ->> _bca: Get updated Transactions
+        _bca ->> _bc: Get updated Transactions
+        _bc -->> _bca: List
+        _bca ->> _ivs: Update Transactions
 
-```JSON
-{
-    "external_id": "unique_external_entity_id",
-    "first_name": "Ashok",
-    "last_name": "Kumar",
-    "email": "ashok.kumar@example.com",
-    "phone": "+12345667",
-    "counter_account": {
-        "bank_account_number": "BE01234567891234",
-        "bank_account_number_type": "IBAN",
-        "bank_id": "IDQMIE2D",
-        "bank_id_type": "BIC"
-    },
-    "id": "U01234567890123456789012345",
-    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version": 1,
-    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-    "deleted": false,
-}
+        _ivs ->> _bca: Get updated Portfolio Holdings
+        _bca ->> _bc: Get updated Portfolio Holdings
+        _bc -->> _bca: List
+        _bca ->> _ivs: Update Portfolio Holdings
+    end
 ```
-**3. Notify InvestSuite on successful cash transfer**
-
-=== "HTTP"
-
-    ```HTTP
-    POST /events/withdraw/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-
-    {
-        "data": {
-            "amount": "1000",
-            "currency": "USD",
-            "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-        }
-    }
-
-    ```
