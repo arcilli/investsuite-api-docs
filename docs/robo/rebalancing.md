@@ -68,9 +68,9 @@ When an Optimization is recommended (the `portfolio_update.is_recommended` field
 
 When the Optimization is accepted by the user (the `owner_choice` field on the Optimization is `ACCEPT`), the Optimization is considered ready to be executed.
 
-#### Portfolio blocked
+#### Portfolio not reoptimized
 
-When an Optimization is considered ready to be executed, the Portfolio is blocked from being reoptimized.
+When an Optimization is ready to be executed, the Portfolio is (temporarily) excluded from optimization.
 
 ### 3. Orders of Optimization sent to the broker
 
@@ -98,8 +98,8 @@ InvestSuite sends the orders to the broker and keeps them up to date.
 #### InvestSuite integrates with the broker
 
 InvestSuite keeps the orders up to date.
-#### The Portfolio is unblocked from being reoptimized
+#### Portfolio reoptimized
 
-When all Transactions of an Optimization have a status `SETTLED`, the Portfolio is unblocked from being reoptimized.
+When all Transactions of an Optimization have a status `EXECUTED` or `SETTLED`, the Portfolio is considered again for optimization.
 
 <!-- also cancelled/expired/... -->
