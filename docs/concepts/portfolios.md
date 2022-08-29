@@ -9,6 +9,26 @@ title: Manage portfolios
 ## Context
 
 This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
+
+<!-- ## Concepts
+
+### Status
+
+|  | Description | Self Investor Portfolio | Robo Advisor Portfolio |
+|---|---|---|---|
+| DRAFT | The user is required to complete some action still, such as completing onboarding, signing documents, etc. | - | Y |
+| VIRTUAL PORTFOLIO | Portfolio that looks and behaves like an active portfolio, but that is funded with paper money | - | Y |
+| ACTIVATING | User has completed everything needed, and needs to wait for their account(s) to be activated at the broker/custodian and the bank |  |  |
+| WAITING_FOR_FUNDS | Robo Advisor: Less than the minimum amount has been invested, and the portfolio needs more money before becoming active |  |  |
+| WAITING_FOR_INVESTMENTS |  |  |  |
+| ACTIVE | Live portfolios that are funded (initial cash and/or securities deposit has happened) |  |  |
+| BLOCKED | Blocked account instructed manually |  |  |
+| ARCHIVED | Portfolio is archived in the sense that it is no longer active for user action, but client still has access to the history, e.g. for 1 year. This occurs when the user has requested that the account/portfolio be closed. |  |  |
+| REMOVED | Portfolio is removed from app, only viewable for Legal purposes (15 years retention period, legally required property rights.) |  |  |
+| FORGOTTTEN |  |  |  | -->
+<!-- Source: https://docs.google.com/spreadsheets/d/1_b1WQl1M6H1orTxWt71RJDWs280biPth-f-1y-rVeGA/edit?pli=1#gid=0 -->
+
+
 ## Create a portfolio
 ### Minimum portfolio
 
