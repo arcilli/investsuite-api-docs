@@ -83,7 +83,12 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 ### Order `PLACED`
 
-!!! warning "Optimization ID"
+!!! warning "Robo Advisor & Optimization ID"
+
+    For Robo Advisor, include the `optimization_id` field (from `Optimization.id`).
+    
+    This field is used to reconcile whether the Optimization is fully executed.
+    While an Optimization is in progress (ie. the [rebalancing process](../robo/rebalancing.md) is in progress), the Portfolio is blocked from making withdrawals.
 
     For Orders that originate from an Optimization, include the `optimization_id`.
 
@@ -108,7 +113,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
-        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV", // Robo Advisor only
         "movements": [
             {
                 "type": "BUY",
@@ -451,8 +456,6 @@ stateDiagram-v2
     [*] --> groupOne
     [*] --> groupTwo
     groupOne --> groupTwo
-
-    
 
     state groupOne {
         direction LR

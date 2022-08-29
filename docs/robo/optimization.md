@@ -13,7 +13,10 @@ GET /portfolios/{id}/optimizations/current HTTP/1.1
 Content-Type: application/json
 
 {
+    "id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
+
     ...
+    
     "portfolio_update":
     {
         "is_recommended": true,
