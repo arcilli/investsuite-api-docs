@@ -785,8 +785,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#portfolio-blocked" class="md-nav__link">
-    Portfolio blocked
+  <a href="#portfolio-not-reoptimized" class="md-nav__link">
+    Portfolio not reoptimized
   </a>
   
 </li>
@@ -846,8 +846,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-portfolio-is-unblocked-from-being-reoptimized" class="md-nav__link">
-    The Portfolio is unblocked from being reoptimized
+  <a href="#portfolio-reoptimized" class="md-nav__link">
+    Portfolio reoptimized
   </a>
   
 </li>
@@ -1253,8 +1253,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#portfolio-blocked" class="md-nav__link">
-    Portfolio blocked
+  <a href="#portfolio-not-reoptimized" class="md-nav__link">
+    Portfolio not reoptimized
   </a>
   
 </li>
@@ -1314,8 +1314,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-portfolio-is-unblocked-from-being-reoptimized" class="md-nav__link">
-    The Portfolio is unblocked from being reoptimized
+  <a href="#portfolio-reoptimized" class="md-nav__link">
+    Portfolio reoptimized
   </a>
   
 </li>
@@ -1402,8 +1402,8 @@
 
 <h4 id="advisory-mandate">Advisory mandate<a class="headerlink" href="#advisory-mandate" title="Permanent link">&para;</a></h4>
 <p>When the Optimization is accepted by the user (the <code>owner_choice</code> field on the Optimization is <code>ACCEPT</code>), the Optimization is considered ready to be executed.</p>
-<h4 id="portfolio-blocked">Portfolio blocked<a class="headerlink" href="#portfolio-blocked" title="Permanent link">&para;</a></h4>
-<p>When an Optimization is considered ready to be executed, the Portfolio is blocked from being reoptimized.</p>
+<h4 id="portfolio-not-reoptimized">Portfolio not reoptimized<a class="headerlink" href="#portfolio-not-reoptimized" title="Permanent link">&para;</a></h4>
+<p>When an Optimization is ready to be executed, the Portfolio is (temporarily) excluded from optimization.</p>
 <h3 id="3-orders-of-optimization-sent-to-the-broker">3. Orders of Optimization sent to the broker<a class="headerlink" href="#3-orders-of-optimization-sent-to-the-broker" title="Permanent link">&para;</a></h3>
 <!-- TODO what is the trigger here? an event? or a batch job? or a query? what criteria -->
 
@@ -1424,8 +1424,8 @@
 </ol>
 <h4 id="investsuite-integrates-with-the-broker_1">InvestSuite integrates with the broker<a class="headerlink" href="#investsuite-integrates-with-the-broker_1" title="Permanent link">&para;</a></h4>
 <p>InvestSuite keeps the orders up to date.</p>
-<h4 id="the-portfolio-is-unblocked-from-being-reoptimized">The Portfolio is unblocked from being reoptimized<a class="headerlink" href="#the-portfolio-is-unblocked-from-being-reoptimized" title="Permanent link">&para;</a></h4>
-<p>When all Transactions of an Optimization have a status <code>SETTLED</code>, the Portfolio is unblocked from being reoptimized.</p>
+<h4 id="portfolio-reoptimized">Portfolio reoptimized<a class="headerlink" href="#portfolio-reoptimized" title="Permanent link">&para;</a></h4>
+<p>When all Transactions of an Optimization have a status <code>EXECUTED</code> or <code>SETTLED</code>, the Portfolio is considered again for optimization.</p>
 <!-- also cancelled/expired/... -->
     
 
