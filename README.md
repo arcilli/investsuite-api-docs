@@ -26,6 +26,7 @@ Follow the instructions at https://www.mkdocs.org/. Or in case you have a recent
 ~ conda activate investsuite-api-docs-env
 ~ pip install mkdocs
 ~ pip install mkdocs-material
+~ pip install plantuml-markdown
 ~ mkdocs serve
 INFO     -  Building documentation...
 INFO     -  Cleaning site directory
