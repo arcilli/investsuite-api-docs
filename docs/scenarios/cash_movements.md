@@ -164,8 +164,10 @@ These are the steps performed to fund a portfolio, given the broker integration 
             "US4642886612":0.76,
             "US78468R1014":3,
             "US4642863926":0.7381
-        }
+        },
+        "funded_since": "2021-02-18T08:21:02+00:00"  // See warning below
     }
+    
 
     ```
 
@@ -184,6 +186,11 @@ These are the steps performed to fund a portfolio, given the broker integration 
             }
         }'
     ```
+
+!!! Warning
+    When the first deposit is made the `"funded_since"` field should be set, it may not be changed afterwards.
+    The `"funded_since"` field constains the date and time at which the portfolio was funded with the minimal required funding amount to initialize the Robo Advisor.
+
 
 !!! Warning
     Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
