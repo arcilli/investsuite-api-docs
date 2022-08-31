@@ -97,7 +97,7 @@ Funding a portfolio requires you to perform just one, or four steps depending on
             ]
         }'
     ```
-
+    
 === "curl"
 
     ```bash
