@@ -1354,7 +1354,8 @@
 <span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="w">  </span><span class="c1">// See warning below</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1373,6 +1374,11 @@
 </code></pre></div>
 </div>
 </div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When the first deposit is made the <code>"funded_since"</code> field should be set, it may not be changed afterwards.
+The <code>"funded_since"</code> field constains the date and time at which the portfolio was funded with the minimal required funding amount to initialize the Robo Advisor.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
