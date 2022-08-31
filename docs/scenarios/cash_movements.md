@@ -66,10 +66,9 @@ Funding a portfolio requires you to perform just one, or four steps depending on
     _ivs -->> _clt: id
     _bc ->> _clt: Transaction SETTLED
     _clt ->> _ivs: 3. PATCH /portfolio/{id}/transactions/{id}/<br>with status: SETTLED
-    _clt ->> _ivs: 4. PATCH /portfolio Holdings<br>and funded_since
-    _clt ->> _ivs: 5. PATCH /portfolio funded_since
-    _clt ->> _ivs: 6. POST /events/deposit
-    _ivs ->> _c: 7. Notification
+    _clt ->> _ivs: 4. PATCH /portfolio Holdings<br>and 4a. funded_since
+    _clt ->> _ivs: 5. POST /events/deposit
+    _ivs ->> _c: 6. Notification
 ```
 
 
