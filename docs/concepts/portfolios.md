@@ -328,9 +328,6 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
             "LU4642886612": 9.2243,
             "LU46137V2410": 9,
             "LU3160923039": 3,
-            "LU3160928731": 10,
-            "LU97717W5215": 6,
-            "LU4642861458": 4,
             "LU46429B2676": 45.146,
             "LU46434V7617": 9,
             "LU4642865251": 7.6828,
@@ -345,6 +342,27 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
         "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
         "deleted": false,
         "status": "ACTIVE"
+    }
+    ```
+
+### Funded Status
+
+When the first deposit is made the `funded_since` field should be set, it may not be changed afterwards. It contains the date and time at which the portfolio was funded with the minimal required funding amount to initialize Robo Advisor.
+
+<!-- TODO quid Self Investor? Quid PAPER MONEY portfolios? Quid if we don t do it? -->
+
+=== "Request"
+
+    ```HTTP hl_lines="1 9"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "funded_since": "2021-02-18T08:21:02+00:00"
     }
     ```
 

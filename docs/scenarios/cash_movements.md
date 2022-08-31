@@ -10,6 +10,10 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 
 ### Broker integration by InvestSuite
 
+!!! info
+
+    Applies to Robo Advisor, Self Investor
+
 1. The **Client Middleware** notifies InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
 2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount.
 3. **InvestSuite** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field.
@@ -18,7 +22,6 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 
 ```mermaid
     sequenceDiagram
-
     actor _c as Customer
     participant _ivs as InvestSuite
     participant _clt as Bank with<br>Client Middleware
@@ -36,10 +39,15 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 
 ### Broker integration by the Client
 
+!!! info
+
+    Applies to Robo Advisor
+
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
 2. The **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
 3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED`. **See below**: Update transaction to settled.
 4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)).
+      1. :warning: if this is the first funding, also set `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
 5. The **Client Middleware** call `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
 6. **InvestSuite** creates a notification to be sent to the client.
 
@@ -58,9 +66,10 @@ Funding a portfolio requires you to perform just one, or four steps depending on
     _ivs -->> _clt: id
     _bc ->> _clt: Transaction SETTLED
     _clt ->> _ivs: 3. PATCH /portfolio/{id}/transactions/{id}/<br>with status: SETTLED
-    _clt ->> _ivs: 4. PATCH /portfolio Holdings
-    _clt ->> _ivs: 5. POST /events/deposit
-    _ivs ->> _c: 6. Notification
+    _clt ->> _ivs: 4. PATCH /portfolio Holdings<br>and funded_since
+    _clt ->> _ivs: 5. PATCH /portfolio funded_since
+    _clt ->> _ivs: 6. POST /events/deposit
+    _ivs ->> _c: 7. Notification
 ```
 
 
