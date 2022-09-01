@@ -18,24 +18,8 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount.
 3. **InvestSuite** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field.
 4. Once the Transaction is settled at the broker, **InvestSuite** updates the Portfolio's cash holding and the Transaction status.
-5. **InvestSuite** creates a notification to be sent to the client.
-
-```mermaid
-    sequenceDiagram
-    actor _c as Customer
-    participant _ivs as InvestSuite
-    participant _clt as Bank with<br>Client Middleware
-    participant _bc as Broker/Custodian
-    
-    _c ->> _clt: Customer funds his investor account
-    _clt ->> _ivs: 1. POST /events/deposit
-    _ivs ->> _bc: 2. Move cash from bank's home account to customer's subaccount
-    _bc -->> _ivs: transaction_id
-    _ivs ->> _ivs: 3. PENDING Transaction with<br>external_id = transaction_id 
-    _bc ->> _ivs: Transaction SETTLED
-    _ivs ->> _ivs: 4. Update Portfolio Holdings<br>and Transaction SETTLED
-    _ivs ->> _c: 5. Notification
-```
+5. If this is the first funding, **InvestSuite** sets the `funded_since` field.
+6. **InvestSuite** creates a notification to be sent to the client.
 
 ### Broker integration by the Client
 
@@ -45,81 +29,37 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
 2. The **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
-3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED`. **See below**: Update transaction to settled.
+3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED` (see [here](../concepts/transactions.md#order-settled)).
 4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)).
-      1. :warning: if this is the first funding, also set `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
-5. The **Client Middleware** call `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
-6. **InvestSuite** creates a notification to be sent to the client.
+5. Only if this is the first funding, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
+6. The **Client Middleware** call `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
+7. **InvestSuite** creates a notification to be sent to the client.
 
-```mermaid
-    sequenceDiagram
-
-    actor _c as Customer
-    participant _ivs as InvestSuite
-    participant _clt as Bank with<br>Client Middleware
-    participant _bc as Broker/Custodian
-    
-    _c ->> _clt: Customer funds his investor account
-    _clt ->> _bc: 1. Move cash<br>from bank's home account to<br>customer's subaccount
-    _bc -->> _clt: external_id
-    _clt ->> _ivs: 2. POST /portfolio/{id}/transactions/<br>with type: CASH_DEPOSIT,<br>status: PENDING, external_id
-    _ivs -->> _clt: id
-    _bc ->> _clt: Transaction SETTLED
-    _clt ->> _ivs: 3. PATCH /portfolio/{id}/transactions/{id}/<br>with status: SETTLED
-    _clt ->> _ivs: 4. PATCH /portfolio Holdings<br>and 4a. funded_since
-    _clt ->> _ivs: 5. POST /events/deposit
-    _ivs ->> _c: 6. Notification
+```plantuml
+    actor "Customer" as _c
+    participant "InvestSuite" as _ivs
+    participant "Bank with\nClient Middleware" as _clt
+    participant "Broker/Custodian" as _bc
+        
+    _c -> _clt: Customer funds his investor account
+    _clt -> _bc:1. Move cash\nfrom bank's home account to\ncustomer's subaccount
+    _bc --> _clt: external_id
+    _clt -> _ivs:2. POST /portfolio/{id}/transactions/ with \n- type: CASH_DEPOSIT\n- status: PENDING\n- external_id
+    _ivs --> _clt: response
+    _clt -> _clt: Store response for future use
+    _bc ->(1) _clt: Transaction SETTLED
+    _clt -> _ivs:3. PATCH /portfolio/{id}/transactions/{id}/ with \n- status: SETTLED
+    _ivs --> _clt: response
+    _clt -> _clt: Store response for future use
+    _clt -> _ivs:4. PATCH /portfolio Holdings
+    _ivs -->_clt:response
+    opt if response.funded_since == null
+    _clt -> _ivs:5. PATCH /portfolio funded_since
+    end
+    _clt -> _ivs: 5. POST /events/deposit
+    _ivs -> _c: 6. Notification
 ```
 
-
-**3. Update transaction to settled**
-
-=== "HTTP"
-
-    ```HTTP
-    PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "movements": [
-            {
-                "status": "SETTLED"
-            }
-        ]
-    }
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "movements": [
-                {
-                    "status": "SETTLED",
-                }
-            ]
-        }'
-    ```
-    
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/events/deposit/' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer {string}' \
-    --data-raw '{
-                    "data": {
-                        "amount": "1000",
-                        "currency": "USD",
-                        "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-                    }
-                }'
-    ```
 ## Withdrawal
 
 ### Robo Advisor
