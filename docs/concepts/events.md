@@ -56,6 +56,10 @@ Asynchronous interactions between InvestSuite and the Client Middleware can happ
 
 ##### Creation
 
+!!! info
+
+    Applies to: Robo Advisor, Self Investor
+
 Fully qualified name: `portfolios.creation`
 
 When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.
@@ -78,6 +82,10 @@ It is up to the b2b client to check if the portfolio is “paper_money” or “
   ```
 
 ##### Status update
+
+!!! info
+
+    Applies to: Robo Advisor, Self Investor
 
 Fully qualified name: `portfolios.status-update`
 
@@ -115,7 +123,11 @@ Possible values for the value field:
 - ACTIVE
 - INACTIVE
 
-##### Withdrawal
+##### Withdrawal request
+
+!!! info
+
+    Applies to: Robo Advisor
 
 Fully qualified name: `portfolios.withdrawal`
 
@@ -199,6 +211,10 @@ Fully qualified name: `users.account-number-update`
 #### Optimisations
 
 ##### Status update
+
+!!! info
+
+    Applies to: Robo Advisor
 
 Fully qualified name: `optimisations.status-update`
 
@@ -350,7 +366,7 @@ Fully qualified name: `reports.status-update`
 === "HTTP"
 
   ```HTTP hl_lines="1 4"
-  POST /events/deposit/ HTTP/1.1
+  POST /events/withdraw/ HTTP/1.1
   Host: api.sandbox.investsuite.com
   Content-Type: application/json
   Idempotency-Key: "LVRYWG833Vp2FIIG"
