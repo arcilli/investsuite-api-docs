@@ -347,9 +347,12 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
 
 ### Funded Status
 
-When the first deposit is made the `funded_since` field should be set, it may not be changed afterwards. It contains the date and time at which the portfolio was funded with the minimal required funding amount to initialize Robo Advisor.
+On the first funding of a Portfolio, the `funded_since` field should be set. It may not be changed afterwards. It contains the date and time at which the portfolio was funded with the minimal required funding amount to initialize Robo Advisor.
+It is used for performance (eg. TWR) calculations.
 
-<!-- TODO quid Self Investor? Quid PAPER MONEY portfolios? Quid if we don t do it? -->
+<!-- This theoretically also applies to Self Investor, but there we own the broker integration.
+For PAPER_MONEY portfolios this is not required. Funding there also does not happen through the middleware
+TODO Quid if we don t do it? -->
 
 === "Request"
 
