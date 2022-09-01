@@ -53,10 +53,10 @@ Portfolio Stats
 Contains stats about multiple instruments -->
 
 ### Holdings, Orders, Transactions and Movements
-- **Holdings** are positions (assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
+- **Holdings** are positions (or assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
 - An **order** is sent to the market, resulting in one or more transactions.
 - **Transactions** are a combination of movements that describe an exchange or trade.
-- A **movement** is a change that impacts the holdings of a portfolio.
+- A **movement** (or trade) is a change that impacts the holdings of a portfolio.
 
 !!! info "How are transactions and holdings related?"
 

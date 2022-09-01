@@ -8,13 +8,11 @@ title: Transactions
 
 ## Context
 
-The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync with InvestSuite.
+The broker/custodian is the master system for [transactions and holdings (positions)](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync with InvestSuite. In case of broker integration by the client (see [integration architecture](architecture.md)), this page describes how.
 
-In case the Client middelware needs to do this (see [integration architecture](architecture.md)), this page describes how.
+!!! question "First transactions, or first orders?"
 
-!!! tip "Order of API calls"
-
-    We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
+    We recommend to first create (update) the transaction, and then update the portfolio holdings.
 
 ## Concepts
 
@@ -55,11 +53,11 @@ erDiagram
 #### Types
 The following types of transactions exist:
 
-1. *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
-2. *Cash* transactions: a deposit of cash, a divestment, fees or tax.
-3. *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
-4. *Security Transfer* transaction: at least 1 trade (= securities movement)
-5. *Administrative* transaction
+1. *Order* transactions: buying/selling of instruments, containing one or more movements (see [example](#order-placed)).
+2. *Cash* transactions: a deposit of cash, a divestment, fees or tax (see [example](#cash)).
+3. *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more movements (see [example](#corporate-action)).
+4. *Security Transfer* transaction: at least 1 movement <!-- TODO describe what this is, add an example -->
+5. *Administrative* transaction <!-- TODO describe what this is, add an example -->
 
 #### Status
 
@@ -79,7 +77,7 @@ The following types of movements exist: `CASH_DEPOSIT`, `CASH_DIVIDEND`, `CASH_W
 #### Status
 A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED`, `SETTLED`, `CANCELLED`, `NOT_EXECUTED`, `EXPIRED`.
 
-## Create a transaction
+## Create transaction
 
 ### Order `PLACED`
 
@@ -178,7 +176,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 !!! info
 
-    A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than `type` is `SELL` (not `BUY`) and the signs of the cash movement inversed.
+    A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than `type` is `SELL` (not `BUY`) and the signs of the cash movement inverted.
 
 === "Request"
 
@@ -228,7 +226,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 ### Cash
 
-Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
+Transactions that hold cash movements represent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
 #### Funding
 
@@ -480,7 +478,7 @@ stateDiagram-v2
     If the portfolio should be optimized ahead of the settlement of the transactions, update the transaction with the `EXECUTED` status.
 
 !!! info "Order costs and fees"
-    This example also shows the introduction of the transaction fee and the the tax associated with the order. 
+    This example also shows the introduction of the transaction fee and the tax associated with the order. 
     
     For costs and charges that are *not* associated with the transaction (eg. monthly fee) see the [Costs and Charges Transaction](#4-costs-and-charges).
 
