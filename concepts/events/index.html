@@ -472,6 +472,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#outbound" class="md-nav__link">
+    Outbound
+  </a>
+  
+    <nav class="md-nav" aria-label="Outbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#architectural-concept" class="md-nav__link">
     Architectural concept
   </a>
@@ -515,8 +523,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#withdrawal-divest-amount" class="md-nav__link">
-    Withdrawal (divest amount)
+  <a href="#withdrawal" class="md-nav__link">
+    Withdrawal
   </a>
   
 </li>
@@ -557,11 +565,49 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#polling" class="md-nav__link">
-    Polling
+  <a href="#rest-events-endpoint" class="md-nav__link">
+    REST /events/ endpoint
   </a>
+  
+    <nav class="md-nav" aria-label="REST /events/ endpoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inbound" class="md-nav__link">
+    Inbound
+  </a>
+  
+    <nav class="md-nav" aria-label="Inbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deposit-event" class="md-nav__link">
+    Deposit event
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound_1" class="md-nav__link">
+    Outbound
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1143,6 +1189,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#outbound" class="md-nav__link">
+    Outbound
+  </a>
+  
+    <nav class="md-nav" aria-label="Outbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#architectural-concept" class="md-nav__link">
     Architectural concept
   </a>
@@ -1186,8 +1240,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#withdrawal-divest-amount" class="md-nav__link">
-    Withdrawal (divest amount)
+  <a href="#withdrawal" class="md-nav__link">
+    Withdrawal
   </a>
   
 </li>
@@ -1228,11 +1282,49 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#polling" class="md-nav__link">
-    Polling
+  <a href="#rest-events-endpoint" class="md-nav__link">
+    REST /events/ endpoint
   </a>
+  
+    <nav class="md-nav" aria-label="REST /events/ endpoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inbound" class="md-nav__link">
+    Inbound
+  </a>
+  
+    <nav class="md-nav" aria-label="Inbound">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deposit-event" class="md-nav__link">
+    Deposit event
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound_1" class="md-nav__link">
+    Outbound
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1256,18 +1348,36 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<p>The API supports two patterns for events integrations:</p>
-<ol>
-<li>Event-driven: the client system responds to an event that is sent by the InvestSuite system (asynchronously) <strong>(preferred)</strong></li>
-<li>Polling: the client regularly polls the events REST endpoint</li>
-</ol>
+<p>Asynchronous interactions between InvestSuite and the Client Middleware can happen in multiple ways, depending on the direction. The below table summarizes the capabilities:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Inbound InvestSuite</th>
+<th>Outbound InvestSuite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event Driven</td>
+<td><em>Not supported</em></td>
+<td>The Client Middleware responds to an event that is sent by the InvestSuite system</td>
+</tr>
+<tr>
+<td>REST <code>/events/</code> Endpoint</td>
+<td>The Client Middleware notifies InvestSuite of an event through the <code>POST /events/</code> endpoint</td>
+<td><strong>Under development</strong> The Client Middleware regularly polls the <code>GET /events/</code> endpoint</td>
+</tr>
+</tbody>
+</table>
 <h2 id="event-driven">Event Driven<a class="headerlink" href="#event-driven" title="Permanent link">&para;</a></h2>
-<h3 id="architectural-concept">Architectural concept<a class="headerlink" href="#architectural-concept" title="Permanent link">&para;</a></h3>
+<h3 id="outbound">Outbound<a class="headerlink" href="#outbound" title="Permanent link">&para;</a></h3>
+<h4 id="architectural-concept">Architectural concept<a class="headerlink" href="#architectural-concept" title="Permanent link">&para;</a></h4>
 <ul>
 <li>InvestSuite posts events on one single topic of the client's event queue</li>
 <li>Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...</li>
 </ul>
-<h3 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h3>
+<h4 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>The strategy is to signal that an event has happened, not to include all information that the middleware may possibly require (as these requirements may vary wildly and may introduce breaking changes). Therefore, an additional REST API call may be required to get additional data.</p>
@@ -1276,14 +1386,19 @@
 <p>All events will use this envelope, with the actual information in <code>data</code>.</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot;: string, 
-  &quot;created&quot;: timestamp, 
-  &quot;version&quot;: string,
-  &quot;subject&quot;: string,
-  &quot;action&quot;: string, 
-  &quot;data&quot;: dict
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">s</span><span class="kc">tr</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">t</span><span class="err">imes</span><span class="kc">ta</span><span class="err">mp</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">s</span><span class="kc">tr</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">s</span><span class="kc">tr</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">s</span><span class="kc">tr</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">dic</span><span class="kc">t</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <table>
 <thead>
@@ -1332,24 +1447,29 @@
 <p class="admonition-title">Note</p>
 <p>We are deliberately using ‘subject’ i.o. ‘topic’, since 1/ the integration pattern with 3rd parties is that we will post all messages on 1 topic (so this will be confusing) and 2/ this field can, potentially in the future, be broader than only entities</p>
 </div>
-<h3 id="portfolios">Portfolios<a class="headerlink" href="#portfolios" title="Permanent link">&para;</a></h3>
-<h4 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">&para;</a></h4>
+<h4 id="portfolios">Portfolios<a class="headerlink" href="#portfolios" title="Permanent link">&para;</a></h4>
+<h5 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>portfolios.creation</code></p>
 <p>When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.</p>
 <p>It is up to the b2b client to check if the portfolio is “paper_money” or “real_money” based on this event. This to decide if they need to proceed with setup at their side.</p>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot; : &quot;an-event-id&quot;,
-  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;,
-  &quot;subject&quot; : &quot;portfolios&quot;,
-  &quot;action&quot; : &quot;creation&quot;,
-  &quot;data&quot; : {
-    &quot;id&quot; : &quot;a-portfolio-id&quot;,
-    &quot;external_id&quot; : &quot;an-external-id&quot;,
-    &quot;owned_by_user_id&quot; : &quot;a-user-id&quot;
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-event-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1000000000-01-01T00:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portfolios&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;creation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-portfolio-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-external-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-user-id&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="status-update">Status update<a class="headerlink" href="#status-update" title="Permanent link">&para;</a></h4>
+<h5 id="status-update">Status update<a class="headerlink" href="#status-update" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>portfolios.status-update</code></p>
 <p>Every time a status of a portfolio gets updated an event will be sent to the b2b client.</p>
 <p>Possible values for the status field:</p>
@@ -1360,18 +1480,23 @@
 <li>ACTIVE: portfolio is in use</li>
 <li>INACTIVE</li>
 </ul>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot; : &quot;an-event-id&quot;,
-  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;,
-  &quot;subject&quot; : &quot;portfolios&quot;,
-  &quot;action&quot; : &quot;status-update&quot;,
-  &quot;data&quot; : {
-    &quot;id&quot; : &quot;a-portfolio-id&quot;,
-    &quot;external_id&quot; : &quot;an-external-id&quot;,
-    &quot;value&quot; : &quot;INACTIVE&quot;
-  }
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-event-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1000000000-01-01T00:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portfolios&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;status-update&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-portfolio-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-external-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INACTIVE&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Possible values for the value field:</p>
 <ul>
@@ -1381,35 +1506,47 @@
 <li>ACTIVE</li>
 <li>INACTIVE</li>
 </ul>
-<h4 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h4>
+<h5 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>portfolios.funding</code></p>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;,
-  &quot;value&quot;: 500, 
-  &quot;currency&quot;: &quot;EUR&quot;
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Data body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="withdrawal-divest-amount">Withdrawal (divest amount)<a class="headerlink" href="#withdrawal-divest-amount" title="Permanent link">&para;</a></h4>
+<h5 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>portfolios.withdrawal</code></p>
 <p>Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.</p>
 <p>Every update to this amount will trigger an event towards the b2b client.</p>
 <p>Divest amount:</p>
-<p>= 1e100 → means full withdrawal.</p>
-<p>= specific amount → partial withdrawal</p>
+<ul>
+<li>1e100 → full withdrawal.</li>
+<li>a specific amount → partial withdrawal</li>
+</ul>
 <p>Note: value is the total amount that is requested for withdrawal, not the incremental value (eg. in case of two quickly subsequent withdrawal requests, where the first is not yet settled)</p>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot; : &quot;an-event-id&quot;,
-  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;,
-  &quot;subject&quot; : &quot;portfolios&quot;,
-  &quot;action&quot; : &quot;divest-amount-update&quot;,
-  &quot;data&quot; : {
-    &quot;id&quot; : &quot;a-portfolio-id&quot;,
-    &quot;external_id&quot; : &quot;an-external-id&quot;,
-    &quot;divest_amount&quot; : 1.234,
-    &quot;currency&quot; : &quot;a-currency-code&quot;
-  }
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-event-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1000000000-01-01T00:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portfolios&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;divest-amount-update&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-portfolio-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-external-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;divest_amount&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1.234</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;currency&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-currency-code&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <!-- #### Removal
 
@@ -1453,8 +1590,8 @@ Fully qualified name: `users.account-number-update`
 }
 ``` -->
 
-<h3 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h3>
-<h4 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h4>
+<h4 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h4>
+<h5 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>optimisations.status-update</code></p>
 <p>When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.</p>
 <p>Fields:</p>
@@ -1466,42 +1603,55 @@ Fully qualified name: `users.account-number-update`
 <p>Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED</p>
 </li>
 </ul>
-<p>NOTE: v1.0.0 (aug 2022) only status “SUCCESS” is used.</p>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot; : &quot;an-event-id&quot;,
-  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;,
-  &quot;subject&quot; : &quot;optimizations&quot;,
-  &quot;action&quot; : &quot;status-update&quot;,
-  &quot;data&quot; : {
-    &quot;id&quot; : &quot;an-optimization-id&quot;,
-    “portfolio_id” : “a-portfolio-id”,
-    &quot;external_id&quot; : &quot;an-external-id&quot;,
-    &quot;is_recommended&quot; : true,
-    &quot;value&quot; : &quot;SUCCESS&quot;
-  }
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>In v1.0.0 (aug 2022) only status “SUCCESS” is used.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-event-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1000000000-01-01T00:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optimizations&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;status-update&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-optimization-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-portfolio-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-external-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;is_recommended&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<h4 id="owner-choice-update">Owner choice update<a class="headerlink" href="#owner-choice-update" title="Permanent link">&para;</a></h4>
+<h5 id="owner-choice-update">Owner choice update<a class="headerlink" href="#owner-choice-update" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>optimisations.owner-choice-update</code></p>
 <p>This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).</p>
 <p>In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”</p>
 <p>The id can be used to fetch the optimisation.</p>
 <ul>
-<li>Possible values for the status field are ACCEPT, REJECT, REOPTIMIZE, IGNORED</li>
+<li>Possible values for the status field are <code>ACCEPT</code>, <code>REJECT</code>, <code>REOPTIMIZE</code>, <code>IGNORED</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code>{
-  &quot;id&quot; : &quot;an-event-id&quot;,
-  &quot;created&quot; : &quot;-1000000000-01-01T00:00:00Z&quot;,
-  &quot;version&quot; : &quot;1.0.0&quot;,
-  &quot;subject&quot; : &quot;optimizations&quot;,
-  &quot;action&quot; : &quot;owner-choice-update&quot;,
-  &quot;data&quot; : {
-    &quot;id&quot; : &quot;an-optimization-id&quot;,
-    “portfolio_id” : “a-portfolio-id”,
-    &quot;external_id&quot; : &quot;an-external-id&quot;,
-    &quot;value&quot; : &quot;ACCEPT&quot;
-  }
-}
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Event body</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-event-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-1000000000-01-01T00:00:00Z&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optimizations&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;action&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;owner-choice-update&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-optimization-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-portfolio-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;an-external-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ACCEPT&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <!-- ### Profiles
 
@@ -1540,24 +1690,46 @@ Fully qualified name: `reports.status-update`
 - Possible values for the `value` field are READY, FAILED
 - Possible values for the `output_format` field are WEB, PDF, VIDEO
 
-```
-{
-  "id": "R01FWDZGKEV3S7SKAX90637H077",
-  "value": "READY", 
-  "output_format": "VIDEO"
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;R01FWDZGKEV3S7SKAX90637H077&quot;,
+  &quot;value&quot;: &quot;READY&quot;, 
+  &quot;output_format&quot;: &quot;VIDEO&quot;
 }
-``` -->
+</code></pre></div>
+-->
 
-<h2 id="polling">Polling<a class="headerlink" href="#polling" title="Permanent link">&para;</a></h2>
+<h2 id="rest-events-endpoint">REST <code>/events/</code> endpoint<a class="headerlink" href="#rest-events-endpoint" title="Permanent link">&para;</a></h2>
+<h3 id="inbound">Inbound<a class="headerlink" href="#inbound" title="Permanent link">&para;</a></h3>
+<h4 id="deposit-event">Deposit event<a class="headerlink" href="#deposit-event" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">POST</span> <span class="nn">/events/deposit/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="hll"><span class="na">Idempotency-Key</span><span class="o">:</span> <span class="l">&quot;LVRYWG833Vp2FIIG&quot;</span>
+</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We strongly suggest using the <code>idempotency-key</code> to avoid double deposits.</p>
+</div>
+<h3 id="outbound_1">Outbound<a class="headerlink" href="#outbound_1" title="Permanent link">&para;</a></h3>
+<!-- #### Get events -->
+
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is still under development</p>
 </div>
-<!-- ### Architectural Concept
-
-### The REST Event Endpoint
-
-TODO -->
     
 
             </article>
