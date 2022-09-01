@@ -89,7 +89,7 @@ markdown_extensions:
       priority: 30                              # plugin priority; the higher, the sooner will be applied (default 30)
       http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)       
       fallback_to_get: True                     # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
-      theme: materia                           # theme to be set, can be overridden inside puml files, (default none)
+      theme: mars     # plain, mars, (commented out), reddress-lightred, toy, vibrant , see https://the-lum.github.io/puml-themes-gallery/#all-the-themes                    # theme to be set, can be overridden inside puml files, (default none)
       puml_notheme_cmdlist: [                             
                               'version', 
                               'listfonts', 
