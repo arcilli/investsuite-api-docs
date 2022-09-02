@@ -283,6 +283,8 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
 
     As with all nested objects, include the full object (ie. all holdings) when issuing the PATCH.
 
+    For example, a `PATCH "portfolio": { "$USD":10000 }` means a portfolio which only contains cash.
+
 === "Request"
 
     ```HTTP hl_lines="1 8"
@@ -370,6 +372,10 @@ TODO Quid if we don t do it? -->
     ```
 
 ### Set divest amount
+
+The below example sets the `divest_amount` to 500, signalling the Customer wants to withdraw 500 cash, which in turn will instruct Optimizer to generate a series of orders that free up this amount of cash. This is usually done by the InvestSuite application.
+
+To signal that no further cash needs to be freed up, patch the `divest_amount` with 0. This is usually done by the Client Middleware.
 
 === "HTTP"
 
