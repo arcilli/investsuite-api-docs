@@ -36,6 +36,7 @@ theme:
     repo: fontawesome/solid/book
   features:
     - navigation.tabs       # Vertical Top Level Sections
+    - navigation.tabs.sticky # Top navigation stays there when scrolling down
     - navigation.sections   # Group Sections
     # - toc.integrate         # Do not render ToC on the left
 
