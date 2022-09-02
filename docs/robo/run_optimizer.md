@@ -23,6 +23,11 @@ The basic setup is straightforward:
 2. You issue a `GET` request, at your pace, against `/portfolios/{id}/optimizations/current/`. When the latest optimization is computed - takes between 5 seconds and 2 minutes - you receive order recommendations.
 3. You place the orders with your broker. (unless we agreed that InvestSuite would connect to the broker)
 
+## Example middleware design
+
+<iframe width="100%" height="640" src="https://miro.com/app/live-embed/uXjVPbHnms8=/?moveToViewport=-1764,-1577,2749,1491&embedId=784475785527" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+
 ## Patch portfolio
 
 Portfolios managed in the InvestSuite platform are either composed by the investor, i.e. Self Execution, or by the Robo Advisor. Management by the Robo Advisor can be under two mandates: an advisory mandate or a discretionary mandate. In case of an advisory mandate the investor can intervene on the Robo Advisor's order recommendations. In case of a discretionary mandate the Robo Advisor is in full charge of the rebalancing process, and the investor enjoys a full "auto pilot" mode.

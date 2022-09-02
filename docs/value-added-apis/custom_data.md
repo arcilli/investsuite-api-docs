@@ -8,17 +8,18 @@ InvestSuite offers a range of products, all using financial data. Each product h
 
 The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:
 
-- [Custom Reference Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
-- [Custom Reference CSV Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post)
-- [Custom Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
-- [Custom Composition Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_composition_batch_data_custom_composition_batch__post)
-- [Custom Composition Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_composition_timeseries_batch_data_custom_composition_timeseries_batch__post)
-- [Custom Attribution Model Docs](https://api.data.uat.investsuite.com/redoc#operation/create_attribution_batch_data_custom_attribution_batch__post)
+- [Custom Reference Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Reference)
+- [Custom Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Timeseries)
+- [Custom Composition Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition)
+- [Custom Composition Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition-Timeseries)
+- [Custom Attribution Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Attribution)
 
 The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.
 
 
-## Custom Reference POST
+## Custom Reference
+
+### POST
 
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments.
 
@@ -115,7 +116,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 
-## Custom Reference QUERY
+### QUERY
 
 You can query the uploaded reference data using the query endpoint. A filter can be provided, or the entire cache can be returned when sending an empty payload.
 
@@ -171,7 +172,7 @@ The response of such a request is:
        "meta":null
     }
     ```
-## Custom Reference REMOVE
+### REMOVE
 
 Filtered data can be removed using the remove endpoint.
 
@@ -233,9 +234,9 @@ Field | Description | Data type | Example | Required
 `cache_instrument_count` | The number of instruments that the client has provided custom reference data for. | `integer` | 2 | yes
 `cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
 
-## Custom Reference CLEAR
+### CLEAR
 
-The entire custom data cache can be removed in one go with the clear endpoint.
+All custom reference data can be removed in one go with the clear endpoint.
 
 === "Curl Request"
 
@@ -259,7 +260,7 @@ The entire custom data cache can be removed in one go with the clear endpoint.
     X-Api-Key: $IVS_API_SECRET
     ```
 
-## Custom Reference CSV POST
+### CSV POST
 
 Reference data consists of instrument-level data of which only the latest value is relevant. Examples of reference data are the ISIN code, asset class, ticker, name, and instrument type. Using this endpoint, a client can upload reference data for specific instruments as **Comma Separated Values (.CSV) file**.
 
@@ -323,7 +324,9 @@ Field | Description | Data type | Example | Required
 
 To overwrite the data of an instrument, simply provide the reference data fields that need to be overwritten again for that instrument. Only the provided fields will be overwritten.
 
-## Custom Timeseries POST
+## Custom Timeseries
+
+### POST
 
 Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type.
 
@@ -432,7 +435,7 @@ To overwrite a certain type of timeseries data for one or more instruments on sp
 
 Also note that trying to upload a timeseries with a different currency than the one alrady present in the cache will throw an error.
 
-## Custom Timeseries QUERY
+### QUERY
 
 You can query the uploaded timeseries data using the query endpoint. A filter can be provided, or the entire cache for a given timeseries type can be returned. Furthermore, the currencies for each instrument for which the timeseries data has been uploaded previously can be returned as part of the payload as well.
 
@@ -504,7 +507,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Timeseries Meta QUERY
+### Meta QUERY
 
 You can query the meta data for the custom uploaded timeseries data. Currently this only contains the currency of the values uploaded.
 
@@ -560,7 +563,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Timeseries REMOVE
+### REMOVE
 
 Filtered data can be removed using the remove endpoint.
 
@@ -628,9 +631,9 @@ Field | Description | Data type | Example | Required
 `cache_instrument_count` | The number of instruments that the client has provided custom reference data for. | `integer` | 2 | yes
 `cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
 
-## Custom Timeseries CLEAR
+### CLEAR
 
-The entire custom data cache for a timeseries type can be removed in one go with the clear endpoint.
+All custom timeseries data for a timeseries type can be removed in one go with the clear endpoint.
 
 === "Curl Request"
 
@@ -661,7 +664,9 @@ The entire custom data cache for a timeseries type can be removed in one go with
     }
     ```
 
-## Custom Composition POST
+## Custom Composition
+
+### POST
 Composition data of an instrument provides a look-through of the underlying instruments according to certain composition types.
 Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
@@ -791,7 +796,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of composition data for one or more instruments, simply provide the data for these instruments and types on the dates to overwrite again.
 
-## Custom Composition QUERY
+### QUERY
 
 You can query the uploaded composition data using the query endpoint. A filter can be provided, or the entire cache can be returned by providing an empty payload. Furthermore, the defined composition levels can be returned as part of the meta object in the response body.
 
@@ -857,7 +862,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Composition Meta QUERY
+### Meta QUERY
 
 You can query the meta data for the custom uploaded composition data. Currently this only contains the composition levels as defined in the tenant config.
 
@@ -910,7 +915,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Composition REMOVE
+### REMOVE
 
 Filtered data can be removed using the remove endpoint.
 
@@ -973,9 +978,9 @@ Field | Description | Data type | Example | Required
 `cache_instrument_count` | The number of instruments that the client has provided custom reference data for. | `integer` | 2 | yes
 `cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
 
-## Custom Composition CLEAR
+### CLEAR
 
-The entire custom composition data cache can be removed in one go with the clear endpoint.
+All custom composition data can be removed in one go with the clear endpoint.
 
 === "Curl Request"
 
@@ -999,7 +1004,9 @@ The entire custom composition data cache can be removed in one go with the clear
     X-Api-Key: $IVS_API_SECRET
     ```
 
-## Custom Composition Timeseries POST
+## Custom Composition Timeseries
+
+### POST
 
 Composition timeseries data of an instrument provides a look-through of the underlying instruments according to certain composition types at certain dates. Examples are the asset class or country composition of a fund on a certain date. Using this endpoint, a client can upload composition data on different composition types for specific instruments, for certain dates (timeseries).
 
@@ -1119,7 +1126,7 @@ Field | Description | Data type | Example | Required
 To overwrite a certain type of composition data for one or more instruments on specific dates, simply provide the data for these instruments and types on the dates to overwrite again.
 
 
-## Custom Composition Timeseries QUERY
+### QUERY
 
 You can query the uploaded composition timeseries data using the query endpoint. A filter can be provided, or the entire cache can be returned by providing an empty payload. Furthermore, the defined composition levels can be returned as part of the meta object in the response body.
 
@@ -1200,7 +1207,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Composition Timeseries REMOVE
+### REMOVE
 
 Filtered data can be removed using the remove endpoint.
 
@@ -1271,9 +1278,9 @@ Field | Description | Data type | Example | Required
 `cache_composition_type_count` | The number of composition types that the client has provided composition data for. | `integer` | 2 | yes
 `cache_date_count` | The number of different dates that the client has provided timeseries data for, over all instruments. | `integer` | 6 | yes
 
-## Custom Composition Timeseries CLEAR
+### CLEAR
 
-The entire custom composition timeseries data cache can be removed in one go with the clear endpoint.
+All custom composition timeseries data can be removed in one go with the clear endpoint.
 
 === "Curl Request"
 
@@ -1298,7 +1305,9 @@ The entire custom composition timeseries data cache can be removed in one go wit
     ```
 
 
-## Custom Attribution POST
+## Custom Attribution 
+
+### POST
 
 Attribution data of an instrument provides an overview of how much the underlying instruments attributed to the overall return of the instrument. For example how much each instrument in a fund has attributed to the fund's profit. Using this endpoint, a client can upload attribution data, for certain dates (timeseries).
 
@@ -1398,7 +1407,7 @@ Field | Description | Data type | Example | Required
 To overwrite a certain type of attribution data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again.
 
 
-## Custom Attribution QUERY
+### QUERY
 
 You can query the uploaded composition timeseries data using the query endpoint. A filter can be provided, or the entire cache can be returned by providing an empty payload. Furthermore, the defined composition levels can be returned as part of the meta object in the response body.
 
@@ -1462,7 +1471,7 @@ The response of such a request is:
     }
     ```
 
-## Custom Attribution REMOVE
+### REMOVE
 
 Filtered data can be removed using the remove endpoint.
 
@@ -1525,9 +1534,9 @@ Field | Description | Data type | Example | Required
 `cache_fund_count` | The number of fund instruments that the client has provided custom attribution data for. | `integer` | 2 | yes
 `cache_date_count` | The number of dates that the client has provided attribution data for. | `integer` | 3 | yes
 
-## Custom Attribution CLEAR
+### CLEAR
 
-The entire custom attribution data cache can be removed in one go with the clear endpoint.
+All custom attribution data can be removed in one go with the clear endpoint.
 
 === "Curl Request"
 
@@ -1551,3 +1560,318 @@ The entire custom attribution data cache can be removed in one go with the clear
     X-Api-Key: $IVS_API_SECRET
     ```
 
+## Custom Exchange Rates POST
+
+Exchange rates data consist of historical exchange rates versus a provided base currency, which are used to convert other timeseries such as prices from their currency onto a single currency. Using this endpoint, a client can upload timeseries data for all exchange rates against a provided base currency.
+
+The endpoint accepts a batch of currencies at once. Let us look at an example.
+
+**Overwriting existing data:** Updating can be done by providing new data values at the currency/value-level. 
+
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/batch/" \                 
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "data": [
+                {
+                    "currency": "EUR",
+                    "values": {
+                        "2020-01-01": 1.21,
+                        "2020-01-02": 1.22,
+                        "2020-01-03": 1.21,
+                        "2020-01-04": 1.20,
+                        "2020-01-05": 1.23,
+                    },
+                },
+                {
+                    "currency": "JPY",
+                    "values": {
+                        "2020-01-01": 102.3,
+                        "2020-01-02": 102.2,
+                        "2020-01-03": 103.1,
+                        "2020-01-04": 104.5,
+                        "2020-01-05": 102.9,
+                    },
+                },
+            ],
+            "base_currency": "USD",
+        },'
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/exchange-rates/batch/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    Content-Type: application/json
+    accept: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+
+    {
+        "data": [
+            {
+                "currency": "EUR",
+                "values": {
+                    "2020-01-01": 1.21,
+                    "2020-01-02": 1.22,
+                    "2020-01-03": 1.21,
+                    "2020-01-04": 1.20,
+                    "2020-01-05": 1.23,
+                },
+            },
+            {
+                "currency": "JPY",
+                "values": {
+                    "2020-01-01": 102.3,
+                    "2020-01-02": 102.2,
+                    "2020-01-03": 103.1,
+                    "2020-01-04": 104.5,
+                    "2020-01-05": 102.9,
+                },
+            },
+        ],
+        "base_currency": "USD",
+    }
+
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`data` | A list that holds a currency data object for each provided currency. | `list` |  | yes
+`base_currency` | The ISO of the base currency. This is the currency against which all exchange rates will be denoted. Once a base currency is chosen, it can not be changed in subsequent uploads, i.e., it is assumed that the base currency is fixed for a tenant. | `string` | "USD" | yes
+`currency` | The ISO of the currency. | `string` | "EUR" | yes
+`values` | An object holding the exchange rate data for the currency against the base currency. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float.  | `object[str, float]` | `{"2022-03-07": 102, "1656337622": 102}` | yes
+
+After uploading data, we get a response back:
+
+=== "Response (Body Content JSON)"
+```JSON
+{
+  "data": {
+    "cache_instrument_count": 2,
+    "cache_date_count": 3
+  }
+}
+```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`data` | Holds information about the current database. | `object` |  | yes
+`cache_instrument_count` | The number of currencies for which the client has provided custom exchane rate data. | `integer` | 2 | yes
+`cache_date_count` | The number of different dates for which the client has provided exchange rate data, over all currencies. | `integer` | 3 | yes
+
+To overwrite data for one or more currencies on specific dates, simply provide the data for these currencies on the dates to overwrite again.
+
+Also note that trying to upload data with a different base currency than the one alrady present in the cache will throw an error.
+
+## Custom Exchange Rate QUERY
+
+You can query the uploaded exchange rate data using the query endpoint. A filter can be provided, or the entire cache can be returned. Furthermore, the base currency for which the exchange rate data has been uploaded previously can be returned as part of the payload as well.
+
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/query/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "currencies": ["EUR", "JPY"],
+            "start_date": "2020-01-01",
+            "end_date": "2020-01-05",
+            "include_base_currency_meta": True
+        }'
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/exchange-rates/query/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+
+    {
+        "currencies": ["EUR", "JPY"],
+        "start_date": "2020-01-01",
+        "end_date": "2020-01-05",
+        "include_base_currency_meta": True
+    }
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`currencies` | A list of the IDs of the currencies. | `list` | ["EUR"] | no
+`start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
+`end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
+`include_base_currency_meta` | Whether to include the base currency of the uploaded exchange rates. | `bool` | True | no
+
+The response of such a request is:
+
+=== "Response (Body Content JSON)"
+
+    ```JSON
+    {
+        "data": {
+            "EUR": {
+                "2022-03-07": 1.21,
+                "2022-03-08": 1.22,
+                "2022-03-09": 1.21
+            },
+            ...
+        },
+        "meta": {
+            "base_currency": "USD"
+        }
+    }
+    ```
+
+## Custom Exchange Rate Meta QUERY
+
+You can query the meta data for the custom uploaded exchange rates data. Currently this only contains the base currency of the values uploaded.
+
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/meta/query/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{}'
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/exchange-rates/meta/query/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+
+    {
+    }
+    ```
+
+The response of such a request is:
+
+=== "Response (Body Content JSON)"
+
+    ```JSON
+    {
+        "data": {},
+        "meta": {
+            "base_currency": "USD"
+        }
+    }
+    ```
+
+## Custom Exchange Rates REMOVE
+
+Filtered data can be removed using the remove endpoint.
+
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/remove/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" \
+    -d '{
+            "start_date": "2020-01-03",
+            "end_date": "2020-01-05",
+            "currencies": ["EUR"]
+        }'
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/exchange-rates/remove/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+
+    {
+        "start_date": "2020-01-03",
+        "end_date": "2020-01-05",
+        "currencies": ["EUR"]
+    }
+    ```
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`currencies` | A list of the IDs of the instruments. | `list` | ["EUR"] | no
+`start_date` | The start date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
+`end_date` | The end date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
+
+Only the date ranges provided for the currencies provided will be removed (it is an AND relation). At least one filter must be provided.
+
+After removing data, we get a response back:
+
+=== "Response (Body Content JSON)"
+```JSON
+{
+  "data": {
+    "cache_instrument_count": 2,
+    "cache_field_count": 3
+  }
+}
+```
+
+This gives information on how much data is left in the cache.
+
+Field | Description | Data type | Example | Required
+----- | ----------- | --------- | ------- | --------
+`data` | Holds information about the current database. | `object` |  | yes
+`cache_instrument_count` | The number of currencies that the client has provided custom reference data for. | `integer` | 2 | yes
+`cache_field_count` | The number of different fields that the client has provided reference data for, over all instruments. | `integer` | 3 | yes
+
+## Custom Exchange Rates CLEAR
+
+All custom exchange rates data can be removed in one go with the clear endpoint.
+
+=== "Curl Request"
+
+    ```bash
+    curl -X "POST" \
+    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/clear/" \
+    -H "accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "X-TENANT-ID: $TENANT_ID" \
+    -H "X-Api-Key: $IVS_API_SECRET" 
+    -d '{
+        }'
+    ```
+
+=== "HTTP Request"
+
+    ```HTTP
+    POST /data/custom/exchange-rates/clear/ HTTP/1.1
+    Host: api.data.uat.investsuite.com
+    accept: application/json
+    Content-Type: application/json
+    X-TENANT-ID: $TENANT_ID
+    X-Api-Key: $IVS_API_SECRET
+
+    {
+    }
+    ```
