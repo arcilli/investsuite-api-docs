@@ -80,7 +80,7 @@ markdown_extensions:
   - plantuml_markdown: # See https://github.com/mikitex70/plantuml-markdown
       server: http://www.plantuml.com/plantuml  # PlantUML server, for remote rendering
       # other global options
-      # cachedir: /tmp                            # set a non-empty value to enable caching
+      cachedir: /tmp                            # set a non-empty value to enable caching
       base_dir: .                               # where to search for diagrams to include
       format: svg_inline                               # default diagram image format
       classes: class1,class2                    # default diagram classes
