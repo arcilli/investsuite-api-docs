@@ -1084,6 +1084,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-post" class="md-nav__link">
+    Custom Exchange Rates POST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rate-query" class="md-nav__link">
+    Custom Exchange Rate QUERY
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rate-meta-query" class="md-nav__link">
+    Custom Exchange Rate Meta QUERY
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-remove" class="md-nav__link">
+    Custom Exchange Rates REMOVE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-clear" class="md-nav__link">
+    Custom Exchange Rates CLEAR
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1498,6 +1533,41 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-post" class="md-nav__link">
+    Custom Exchange Rates POST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rate-query" class="md-nav__link">
+    Custom Exchange Rate QUERY
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rate-meta-query" class="md-nav__link">
+    Custom Exchange Rate Meta QUERY
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-remove" class="md-nav__link">
+    Custom Exchange Rates REMOVE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-exchange-rates-clear" class="md-nav__link">
+    Custom Exchange Rates CLEAR
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1522,12 +1592,11 @@
 <p>InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page. This then takes precedence on the data from the provider.</p>
 <p>The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:</p>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">Custom Reference Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">Custom Reference CSV Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post">Custom Timeseries Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_composition_batch_data_custom_composition_batch__post">Custom Composition Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_composition_timeseries_batch_data_custom_composition_timeseries_batch__post">Custom Composition Timeseries Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#operation/create_attribution_batch_data_custom_attribution_batch__post">Custom Attribution Model Docs</a></li>
+<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Reference">Custom Reference Model Docs</a></li>
+<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Timeseries">Custom Timeseries Model Docs</a></li>
+<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition">Custom Composition Model Docs</a></li>
+<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition-Timeseries">Custom Composition Timeseries Model Docs</a></li>
+<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Attribution">Custom Attribution Model Docs</a></li>
 </ul>
 <p>The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.</p>
 <h2 id="custom-reference">Custom Reference<a class="headerlink" href="#custom-reference" title="Permanent link">&para;</a></h2>
@@ -1868,7 +1937,7 @@
 </tbody>
 </table>
 <h3 id="clear">CLEAR<a class="headerlink" href="#clear" title="Permanent link">&para;</a></h3>
-<p>The entire custom data cache can be removed in one go with the clear endpoint.</p>
+<p>All custom reference data can be removed in one go with the clear endpoint.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Curl Request</label><label for="__tabbed_7_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2495,7 +2564,7 @@ US0378331005,US,APPLE,1
 </tbody>
 </table>
 <h3 id="clear_1">CLEAR<a class="headerlink" href="#clear_1" title="Permanent link">&para;</a></h3>
-<p>The entire custom data cache for a timeseries type can be removed in one go with the clear endpoint.</p>
+<p>All custom timeseries data for a timeseries type can be removed in one go with the clear endpoint.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Curl Request</label><label for="__tabbed_19_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2987,7 +3056,7 @@ If you require composition data over different points in time (timeseries) use <
 </tbody>
 </table>
 <h3 id="clear_2">CLEAR<a class="headerlink" href="#clear_2" title="Permanent link">&para;</a></h3>
-<p>The entire custom composition data cache can be removed in one go with the clear endpoint.</p>
+<p>All custom composition data can be removed in one go with the clear endpoint.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="28:2"><input checked="checked" id="__tabbed_28_1" name="__tabbed_28" type="radio" /><input id="__tabbed_28_2" name="__tabbed_28" type="radio" /><div class="tabbed-labels"><label for="__tabbed_28_1">Curl Request</label><label for="__tabbed_28_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3445,7 +3514,7 @@ If you require composition data over different points in time (timeseries) use <
 </tbody>
 </table>
 <h3 id="clear_3">CLEAR<a class="headerlink" href="#clear_3" title="Permanent link">&para;</a></h3>
-<p>The entire custom composition timeseries data cache can be removed in one go with the clear endpoint.</p>
+<p>All custom composition timeseries data can be removed in one go with the clear endpoint.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="35:2"><input checked="checked" id="__tabbed_35_1" name="__tabbed_35" type="radio" /><input id="__tabbed_35_2" name="__tabbed_35" type="radio" /><div class="tabbed-labels"><label for="__tabbed_35_1">Curl Request</label><label for="__tabbed_35_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3828,7 +3897,7 @@ If you require composition data over different points in time (timeseries) use <
 </tbody>
 </table>
 <h3 id="clear_4">CLEAR<a class="headerlink" href="#clear_4" title="Permanent link">&para;</a></h3>
-<p>The entire custom attribution data cache can be removed in one go with the clear endpoint.</p>
+<p>All custom attribution data can be removed in one go with the clear endpoint.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="42:2"><input checked="checked" id="__tabbed_42_1" name="__tabbed_42" type="radio" /><input id="__tabbed_42_2" name="__tabbed_42" type="radio" /><div class="tabbed-labels"><label for="__tabbed_42_1">Curl Request</label><label for="__tabbed_42_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3847,6 +3916,461 @@ If you require composition data over different points in time (timeseries) use <
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="custom-exchange-rates-post">Custom Exchange Rates POST<a class="headerlink" href="#custom-exchange-rates-post" title="Permanent link">&para;</a></h2>
+<p>Exchange rates data consist of historical exchange rates versus a provided base currency, which are used to convert other timeseries such as prices from their currency onto a single currency. Using this endpoint, a client can upload timeseries data for all exchange rates against a provided base currency.</p>
+<p>The endpoint accepts a batch of currencies at once. Let us look at an example.</p>
+<p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the currency/value-level. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="43:2"><input checked="checked" id="__tabbed_43_1" name="__tabbed_43" type="radio" /><input id="__tabbed_43_2" name="__tabbed_43" type="radio" /><div class="tabbed-labels"><label for="__tabbed_43_1">Curl Request</label><label for="__tabbed_43_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/batch/&quot;</span> <span class="se">\ </span>                
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;data&quot;: [</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;currency&quot;: &quot;EUR&quot;,</span>
+<span class="s1">                &quot;values&quot;: {</span>
+<span class="s1">                    &quot;2020-01-01&quot;: 1.21,</span>
+<span class="s1">                    &quot;2020-01-02&quot;: 1.22,</span>
+<span class="s1">                    &quot;2020-01-03&quot;: 1.21,</span>
+<span class="s1">                    &quot;2020-01-04&quot;: 1.20,</span>
+<span class="s1">                    &quot;2020-01-05&quot;: 1.23,</span>
+<span class="s1">                },</span>
+<span class="s1">            },</span>
+<span class="s1">            {</span>
+<span class="s1">                &quot;currency&quot;: &quot;JPY&quot;,</span>
+<span class="s1">                &quot;values&quot;: {</span>
+<span class="s1">                    &quot;2020-01-01&quot;: 102.3,</span>
+<span class="s1">                    &quot;2020-01-02&quot;: 102.2,</span>
+<span class="s1">                    &quot;2020-01-03&quot;: 103.1,</span>
+<span class="s1">                    &quot;2020-01-04&quot;: 104.5,</span>
+<span class="s1">                    &quot;2020-01-05&quot;: 102.9,</span>
+<span class="s1">                },</span>
+<span class="s1">            },</span>
+<span class="s1">        ],</span>
+<span class="s1">        &quot;base_currency&quot;: &quot;USD&quot;,</span>
+<span class="s1">    },&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-01&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-02&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.22</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-03&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-04&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.20</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-05&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.23</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-01&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">102.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-02&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">102.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-03&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">103.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-04&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">104.5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;2020-01-05&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">102.9</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>A list that holds a currency data object for each provided currency.</td>
+<td><code>list</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>base_currency</code></td>
+<td>The ISO of the base currency. This is the currency against which all exchange rates will be denoted. Once a base currency is chosen, it can not be changed in subsequent uploads, i.e., it is assumed that the base currency is fixed for a tenant.</td>
+<td><code>string</code></td>
+<td>"USD"</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td>The ISO of the currency.</td>
+<td><code>string</code></td>
+<td>"EUR"</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>values</code></td>
+<td>An object holding the exchange rate data for the currency against the base currency. The keyword is a datestamp string with format <code>YYYY-MM-DD</code> or string Unix timestamp. The value should be a float.</td>
+<td><code>object[str, float]</code></td>
+<td><code>{"2022-03-07": 102, "1656337622": 102}</code></td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>After uploading data, we get a response back:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="44:1"><input checked="checked" id="__tabbed_44_1" name="__tabbed_44" type="radio" /><div class="tabbed-labels"><label for="__tabbed_44_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cache_date_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>Holds information about the current database.</td>
+<td><code>object</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>cache_instrument_count</code></td>
+<td>The number of currencies for which the client has provided custom exchane rate data.</td>
+<td><code>integer</code></td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>cache_date_count</code></td>
+<td>The number of different dates for which the client has provided exchange rate data, over all currencies.</td>
+<td><code>integer</code></td>
+<td>3</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>To overwrite data for one or more currencies on specific dates, simply provide the data for these currencies on the dates to overwrite again.</p>
+<p>Also note that trying to upload data with a different base currency than the one alrady present in the cache will throw an error.</p>
+<h2 id="custom-exchange-rate-query">Custom Exchange Rate QUERY<a class="headerlink" href="#custom-exchange-rate-query" title="Permanent link">&para;</a></h2>
+<p>You can query the uploaded exchange rate data using the query endpoint. A filter can be provided, or the entire cache can be returned. Furthermore, the base currency for which the exchange rate data has been uploaded previously can be returned as part of the payload as well.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="45:2"><input checked="checked" id="__tabbed_45_1" name="__tabbed_45" type="radio" /><input id="__tabbed_45_2" name="__tabbed_45" type="radio" /><div class="tabbed-labels"><label for="__tabbed_45_1">Curl Request</label><label for="__tabbed_45_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/query/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;currencies&quot;: [&quot;EUR&quot;, &quot;JPY&quot;],</span>
+<span class="s1">        &quot;start_date&quot;: &quot;2020-01-01&quot;,</span>
+<span class="s1">        &quot;end_date&quot;: &quot;2020-01-05&quot;,</span>
+<span class="s1">        &quot;include_base_currency_meta&quot;: True</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;currencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;EUR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;JPY&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-01-05&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;include_base_currency_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>currencies</code></td>
+<td>A list of the IDs of the currencies.</td>
+<td><code>list</code></td>
+<td>["EUR"]</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>The start date of the date range to query, provided as a string of the format <code>YYYY-MM-DD</code>.</td>
+<td><code>str</code></td>
+<td>"2022-03-07"</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>The end date of the date range to query, provided as a string of the format <code>YYYY-MM-DD</code>.</td>
+<td><code>str</code></td>
+<td>"2022-03-09"</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>include_base_currency_meta</code></td>
+<td>Whether to include the base currency of the uploaded exchange rates.</td>
+<td><code>bool</code></td>
+<td>True</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>The response of such a request is:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="46:1"><input checked="checked" id="__tabbed_46_1" name="__tabbed_46" type="radio" /><div class="tabbed-labels"><label for="__tabbed_46_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;EUR&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.22</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.21</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="custom-exchange-rate-meta-query">Custom Exchange Rate Meta QUERY<a class="headerlink" href="#custom-exchange-rate-meta-query" title="Permanent link">&para;</a></h2>
+<p>You can query the meta data for the custom uploaded exchange rates data. Currently this only contains the base currency of the values uploaded.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="47:2"><input checked="checked" id="__tabbed_47_1" name="__tabbed_47" type="radio" /><input id="__tabbed_47_2" name="__tabbed_47" type="radio" /><div class="tabbed-labels"><label for="__tabbed_47_1">Curl Request</label><label for="__tabbed_47_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/meta/query/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{}&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/meta/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>The response of such a request is:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="48:1"><input checked="checked" id="__tabbed_48_1" name="__tabbed_48" type="radio" /><div class="tabbed-labels"><label for="__tabbed_48_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="custom-exchange-rates-remove">Custom Exchange Rates REMOVE<a class="headerlink" href="#custom-exchange-rates-remove" title="Permanent link">&para;</a></h2>
+<p>Filtered data can be removed using the remove endpoint.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="49:2"><input checked="checked" id="__tabbed_49_1" name="__tabbed_49" type="radio" /><input id="__tabbed_49_2" name="__tabbed_49" type="radio" /><div class="tabbed-labels"><label for="__tabbed_49_1">Curl Request</label><label for="__tabbed_49_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/remove/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+-d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;start_date&quot;: &quot;2020-01-03&quot;,</span>
+<span class="s1">        &quot;end_date&quot;: &quot;2020-01-05&quot;,</span>
+<span class="s1">        &quot;currencies&quot;: [&quot;EUR&quot;]</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-01-03&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2020-01-05&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;currencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;EUR&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>currencies</code></td>
+<td>A list of the IDs of the instruments.</td>
+<td><code>list</code></td>
+<td>["EUR"]</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>The start date of the date range to remove, provided as a string of the format <code>YYYY-MM-DD</code>.</td>
+<td><code>str</code></td>
+<td>"2022-03-07"</td>
+<td>no</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>The end date of the date range to remove, provided as a string of the format <code>YYYY-MM-DD</code>.</td>
+<td><code>str</code></td>
+<td>"2022-03-09"</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>Only the date ranges provided for the currencies provided will be removed (it is an AND relation). At least one filter must be provided.</p>
+<p>After removing data, we get a response back:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="50:1"><input checked="checked" id="__tabbed_50_1" name="__tabbed_50" type="radio" /><div class="tabbed-labels"><label for="__tabbed_50_1">Response (Body Content JSON)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cache_instrument_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cache_field_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>This gives information on how much data is left in the cache.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Data type</th>
+<th>Example</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>Holds information about the current database.</td>
+<td><code>object</code></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>cache_instrument_count</code></td>
+<td>The number of currencies that the client has provided custom reference data for.</td>
+<td><code>integer</code></td>
+<td>2</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>cache_field_count</code></td>
+<td>The number of different fields that the client has provided reference data for, over all instruments.</td>
+<td><code>integer</code></td>
+<td>3</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="custom-exchange-rates-clear">Custom Exchange Rates CLEAR<a class="headerlink" href="#custom-exchange-rates-clear" title="Permanent link">&para;</a></h2>
+<p>All custom exchange rates data can be removed in one go with the clear endpoint.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="51:2"><input checked="checked" id="__tabbed_51_1" name="__tabbed_51" type="radio" /><input id="__tabbed_51_2" name="__tabbed_51" type="radio" /><div class="tabbed-labels"><label for="__tabbed_51_1">Curl Request</label><label for="__tabbed_51_2">HTTP Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/clear/&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-d <span class="s1">&#39;{</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
+<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
