@@ -2,11 +2,17 @@
 title: Funding and withdrawal
 ---
 
-There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: you or InvestSuite), and (3) the selected product (Robo Advisor or Self Investor) you undertake one or several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a user notification. Below we describe in detail which actions to take, and which ones are taken on your behalf depending on the scenario.
+There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: the Client or InvestSuite), and (3) the product (Robo Advisor or Self Investor) the Client Middleware performs several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a notification. Below we describe in detail which actions to take, and which ones InvestSuite takes depending on the scenario.
 
+For **Robo Advisor**, the Funding/Withdrawal process and the [Rebalancing process](../robo/rebalancing.md) are closely related:
+
+- A *funding* triggers Optimizer, which will generate an Optimization, which will (during rebalancing) *invest the cash*;
+- A *withdrawal* triggers Optimizer, which will generate an Optimisation, which will (during rebalancing) *divest instruments and free up cash*.
+
+If you are looking to design/build a middleware that handles both, we recommend to have a look at our [example middleware design](middleware.md).
+
+For **Self Investor**, the Funding/Withdrawal process is more straightforward, as the Customer is responsible for investing/freeing up cash.
 ## Funding
-
-Funding a portfolio requires you to perform just one, or four steps depending on whether you or InvestSuite is integrated with the broker.
 
 ### Broker integration by InvestSuite
 
@@ -14,12 +20,15 @@ Funding a portfolio requires you to perform just one, or four steps depending on
 
     Applies to Robo Advisor, Self Investor
 
+!!! info
+
+    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
+
 1. The **Client Middleware** notifies InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
-2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount.
-3. **InvestSuite** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field.
-4. Once the Transaction is settled at the broker, **InvestSuite** updates the Portfolio's cash holding and the Transaction status.
-5. If this is the first funding, **InvestSuite** sets the `funded_since` field.
-6. **InvestSuite** creates a notification to be sent to the client.
+2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings and up to date (asynchronously).
+3. If this is the first funding, **InvestSuite** sets the `funded_since` field.
+4. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
+5. **InvestSuite** sends a notification to the Customer.
 
 ### Broker integration by the Client
 
@@ -28,477 +37,189 @@ Funding a portfolio requires you to perform just one, or four steps depending on
     Applies to Robo Advisor
 
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
-2. The **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
+2. Optionally, the **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
 3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED` (see [here](../concepts/transactions.md#order-settled)).
 4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)).
-5. Only if this is the first funding, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
-6. The **Client Middleware** call `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
-7. **InvestSuite** creates a notification to be sent to the client.
+5. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
+6. If the Portfolio was not yet marked as funded, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
+7. The **Client Middleware** calls `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
+8. **InvestSuite** sends a notification to the Customer.
 
 ```plantuml
-    actor "Customer" as _c
+    actor "Customer" as _cus
     participant "InvestSuite" as _ivs
-    participant "Bank with\nClient Middleware" as _clt
+    participant "Client Middleware" as _cmw
     participant "Broker/Custodian" as _bc
+    participant "Core Banking System" as _cbs
         
-    _c -> _clt: Customer funds his investor account
-    _clt -> _bc:1. Move cash\nfrom bank's home account to\ncustomer's subaccount
-    _bc --> _clt: external_id
-    _clt -> _ivs:2. POST /portfolio/{id}/transactions/ with \n- type: CASH_DEPOSIT\n- status: PENDING\n- external_id
-    _ivs --> _clt: response
-    _clt -> _clt: Store response for future use
-    _bc ->(1) _clt: Transaction SETTLED
-    _clt -> _ivs:3. PATCH /portfolio/{id}/transactions/{id}/ with \n- status: SETTLED
-    _ivs --> _clt: response
-    _clt -> _clt: Store response for future use
-    _clt -> _ivs:4. PATCH /portfolio Holdings
-    _ivs -->_clt:response
-    opt if response.funded_since == null
-    _clt -> _ivs:5. PATCH /portfolio funded_since
+    _cus -> _cbs: Customer funds his investor account
+    _cbs -> _cmw: Funding event
+    _cmw -> _bc:1. Move cash\nfrom bank's home account to\ncustomer's subaccount
+    _bc --> _cmw: external_id
+    opt
+        _cmw -> _ivs:2. POST /portfolio/{id}/transactions/ with \n- type: CASH_DEPOSIT\n- status: PENDING\n- external_id
+        _ivs --> _cmw: response
+        _cmw -> _cmw: Store response for future use
     end
-    _clt -> _ivs: 5. POST /events/deposit
-    _ivs -> _c: 6. Notification
+    _bc ->(1) _cmw: Transaction SETTLED
+    _cmw -> _ivs:3. PATCH /portfolio/{id}/transactions/{id}/ with \n- status: SETTLED
+    _ivs --> _cmw: response
+    _cmw -> _cmw: Store response for future use
+    _cmw -> _ivs: 4. PATCH /portfolio Holdings
+    _ivs -> _ivs: 5. Trigger Optimizer (asynchronously)
+    _ivs -->_cmw:response
+    opt if response.funded_since == null
+    _cmw -> _ivs: 6. PATCH /portfolio funded_since
+    end
+    _cmw -> _ivs: 7. POST /events/deposit
+    _ivs -> _cus: 8. Notification
 ```
 
 ## Withdrawal
 
 ### Robo Advisor
 
-Cash withdrawal for Robo Advisor involves two phases:
-
-1. Reserve the amount to be withdrawn by setting that amount in the portfolio `divest_amount` field. As such the amount is reserved and cannot be used for investing. Then you transfer the money from the user's account in your system to the `counter_account` saved in the user object referred to from `Portfolio->owned_by_user_id`.
-2. When the money has in fact been withdrawn from the customer's account in your banking system, you alert InvestSuite by issuing `POST /events/withdraw/`. We then update the cash position, put the `divest_amount` field back to `null` and publish a notification event to the message broker to notify the user via front-end channels.
-
-!!! Warning
-    In certain cases the instruction to withdraw money comes from the front-end. It is the front-end integration that updates the `divest_amount` field, not your integration (remember: this API is designed for backend-to-backend communication). Still, it is you that has to transfer the cash from the user's account to the counter account. In that case you listen to our event queue to trigger such transfer. See diagram below.
-
 #### Broker integration by InvestSuite
 
-Steps to take when the clients issues an instruction to withdraw funds, and InvestSuite places sell orders to free up cash:
+!!! info
 
-1. **You** (or InvestSuite in case the app is managed by InvestSuite) update the portfolio `divest_amount` by issuing a PATCH request against `/portfolios/{portfolioId}` when the client sets a divest amount in the app. **See below**: Set divest amount.
-2. **InvestSuite** asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.
-3. In case of a advisory mandate (as opposed to a discretionary mandate, see [Portfolio creation](/common_scenarios/account_initiation/#create-a-portfolio)) the user confirms the sell orders. The confirmation is registered in the `owner_choice` field of the Optimization object.
-4. **InvestSuite** places the sell orders at the broker.
-5. **InvestSuite** updates the portfolio's cash holding on successful reception of settled transactions from the broker.
-6. **InvestSuite** updates the divest amount to `0`.
-7. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-8. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
-9.  **InvestSuite** puts the message on a queue to send a push notification to the client.
+    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
+ 
+1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
+3. In case of an advisory mandate the **Customer** confirms the Optimizaton. The confirmation is registered in the `owner_choice` field of the Optimization object.
+4. If there is sufficient cash in the Portfolio:
+      1. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions, Portfolio Holdings and the `divest_amount` up to date (asynchronously). 
+      2. The **Core Banking System** transfers the cash to the customer's `counter_account`.
+      3. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
+      4.  **InvestSuite** sends a notification to the Customer.
+5.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
 
-!!! Info
-    As trigger to transfer the freed up cash you use the input from the broker, for instance be parsing end-of-day files.
-
-**1. Set divest amount**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "manager": {
-            "manager_settings": {
-                "divest_amount": 500
-            }
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "manager": {
-                "manager_settings": {
-                    "divest_amount": 500
-                }
-            }
-        }'
-    ```
-
-**7. Get counter account**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    GET /users/U01234567890123456789012345/ HTTP/1.1
-    Host: api.investsuite.com
-    Accept: application/json
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request GET 'https://api.sandbox.investsuite.com/users/U01234567890123456789012345/' \
-    --header 'Authorization: Bearer {string}' \
-    ```
-**Response body**
-
-```JSON
-{
-    "external_id": "unique_external_entity_id",
-    "first_name": "Ashok",
-    "last_name": "Kumar",
-    "email": "ashok.kumar@example.com",
-    "phone": "+12345667",
-    "counter_account": {
-        "bank_account_number": "BE01234567891234",
-        "bank_account_number_type": "IBAN",
-        "bank_id": "IDQMIE2D",
-        "bank_id_type": "BIC"
-    },
-    "id": "U01234567890123456789012345",
-    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version": 1,
-    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-    "deleted": false,
-}
+```plantuml
+    actor "Customer" as _cus
+    participant "InvestSuite" as _ivs
+    participant "Client Middleware" as _cmw
+    participant "Broker/Custodian" as _bc
+    participant "Core Banking System" as _cbs
+    
+    _cus->_ivs:1. Request withdrawal
+    _ivs->_ivs:2. Trigger Optimizer (asynchronously)
+    opt if Advisory mandate and insufficient cash
+        _cus->_ivs:3. Confirm Optimization
+    end
+    _ivs -> _bc: 4. Get available cash in Portfolio
+    alt Sufficient Cash (divest_amount <= cash>)
+        _ivs -> _bc: 5a. Move cash from customer's subaccount to bank's home account
+        opt This depends on how the Bank and the Broker are integrated
+            _bc -> _cbs: Respond to cash movements
+            _cbs -> _cbs: 5b. Execute cash transfer\nto the Customer's counter account
+            _cbs -> _cmw: Cash transfer EXECUTED
+        end
+        _cmw -> _ivs: 5c. POST /events/withdraw
+        _cus <-_ivs: 5d. Notification
+    else Insufficient Cash
+        note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
+    end
 ```
-**8. Notify InvestSuite on successful cash transfer**
 
-=== "HTTP"
+#### Broker integration by the Client (Event driven)
 
-    ```HTTP
-    POST /events/withdraw/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
+1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
+3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
+4. The `portfolio.withdrawal-request` event is fired (see [here](../concepts/events.md#withdrawal-request)).
+5. (Recommended) the **Client Middleware** stores the divest_amount value from the event, as it will be required later in this and other processes. This avoids an additional API call.
+6. If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):
+      1. The **Client Middleware** instructs the **Core Banking System** to execute the cash transfer.
+      2. The **Client Middleware** creates a Transaction, type CASH, status SETTLED, and a negative quantity (see [here](../concepts/transactions.md#withdrawal)).
+      3. The **Client Middleware** sets the `divest_amount` to 0, indicating there is no more cash to divest (see [here](../concepts/portfolios.md#set-divest-amount)).
+      4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
+      5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
+      6. **InvestSuite** sends a notification to the Customer.
+7.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
 
-    {
-        "data": {
-            "amount": "1000",
-            "currency": "USD",
-            "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-        }
-    }
 
-    ```
+```plantuml
+    actor "Customer" as _cus
+    participant "InvestSuite" as _ivs
+    participant "Client Middleware" as _cmw
+    participant "Broker/Custodian" as _bc
+    participant "Core Banking System" as _cbs
 
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/events/withdraw/' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer {string}' \
-    --data-raw '{
-                    "data": {
-                        "amount": "1000",
-                        "currency": "USD",
-                        "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-                    }
-                }'
-    ```
-
-#### Broker integration by the Client
-
-Steps to take when the clients issues an instruction to withdraw funds, and you as the Client are in charge of the integration with the broker:
-
-1. **You** (or InvestSuite in case the app is managed by InvestSuite) update the portfolio `divest_amount` by issuing a PATCH request against `/portfolios/{portfolioId}` when the client sets a divest amount in the app. **See below**: Set divest amount.
-<!-- TODO the withdrawal request event is fired -->
-2. **InvestSuite** asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.
-<!-- TODO the optimisations.status-update event is fired -->
-<!-- if event -> GET PORTFOLIO. If cash holidings >= divest amount, execute the transfer / patch holdings / post transactions. If not - wait. -->
-3. In case of a advisory mandate (as opposed to a discretionary mandate, see [Portfolio creation](/common_scenarios/account_initiation/#create-a-portfolio)) the user confirms the sell orders. The confirmation is registered in the `owner_choice` field of the Optimization object.
-4. **You** place the sell orders at the broker.
-5. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.
-6. **You** notify InvestSuite that the payment has occurred. **See below**: Notify InvestSuite on successful cash transfer.
-7. **InvestSuite** puts the message on a queue to send a push notification to the client.
-8.  **You** create a `SETTLED` transaction, referring to the transaction ID created by the broker in the `external_id` attribute. **See below**: Create transaction.
-9.  **You** update the portfolio's cash position. **See below**: Update cash position.
-10. **You** reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  **See below**: Reset divest amount.
-
-**1. Set divest amount**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "manager": {
-            "manager_settings": {
-                "divest_amount": 500
-            }
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "manager": {
-                "manager_settings": {
-                    "divest_amount": 500
-                }
-            }
-        }'
-    ```
-
-**5. Get counter account**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    GET /users/U01234567890123456789012345/ HTTP/1.1
-    Host: api.investsuite.com
-    Accept: application/json
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request GET 'https://api.sandbox.investsuite.com/users/U01234567890123456789012345/' \
-    --header 'Authorization: Bearer {string}' \
-    ```
-**Response body**
-
-```JSON
-{
-    "external_id": "unique_external_entity_id",
-    "first_name": "Ashok",
-    "last_name": "Kumar",
-    "email": "ashok.kumar@example.com",
-    "phone": "+12345667",
-    "counter_account": {
-        "bank_account_number": "BE01234567891234",
-        "bank_account_number_type": "IBAN",
-        "bank_id": "IDQMIE2D",
-        "bank_id_type": "BIC"
-    },
-    "id": "U01234567890123456789012345",
-    "creation_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version": 1,
-    "version_datetime": "2021-06-24T19:59:15.474241+00:00",
-    "version_authored_by_portfolio_id": "U01EJQSYGYQJJ5GNFM4ZXW59Q0X",
-    "deleted": false,
-}
+    _cus->_ivs:1. Request withdrawal
+    _ivs->_ivs:2. Trigger Optimizer (asynchronously)
+    opt if Advisory mandate and insufficient cash
+        _cus->_ivs:3. Confirm Optimization
+    end
+    _ivs->_cmw: 4. portfolio.withdrawal event\n(NOTE this actually happens in parallel with #2)
+    _cmw -> _cmw: 5. Save divest_amount for future use
+    _cmw -> _cbs: 6. Get available cash in Portfolio
+    alt Sufficient Cash (divest_amount <= cash>)
+        _cmw -> _cbs: 6a. Execute cash transfer
+        _cmw -> _ivs: 6b. Create cash transaction\nPOST /portfolios/{id}/transaction with\n- Type CASH\n- Status SETTLED\n- Quantity <0
+        _cmw -> _ivs: 6c. Set the divest_amount to 0\nPATCH /portfolios with\n- divest_amount 0
+        _cmw -> _ivs: 6d. Update Portfolio holdings\nPATCH /portfolios
+        _ivs <- _cmw: 6e. POST /events/withdraw
+        _cus <-_ivs: 6f. Notification
+    else Insufficient Cash
+        note right of _cmw:7. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
+    end
 ```
-**6. Notify InvestSuite on successful cash transfer**
 
-=== "HTTP"
+#### Broker integration by the Client (Batch process)
 
-    ```HTTP
-    POST /events/withdraw/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
+1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
+3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
+4. In a batch process, the **Client Middleware** gets all portfolios with pending withdrawals (see [here](../concepts/portfolios.md#get-portfolios-with-pending-withdrawals)).
+5. If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):
+      1. The **Client Middleware** instructs the **Core Banking System** to execute the cash transfer.
+      2. The **Client Middleware** creates a Transaction, type CASH, status SETTLED, and a negative quantity (see [here](../concepts/transactions.md#withdrawal)).
+      3. The **Client Middleware** sets the `divest_amount` to 0, indicating there is no more cash to divest (see [here](../concepts/portfolios.md#set-divest-amount)).
+      4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
+      5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
+      6. **InvestSuite** sends a notification to the Customer.
+6. If not, the withdrawal will be executed during the next batch job run.
 
-    {
-        "data": {
-            "amount": "1000",
-            "currency": "USD",
-            "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-        }
-    }
 
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/events/withdraw/' \
-    --header 'Content-Type: application/json' \
-    --header 'Authorization: Bearer {string}' \
-    --data-raw '{
-                    "data": {
-                        "amount": "1000",
-                        "currency": "USD",
-                        "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
-                    }
-                }'
-    ```
-
-**9. Update cash position**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "portfolio": {
-            "$USD":10000,
-            "US4642886612":0.76,
-            "US78468R1014":3,
-            "US4642863926":0.7381
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "portfolio": {
-                "$USD":10000,
-                "US4642886612":0.76,
-                "US78468R1014":3,
-                "US4642863926":0.7381
-            }
-        }'
-    ```
-
-!!! Warning
-    Updating holdings requires you to **provide the complete overview of positions**. In other words, if you update an invested portfolio
-    with only `"portfolio": { "$USD":10000 }` InvestSuite will assume all other positions were sold.
-
-**8. Create transaction**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="11"
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
-        "movements": [
-            {
-                "type": "CASH_WITHDRAWAL",
-                "status": "SETTLED",
-                "datetime": "2021-10-06T00:00:00+00:00",
-                "instrument_id": "$USD",
-                "quantity_type": "AMOUNT",
-                "quantity": 500.0,
-            }
-        ]
-    }
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
-            "movements": [
-                {
-                    "type": "CASH_WITHDRAWAL",
-                    "status": "SETTLED",
-                    "datetime": "2021-10-06T00:00:00+00:00",
-                    "instrument_id": "$USD",
-                    "quantity_type": "AMOUNT",
-                    "quantity": 500.0,
-                }
-            ]
-        }'
-    ```
-
-**10. Reset divest amount**
-
-=== "HTTP"
-
-    ```HTTP hl_lines="1"
-    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "manager": {
-            "manager_settings": {
-                "divest_amount": 0
-            }
-        }
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "manager": {
-                "manager_settings": {
-                    "divest_amount": 0
-                }
-            }
-        }'
-    ```
+```plantuml
+    actor "Customer" as _cus
+    participant "InvestSuite" as _ivs
+    participant "Client Middleware" as _cmw
+    participant "Broker/Custodian" as _bc
+    participant "Core Banking System" as _cbs
+    
+    _cus->_ivs:1. Request withdrawal
+    _ivs->_ivs:2. Trigger Optimizer (asynchronously)
+    opt if Advisory mandate and insufficient cash
+    _cus->_ivs:3. Confirm sell
+    end
+    loop Batch process (eg. nightly)
+        _cmw -> _ivs: 4. Get portfolios with\npending withdrawals\nGET /portfolios?query=...
+        _cmw -> _cbs: 5. Get available cash in Portfolio
+        alt Sufficient Cash (divest_amount <= cash>)
+            _cmw -> _cbs: 5a. Execute cash transfer
+            _cmw -> _ivs: 5b. Create cash transaction\nPOST /portfolios/{id}/transaction with\n- Type CASH\n- Status SETTLED\n- Quantity <0
+            _cmw -> _ivs: 5c. Set the divest_amount to 0\nPATCH /portfolios with\n- divest_amount 0
+            _cmw -> _ivs: 5d. Update Portfolio holdings\nPATCH /portfolios
+            _ivs <- _cmw: 5e. POST /events/withdraw
+            _cus <-_ivs: 5f. Notification
+        else Insufficient Cash
+            note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
+        end
+    end 
+```
 
 ### Self Investor
 
-#### Saxo
+#### Broker integration by InvestSuite
 
-For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps:
+!!! info
 
-1. **InvestSuite** captures in the app the client withdraw instruction, and passes the instruction on to the broker.
-2. **You** transfer the freed up cash from the broker to the client's `counter_account` (see [here](../concepts/users.md#get-a-user)).
-3. **You** notify InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
-4. **InvestSuite** puts the message on a queue to send a push notification to the client.
+    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
 
-#### Broker/Custodian Agnostic
-
-```mermaid
-    sequenceDiagram
-
-    actor _c as Customer
-    participant _ivs as InvestSuite
-    participant _bca as Broker/Custodian Integration
-    participant _bc as Broker/Custodian
-    
-    _c ->> _ivs: Customer withdraws
-    _ivs ->> _ivs: Create cash Transaction
-    _ivs ->> _bca: TransferCash
-    activate _bca
-        _bca ->> _bc: Manage corresponding cash position
-        _bc -->> _bca: transaction_id
-        _bca -->> _ivs: transaction_id, FAILED / PLACED / CONFIRMED
-    deactivate _bca
-
-    _ivs ->> _ivs: Update cash Transaction<br>with external_id and status
-    _ivs ->> _c: Notification
-
-    loop Nightly reconciliation process
-        _ivs ->> _bca: Get updated Transactions
-        _bca ->> _bc: Get updated Transactions
-        _bc -->> _bca: List
-        _bca ->> _ivs: Update Transactions
-
-        _ivs ->> _bca: Get updated Portfolio Holdings
-        _bca ->> _bc: Get updated Portfolio Holdings
-        _bc -->> _bca: List
-        _bca ->> _ivs: Update Portfolio Holdings
-    end
-```
+1. The **Client** issues a withdrawal in the app.
+2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously).
+3. The **Core Banking System** transfers the cash to the customer's `counter_account`.
+4. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
+6. **InvestSuite** sends a notification to the Customer.
