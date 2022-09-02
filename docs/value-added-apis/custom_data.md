@@ -1558,8 +1558,6 @@ All custom attribution data can be removed in one go with the clear endpoint.
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
-<<<<<<< HEAD
-=======
     ```
 
 ## Custom Exchange Rates POST
@@ -1876,5 +1874,4 @@ All custom exchange rates data can be removed in one go with the clear endpoint.
 
     {
     }
->>>>>>> feat: add custom exchange rates docs and clarify clear endpoints
     ```
