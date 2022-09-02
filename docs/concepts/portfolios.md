@@ -29,7 +29,7 @@ This page lists all operations that can be performed on the Portfolio object, se
 <!-- Source: https://docs.google.com/spreadsheets/d/1_b1WQl1M6H1orTxWt71RJDWs280biPth-f-1y-rVeGA/edit?pli=1#gid=0 -->
 
 
-## Create a portfolio
+## Create portfolio
 ### Minimum portfolio
 
 === "Request"
@@ -214,7 +214,7 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 
 Explore the 'Robo Advisor Managed portfolio settings' in `config.manager_settings` in the [API documentation](https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post) for all available options.
 
-## Get a portfolio
+## Get portfolio
 
 Add the InvestSuite ID to the path to retrieve a portfolio object.
 
@@ -260,7 +260,7 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
     }
     ```
 
-## Update a portfolio
+## Update portfolio
 
 Given the right permissions you can update any object by issuing a `PATCH` request.
 
@@ -367,6 +367,43 @@ TODO Quid if we don t do it? -->
     {
         "funded_since": "2021-02-18T08:21:02+00:00"
     }
+    ```
+
+### Set divest amount
+
+=== "HTTP"
+
+    ```HTTP hl_lines="1"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "manager": {
+            "manager_settings": {
+                "divest_amount": 500
+            }
+        }
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "manager": {
+                "manager_settings": {
+                    "divest_amount": 500
+                }
+            }
+        }'
     ```
 
 ### Transactions
@@ -540,7 +577,7 @@ Field | Description | Data type | Example | Required
 `brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
 `payment_reference` | Needed when all customers need to wire money to the same bank account | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")`  |  | no
 
-### Block a portfolio
+### Block portfolio
 
 Portfolio access can be blocked:
 
@@ -577,7 +614,7 @@ Portfolio access can be blocked:
     https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```
 
-## Delete a portfolio
+## Delete portfolio
 
 Given the right permissions you can delete any object by issuing a `DELETE` request.
 
@@ -628,12 +665,16 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](entities.md#querying-business-objects) section.
 
+### Get portfolios with external_id
+
 === "Request"
 
-    ```HTTP hl_lines="2"
-    GET /portfolios/
-        ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
+    ```HTTP hl_lines="1"
+    GET /portfolios/?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
     Authorization: Bearer {string}
     ```
 
@@ -668,4 +709,19 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
         "deleted":false,
         "status":"WAITING_FOR_FUNDS"
     }
+    ```
+
+### Get portfolios with pending withdrawals
+
+Get the Portfolios where the `divest_amount` > 0
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /portfolios/query=config.manager_settings.divest_amount+lt+0 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
     ```
