@@ -361,7 +361,7 @@ Fully qualified name: `reports.status-update`
 
 !!! info
 
-    Not to be confused with the withdrawal requested event
+    Not to be confused with the [withdrawal requested event](#withdrawal-request).
 
 === "HTTP"
 
