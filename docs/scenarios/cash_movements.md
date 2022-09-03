@@ -83,7 +83,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
 !!! info
 
-    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
+    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
  
 1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
@@ -216,7 +216,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
 !!! info
 
-    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
+    We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
 
 1. The **Client** issues a withdrawal in the app.
 2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously).
