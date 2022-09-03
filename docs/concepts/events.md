@@ -129,21 +129,6 @@ Possible values for the value field:
 
     Applies to: Robo Advisor
 
-##### Funding
-
-Fully qualified name: `portfolios.funding`
-
-=== "Data body"
-  ```JSON
-  {
-    "id": "P01F8ZSNV0J45R9DFZ3D7D8C26F",
-    "value": 500, 
-    "currency": "EUR"
-  }
-  ```
-
-##### Withdrawal
-
 Fully qualified name: `portfolios.withdrawal`
 
 Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.
@@ -362,8 +347,6 @@ Fully qualified name: `reports.status-update`
   ```
 
 !!! warning
-  
-    We strongly suggest using the `idempotency-key` to avoid double deposits.
 
     In case of broker integration by InvestSuite, this event triggers the Funding flow.
     Therefore we strongly suggest using the `idempotency-key` to avoid double deposits if the middleware replays the event.
@@ -393,7 +376,6 @@ Fully qualified name: `reports.status-update`
           "portfolio": "P01F8ZSNV0J45R9DFZ3D7D8C26F"
       }
   }
-
   ```
 
 !!! warning
@@ -401,8 +383,6 @@ Fully qualified name: `reports.status-update`
     We strongly suggest using the `idempotency-key` to avoid double deposits.
 
 <!-- TODO actually not so bad -->
-
-
 
 ### Outbound
 
