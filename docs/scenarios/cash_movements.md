@@ -128,15 +128,14 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. The `portfolio.withdrawal-request` event is fired (see [here](../concepts/events.md#withdrawal-request)).
-5. (Recommended) the **Client Middleware** stores the divest_amount value from the event, as it will be required later in this and other processes. This avoids an additional API call.
-6. If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):
+5. If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):
       1. The **Client Middleware** instructs the **Core Banking System** to execute the cash transfer.
       2. The **Client Middleware** creates a Transaction, type CASH, status SETTLED, and a negative quantity (see [here](../concepts/transactions.md#withdrawal)).
       3. The **Client Middleware** sets the `divest_amount` to 0, indicating there is no more cash to divest (see [here](../concepts/portfolios.md#set-divest-amount)).
       4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
       5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
       6. **InvestSuite** sends a notification to the Customer.
-7.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
+6.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
 
 
 ```plantuml
@@ -151,18 +150,17 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     opt if Advisory mandate and insufficient cash
         _cus->_ivs:3. Confirm Optimization
     end
-    _ivs->_cmw: 4. portfolio.withdrawal event\n(NOTE this actually happens in parallel with #2)
-    _cmw -> _cmw: 5. Save divest_amount for future use
-    _cmw -> _cbs: 6. Get available cash in Portfolio
+    _ivs->_cmw: 4. portfolio.withdrawal event\n(NOTE this actually happens in parallel with #2)\nContains divest_amount
+    _cmw -> _cbs: 5. Get available cash in Portfolio
     alt Sufficient Cash (divest_amount <= cash>)
-        _cmw -> _cbs: 6a. Execute cash transfer
-        _cmw -> _ivs: 6b. Create cash transaction\nPOST /portfolios/{id}/transaction with\n- Type CASH\n- Status SETTLED\n- Quantity <0
-        _cmw -> _ivs: 6c. Set the divest_amount to 0\nPATCH /portfolios with\n- divest_amount 0
-        _cmw -> _ivs: 6d. Update Portfolio holdings\nPATCH /portfolios
-        _ivs <- _cmw: 6e. POST /events/withdraw
-        _cus <-_ivs: 6f. Notification
+        _cmw -> _cbs: 5a. Execute cash transfer
+        _cmw -> _ivs: 5b. Create cash transaction\nPOST /portfolios/{id}/transaction with\n- Type CASH\n- Status SETTLED\n- Quantity <0
+        _cmw -> _ivs: 5c. Set the divest_amount to 0\nPATCH /portfolios with\n- divest_amount 0
+        _cmw -> _ivs: 5d. Update Portfolio holdings\nPATCH /portfolios
+        _ivs <- _cmw: 5e. POST /events/withdraw
+        _cus <-_ivs: 5f. Notification
     else Insufficient Cash
-        note right of _cmw:7. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
+        note right of _cmw: 6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
     end
 ```
 
