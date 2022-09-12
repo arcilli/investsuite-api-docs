@@ -455,6 +455,10 @@ stateDiagram-v2
 
     See [the diagram](#update-transaction) at the top of this section to understand why.
 
+!!! warning "`movement.datetime`"
+
+    The `datetime` of the linked instrument & cash (`BUY / EXECUTED` and `SELL / EXECUTED`) must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.
+
 <!-- !!! warning
 
     The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
