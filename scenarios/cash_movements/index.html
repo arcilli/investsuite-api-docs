@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/scenarios/cash_movements/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
 
@@ -78,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#funding-a-portfolio" class="md-skip">
+        <a href="#funding" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +92,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-header__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -133,7 +137,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,14 +171,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -288,7 +286,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -610,11 +614,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#funding-a-portfolio" class="md-nav__link">
-    Funding a portfolio
+  <a href="#funding" class="md-nav__link">
+    Funding
   </a>
   
-    <nav class="md-nav" aria-label="Funding a portfolio">
+    <nav class="md-nav" aria-label="Funding">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -637,11 +641,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cash-withdrawal" class="md-nav__link">
-    Cash withdrawal
+  <a href="#withdrawal" class="md-nav__link">
+    Withdrawal
   </a>
   
-    <nav class="md-nav" aria-label="Cash withdrawal">
+    <nav class="md-nav" aria-label="Withdrawal">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -660,8 +664,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#broker-integration-by-the-client_1" class="md-nav__link">
-    Broker integration by the Client
+  <a href="#broker-integration-by-the-client-event-driven" class="md-nav__link">
+    Broker integration by the Client (Event driven)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broker-integration-by-the-client-batch-process" class="md-nav__link">
+    Broker integration by the Client (Batch process)
   </a>
   
 </li>
@@ -675,6 +686,19 @@
   <a href="#self-investor" class="md-nav__link">
     Self Investor
   </a>
+  
+    <nav class="md-nav" aria-label="Self Investor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broker-integration-by-investsuite_2" class="md-nav__link">
+    Broker integration by InvestSuite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1107,11 +1131,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#funding-a-portfolio" class="md-nav__link">
-    Funding a portfolio
+  <a href="#funding" class="md-nav__link">
+    Funding
   </a>
   
-    <nav class="md-nav" aria-label="Funding a portfolio">
+    <nav class="md-nav" aria-label="Funding">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1134,11 +1158,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cash-withdrawal" class="md-nav__link">
-    Cash withdrawal
+  <a href="#withdrawal" class="md-nav__link">
+    Withdrawal
   </a>
   
-    <nav class="md-nav" aria-label="Cash withdrawal">
+    <nav class="md-nav" aria-label="Withdrawal">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1157,8 +1181,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#broker-integration-by-the-client_1" class="md-nav__link">
-    Broker integration by the Client
+  <a href="#broker-integration-by-the-client-event-driven" class="md-nav__link">
+    Broker integration by the Client (Event driven)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#broker-integration-by-the-client-batch-process" class="md-nav__link">
+    Broker integration by the Client (Batch process)
   </a>
   
 </li>
@@ -1172,6 +1203,19 @@
   <a href="#self-investor" class="md-nav__link">
     Self Investor
   </a>
+  
+    <nav class="md-nav" aria-label="Self Investor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broker-integration-by-investsuite_2" class="md-nav__link">
+    Broker integration by InvestSuite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1188,9 +1232,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
     <h1>Funding and withdrawal</h1>
     <div class="md-source-date">
     <small>
@@ -1200,677 +1245,123 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Applicable to: Robo Advisor, Self Investor</p>
-</div>
-<p>There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: you or InvestSuite), and (3) the selected product (Robo Advisor or Self Investor) you undertake one or several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a user notification. Below we describe in detail which actions to take, and which ones are taken on your behalf depending on the scenario.</p>
-<h2 id="funding-a-portfolio">Funding a portfolio<a class="headerlink" href="#funding-a-portfolio" title="Permanent link">&para;</a></h2>
-<p>Funding a portfolio requires you to perform just one, or four steps depending on whether you or InvestSuite is integrated with the broker.</p>
+<p>There are two sorts of cash transactions: deposits (funding) and withdrawals. Depending on (1) the direction (fund, withdraw) (2) the setup with the broker (who is integrated: the Client or InvestSuite), and (3) the product (Robo Advisor or Self Investor) the Client Middleware performs several actions. These actions range from moving the money in the broker's account system, to making InvestSuite send a notification. Below we describe in detail which actions to take, and which ones InvestSuite takes depending on the scenario.</p>
+<p>For <strong>Robo Advisor</strong>, the Funding/Withdrawal process and the <a href="../../robo/rebalancing/">Rebalancing process</a> are closely related:</p>
+<ul>
+<li>A <em>funding</em> triggers Optimizer, which will generate an Optimization, which will (during rebalancing) <em>invest the cash</em>;</li>
+<li>A <em>withdrawal</em> triggers Optimizer, which will generate an Optimisation, which will (during rebalancing) <em>divest instruments and free up cash</em>.</li>
+</ul>
+<p>If you are looking to design/build a middleware that handles both, we recommend to have a look at our <a href="middleware.md">example middleware design</a>.</p>
+<p>For <strong>Self Investor</strong>, the Funding/Withdrawal process is more straightforward, as the Customer is responsible for investing/freeing up cash.</p>
+<h2 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h2>
 <h3 id="broker-integration-by-investsuite">Broker integration by InvestSuite<a class="headerlink" href="#broker-integration-by-investsuite" title="Permanent link">&para;</a></h3>
-<p>These are the steps performed to fund a portfolio, given the broker integration is handled by InvestSuite:</p>
-<ol>
-<li><strong>You</strong> notify InvestSuite that the investor account at the Bank has been funded by calling <code>POST /events/deposit/</code> (<strong>see below</strong>: Notify InvestSuite on successful deposit).</li>
-<li><strong>InvestSuite</strong> moves the cash at the broker from the bank's home account to the individual's subaccount, given there is sufficient funding in the home account.</li>
-<li><strong>InvestSuite</strong> creates a <code>PENDING</code> transaction in the InvestSuite system, referring to the transaction ID created by the broker.</li>
-<li><strong>InvestSuite</strong>, once the transaction is settled at the broker, updates the portfolio's cash holding and the transaction status.</li>
-<li><strong>InvestSuite</strong> creates a notification to be sent to the client.</li>
-</ol>
-<p><strong>1. Notify InvestSuite on successful deposit</strong></p>
-<p>Call <code>POST /events/deposit/</code> to send a notification when your customer has transferred cash into their cash account and the transaction is settled on your end.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/deposit/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/deposit/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{</span>
-<span class="s1">                &quot;data&quot;: {</span>
-<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
-<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
-<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
-<span class="s1">                }</span>
-<span class="s1">            }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="broker-integration-by-the-client">Broker integration by the Client<a class="headerlink" href="#broker-integration-by-the-client" title="Permanent link">&para;</a></h3>
-<p>These are the steps performed to fund a portfolio, given the broker integration is handled by you:</p>
-<ol>
-<li><strong>You</strong>, in the event of a successful funding of the investor account at your end, move the cash at the broker from the bank's home account to the individual's subaccount.</li>
-<li><strong>You</strong> create a <code>PENDING</code> transaction in the InvestSuite system, referring to the transaction ID created by the broker in the <code>external_id</code> attribute. <strong>See below</strong>: Create pending transaction.</li>
-<li><strong>You</strong> update the transaction changing the status to <code>SETTLED</code> once the transaction is settled at the broker. <strong>See below</strong>: Update transaction to settled.</li>
-<li><strong>You</strong> update the portfolio's cash position. <strong>See below</strong>: Update cash position.</li>
-<li><strong>You</strong> call <code>POST /events/deposit/</code>. <strong>See below</strong>: Instruct InvestSuite to send a notification.</li>
-<li><strong>InvestSuite</strong> creates a notification to be sent to the client.</li>
-</ol>
-<p><strong>2. Create pending transaction</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">HTTP</label><label for="__tabbed_2_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,</span>
-<span class="s1">        &quot;movements&quot;: [</span>
-<span class="s1">            {</span>
-<span class="s1">                &quot;type&quot;: &quot;CASH_DEPOSIT&quot;,</span>
-<span class="s1">                &quot;status&quot;: &quot;PENDING&quot;,</span>
-<span class="s1">                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;$USD&quot;,</span>
-<span class="s1">                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,</span>
-<span class="s1">                &quot;quantity&quot;: 500.0,</span>
-<span class="s1">            }</span>
-<span class="s1">        ]</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>3. Update transaction to settled</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">HTTP</label><label for="__tabbed_3_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/T01FHCP1CZ9F1S207KJHNA5V244/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;movements&quot;: [</span>
-<span class="s1">            {</span>
-<span class="s1">                &quot;status&quot;: &quot;SETTLED&quot;,</span>
-<span class="s1">            }</span>
-<span class="s1">        ]</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>4. Update cash position</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">HTTP</label><label for="__tabbed_4_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="w">  </span><span class="c1">// See warning below</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;portfolio&quot;: {</span>
-<span class="s1">            &quot;$USD&quot;:10000,</span>
-<span class="s1">            &quot;US4642886612&quot;:0.76,</span>
-<span class="s1">            &quot;US78468R1014&quot;:3,</span>
-<span class="s1">            &quot;US4642863926&quot;:0.7381</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>When the first deposit is made the <code>"funded_since"</code> field should be set, it may not be changed afterwards.
-The <code>"funded_since"</code> field constains the date and time at which the portfolio was funded with the minimal required funding amount to initialize the Robo Advisor.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Updating holdings requires you to <strong>provide the complete overview of positions</strong>. In other words, if you update an invested portfolio
-with only <code>"portfolio": { "$USD":10000 }</code> InvestSuite will assume all other positions were sold.</p>
-</div>
-<p><strong>5. Instruct InvestSuite to send a notification</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">HTTP</label><label for="__tabbed_5_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/deposit/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/deposit/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{</span>
-<span class="s1">                &quot;data&quot;: {</span>
-<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
-<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
-<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
-<span class="s1">                }</span>
-<span class="s1">            }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h2 id="cash-withdrawal">Cash withdrawal<a class="headerlink" href="#cash-withdrawal" title="Permanent link">&para;</a></h2>
-<h3 id="robo-advisor">Robo Advisor<a class="headerlink" href="#robo-advisor" title="Permanent link">&para;</a></h3>
-<p>Cash withdrawal for Robo Advisor involves two phases:</p>
-<ol>
-<li>Reserve the amount to be withdrawn by setting that amount in the portfolio <code>divest_amount</code> field. As such the amount is reserved and cannot be used for investing. Then you transfer the money from the user's account in your system to the <code>counter_account</code> saved in the user object referred to from <code>Portfolio-&gt;owned_by_user_id</code>.</li>
-<li>When the money has in fact been withdrawn from the customer's account in your banking system, you alert InvestSuite by issuing <code>POST /events/withdraw/</code>. We then update the cash position, put the <code>divest_amount</code> field back to <code>null</code> and publish a notification event to the message broker to notify the user via front-end channels.</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In certain cases the instruction to withdraw money comes from the front-end. It is the front-end integration that updates the <code>divest_amount</code> field, not your integration (remember: this API is designed for backend-to-backend communication). Still, it is you that has to transfer the cash from the user's account to the counter account. In that case you listen to our event queue to trigger such transfer. See diagram below.</p>
-</div>
-<h4 id="broker-integration-by-investsuite_1">Broker integration by InvestSuite<a class="headerlink" href="#broker-integration-by-investsuite_1" title="Permanent link">&para;</a></h4>
-<p>Steps to take when the clients issues an instruction to withdraw funds, and InvestSuite places sell orders to free up cash:</p>
-<ol>
-<li><strong>You</strong> (or InvestSuite in case the app is managed by InvestSuite) update the portfolio <code>divest_amount</code> by issuing a PATCH request against <code>/portfolios/{portfolioId}</code> when the client sets a divest amount in the app. <strong>See below</strong>: Set divest amount.</li>
-<li><strong>InvestSuite</strong> asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.</li>
-<li>In case of a advisory mandate (as opposed to a discretionary mandate, see <a href="/common_scenarios/account_initiation/#create-a-portfolio">Portfolio creation</a>) the user confirms the sell orders. The confirmation is registered in the <code>owner_choice</code> field of the Optimization object.</li>
-<li><strong>InvestSuite</strong> places the sell orders at the broker.</li>
-<li><strong>InvestSuite</strong> updates the portfolio's cash holding on successful reception of settled transactions from the broker.</li>
-<li><strong>InvestSuite</strong> updates the divest amount to <code>0</code>.</li>
-<li><strong>You</strong> transfer the freed up cash from the broker to the client's <code>counter_account</code>. <strong>See below</strong>: Get counter account.</li>
-<li><strong>You</strong> notify InvestSuite that the payment has occurred. <strong>See below</strong>: Notify InvestSuite on successful cash transfer.</li>
-<li><strong>InvestSuite</strong> puts the message on a queue to send a push notification to the client.</li>
-</ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>As trigger to transfer the freed up cash you use the input from the broker, for instance be parsing end-of-day files.</p>
+<p>Applies to Robo Advisor, Self Investor</p>
 </div>
-<p><strong>1. Set divest amount</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">HTTP</label><label for="__tabbed_6_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.</p>
 </div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;manager&quot;: {</span>
-<span class="s1">            &quot;manager_settings&quot;: {</span>
-<span class="s1">                &quot;divest_amount&quot;: 500</span>
-<span class="s1">            }</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>7. Get counter account</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">HTTP</label><label for="__tabbed_7_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>Response body</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;counter_account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE01234567891234&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDQMIE2D&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIC&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<strong>8. Notify InvestSuite on successful cash transfer</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label><label for="__tabbed_8_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/withdraw/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{</span>
-<span class="s1">                &quot;data&quot;: {</span>
-<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
-<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
-<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
-<span class="s1">                }</span>
-<span class="s1">            }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h4 id="broker-integration-by-the-client_1">Broker integration by the Client<a class="headerlink" href="#broker-integration-by-the-client_1" title="Permanent link">&para;</a></h4>
-<p>Steps to take when the clients issues an instruction to withdraw funds, and you as the Client are in charge of the integration with the broker:</p>
 <ol>
-<li><strong>You</strong> (or InvestSuite in case the app is managed by InvestSuite) update the portfolio <code>divest_amount</code> by issuing a PATCH request against <code>/portfolios/{portfolioId}</code> when the client sets a divest amount in the app. <strong>See below</strong>: Set divest amount.</li>
+<li>The <strong>Client Middleware</strong> notifies InvestSuite that the investor account at the Bank has been funded by calling <code>POST /events/deposit/</code> (see <a href="../../concepts/events/#deposit-event">here</a>).</li>
+<li><strong>InvestSuite</strong> moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings and up to date (asynchronously).</li>
+<li>If this is the first funding, <strong>InvestSuite</strong> sets the <code>funded_since</code> field.</li>
+<li>In case of Robo Advisor, this will (asynchronously) trigger Optimizer.</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
 </ol>
-<!-- TODO the withdrawal request event is fired -->
+<h3 id="broker-integration-by-the-client">Broker integration by the Client<a class="headerlink" href="#broker-integration-by-the-client" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Applies to Robo Advisor</p>
+</div>
 <ol>
-<li><strong>InvestSuite</strong> asynchronously performs a portfolio optimisation, resulting in one or more sell orders to free up cash.</li>
+<li>The <strong>Client Middleware</strong> moves the cash at the broker from the bank's home account to the individual's subaccount.</li>
+<li>Optionally, the <strong>Client Middleware</strong> creates a <code>PENDING</code> Transaction in InvestSuite, referring to the <code>transaction_id</code> of the broker in the <code>external_id</code> field (see <a href="../../concepts/transactions/#funding">here</a>).</li>
+<li>Once the Transaction is settled at the broker, the <strong>Client Middleware</strong> updates the Transaction status to <code>SETTLED</code> (see <a href="../../concepts/transactions/#order-settled">here</a>).</li>
+<li>The <strong>Client Middleware</strong> updates the portfolio's cash position (see <a href="../../concepts/portfolios/#holdings">here</a>).</li>
+<li>In case of Robo Advisor, this will (asynchronously) trigger Optimizer.</li>
+<li>If the Portfolio was not yet marked as funded, the <strong>Client Middleware</strong> also sets <code>funded_since</code> field (see <a href="../../concepts/portfolios/#funded-status">here</a>).</li>
+<li>The <strong>Client Middleware</strong> calls <code>POST /events/deposit/</code> (see <a href="../../concepts/events/#funding-deposit-event">here</a>).</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
 </ol>
-<!-- TODO the optimisations.status-update event is fired -->
-<!-- if event -> GET PORTFOLIO. If cash holidings >= divest amount, execute the transfer / patch holdings / post transactions. If not - wait. -->
+<p><svg contentStyleType="text/css" preserveAspectRatio="none" style="background:#F9F9F9" version="1.1" viewBox="0 0 953 870" width="100%" zoomAndPan="magnify" class="class1,class2" alt="uml diagram" title=""><defs /><g><rect fill="none" height="162.9297" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="597.5" x="97.5" y="245.0938" /><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="470.5" x="97.5" y="668.0859" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="43" x2="43" y1="81.2969" y2="789.6172" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="154.5" x2="154.5" y1="81.2969" y2="789.6172" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="487" x2="487" y1="81.2969" y2="789.6172" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="699.5" x2="699.5" y1="81.2969" y2="789.6172" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="863.5" x2="863.5" y1="81.2969" y2="789.6172" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="5" y="77.9951">Customer</text><ellipse cx="43" cy="13.5" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M43,21.5 L43,48.5 M30,29.5 L56,29.5 M43,48.5 L30,63.5 M43,48.5 L56,63.5 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="5" y="801.6123">Customer</text><ellipse cx="43" cy="813.4141" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M43,821.4141 L43,848.4141 M30,829.4141 L56,829.4141 M43,848.4141 L30,863.4141 M43,848.4141 L56,863.4141 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="107.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="114.5" y="69.9951">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="107.5" y="788.6172" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="114.5" y="808.6123">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="416" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="423" y="69.9951">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="416" y="788.6172" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="423" y="808.6123">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="630.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="637.5" y="69.9951">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="630.5" y="788.6172" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="637.5" y="808.6123">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="779.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="786.5" y="69.9951">Core Banking System</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="779.5" y="788.6172" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="786.5" y="808.6123">Core Banking System</text><polygon fill="#191919" points="851.5,108.4297,861.5,112.4297,851.5,116.4297,855.5,112.4297" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="43" x2="857.5" y1="112.4297" y2="112.4297" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="236" x="50" y="107.3638">Customer funds his investor account</text><polygon fill="#191919" points="498,137.5625,488,141.5625,498,145.5625,494,141.5625" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="492" x2="862.5" y1="141.5625" y2="141.5625" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="91" x="504" y="136.4966">Funding event</text><polygon fill="#191919" points="688,196.9609,698,200.9609,688,204.9609,692,200.9609" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="487" x2="694" y1="200.9609" y2="200.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="494" y="165.6294">1. Move cash</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="494" y="180.7622">from bank's home account to</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="149" x="494" y="195.895">customer's subaccount</text><polygon fill="#191919" points="498,226.0938,488,230.0938,498,234.0938,494,230.0938" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="492" x2="699" y1="230.0938" y2="230.0938" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="504" y="225.0278">external_id</text><path d="M101,245.0938 L169.5,245.0938 L169.5,252.2266 L159.5,262.2266 L97.5,262.2266 L97.5,248.5938 A3.5,3.5 0 0 1 101,245.0938 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="162.9297" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="597.5" x="97.5" y="245.0938" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="112.5" y="258.1606">opt</text><polygon fill="#191919" points="166,324.7578,156,328.7578,166,332.7578,162,328.7578" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="160" x2="486" y1="328.7578" y2="328.7578" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="262" x="172" y="278.2935">2. POST /portfolio/{id}/transactions/ with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="144" x="172" y="293.4263">- type: CASH_DEPOSIT</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="172" y="308.5591">- status: PENDING</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="172" y="323.6919">- external_id</text><polygon fill="#191919" points="475,353.8906,485,357.8906,475,361.8906,479,357.8906" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="155" x2="481" y1="357.8906" y2="357.8906" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="162" y="352.8247">response</text><line style="stroke:#191919;stroke-width:1.0;" x1="487" x2="529" y1="387.0234" y2="387.0234" /><line style="stroke:#191919;stroke-width:1.0;" x1="529" x2="529" y1="387.0234" y2="400.0234" /><line style="stroke:#191919;stroke-width:1.0;" x1="488" x2="529" y1="400.0234" y2="400.0234" /><polygon fill="#191919" points="498,396.0234,488,400.0234,498,404.0234,494,400.0234" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="494" y="381.9575">Store response for future use</text><polygon fill="#191919" points="497.9811,433.1093,488,437.1563,498.0187,441.1093,493.9999,437.1281" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="699" x2="487" y1="436.1563" y2="437.1563" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="136" x="504" y="431.0903">Transaction SETTLED</text><polygon fill="#191919" points="166,477.4219,156,481.4219,166,485.4219,162,481.4219" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="160" x2="486" y1="481.4219" y2="481.4219" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="304" x="172" y="461.2231">3. PATCH /portfolio/{id}/transactions/{id}/ with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="115" x="172" y="476.356">- status: SETTLED</text><polygon fill="#191919" points="475,506.5547,485,510.5547,475,514.5547,479,510.5547" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="155" x2="481" y1="510.5547" y2="510.5547" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="162" y="505.4888">response</text><line style="stroke:#191919;stroke-width:1.0;" x1="487" x2="529" y1="539.6875" y2="539.6875" /><line style="stroke:#191919;stroke-width:1.0;" x1="529" x2="529" y1="539.6875" y2="552.6875" /><line style="stroke:#191919;stroke-width:1.0;" x1="488" x2="529" y1="552.6875" y2="552.6875" /><polygon fill="#191919" points="498,548.6875,488,552.6875,498,556.6875,494,552.6875" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="494" y="534.6216">Store response for future use</text><polygon fill="#191919" points="166,577.8203,156,581.8203,166,585.8203,162,581.8203" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="160" x2="486" y1="581.8203" y2="581.8203" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="172" y="576.7544">4. PATCH /portfolio Holdings</text><line style="stroke:#191919;stroke-width:1.0;" x1="155" x2="197" y1="610.9531" y2="610.9531" /><line style="stroke:#191919;stroke-width:1.0;" x1="197" x2="197" y1="610.9531" y2="623.9531" /><line style="stroke:#191919;stroke-width:1.0;" x1="156" x2="197" y1="623.9531" y2="623.9531" /><polygon fill="#191919" points="166,619.9531,156,623.9531,166,627.9531,162,623.9531" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="162" y="605.8872">5. Trigger Optimizer (asynchronously)</text><polygon fill="#191919" points="475,649.0859,485,653.0859,475,657.0859,479,653.0859" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="155" x2="481" y1="653.0859" y2="653.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="59" x="162" y="648.02">response</text><path d="M101,668.0859 L169.5,668.0859 L169.5,675.2188 L159.5,685.2188 L97.5,685.2188 L97.5,671.5859 A3.5,3.5 0 0 1 101,668.0859 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="470.5" x="97.5" y="668.0859" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="112.5" y="681.1528">opt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="227" x="184.5" y="680.2964">[if response.funded_since == null]</text><polygon fill="#191919" points="166,702.3516,156,706.3516,166,710.3516,162,706.3516" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="160" x2="486" y1="706.3516" y2="706.3516" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="209" x="172" y="701.2856">6. PATCH /portfolio funded_since</text><polygon fill="#191919" points="166,738.4844,156,742.4844,166,746.4844,162,742.4844" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="160" x2="486" y1="742.4844" y2="742.4844" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="153" x="172" y="737.4185">7. POST /events/deposit</text><polygon fill="#191919" points="54,767.6172,44,771.6172,54,775.6172,50,771.6172" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="48" x2="154" y1="771.6172" y2="771.6172" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="88" x="60" y="766.5513">8. Notification</text></g></svg></p>
+<h2 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h2>
+<h3 id="robo-advisor">Robo Advisor<a class="headerlink" href="#robo-advisor" title="Permanent link">&para;</a></h3>
+<h4 id="broker-integration-by-investsuite_1">Broker integration by InvestSuite<a class="headerlink" href="#broker-integration-by-investsuite_1" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the <code>counter_account</code> and handles the corresponding cash transfers.</p>
+</div>
 <ol>
-<li>In case of a advisory mandate (as opposed to a discretionary mandate, see <a href="/common_scenarios/account_initiation/#create-a-portfolio">Portfolio creation</a>) the user confirms the sell orders. The confirmation is registered in the <code>owner_choice</code> field of the Optimization object.</li>
-<li><strong>You</strong> place the sell orders at the broker.</li>
-<li><strong>You</strong> transfer the freed up cash from the broker to the client's <code>counter_account</code>. <strong>See below</strong>: Get counter account.</li>
-<li><strong>You</strong> notify InvestSuite that the payment has occurred. <strong>See below</strong>: Notify InvestSuite on successful cash transfer.</li>
-<li><strong>InvestSuite</strong> puts the message on a queue to send a push notification to the client.</li>
-<li><strong>You</strong> create a <code>SETTLED</code> transaction, referring to the transaction ID created by the broker in the <code>external_id</code> attribute. <strong>See below</strong>: Create transaction.</li>
-<li><strong>You</strong> update the portfolio's cash position. <strong>See below</strong>: Update cash position.</li>
-<li><strong>You</strong> reset the divest amount to notify InvestSuite that the cash that became available in the portfolio is ready to be invested.  <strong>See below</strong>: Reset divest amount.</li>
+<li>The <strong>Customer</strong> (through the InvestSuite app) requests a withdrawal. This updates the <code>divest_amount</code> on the Portfolio, indicating the amount to divest.</li>
+<li><strong>InvestSuite</strong> asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.</li>
+<li>In case of an advisory mandate the <strong>Customer</strong> confirms the Optimizaton. The confirmation is registered in the <code>owner_choice</code> field of the Optimization object.</li>
+<li>If there is sufficient cash in the Portfolio:<ol>
+<li><strong>InvestSuite</strong> moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions, Portfolio Holdings and the <code>divest_amount</code> up to date (asynchronously). </li>
+<li>The <strong>Core Banking System</strong> transfers the cash to the customer's <code>counter_account</code>.</li>
+<li>The <strong>Client Middleware</strong> notifies InvestSuite that the payment has occurred (see <a href="../../concepts/events/#withdrawal-executed-event">here</a>).</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
 </ol>
-<p><strong>1. Set divest amount</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">HTTP</label><label for="__tabbed_9_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;manager&quot;: {</span>
-<span class="s1">            &quot;manager_settings&quot;: {</span>
-<span class="s1">                &quot;divest_amount&quot;: 500</span>
-<span class="s1">            }</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>5. Get counter account</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">HTTP</label><label for="__tabbed_10_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>Response body</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;counter_account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE01234567891234&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDQMIE2D&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIC&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<strong>6. Notify InvestSuite on successful cash transfer</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">HTTP</label><label for="__tabbed_11_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/events/withdraw/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
---data-raw <span class="s1">&#39;{</span>
-<span class="s1">                &quot;data&quot;: {</span>
-<span class="s1">                    &quot;amount&quot;: &quot;1000&quot;,</span>
-<span class="s1">                    &quot;currency&quot;: &quot;USD&quot;,</span>
-<span class="s1">                    &quot;portfolio&quot;: &quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span>
-<span class="s1">                }</span>
-<span class="s1">            }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>9. Update cash position</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">HTTP</label><label for="__tabbed_12_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US4642886612&quot;</span><span class="p">:</span><span class="mf">0.76</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US78468R1014&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US4642863926&quot;</span><span class="p">:</span><span class="mf">0.7381</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;portfolio&quot;: {</span>
-<span class="s1">            &quot;$USD&quot;:10000,</span>
-<span class="s1">            &quot;US4642886612&quot;:0.76,</span>
-<span class="s1">            &quot;US78468R1014&quot;:3,</span>
-<span class="s1">            &quot;US4642863926&quot;:0.7381</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Updating holdings requires you to <strong>provide the complete overview of positions</strong>. In other words, if you update an invested portfolio
-with only <code>"portfolio": { "$USD":10000 }</code> InvestSuite will assume all other positions were sold.</p>
-</div>
-<p><strong>8. Create transaction</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">HTTP</label><label for="__tabbed_13_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_WITHDRAWAL&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AMOUNT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request POST <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;external_id&quot;: &quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;,</span>
-<span class="s1">        &quot;movements&quot;: [</span>
-<span class="s1">            {</span>
-<span class="s1">                &quot;type&quot;: &quot;CASH_WITHDRAWAL&quot;,</span>
-<span class="s1">                &quot;status&quot;: &quot;SETTLED&quot;,</span>
-<span class="s1">                &quot;datetime&quot;: &quot;2021-10-06T00:00:00+00:00&quot;,</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;$USD&quot;,</span>
-<span class="s1">                &quot;quantity_type&quot;: &quot;AMOUNT&quot;,</span>
-<span class="s1">                &quot;quantity&quot;: 500.0,</span>
-<span class="s1">            }</span>
-<span class="s1">        ]</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>10. Reset divest amount</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">HTTP</label><label for="__tabbed_14_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
-    --data-raw <span class="s1">&#39;{</span>
-<span class="s1">        &quot;manager&quot;: {</span>
-<span class="s1">            &quot;manager_settings&quot;: {</span>
-<span class="s1">                &quot;divest_amount&quot;: 0</span>
-<span class="s1">            }</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+</li>
+<li>If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.</li>
+</ol>
+<p><svg contentStyleType="text/css" preserveAspectRatio="none" style="background:#F9F9F9" version="1.1" viewBox="0 0 1168 688" width="100%" zoomAndPan="magnify" class="class1,class2" alt="uml diagram" title=""><defs /><g><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="10" y="169.5625" /><rect fill="none" height="331.3984" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="1151" x="10" y="258.9609" /><rect fill="none" height="132.6641" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="742" x="409" y="312.2266" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="58" x2="58" y1="81.2969" y2="607.3594" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="233.5" x2="233.5" y1="81.2969" y2="607.3594" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="490" x2="490" y1="81.2969" y2="607.3594" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="695.5" x2="695.5" y1="81.2969" y2="607.3594" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="909" x2="909" y1="81.2969" y2="607.3594" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="20" y="77.9951">Customer</text><ellipse cx="58" cy="13.5" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M58,21.5 L58,48.5 M45,29.5 L71,29.5 M58,48.5 L45,63.5 M58,48.5 L71,63.5 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="20" y="619.3545">Customer</text><ellipse cx="58" cy="631.1563" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M58,639.1563 L58,666.1563 M45,647.1563 L71,647.1563 M58,666.1563 L45,681.1563 M58,666.1563 L71,681.1563 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="186.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="193.5" y="69.9951">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="186.5" y="606.3594" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="193.5" y="626.3545">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="419" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="426" y="69.9951">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="419" y="606.3594" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="426" y="626.3545">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="626.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="633.5" y="69.9951">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="626.5" y="606.3594" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="633.5" y="626.3545">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="825" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="832" y="69.9951">Core Banking System</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="825" y="606.3594" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="832" y="626.3545">Core Banking System</text><polygon fill="#191919" points="222,108.4297,232,112.4297,222,116.4297,226,112.4297" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="58" x2="228" y1="112.4297" y2="112.4297" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="65" y="107.3638">1. Request withdrawal</text><line style="stroke:#191919;stroke-width:1.0;" x1="234" x2="276" y1="141.5625" y2="141.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="276" x2="276" y1="141.5625" y2="154.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="235" x2="276" y1="154.5625" y2="154.5625" /><polygon fill="#191919" points="245,150.5625,235,154.5625,245,158.5625,241,154.5625" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="241" y="136.4966">2. Trigger Optimizer (asynchronously)</text><path d="M13.5,169.5625 L82,169.5625 L82,176.6953 L72,186.6953 L10,186.6953 L10,173.0625 A3.5,3.5 0 0 1 13.5,169.5625 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="10" y="169.5625" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="25" y="182.6294">opt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="290" x="97" y="181.7729">[if Advisory mandate and insufficient cash]</text><polygon fill="#191919" points="222,203.8281,232,207.8281,222,211.8281,226,207.8281" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="58" x2="228" y1="207.8281" y2="207.8281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="152" x="65" y="202.7622">3. Confirm Optimization</text><polygon fill="#191919" points="684,239.9609,694,243.9609,684,247.9609,688,243.9609" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="234" x2="690" y1="243.9609" y2="243.9609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="241" y="238.895">4. Get available cash in Portfolio</text><path d="M13.5,258.9609 L76,258.9609 L76,266.0938 L66,276.0938 L10,276.0938 L10,262.4609 A3.5,3.5 0 0 1 13.5,258.9609 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="331.3984" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="1151" x="10" y="258.9609" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="21" x="25" y="272.0278">alt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="292" x="91" y="271.1714">[Sufficient Cash (divest_amount &lt;= cash&gt;)]</text><polygon fill="#191919" points="684,293.2266,694,297.2266,684,301.2266,688,297.2266" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="234" x2="690" y1="297.2266" y2="297.2266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="438" x="241" y="292.1606">5a. Move cash from customer's subaccount to bank's home account</text><path d="M412.5,312.2266 L481,312.2266 L481,319.3594 L471,329.3594 L409,329.3594 L409,315.7266 A3.5,3.5 0 0 1 412.5,312.2266 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="132.6641" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="742" x="409" y="312.2266" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="424" y="325.2935">opt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="418" x="496" y="324.437">[This depends on how the Bank and the Broker are integrated]</text><polygon fill="#191919" points="897,346.4922,907,350.4922,897,354.4922,901,350.4922" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="696" x2="903" y1="350.4922" y2="350.4922" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="189" x="703" y="345.4263">Respond to cash movements</text><line style="stroke:#191919;stroke-width:1.0;" x1="909" x2="951" y1="394.7578" y2="394.7578" /><line style="stroke:#191919;stroke-width:1.0;" x1="951" x2="951" y1="394.7578" y2="407.7578" /><line style="stroke:#191919;stroke-width:1.0;" x1="910" x2="951" y1="407.7578" y2="407.7578" /><polygon fill="#191919" points="920,403.7578,910,407.7578,920,411.7578,916,407.7578" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="916" y="374.5591">5b. Execute cash transfer</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="223" x="916" y="389.6919">to the Customer's counter account</text><polygon fill="#191919" points="501,432.8906,491,436.8906,501,440.8906,497,436.8906" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="495" x2="908" y1="436.8906" y2="436.8906" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160" x="507" y="431.8247">Cash transfer EXECUTED</text><polygon fill="#191919" points="245,469.0234,235,473.0234,245,477.0234,241,473.0234" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="239" x2="489" y1="473.0234" y2="473.0234" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="172" x="251" y="467.9575">5c. POST /events/withdraw</text><polygon fill="#191919" points="69,498.1563,59,502.1563,69,506.1563,65,502.1563" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="63" x2="233" y1="502.1563" y2="502.1563" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="96" x="75" y="497.0903">5d. Notification</text><line style="stroke:#393939;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="1161" y1="511.1563" y2="511.1563" /><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="125" x="15" y="521.3667">[Insufficient Cash]</text><path d="M495,533.4609 L495,581.4609 A3.5,3.5 0 0 0 498.5,584.9609 L883.5,584.9609 A3.5,3.5 0 0 0 887,581.4609 L887,539.9609 L877,529.9609 L498.5,529.9609 A3.5,3.5 0 0 0 495,533.4609 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><path d="M877,529.9609 L877,538.2109 A1.75,1.75 0 0 0 878.75,539.9609 L887,539.9609 L877,529.9609 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="312" x="501" y="547.0278">6. The withdrawal will be handled at a later time,</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="299" x="501" y="562.1606">by the rebalancing process or the process that</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="371" x="501" y="577.2935">handles executed or settled transactions from the broker.</text></g></svg></p>
+<h4 id="broker-integration-by-the-client-event-driven">Broker integration by the Client (Event driven)<a class="headerlink" href="#broker-integration-by-the-client-event-driven" title="Permanent link">&para;</a></h4>
+<ol>
+<li>The <strong>Customer</strong> (through the InvestSuite app) requests a withdrawal. This updates the <code>divest_amount</code> on the Portfolio, indicating the amount to divest.</li>
+<li><strong>InvestSuite</strong> asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.</li>
+<li>In case of an advisory mandate and insufficient cash, the <strong>Customer</strong> confirms the Optimization. The confirmation is registered in the <code>owner_choice</code> field of the Optimization object.</li>
+<li>The <code>portfolio.withdrawal-request</code> event is fired (see <a href="../../concepts/events/#withdrawal-request">here</a>).</li>
+<li>If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):<ol>
+<li>The <strong>Client Middleware</strong> instructs the <strong>Core Banking System</strong> to execute the cash transfer.</li>
+<li>The <strong>Client Middleware</strong> creates a Transaction, type CASH, status SETTLED, and a negative quantity (see <a href="../../concepts/transactions/#withdrawal">here</a>).</li>
+<li>The <strong>Client Middleware</strong> sets the <code>divest_amount</code> to 0, indicating there is no more cash to divest (see <a href="../../concepts/portfolios/#set-divest-amount">here</a>).</li>
+<li>The <strong>Client Middleware</strong> updates the Portfolio Holdings with decreased cash (see <a href="../../concepts/portfolios/#holdings">here</a>).</li>
+<li>The <strong>Client Middleware</strong> informs InvestSuite that the withdrawal has executed by calling <code>POST /events/withdraw/</code> (see <a href="../../concepts/events/#withdrawal-executed-event">here</a>).</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
+</ol>
+</li>
+<li>If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.</li>
+</ol>
+<p><svg contentStyleType="text/css" preserveAspectRatio="none" style="background:#F9F9F9" version="1.1" viewBox="0 0 977 794" width="100%" zoomAndPan="magnify" class="class1,class2" alt="uml diagram" title=""><defs /><g><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="10" y="169.5625" /><rect fill="none" height="378.0625" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="960" x="10" y="318.3594" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="58" x2="58" y1="81.2969" y2="713.4219" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="233.5" x2="233.5" y1="81.2969" y2="713.4219" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="562" x2="562" y1="81.2969" y2="713.4219" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="712" x2="712" y1="81.2969" y2="713.4219" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="876" x2="876" y1="81.2969" y2="713.4219" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="20" y="77.9951">Customer</text><ellipse cx="58" cy="13.5" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M58,21.5 L58,48.5 M45,29.5 L71,29.5 M58,48.5 L45,63.5 M58,48.5 L71,63.5 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="20" y="725.417">Customer</text><ellipse cx="58" cy="737.2188" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M58,745.2188 L58,772.2188 M45,753.2188 L71,753.2188 M58,772.2188 L45,787.2188 M58,772.2188 L71,787.2188 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="186.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="193.5" y="69.9951">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="186.5" y="712.4219" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="193.5" y="732.417">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="491" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="498" y="69.9951">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="491" y="712.4219" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="498" y="732.417">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="643" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="650" y="69.9951">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="643" y="712.4219" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="650" y="732.417">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="792" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="799" y="69.9951">Core Banking System</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="792" y="712.4219" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="799" y="732.417">Core Banking System</text><polygon fill="#191919" points="222,108.4297,232,112.4297,222,116.4297,226,112.4297" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="58" x2="228" y1="112.4297" y2="112.4297" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="65" y="107.3638">1. Request withdrawal</text><line style="stroke:#191919;stroke-width:1.0;" x1="234" x2="276" y1="141.5625" y2="141.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="276" x2="276" y1="141.5625" y2="154.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="235" x2="276" y1="154.5625" y2="154.5625" /><polygon fill="#191919" points="245,150.5625,235,154.5625,245,158.5625,241,154.5625" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="241" y="136.4966">2. Trigger Optimizer (asynchronously)</text><path d="M13.5,169.5625 L82,169.5625 L82,176.6953 L72,186.6953 L10,186.6953 L10,173.0625 A3.5,3.5 0 0 1 13.5,169.5625 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="10" y="169.5625" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="25" y="182.6294">opt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="290" x="97" y="181.7729">[if Advisory mandate and insufficient cash]</text><polygon fill="#191919" points="222,203.8281,232,207.8281,222,211.8281,226,207.8281" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="58" x2="228" y1="207.8281" y2="207.8281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="152" x="65" y="202.7622">3. Confirm Optimization</text><polygon fill="#191919" points="550,270.2266,560,274.2266,550,278.2266,554,274.2266" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="234" x2="556" y1="274.2266" y2="274.2266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="241" y="238.895">4. portfolio.withdrawal event</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="304" x="241" y="254.0278">(NOTE this actually happens in parallel with #2)</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="241" y="269.1606">Contains divest_amount</text><polygon fill="#191919" points="864,299.3594,874,303.3594,864,307.3594,868,303.3594" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="562" x2="870" y1="303.3594" y2="303.3594" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="569" y="298.2935">5. Get available cash in Portfolio</text><path d="M13.5,318.3594 L76,318.3594 L76,325.4922 L66,335.4922 L10,335.4922 L10,321.8594 A3.5,3.5 0 0 1 13.5,318.3594 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="378.0625" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="960" x="10" y="318.3594" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="21" x="25" y="331.4263">alt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="292" x="91" y="330.5698">[Sufficient Cash (divest_amount &lt;= cash&gt;)]</text><polygon fill="#191919" points="864,352.625,874,356.625,864,360.625,868,356.625" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="562" x2="870" y1="356.625" y2="356.625" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="569" y="351.5591">5a. Execute cash transfer</text><polygon fill="#191919" points="245,442.2891,235,446.2891,245,450.2891,241,446.2891" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="239" x2="561" y1="446.2891" y2="446.2891" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="177" x="251" y="380.6919">5b. Create cash transaction</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="251" y="395.8247">POST /portfolios/{id}/transaction with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="251" y="410.9575">- Type CASH</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="251" y="426.0903">- Status SETTLED</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="251" y="441.2231">- Quantity &lt;0</text><polygon fill="#191919" points="245,501.6875,235,505.6875,245,509.6875,241,505.6875" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="239" x2="561" y1="505.6875" y2="505.6875" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="198" x="251" y="470.356">5c. Set the divest_amount to 0</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="251" y="485.4888">PATCH /portfolios with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="251" y="500.6216">- divest_amount 0</text><polygon fill="#191919" points="245,545.9531,235,549.9531,245,553.9531,241,549.9531" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="239" x2="561" y1="549.9531" y2="549.9531" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="251" y="529.7544">5d. Update Portfolio holdings</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="251" y="544.8872">PATCH /portfolios</text><polygon fill="#191919" points="245,575.0859,235,579.0859,245,583.0859,241,579.0859" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="239" x2="561" y1="579.0859" y2="579.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173" x="251" y="574.02">5e. POST /events/withdraw</text><polygon fill="#191919" points="69,604.2188,59,608.2188,69,612.2188,65,608.2188" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="63" x2="233" y1="608.2188" y2="608.2188" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="75" y="603.1528">5f. Notification</text><line style="stroke:#393939;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="10" x2="970" y1="617.2188" y2="617.2188" /><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="125" x="15" y="627.4292">[Insufficient Cash]</text><path d="M567,639.5234 L567,687.5234 A3.5,3.5 0 0 0 570.5,691.0234 L955.5,691.0234 A3.5,3.5 0 0 0 959,687.5234 L959,646.0234 L949,636.0234 L570.5,636.0234 A3.5,3.5 0 0 0 567,639.5234 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><path d="M949,636.0234 L949,644.2734 A1.75,1.75 0 0 0 950.75,646.0234 L959,646.0234 L949,636.0234 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="312" x="573" y="653.0903">6. The withdrawal will be handled at a later time,</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="299" x="573" y="668.2231">by the rebalancing process or the process that</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="371" x="573" y="683.356">handles executed or settled transactions from the broker.</text></g></svg></p>
+<h4 id="broker-integration-by-the-client-batch-process">Broker integration by the Client (Batch process)<a class="headerlink" href="#broker-integration-by-the-client-batch-process" title="Permanent link">&para;</a></h4>
+<ol>
+<li>The <strong>Customer</strong> (through the InvestSuite app) requests a withdrawal. This updates the <code>divest_amount</code> on the Portfolio, indicating the amount to divest.</li>
+<li><strong>InvestSuite</strong> asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.</li>
+<li>In case of an advisory mandate and insufficient cash, the <strong>Customer</strong> confirms the Optimization. The confirmation is registered in the <code>owner_choice</code> field of the Optimization object.</li>
+<li>In a batch process, the <strong>Client Middleware</strong> gets all portfolios with pending withdrawals (see <a href="../../concepts/portfolios/#get-portfolios-with-pending-withdrawals">here</a>).</li>
+<li>If there is sufficient cash in the Portfolio (get this from the Core Banking System or from the Portfolio object):<ol>
+<li>The <strong>Client Middleware</strong> instructs the <strong>Core Banking System</strong> to execute the cash transfer.</li>
+<li>The <strong>Client Middleware</strong> creates a Transaction, type CASH, status SETTLED, and a negative quantity (see <a href="../../concepts/transactions/#withdrawal">here</a>).</li>
+<li>The <strong>Client Middleware</strong> sets the <code>divest_amount</code> to 0, indicating there is no more cash to divest (see <a href="../../concepts/portfolios/#set-divest-amount">here</a>).</li>
+<li>The <strong>Client Middleware</strong> updates the Portfolio Holdings with decreased cash (see <a href="../../concepts/portfolios/#holdings">here</a>).</li>
+<li>The <strong>Client Middleware</strong> informs InvestSuite that the withdrawal has executed by calling <code>POST /events/withdraw/</code> (see <a href="../../concepts/events/#withdrawal-executed-event">here</a>).</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
+</ol>
+</li>
+<li>If not, the withdrawal will be executed during the next batch job run.</li>
+</ol>
+<p><svg contentStyleType="text/css" preserveAspectRatio="none" style="background:#F9F9F9" version="1.1" viewBox="0 0 925 825" width="100%" zoomAndPan="magnify" class="class1,class2" alt="uml diagram" title=""><defs /><g><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="20" y="169.5625" /><rect fill="none" height="497.7266" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="909" x="10" y="229.8281" /><rect fill="none" height="378.0625" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="889" x="20" y="342.4922" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="68" x2="68" y1="81.2969" y2="744.5547" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="234.5" x2="234.5" y1="81.2969" y2="744.5547" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="501" x2="501" y1="81.2969" y2="744.5547" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="651" x2="651" y1="81.2969" y2="744.5547" /><line style="stroke:#393939;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="815" x2="815" y1="81.2969" y2="744.5547" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="30" y="77.9951">Customer</text><ellipse cx="68" cy="13.5" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M68,21.5 L68,48.5 M55,29.5 L81,29.5 M68,48.5 L55,63.5 M68,48.5 L81,63.5 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><text fill="#191919" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="30" y="756.5498">Customer</text><ellipse cx="68" cy="768.3516" fill="#191919" rx="8" ry="8" style="stroke:#191919;stroke-width:0.5;" /><path d="M68,776.3516 L68,803.3516 M55,784.3516 L81,784.3516 M68,803.3516 L55,818.3516 M68,803.3516 L81,818.3516 " fill="none" style="stroke:#191919;stroke-width:0.5;" /><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="187.5" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="194.5" y="69.9951">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="95" x="187.5" y="743.5547" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="81" x="194.5" y="763.5498">InvestSuite</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="430" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="437" y="69.9951">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="142" x="430" y="743.5547" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="128" x="437" y="763.5498">Client Middleware</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="582" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="589" y="69.9951">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="139" x="582" y="743.5547" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="589" y="763.5498">Broker/Custodian</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="731" y="50" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="738" y="69.9951">Core Banking System</text><rect fill="#E55756" height="30.2969" rx="3.5" ry="3.5" style="stroke:#191919;stroke-width:1.5;" width="168" x="731" y="743.5547" /><text fill="#F9F9F9" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="154" x="738" y="763.5498">Core Banking System</text><polygon fill="#191919" points="223,108.4297,233,112.4297,223,116.4297,227,112.4297" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="68" x2="229" y1="112.4297" y2="112.4297" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="75" y="107.3638">1. Request withdrawal</text><line style="stroke:#191919;stroke-width:1.0;" x1="235" x2="277" y1="141.5625" y2="141.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="277" x2="277" y1="141.5625" y2="154.5625" /><line style="stroke:#191919;stroke-width:1.0;" x1="236" x2="277" y1="154.5625" y2="154.5625" /><polygon fill="#191919" points="246,150.5625,236,154.5625,246,158.5625,242,154.5625" style="stroke:#191919;stroke-width:1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="242" y="136.4966">2. Trigger Optimizer (asynchronously)</text><path d="M23.5,169.5625 L92,169.5625 L92,176.6953 L82,186.6953 L20,186.6953 L20,173.0625 A3.5,3.5 0 0 1 23.5,169.5625 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="46.2656" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="382" x="20" y="169.5625" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="27" x="35" y="182.6294">opt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="290" x="107" y="181.7729">[if Advisory mandate and insufficient cash]</text><polygon fill="#191919" points="223,203.8281,233,207.8281,223,211.8281,227,207.8281" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="68" x2="229" y1="207.8281" y2="207.8281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="92" x="75" y="202.7622">3. Confirm sell</text><path d="M13.5,229.8281 L88,229.8281 L88,236.9609 L78,246.9609 L10,246.9609 L10,233.3281 A3.5,3.5 0 0 1 13.5,229.8281 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="497.7266" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="909" x="10" y="229.8281" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="33" x="25" y="242.895">loop</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="189" x="103" y="242.0386">[Batch process (eg. nightly)]</text><polygon fill="#191919" points="246,294.3594,236,298.3594,246,302.3594,242,298.3594" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="240" x2="500" y1="298.3594" y2="298.3594" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="134" x="252" y="263.0278">4. Get portfolios with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="132" x="252" y="278.1606">pending withdrawals</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160" x="252" y="293.2935">GET /portfolios?query=...</text><polygon fill="#191919" points="803,323.4922,813,327.4922,803,331.4922,807,327.4922" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="501" x2="809" y1="327.4922" y2="327.4922" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="206" x="508" y="322.4263">5. Get available cash in Portfolio</text><path d="M23.5,342.4922 L86,342.4922 L86,349.625 L76,359.625 L20,359.625 L20,345.9922 A3.5,3.5 0 0 1 23.5,342.4922 " fill="#EEEEEE" style="stroke:#393939;stroke-width:1.5;" /><rect fill="none" height="378.0625" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="889" x="20" y="342.4922" /><text fill="#191919" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="21" x="35" y="355.5591">alt</text><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="292" x="101" y="354.7026">[Sufficient Cash (divest_amount &lt;= cash&gt;)]</text><polygon fill="#191919" points="803,376.7578,813,380.7578,803,384.7578,807,380.7578" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="501" x2="809" y1="380.7578" y2="380.7578" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="165" x="508" y="375.6919">5a. Execute cash transfer</text><polygon fill="#191919" points="246,466.4219,236,470.4219,246,474.4219,242,470.4219" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="240" x2="500" y1="470.4219" y2="470.4219" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="177" x="252" y="404.8247">5b. Create cash transaction</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="242" x="252" y="419.9575">POST /portfolios/{id}/transaction with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="80" x="252" y="435.0903">- Type CASH</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="252" y="450.2231">- Status SETTLED</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="86" x="252" y="465.356">- Quantity &lt;0</text><polygon fill="#191919" points="246,525.8203,236,529.8203,246,533.8203,242,529.8203" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="240" x2="500" y1="529.8203" y2="529.8203" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="198" x="252" y="494.4888">5c. Set the divest_amount to 0</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="142" x="252" y="509.6216">PATCH /portfolios with</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="252" y="524.7544">- divest_amount 0</text><polygon fill="#191919" points="246,570.0859,236,574.0859,246,578.0859,242,574.0859" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="240" x2="500" y1="574.0859" y2="574.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="252" y="553.8872">5d. Update Portfolio holdings</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="252" y="569.02">PATCH /portfolios</text><polygon fill="#191919" points="246,599.2188,236,603.2188,246,607.2188,242,603.2188" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="240" x2="500" y1="603.2188" y2="603.2188" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="173" x="252" y="598.1528">5e. POST /events/withdraw</text><polygon fill="#191919" points="79,628.3516,69,632.3516,79,636.3516,75,632.3516" style="stroke:#191919;stroke-width:1.0;" /><line style="stroke:#191919;stroke-width:1.0;" x1="73" x2="234" y1="632.3516" y2="632.3516" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="93" x="85" y="627.2856">5f. Notification</text><line style="stroke:#393939;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="20" x2="909" y1="641.3516" y2="641.3516" /><text fill="#393939" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="125" x="25" y="651.562">[Insufficient Cash]</text><path d="M506,663.6563 L506,711.6563 A3.5,3.5 0 0 0 509.5,715.1563 L894.5,715.1563 A3.5,3.5 0 0 0 898,711.6563 L898,670.1563 L888,660.1563 L509.5,660.1563 A3.5,3.5 0 0 0 506,663.6563 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><path d="M888,660.1563 L888,668.4063 A1.75,1.75 0 0 0 889.75,670.1563 L898,670.1563 L888,660.1563 " fill="#E5E5E5" style="stroke:#181818;stroke-width:1.5;" /><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="312" x="512" y="677.2231">6. The withdrawal will be handled at a later time,</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="299" x="512" y="692.356">by the rebalancing process or the process that</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="371" x="512" y="707.4888">handles executed or settled transactions from the broker.</text></g></svg></p>
 <h3 id="self-investor">Self Investor<a class="headerlink" href="#self-investor" title="Permanent link">&para;</a></h3>
-<p>For Self Investor InvestSuite manages the app, and captures withdrawal instructions straight from the app. You as the Client transfer the cash to the client's counter account upon input from the broker, e.g. reading the broker's end of day files. Steps:</p>
+<h4 id="broker-integration-by-investsuite_2">Broker integration by InvestSuite<a class="headerlink" href="#broker-integration-by-investsuite_2" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the <code>counter_account</code> and handles the corresponding cash transfers.</p>
+</div>
 <ol>
-<li><strong>InvestSuite</strong> captures in the app the client withdraw instruction, and passes the instruction on to the broker.</li>
-<li><strong>You</strong> transfer the freed up cash from the broker to the client's <code>counter_account</code>. <strong>See below</strong>: Get counter account.</li>
-<li><strong>You</strong> notify InvestSuite that the payment has occurred. <strong>See below</strong>: Notify InvestSuite on successful cash transfer.</li>
-<li><strong>InvestSuite</strong> puts the message on a queue to send a push notification to the client.</li>
+<li>The <strong>Client</strong> issues a withdrawal in the app.</li>
+<li><strong>InvestSuite</strong> moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously).</li>
+<li>The <strong>Core Banking System</strong> transfers the cash to the customer's <code>counter_account</code>.</li>
+<li>The <strong>Client Middleware</strong> notifies InvestSuite that the payment has occurred (see <a href="../../concepts/events/#withdrawal-executed-event">here</a>).</li>
+<li><strong>InvestSuite</strong> sends a notification to the Customer.</li>
 </ol>
-<p><strong>2. Get counter account</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">HTTP</label><label for="__tabbed_15_2">curl</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/users/U01234567890123456789012345/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.investsuite.com</span>
-<span class="na">Accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl --location --request GET <span class="s1">&#39;https://api.sandbox.investsuite.com/users/U01234567890123456789012345/&#39;</span> <span class="se">\</span>
---header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p><strong>Response body</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ashok&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kumar&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ashok.kumar@example.com&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+12345667&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;counter_account&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE01234567891234&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_account_number_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IDQMIE2D&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;bank_id_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BIC&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01234567890123456789012345&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-24T19:59:15.474241+00:00&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;version_authored_by_portfolio_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01EJQSYGYQJJ5GNFM4ZXW59Q0X&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<strong>3. Notify InvestSuite on successful cash transfer</strong></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">HTTP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
     
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1984,10 +1475,10 @@ with only <code>"portfolio": { "$USD":10000 }</code> InvestSuite will assume all
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
       
     
   </body>

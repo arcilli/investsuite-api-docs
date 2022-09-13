@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/events/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
 
@@ -90,7 +92,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-header__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -133,7 +137,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,14 +171,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -288,7 +286,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -516,15 +520,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#funding" class="md-nav__link">
-    Funding
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawal" class="md-nav__link">
-    Withdrawal
+  <a href="#withdrawal-request" class="md-nav__link">
+    Withdrawal request
   </a>
   
 </li>
@@ -588,8 +585,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deposit-event" class="md-nav__link">
-    Deposit event
+  <a href="#funding-deposit-event" class="md-nav__link">
+    Funding (deposit) event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-executed-event" class="md-nav__link">
+    Withdrawal executed event
   </a>
   
 </li>
@@ -1233,15 +1237,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#funding" class="md-nav__link">
-    Funding
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawal" class="md-nav__link">
-    Withdrawal
+  <a href="#withdrawal-request" class="md-nav__link">
+    Withdrawal request
   </a>
   
 </li>
@@ -1305,8 +1302,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deposit-event" class="md-nav__link">
-    Deposit event
+  <a href="#funding-deposit-event" class="md-nav__link">
+    Funding (deposit) event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-executed-event" class="md-nav__link">
+    Withdrawal executed event
   </a>
   
 </li>
@@ -1336,9 +1340,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
     <h1>Events</h1>
     <div class="md-source-date">
     <small>
@@ -1375,7 +1380,7 @@
 <h4 id="architectural-concept">Architectural concept<a class="headerlink" href="#architectural-concept" title="Permanent link">&para;</a></h4>
 <ul>
 <li>InvestSuite posts events on one single topic of the client's event queue</li>
-<li>Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, ...</li>
+<li>Any AMQP/MQTT compatible message bus is supported, eg. Kafka, RabbitMQ, Azure Service Bus...</li>
 </ul>
 <h4 id="principles">Principles<a class="headerlink" href="#principles" title="Permanent link">&para;</a></h4>
 <ol>
@@ -1449,6 +1454,10 @@
 </div>
 <h4 id="portfolios">Portfolios<a class="headerlink" href="#portfolios" title="Permanent link">&para;</a></h4>
 <h5 id="creation">Creation<a class="headerlink" href="#creation" title="Permanent link">&para;</a></h5>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Applies to: Robo Advisor, Self Investor</p>
+</div>
 <p>Fully qualified name: <code>portfolios.creation</code></p>
 <p>When IVS supplies the the front-end application to the b2b client they should be notified by IVS when a (real money) portfolio is created. That way, the client can store the IVS portfolio_id at their side and (optionally) link it to the user in their database.</p>
 <p>It is up to the b2b client to check if the portfolio is “paper_money” or “real_money” based on this event. This to decide if they need to proceed with setup at their side.</p>
@@ -1470,6 +1479,10 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h5 id="status-update">Status update<a class="headerlink" href="#status-update" title="Permanent link">&para;</a></h5>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Applies to: Robo Advisor, Self Investor</p>
+</div>
 <p>Fully qualified name: <code>portfolios.status-update</code></p>
 <p>Every time a status of a portfolio gets updated an event will be sent to the b2b client.</p>
 <p>Possible values for the status field:</p>
@@ -1506,20 +1519,11 @@
 <li>ACTIVE</li>
 <li>INACTIVE</li>
 </ul>
-<h5 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h5>
-<p>Fully qualified name: <code>portfolios.funding</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Data body</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
+<h5 id="withdrawal-request">Withdrawal request<a class="headerlink" href="#withdrawal-request" title="Permanent link">&para;</a></h5>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Applies to: Robo Advisor</p>
 </div>
-</div>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EUR&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-<h5 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h5>
 <p>Fully qualified name: <code>portfolios.withdrawal</code></p>
 <p>Whenever a user wants to withdraw money, IVS will update the divest amount on the portfolio object.</p>
 <p>Every update to this amount will trigger an event towards the b2b client.</p>
@@ -1529,7 +1533,7 @@
 <li>a specific amount → partial withdrawal</li>
 </ul>
 <p>Note: value is the total amount that is requested for withdrawal, not the incremental value (eg. in case of two quickly subsequent withdrawal requests, where the first is not yet settled)</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Event body</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Event body</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1592,6 +1596,10 @@ Fully qualified name: `users.account-number-update`
 
 <h4 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h4>
 <h5 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h5>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Applies to: Robo Advisor</p>
+</div>
 <p>Fully qualified name: <code>optimisations.status-update</code></p>
 <p>When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.</p>
 <p>Fields:</p>
@@ -1607,7 +1615,7 @@ Fully qualified name: `users.account-number-update`
 <p class="admonition-title">Info</p>
 <p>In v1.0.0 (aug 2022) only status “SUCCESS” is used.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Event body</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Event body</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1634,7 +1642,7 @@ Fully qualified name: `users.account-number-update`
 <ul>
 <li>Possible values for the status field are <code>ACCEPT</code>, <code>REJECT</code>, <code>REOPTIMIZE</code>, <code>IGNORED</code></li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Event body</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Event body</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1700,8 +1708,8 @@ Fully qualified name: `reports.status-update`
 
 <h2 id="rest-events-endpoint">REST <code>/events/</code> endpoint<a class="headerlink" href="#rest-events-endpoint" title="Permanent link">&para;</a></h2>
 <h3 id="inbound">Inbound<a class="headerlink" href="#inbound" title="Permanent link">&para;</a></h3>
-<h4 id="deposit-event">Deposit event<a class="headerlink" href="#deposit-event" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label></div>
+<h4 id="funding-deposit-event">Funding (deposit) event<a class="headerlink" href="#funding-deposit-event" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">HTTP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
@@ -1721,8 +1729,41 @@ Fully qualified name: `reports.status-update`
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
+<p>In case of broker integration by InvestSuite, this event triggers the Funding flow.
+Therefore we strongly suggest using the <code>idempotency-key</code> to avoid double deposits if the middleware replays the event.</p>
+<p>We recommend using the id of the transaction generated by the core banking system.</p>
+</div>
+<!-- See https://investsuite.atlassian.net/browse/SI-2217 for the double funding issue -->
+
+<h4 id="withdrawal-executed-event">Withdrawal executed event<a class="headerlink" href="#withdrawal-executed-event" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Not to be confused with the <a href="#withdrawal-request">withdrawal requested event</a>.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">POST</span> <span class="nn">/events/withdraw/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="hll"><span class="na">Idempotency-Key</span><span class="o">:</span> <span class="l">&quot;LVRYWG833Vp2FIIG&quot;</span>
+</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01F8ZSNV0J45R9DFZ3D7D8C26F&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>We strongly suggest using the <code>idempotency-key</code> to avoid double deposits.</p>
 </div>
+<!-- TODO actually not so bad -->
+
 <h3 id="outbound_1">Outbound<a class="headerlink" href="#outbound_1" title="Permanent link">&para;</a></h3>
 <!-- #### Get events -->
 
@@ -1732,9 +1773,10 @@ Fully qualified name: `reports.status-update`
 </div>
     
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1848,10 +1890,10 @@ Fully qualified name: `reports.status-update`
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
       
     
   </body>

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/transactions/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
 
@@ -90,7 +92,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-header__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -133,7 +137,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,14 +171,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -288,7 +286,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -622,11 +626,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-transaction" class="md-nav__link">
-    Create a transaction
+  <a href="#create-transaction" class="md-nav__link">
+    Create transaction
   </a>
   
-    <nav class="md-nav" aria-label="Create a transaction">
+    <nav class="md-nav" aria-label="Create transaction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -663,6 +667,13 @@
   
     <nav class="md-nav" aria-label="Cash">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#withdrawal" class="md-nav__link">
@@ -1309,11 +1320,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-transaction" class="md-nav__link">
-    Create a transaction
+  <a href="#create-transaction" class="md-nav__link">
+    Create transaction
   </a>
   
-    <nav class="md-nav" aria-label="Create a transaction">
+    <nav class="md-nav" aria-label="Create transaction">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1350,6 +1361,13 @@
   
     <nav class="md-nav" aria-label="Cash">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funding" class="md-nav__link">
+    Funding
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#withdrawal" class="md-nav__link">
@@ -1444,9 +1462,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
     <h1>Transactions</h1>
     <div class="md-source-date">
     <small>
@@ -1461,11 +1480,10 @@
 <p>See the <a href="../glossary/#holdings-orders-transactions-and-movements">Glossary</a> for a definition.</p>
 </div>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>The broker/custodian is the master system for <a href="../glossary/#holdings-orders-transactions-and-movements">holdings (positions) and transactions</a>. These need to be kept in sync with InvestSuite.</p>
-<p>In case the Client middelware needs to do this (see <a href="architecture.md">integration architecture</a>), this page describes how.</p>
-<div class="admonition tip">
-<p class="admonition-title">Order of API calls</p>
-<p>We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.</p>
+<p>The broker/custodian is the master system for <a href="../glossary/#holdings-orders-transactions-and-movements">transactions and holdings (positions)</a>. These need to be kept in sync with InvestSuite. In case of broker integration by the client (see <a href="architecture.md">integration architecture</a>), this page describes how.</p>
+<div class="admonition question">
+<p class="admonition-title">First transactions, or first orders?</p>
+<p>We recommend to first create (update) the transaction, and then update the portfolio holdings.</p>
 </div>
 <h2 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>erDiagram
@@ -1501,11 +1519,11 @@
 <h4 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h4>
 <p>The following types of transactions exist:</p>
 <ol>
-<li><em>Order</em> transactions: buying/selling of instruments, containing one or more trades (movements)</li>
-<li><em>Cash</em> transactions: a deposit of cash, a divestment, fees or tax.</li>
-<li><em>Corporate Action</em> transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)</li>
-<li><em>Security Transfer</em> transaction: at least 1 trade (= securities movement)</li>
-<li><em>Administrative</em> transaction</li>
+<li><em>Order</em> transactions: buying/selling of instruments, containing one or more movements (see <a href="#order-placed">example</a>).</li>
+<li><em>Cash</em> transactions: a deposit of cash, a divestment, fees or tax (see <a href="#cash">example</a>).</li>
+<li><em>Corporate Action</em> transactions, eg. stock split or distribution of dividends, can but does not need to include one or more movements (see <a href="#corporate-action">example</a>).</li>
+<li><em>Security Transfer</em> transaction: at least 1 movement <!-- TODO describe what this is, add an example --></li>
+<li><em>Administrative</em> transaction <!-- TODO describe what this is, add an example --></li>
 </ol>
 <h4 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
 <p>The Status of a Transaction is determined by the statuses of the Movements it comprises. </p>
@@ -1521,10 +1539,13 @@
 <p>The following types of movements exist: <code>CASH_DEPOSIT</code>, <code>CASH_DIVIDEND</code>, <code>CASH_WITHDRAWAL</code>, <code>COUPON</code>, <code>BUY</code>, <code>SELL</code>, <code>CORPORATE_ACTION_IN</code>, <code>CORPORATE_ACTION_OUT</code>, <code>REVERSE_STOCK_SPLIT</code>, <code>STOCK_DIVIDEND</code>, <code>STOCK_SPLIT</code>, <code>TRANSFER_IN</code>, <code>TRANSFER_OUT</code>, <code>CUSTODY_FEE</code>, <code>INSTRUMENT_ENTRY_EXIT_FEE</code>, <code>MANAGEMENT_FEE</code>, <code>OTHER_FEE</code>, <code>OTHER_TAX</code>, <code>SERVICE_ENTRY_EXIT_FEE</code>, <code>TRANSACTION_FEE</code>, <code>WITHHOLDING_TAX</code>.</p>
 <h4 id="status_1">Status<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h4>
 <p>A movement has the following statuses: <code>PLANNED</code>, <code>PENDING</code>, <code>PLACED</code>, <code>EXECUTED</code>, <code>SETTLED</code>, <code>CANCELLED</code>, <code>NOT_EXECUTED</code>, <code>EXPIRED</code>.</p>
-<h2 id="create-a-transaction">Create a transaction<a class="headerlink" href="#create-a-transaction" title="Permanent link">&para;</a></h2>
+<h2 id="create-transaction">Create transaction<a class="headerlink" href="#create-transaction" title="Permanent link">&para;</a></h2>
 <h3 id="order-placed">Order <code>PLACED</code><a class="headerlink" href="#order-placed" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">Optimization ID</p>
+<p class="admonition-title">Robo Advisor &amp; Optimization ID</p>
+<p>For Robo Advisor, include the <code>optimization_id</code> field (from <code>Optimization.id</code>).</p>
+<p>This field is used to reconcile whether the Optimization is fully executed.
+While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">rebalancing process</a> is in progress), the Portfolio is blocked from making withdrawals.</p>
 <p>For Orders that originate from an Optimization, include the <code>optimization_id</code>.</p>
 </div>
 <div class="admonition warning">
@@ -1546,7 +1567,7 @@
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-transaction-id-1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;optimization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;optimization_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;O01ARZ3NDEKTSV4RRFFQ69G5FAV&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Robo Advisor only</span><span class="w"></span>
 </span><span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUY&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1608,7 +1629,7 @@
 <h4 id="sell">Sell<a class="headerlink" href="#sell" title="Permanent link">&para;</a></h4>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than <code>type</code> is <code>SELL</code> (not <code>BUY</code>) and the signs of the cash movement inversed.</p>
+<p>A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than <code>type</code> is <code>SELL</code> (not <code>BUY</code>) and the signs of the cash movement inverted.</p>
 </div>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Request</label><label for="__tabbed_2_2">Response (body)</label></div>
 <div class="tabbed-content">
@@ -1657,10 +1678,9 @@
 </div>
 </div>
 <h3 id="cash">Cash<a class="headerlink" href="#cash" title="Permanent link">&para;</a></h3>
-<h4 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h4>
-<p>Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.</p>
-<p>Below is an example for a cash deposit. For a cash withdrawal use <code>"type": "CASH_WITHDRAWAL"</code> and <code>"quantity": -500</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response (body)</label></div>
+<p>Transactions that hold cash movements represent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.</p>
+<h4 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1672,12 +1692,41 @@
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Update Portfolio holdings</p>
+<p>Also <a href="../portfolios/#holdings">update the Portfolio holdings</a> in case of <code>EXECUTED</code> or <code>SETTLED</code>.</p>
+</div>
+<h4 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_WITHDRAWAL&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-500.0</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -1687,11 +1736,11 @@
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_WITHDRAWAL&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-500.0</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;T01FHCP1CZ9F1S207KJHNA5V244&quot;</span><span class="p">,</span><span class="w"></span>
@@ -1707,7 +1756,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Update Portfolio holdings</p>
-<p>Also <a href="../portfolios/#holdings">update the Portfolio holdings</a> after this call.</p>
+<p>Also <a href="../portfolios/#holdings">update the Portfolio holdings</a> in case of <code>EXECUTED</code> or <code>SETTLED</code>.</p>
 </div>
 <h4 id="costs-and-charges">Costs and Charges<a class="headerlink" href="#costs-and-charges" title="Permanent link">&para;</a></h4>
 <p>Costs and charges come in various forms. There are items in the <code>type</code> Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use <code>"type": "OTHER_FEE"</code> and <code>"description": "{string}"</code>. Same goes for taxes. For withholding tax paid to the governement use <code>"type": "WITHHOLDING_TAX"</code>. For other sorts of taxes charged use <code>"type": "OTHER_TAX"</code> and <code>"description": "{string}"</code>.</p>
@@ -1716,7 +1765,7 @@
 <p>These are the costs and charges that are <em>not</em> associated with a transaction.</p>
 <p>For costs and charges that are associated with a transaction, see <a href="#1-buy-transactions">above</a>.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1769,7 +1818,7 @@
 <h3 id="corporate-action">Corporate Action<a class="headerlink" href="#corporate-action" title="Permanent link">&para;</a></h3>
 <p>Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.</p>
 <p>Corporate actions are registered as transactions as they will lead to movements such as issuing dividends. Note the use of <code>reference_instrument_id</code> to reference the portfolio position the corporate action refers to.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label><label for="__tabbed_6_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1843,9 +1892,13 @@
     direction LR
     groupOne: Keep the movement with the latest status, if it exists.
     groupTwo: Also keep the movement with the latest status, if it exists.
+
+    [*] --&gt; groupOne
+    [*] --&gt; groupTwo
+    groupOne --&gt; groupTwo
+
     state groupOne {
         direction LR
-        [*] --&gt; PLANNED
         PLANNED --&gt; PENDING
         PENDING --&gt; PLACED
     }
@@ -1865,7 +1918,7 @@
 </div>
 <div class="admonition info">
 <p class="admonition-title">Order costs and fees</p>
-<p>This example also shows the introduction of the transaction fee and the the tax associated with the order. </p>
+<p>This example also shows the introduction of the transaction fee and the tax associated with the order. </p>
 <p>For costs and charges that are <em>not</em> associated with the transaction (eg. monthly fee) see the <a href="#4-costs-and-charges">Costs and Charges Transaction</a>.</p>
 </div>
 <div class="admonition question">
@@ -1881,7 +1934,7 @@
 
     The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
 
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label><label for="__tabbed_6_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Request</label><label for="__tabbed_7_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1995,7 +2048,7 @@
 <p>See <a href="#update-transaction">the diagram</a> at the top of this section to understand why.</p>
 </div>
 <h4 id="buy_1">Buy<a class="headerlink" href="#buy_1" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Request</label><label for="__tabbed_7_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Request</label><label for="__tabbed_8_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -2099,7 +2152,7 @@
 </div>
 </div>
 <h4 id="sell_1">Sell<a class="headerlink" href="#sell_1" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Request</label><label for="__tabbed_8_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Request</label><label for="__tabbed_9_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -2235,7 +2288,7 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <p>To register a cancellation you add one movement to the current list of movements. Nothing else should be updated, so the payload is as follows. Note that <strong>you have to send the existing movements in this list as well</strong>, because they would be lost otherwise:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Request</label><label for="__tabbed_9_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Request</label><label for="__tabbed_10_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -2324,9 +2377,10 @@
 `movement->reference_instrument_id` | Optional instrument ID of the portfolio position that this movement relates to. For example, if this Movement represents a cash dividend, this field may refer to the instrument in the portfolio that generated that dividend.| `string` | LU4642865251 | no -->
     
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -2440,10 +2494,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
       
     
   </body>

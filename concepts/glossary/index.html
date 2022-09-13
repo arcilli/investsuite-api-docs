@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/glossary/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
 
@@ -90,7 +92,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-header__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -133,7 +137,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,14 +171,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -288,7 +286,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -437,8 +441,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#holdings-orders-transactions-and-movements" class="md-nav__link">
-    Holdings, Orders, Transactions and Movements
+  <a href="#holdings-orders-transactions-and-movements-of-a-portfolio" class="md-nav__link">
+    Holdings, Orders, Transactions and Movements (of a Portfolio)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suitability-profile-risk-profile-of-a-portfolio" class="md-nav__link">
+    Suitability Profile, Risk Profile (of a Portfolio)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-rebalancing-of-a-portfolio" class="md-nav__link">
+    Optimization, Rebalancing (of a Portfolio)
   </a>
   
 </li>
@@ -449,29 +467,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#suitability-profile-risk-profile-of-a-portfolio" class="md-nav__link">
-    Suitability Profile, Risk Profile (of a Portfolio)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optimization-of-a-portfolio" class="md-nav__link">
-    Optimization (of a Portfolio)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#entities" class="md-nav__link">
     Entities
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rebalancing" class="md-nav__link">
-    Rebalancing
   </a>
   
 </li>
@@ -1159,8 +1156,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#holdings-orders-transactions-and-movements" class="md-nav__link">
-    Holdings, Orders, Transactions and Movements
+  <a href="#holdings-orders-transactions-and-movements-of-a-portfolio" class="md-nav__link">
+    Holdings, Orders, Transactions and Movements (of a Portfolio)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#suitability-profile-risk-profile-of-a-portfolio" class="md-nav__link">
+    Suitability Profile, Risk Profile (of a Portfolio)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-rebalancing-of-a-portfolio" class="md-nav__link">
+    Optimization, Rebalancing (of a Portfolio)
   </a>
   
 </li>
@@ -1171,29 +1182,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#suitability-profile-risk-profile-of-a-portfolio" class="md-nav__link">
-    Suitability Profile, Risk Profile (of a Portfolio)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optimization-of-a-portfolio" class="md-nav__link">
-    Optimization (of a Portfolio)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#entities" class="md-nav__link">
     Entities
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rebalancing" class="md-nav__link">
-    Rebalancing
   </a>
   
 </li>
@@ -1234,9 +1224,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
     <h1>Glossary</h1>
     <div class="md-source-date">
     <small>
@@ -1268,12 +1259,14 @@ TODO -->
 <h2 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>The <strong>Counter Account</strong> of a <strong>user</strong> is the bank account that is funded in case of a withdrawal instruction.</p>
+<p>The <strong>Counter Account</strong> of a <strong>user</strong> is the bank account that is funded in case of a withdrawal instruction. This can be at a 3rd party bank.</p>
 </li>
 <li>
-<p>The <strong>Broker Account</strong> of a <strong>portfolio</strong> is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.</p>
+<p>The <strong>Broker Account</strong> of a <strong>portfolio</strong> (also known as the <strong>investor account</strong>) is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.</p>
 </li>
 </ul>
+<!-- TODO quid 'investor account' at the bank -->
+
 <p>Refer to <a href="../common_scenarios/account_initiation.md">Account Initiation</a>. </p>
 <!-- TODO -->
 
@@ -1293,13 +1286,17 @@ Portfolio Stats
 :question_mark: not found in InvestSuite API documentation - About 
 Contains stats about multiple instruments -->
 
-<h3 id="holdings-orders-transactions-and-movements">Holdings, Orders, Transactions and Movements<a class="headerlink" href="#holdings-orders-transactions-and-movements" title="Permanent link">&para;</a></h3>
+<h3 id="holdings-orders-transactions-and-movements-of-a-portfolio">Holdings, Orders, Transactions and Movements (of a Portfolio)<a class="headerlink" href="#holdings-orders-transactions-and-movements-of-a-portfolio" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Holdings</strong> are positions (assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.</li>
+<li><strong>Holdings</strong> are positions (or assets or instruments) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.</li>
 <li>An <strong>order</strong> is sent to the market, resulting in one or more transactions.</li>
 <li><strong>Transactions</strong> are a combination of movements that describe an exchange or trade.</li>
-<li>A <strong>movement</strong> is a change that impacts the holdings of a portfolio.</li>
+<li>A <strong>movement</strong> (or trade) is a change that impacts the holdings of a portfolio.</li>
 </ul>
+<div class="admonition warning holdins">
+<p class="admonition-title">Warning</p>
+<p>InvestSuite does not 'hold' anything. The broker/custodian holds the instruments and InvestSuite is kept up to date (through integration) on these holdings.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">How are transactions and holdings related?</p>
 <p>Transactions are used for performance and return calculation (eg. TWR) on a portfolio. </p>
@@ -1309,22 +1306,26 @@ Contains stats about multiple instruments -->
 <!-- Documentation EOD file storage of transactions in IVS databases - Google Docs -->
 <!-- See also [Synchronizing Portfolios](../robo/synchronize_portfolios.md). -->
 <p>Refer to <a href="../transactions/">Transactions</a>.</p>
-<h2 id="suitability-profile-risk-profile-of-a-portfolio">Suitability Profile, Risk Profile (of a Portfolio)<a class="headerlink" href="#suitability-profile-risk-profile-of-a-portfolio" title="Permanent link">&para;</a></h2>
+<h3 id="suitability-profile-risk-profile-of-a-portfolio">Suitability Profile, Risk Profile (of a Portfolio)<a class="headerlink" href="#suitability-profile-risk-profile-of-a-portfolio" title="Permanent link">&para;</a></h3>
 <p>We refer to a Suitablity Profile (linked to a Portfolio) as either</p>
 <ul>
 <li>the result of an Appropriateness Test, for Self Investor</li>
 <li>the result of a Suitability Test (for an advisory or discretionary mandate), for Robo Advisor</li>
 </ul>
 <p>Refer to <a href="../../scenarios/suitability_profiler/">Suitability Profiler</a>.</p>
-<h2 id="optimization-of-a-portfolio">Optimization (of a Portfolio)<a class="headerlink" href="#optimization-of-a-portfolio" title="Permanent link">&para;</a></h2>
-<p>The result of an Optimizer run</p>
+<h3 id="optimization-rebalancing-of-a-portfolio">Optimization, Rebalancing (of a Portfolio)<a class="headerlink" href="#optimization-rebalancing-of-a-portfolio" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>(Portfolio) Optimizer</strong> is an InvestSuite product which is responsible for constructing optimal Portfolios, given a set of constaints and a set of initial holdings.</li>
+<li>Optimizer is typically triggered when the Portfolio Holdings change (eg. when funding) or overnight (to check whether the Portfolio is still optimal).</li>
+<li>The output of Optimizer is an <strong>Optimization</strong>, an object which contains the orders that need to be executed to make the portfolio optimal, or in line with a model portfolio (ie. the delta between the current holdings and the optimal holdings).</li>
+<li>When an Optimization exists, it is typically followed by a <strong>rebalancing</strong>: the process of executing the orders of an Optimization with a broker.</li>
+</ul>
 <p>Refer to <a href="../common_scenarios/run_optimizer/">Optimize a portfolio</a>.</p>
+<p>Refer to <a href="../../robo/rebalancing/">Rebalancing</a>.</p>
+<p>Refer to <a href="../../robo/optimization/">Optimization</a></p>
 <h2 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h2>
 <p>The business objects of InvestSuite.</p>
 <p>Refer to <a href="../entities/">Business Objects</a>.</p>
-<h2 id="rebalancing">Rebalancing<a class="headerlink" href="#rebalancing" title="Permanent link">&para;</a></h2>
-<p>Generating orders to modify a portfolio to bring it back into an optimal state or in line with the model portfolio.</p>
-<p>Refer to <a href="../../robo/rebalancing/">Rebalancing</a>.</p>
 <h2 id="reconciliation">Reconciliation<a class="headerlink" href="#reconciliation" title="Permanent link">&para;</a></h2>
 <p>The process of ensuring the portfolio holdings and transactions are in sync between the broker/custodian and Robo Advisor.</p>
 <h2 id="investment-strategy-policy">Investment Strategy, Policy<a class="headerlink" href="#investment-strategy-policy" title="Permanent link">&para;</a></h2>
@@ -1354,9 +1355,10 @@ Optimization = an object that is the result of an Optimizer Run. It contains inf
 Order orchestration = executing the actual orders with the broker. This is different from rebalancing, where the orders are generated in the InvestSuite system, but no communication with the broker happens yet. This is not in scope for the solution with Franklin Templeton, but will be relevant for Clients that buy the solution.  -->
     
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1470,10 +1472,10 @@ Order orchestration = executing the actual orders with the broker. This is diffe
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
       
     
   </body>

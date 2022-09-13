@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/portfolios/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.4">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
     
     
       
@@ -23,13 +23,14 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6b80c2a2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
       
       
+
     
     
     
@@ -48,6 +49,7 @@
     
       
 
+    
     
     
 
@@ -90,7 +92,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="InvestSuite Integration API documentation" class="md-header__button md-logo" aria-label="InvestSuite Integration API documentation" data-md-component="logo">
       
@@ -133,7 +137,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -167,14 +171,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -288,7 +286,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -541,11 +545,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-portfolio" class="md-nav__link">
-    Create a portfolio
+  <a href="#create-portfolio" class="md-nav__link">
+    Create portfolio
   </a>
   
-    <nav class="md-nav" aria-label="Create a portfolio">
+    <nav class="md-nav" aria-label="Create portfolio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -575,23 +579,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-a-portfolio" class="md-nav__link">
-    Get a portfolio
+  <a href="#get-portfolio" class="md-nav__link">
+    Get portfolio
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-a-portfolio" class="md-nav__link">
-    Update a portfolio
+  <a href="#update-portfolio" class="md-nav__link">
+    Update portfolio
   </a>
   
-    <nav class="md-nav" aria-label="Update a portfolio">
+    <nav class="md-nav" aria-label="Update portfolio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#holdings" class="md-nav__link">
     Holdings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funded-status" class="md-nav__link">
+    Funded Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-divest-amount" class="md-nav__link">
+    Set divest amount
   </a>
   
 </li>
@@ -618,8 +636,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#block-a-portfolio" class="md-nav__link">
-    Block a portfolio
+  <a href="#block-portfolio" class="md-nav__link">
+    Block portfolio
   </a>
   
 </li>
@@ -630,8 +648,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#delete-a-portfolio" class="md-nav__link">
-    Delete a portfolio
+  <a href="#delete-portfolio" class="md-nav__link">
+    Delete portfolio
   </a>
   
 </li>
@@ -640,6 +658,26 @@
   <a href="#query-portfolios" class="md-nav__link">
     Query portfolios
   </a>
+  
+    <nav class="md-nav" aria-label="Query portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-portfolios-with-external_id" class="md-nav__link">
+    Get portfolios with external_id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-portfolios-with-pending-withdrawals" class="md-nav__link">
+    Get portfolios with pending withdrawals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1150,11 +1188,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-a-portfolio" class="md-nav__link">
-    Create a portfolio
+  <a href="#create-portfolio" class="md-nav__link">
+    Create portfolio
   </a>
   
-    <nav class="md-nav" aria-label="Create a portfolio">
+    <nav class="md-nav" aria-label="Create portfolio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1184,23 +1222,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-a-portfolio" class="md-nav__link">
-    Get a portfolio
+  <a href="#get-portfolio" class="md-nav__link">
+    Get portfolio
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-a-portfolio" class="md-nav__link">
-    Update a portfolio
+  <a href="#update-portfolio" class="md-nav__link">
+    Update portfolio
   </a>
   
-    <nav class="md-nav" aria-label="Update a portfolio">
+    <nav class="md-nav" aria-label="Update portfolio">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#holdings" class="md-nav__link">
     Holdings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funded-status" class="md-nav__link">
+    Funded Status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-divest-amount" class="md-nav__link">
+    Set divest amount
   </a>
   
 </li>
@@ -1227,8 +1279,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#block-a-portfolio" class="md-nav__link">
-    Block a portfolio
+  <a href="#block-portfolio" class="md-nav__link">
+    Block portfolio
   </a>
   
 </li>
@@ -1239,8 +1291,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#delete-a-portfolio" class="md-nav__link">
-    Delete a portfolio
+  <a href="#delete-portfolio" class="md-nav__link">
+    Delete portfolio
   </a>
   
 </li>
@@ -1249,6 +1301,26 @@
   <a href="#query-portfolios" class="md-nav__link">
     Query portfolios
   </a>
+  
+    <nav class="md-nav" aria-label="Query portfolios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-portfolios-with-external_id" class="md-nav__link">
+    Get portfolios with external_id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-portfolios-with-pending-withdrawals" class="md-nav__link">
+    Get portfolios with pending withdrawals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1260,9 +1332,10 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
     <h1>Manage portfolios</h1>
     <div class="md-source-date">
     <small>
@@ -1278,7 +1351,25 @@
 </div>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>This page lists all operations that can be performed on the Portfolio object, see See <a href="../glossary/">Glossary</a>.</p>
-<h2 id="create-a-portfolio">Create a portfolio<a class="headerlink" href="#create-a-portfolio" title="Permanent link">&para;</a></h2>
+<!-- ## Concepts
+
+### Status
+
+|  | Description | Self Investor Portfolio | Robo Advisor Portfolio |
+|---|---|---|---|
+| DRAFT | The user is required to complete some action still, such as completing onboarding, signing documents, etc. | - | Y |
+| VIRTUAL PORTFOLIO | Portfolio that looks and behaves like an active portfolio, but that is funded with paper money | - | Y |
+| ACTIVATING | User has completed everything needed, and needs to wait for their account(s) to be activated at the broker/custodian and the bank |  |  |
+| WAITING_FOR_FUNDS | Robo Advisor: Less than the minimum amount has been invested, and the portfolio needs more money before becoming active |  |  |
+| WAITING_FOR_INVESTMENTS |  |  |  |
+| ACTIVE | Live portfolios that are funded (initial cash and/or securities deposit has happened) |  |  |
+| BLOCKED | Blocked account instructed manually |  |  |
+| ARCHIVED | Portfolio is archived in the sense that it is no longer active for user action, but client still has access to the history, e.g. for 1 year. This occurs when the user has requested that the account/portfolio be closed. |  |  |
+| REMOVED | Portfolio is removed from app, only viewable for Legal purposes (15 years retention period, legally required property rights.) |  |  |
+| FORGOTTTEN |  |  |  | -->
+<!-- Source: https://docs.google.com/spreadsheets/d/1_b1WQl1M6H1orTxWt71RJDWs280biPth-f-1y-rVeGA/edit?pli=1#gid=0 -->
+
+<h2 id="create-portfolio">Create portfolio<a class="headerlink" href="#create-portfolio" title="Permanent link">&para;</a></h2>
 <h3 id="minimum-portfolio">Minimum portfolio<a class="headerlink" href="#minimum-portfolio" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
 <div class="tabbed-content">
@@ -1524,7 +1615,7 @@
 </div>
 </div>
 <p>Explore the 'Robo Advisor Managed portfolio settings' in <code>config.manager_settings</code> in the <a href="https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post">API documentation</a> for all available options.</p>
-<h2 id="get-a-portfolio">Get a portfolio<a class="headerlink" href="#get-a-portfolio" title="Permanent link">&para;</a></h2>
+<h2 id="get-portfolio">Get portfolio<a class="headerlink" href="#get-portfolio" title="Permanent link">&para;</a></h2>
 <p>Add the InvestSuite ID to the path to retrieve a portfolio object.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
 <div class="tabbed-content">
@@ -1568,7 +1659,7 @@
 </div>
 </div>
 </div>
-<h2 id="update-a-portfolio">Update a portfolio<a class="headerlink" href="#update-a-portfolio" title="Permanent link">&para;</a></h2>
+<h2 id="update-portfolio">Update portfolio<a class="headerlink" href="#update-portfolio" title="Permanent link">&para;</a></h2>
 <p>Given the right permissions you can update any object by issuing a <code>PATCH</code> request.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1587,6 +1678,7 @@
 <div class="admonition warning">
 <p class="admonition-title">Nested object</p>
 <p>As with all nested objects, include the full object (ie. all holdings) when issuing the PATCH.</p>
+<p>For example, a <code>PATCH "portfolio": { "$USD":10000 }</code> means a portfolio which only contains cash.</p>
 </div>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Request</label><label for="__tabbed_5_2">Response (body)</label></div>
 <div class="tabbed-content">
@@ -1604,9 +1696,6 @@
 <span class="w">    </span><span class="nt">&quot;LU4642886612&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2243</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;LU46137V2410&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;LU3160923039&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;LU3160928731&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;LU97717W5215&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;LU4642861458&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;LU46429B2676&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.146</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;LU46434V7617&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;LU4642865251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.6828</span><span class="p">,</span><span class="w"></span>
@@ -1634,9 +1723,6 @@
 <span class="w">        </span><span class="nt">&quot;LU4642886612&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9.2243</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;LU46137V2410&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;LU3160923039&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;LU3160928731&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;LU97717W5215&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;LU4642861458&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;LU46429B2676&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.146</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;LU46434V7617&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;LU4642865251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">7.6828</span><span class="p">,</span><span class="w"></span>
@@ -1656,11 +1742,72 @@
 </div>
 </div>
 </div>
+<h3 id="funded-status">Funded Status<a class="headerlink" href="#funded-status" title="Permanent link">&para;</a></h3>
+<p>On the first funding of a Portfolio, the <code>funded_since</code> field should be set. It may not be changed afterwards. It contains the date and time at which the portfolio was funded with the minimal required funding amount to initialize Robo Advisor.
+It is used for performance (eg. TWR) calculations.</p>
+<!-- This theoretically also applies to Self Investor, but there we own the broker integration.
+For PAPER_MONEY portfolios this is not required. Funding there also does not happen through the middleware
+TODO Quid if we don t do it? -->
+
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;funded_since&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-02-18T08:21:02+00:00&quot;</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="set-divest-amount">Set divest amount<a class="headerlink" href="#set-divest-amount" title="Permanent link">&para;</a></h3>
+<p>The below example sets the <code>divest_amount</code> to 500, signalling the Customer wants to withdraw 500 cash, which in turn will instruct Optimizer to generate a series of orders that free up this amount of cash. This is usually done by the InvestSuite application.</p>
+<p>To signal that no further cash needs to be freed up, patch the <code>divest_amount</code> with 0. This is usually done by the Client Middleware.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">HTTP</label><label for="__tabbed_7_2">curl</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;divest_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH <span class="s1">&#39;https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Authorization: Bearer {string}&#39;</span> <span class="se">\</span>
+    --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\</span>
+    --data-raw <span class="s1">&#39;{</span>
+<span class="s1">        &quot;manager&quot;: {</span>
+<span class="s1">            &quot;manager_settings&quot;: {</span>
+<span class="s1">                &quot;divest_amount&quot;: 500</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }&#39;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h3>
 <p>See <a href="../transactions/">Transactions</a>.</p>
 <h3 id="manager-settings">Manager settings<a class="headerlink" href="#manager-settings" title="Permanent link">&para;</a></h3>
 <p>Below table lists the applicable portfolio manager parameters. The properties can be updated by issueing a corresponding PATCH request (see example below). See the API specification for more information.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Request</label><label for="__tabbed_6_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Request</label><label for="__tabbed_8_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1812,7 +1959,7 @@
 </table>
 <h3 id="brokerage-account">Brokerage account<a class="headerlink" href="#brokerage-account" title="Permanent link">&para;</a></h3>
 <p>Brokerage Account: see <a href="../glossary/#accounts">Glossary</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Request</label><label for="__tabbed_7_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Request</label><label for="__tabbed_9_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P1234JSJDFJSIDDKJDI2334J3IJ/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1941,13 +2088,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="block-a-portfolio">Block a portfolio<a class="headerlink" href="#block-a-portfolio" title="Permanent link">&para;</a></h3>
+<h3 id="block-portfolio">Block portfolio<a class="headerlink" href="#block-portfolio" title="Permanent link">&para;</a></h3>
 <p>Portfolio access can be blocked:</p>
 <ul>
 <li>Blocked Self Investor portfolios can no longer trade.</li>
 <li>Blocked Robo Advisor portfolios will no longer be optimized (ie. positions remain as-is and are not rebalanced).</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">HTTP</label><label for="__tabbed_8_2">curl</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">HTTP</label><label for="__tabbed_10_2">curl</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -1976,9 +2123,9 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
 </div>
 </div>
 </div>
-<h2 id="delete-a-portfolio">Delete a portfolio<a class="headerlink" href="#delete-a-portfolio" title="Permanent link">&para;</a></h2>
+<h2 id="delete-portfolio">Delete portfolio<a class="headerlink" href="#delete-portfolio" title="Permanent link">&para;</a></h2>
 <p>Given the right permissions you can delete any object by issuing a <code>DELETE</code> request.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Request</label><label for="__tabbed_9_2">Response (body)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Request</label><label for="__tabbed_11_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">DELETE</span> <span class="nn">/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -2023,13 +2170,16 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
 </div>
 <h2 id="query-portfolios">Query portfolios<a class="headerlink" href="#query-portfolios" title="Permanent link">&para;</a></h2>
 <p>You can query each entity through a general endpoint e.g. <code>GET /portfolios/?query=…</code>. Learn more in the <a href="../entities/#querying-business-objects">Handling collection responses</a> section.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Request</label><label for="__tabbed_10_2">Response (body)</label></div>
+<h3 id="get-portfolios-with-external_id">Get portfolios with external_id<a class="headerlink" href="#get-portfolios-with-external_id" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Request</label><label for="__tabbed_12_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="err">GET /portfolios/</span>
-<span class="hll"><span class="err">    ?query=external_id+eq+&#39;your-bank-portfolio-1&#39; HTTP/1.1</span>
-</span><span class="err">Host: api.sandbox.investsuite.com</span>
-<span class="err">Authorization: Bearer {string}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/?query=external_id+eq+&#39;your-bank-portfolio-1&#39;</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -2065,11 +2215,27 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
 </div>
 </div>
 </div>
+<h3 id="get-portfolios-with-pending-withdrawals">Get portfolios with pending withdrawals<a class="headerlink" href="#get-portfolios-with-pending-withdrawals" title="Permanent link">&para;</a></h3>
+<p>Get the Portfolios where the <code>divest_amount</code> &gt; 0</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Request</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/query=config.manager_settings.divest_amount+lt+0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
     
 
-            </article>
-            
-          </div>
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -2183,10 +2349,10 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.2ab50757.min.js"></script>
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
       
     
   </body>
