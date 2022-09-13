@@ -9,7 +9,27 @@ title: Manage portfolios
 ## Context
 
 This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
-## Create a portfolio
+
+<!-- ## Concepts
+
+### Status
+
+|  | Description | Self Investor Portfolio | Robo Advisor Portfolio |
+|---|---|---|---|
+| DRAFT | The user is required to complete some action still, such as completing onboarding, signing documents, etc. | - | Y |
+| VIRTUAL PORTFOLIO | Portfolio that looks and behaves like an active portfolio, but that is funded with paper money | - | Y |
+| ACTIVATING | User has completed everything needed, and needs to wait for their account(s) to be activated at the broker/custodian and the bank |  |  |
+| WAITING_FOR_FUNDS | Robo Advisor: Less than the minimum amount has been invested, and the portfolio needs more money before becoming active |  |  |
+| WAITING_FOR_INVESTMENTS |  |  |  |
+| ACTIVE | Live portfolios that are funded (initial cash and/or securities deposit has happened) |  |  |
+| BLOCKED | Blocked account instructed manually |  |  |
+| ARCHIVED | Portfolio is archived in the sense that it is no longer active for user action, but client still has access to the history, e.g. for 1 year. This occurs when the user has requested that the account/portfolio be closed. |  |  |
+| REMOVED | Portfolio is removed from app, only viewable for Legal purposes (15 years retention period, legally required property rights.) |  |  |
+| FORGOTTTEN |  |  |  | -->
+<!-- Source: https://docs.google.com/spreadsheets/d/1_b1WQl1M6H1orTxWt71RJDWs280biPth-f-1y-rVeGA/edit?pli=1#gid=0 -->
+
+
+## Create portfolio
 ### Minimum portfolio
 
 === "Request"
@@ -194,7 +214,7 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 
 Explore the 'Robo Advisor Managed portfolio settings' in `config.manager_settings` in the [API documentation](https://api.sandbox.investsuite.com/redoc#operation/create_portfolios__post) for all available options.
 
-## Get a portfolio
+## Get portfolio
 
 Add the InvestSuite ID to the path to retrieve a portfolio object.
 
@@ -240,7 +260,7 @@ Add the InvestSuite ID to the path to retrieve a portfolio object.
     }
     ```
 
-## Update a portfolio
+## Update portfolio
 
 Given the right permissions you can update any object by issuing a `PATCH` request.
 
@@ -263,6 +283,8 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
 
     As with all nested objects, include the full object (ie. all holdings) when issuing the PATCH.
 
+    For example, a `PATCH "portfolio": { "$USD":10000 }` means a portfolio which only contains cash.
+
 === "Request"
 
     ```HTTP hl_lines="1 8"
@@ -279,9 +301,6 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
         "LU4642886612": 9.2243,
         "LU46137V2410": 9,
         "LU3160923039": 3,
-        "LU3160928731": 10,
-        "LU97717W5215": 6,
-        "LU4642861458": 4,
         "LU46429B2676": 45.146,
         "LU46434V7617": 9,
         "LU4642865251": 7.6828,
@@ -311,9 +330,6 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
             "LU4642886612": 9.2243,
             "LU46137V2410": 9,
             "LU3160923039": 3,
-            "LU3160928731": 10,
-            "LU97717W5215": 6,
-            "LU4642861458": 4,
             "LU46429B2676": 45.146,
             "LU46434V7617": 9,
             "LU4642865251": 7.6828,
@@ -329,6 +345,71 @@ To update the holdings you patch the `portfolio` field in the Portfolio object.
         "deleted": false,
         "status": "ACTIVE"
     }
+    ```
+
+### Funded Status
+
+On the first funding of a Portfolio, the `funded_since` field should be set. It may not be changed afterwards. It contains the date and time at which the portfolio was funded with the minimal required funding amount to initialize Robo Advisor.
+It is used for performance (eg. TWR) calculations.
+
+<!-- This theoretically also applies to Self Investor, but there we own the broker integration.
+For PAPER_MONEY portfolios this is not required. Funding there also does not happen through the middleware
+TODO Quid if we don t do it? -->
+
+=== "Request"
+
+    ```HTTP hl_lines="1 9"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "funded_since": "2021-02-18T08:21:02+00:00"
+    }
+    ```
+
+### Set divest amount
+
+The below example sets the `divest_amount` to 500, signalling the Customer wants to withdraw 500 cash, which in turn will instruct Optimizer to generate a series of orders that free up this amount of cash. This is usually done by the InvestSuite application.
+
+To signal that no further cash needs to be freed up, patch the `divest_amount` with 0. This is usually done by the Client Middleware.
+
+=== "HTTP"
+
+    ```HTTP hl_lines="1"
+    PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "manager": {
+            "manager_settings": {
+                "divest_amount": 500
+            }
+        }
+    }
+
+    ```
+
+=== "curl"
+
+    ```bash
+    curl --location --request PATCH 'https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/' \
+        --header 'Authorization: Bearer {string}' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+            "manager": {
+                "manager_settings": {
+                    "divest_amount": 500
+                }
+            }
+        }'
     ```
 
 ### Transactions
@@ -502,7 +583,7 @@ Field | Description | Data type | Example | Required
 `brokerage_account->bank_id` | Bank identifier code or ID of the bank used for routing instructions, typically a BIC identifier. | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")` | IDQMIE2D | no
 `payment_reference` | Needed when all customers need to wire money to the same bank account | `string AnyOf("^[0-9]{9}\Z", "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?\Z")`  |  | no
 
-### Block a portfolio
+### Block portfolio
 
 Portfolio access can be blocked:
 
@@ -539,7 +620,7 @@ Portfolio access can be blocked:
     https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     ```
 
-## Delete a portfolio
+## Delete portfolio
 
 Given the right permissions you can delete any object by issuing a `DELETE` request.
 
@@ -590,12 +671,16 @@ Given the right permissions you can delete any object by issuing a `DELETE` requ
 
 You can query each entity through a general endpoint e.g. `GET /portfolios/?query=…`. Learn more in the [Handling collection responses](entities.md#querying-business-objects) section.
 
+### Get portfolios with external_id
+
 === "Request"
 
-    ```HTTP hl_lines="2"
-    GET /portfolios/
-        ?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
+    ```HTTP hl_lines="1"
+    GET /portfolios/?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
     Authorization: Bearer {string}
     ```
 
@@ -630,4 +715,19 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
         "deleted":false,
         "status":"WAITING_FOR_FUNDS"
     }
+    ```
+
+### Get portfolios with pending withdrawals
+
+Get the Portfolios where the `divest_amount` > 0
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /portfolios/query=config.manager_settings.divest_amount+lt+0 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Accept-Encoding: gzip, deflate
+    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
     ```

@@ -22,9 +22,11 @@ TODO -->
 TODO -->
 
 ## Accounts
-- The **Counter Account** of a **user** is the bank account that is funded in case of a withdrawal instruction.
+- The **Counter Account** of a **user** is the bank account that is funded in case of a withdrawal instruction. This can be at a 3rd party bank.
 
-- The **Broker Account** of a **portfolio** is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
+- The **Broker Account** of a **portfolio** (also known as the **investor account**) is, in an individual account setup, the corresponding account at the broker. This is the account the user funds to fund the portfolio.
+
+<!-- TODO quid 'investor account' at the bank -->
 
 Refer to [Account Initiation](../common_scenarios/account_initiation.md). 
 <!-- TODO -->
@@ -50,11 +52,15 @@ Portfolio Stats
 :question_mark: not found in InvestSuite API documentation - About 
 Contains stats about multiple instruments -->
 
-### Holdings, Orders, Transactions and Movements
-- **Holdings** are positions (assets) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
+### Holdings, Orders, Transactions and Movements (of a Portfolio)
+- **Holdings** are positions (or assets or instruments) in a portfolio: instruments and/or cash. Cash holdings are expressed in their currency.
 - An **order** is sent to the market, resulting in one or more transactions.
 - **Transactions** are a combination of movements that describe an exchange or trade.
-- A **movement** is a change that impacts the holdings of a portfolio.
+- A **movement** (or trade) is a change that impacts the holdings of a portfolio.
+
+!!! warning Holdins
+
+    InvestSuite does not 'hold' anything. The broker/custodian holds the instruments and InvestSuite is kept up to date (through integration) on these holdings.
 
 !!! info "How are transactions and holdings related?"
 
@@ -68,7 +74,7 @@ Contains stats about multiple instruments -->
 <!-- See also [Synchronizing Portfolios](../robo/synchronize_portfolios.md). -->
 Refer to [Transactions](transactions.md).
 
-## Suitability Profile, Risk Profile (of a Portfolio)
+### Suitability Profile, Risk Profile (of a Portfolio)
 We refer to a Suitablity Profile (linked to a Portfolio) as either
 
 - the result of an Appropriateness Test, for Self Investor
@@ -76,20 +82,22 @@ We refer to a Suitablity Profile (linked to a Portfolio) as either
 
 Refer to [Suitability Profiler](../scenarios/suitability_profiler.md).
 
-## Optimization (of a Portfolio)
-The result of an Optimizer run
+### Optimization, Rebalancing (of a Portfolio)
+- **(Portfolio) Optimizer** is an InvestSuite product which is responsible for constructing optimal Portfolios, given a set of constaints and a set of initial holdings.
+- Optimizer is typically triggered when the Portfolio Holdings change (eg. when funding) or overnight (to check whether the Portfolio is still optimal).
+- The output of Optimizer is an **Optimization**, an object which contains the orders that need to be executed to make the portfolio optimal, or in line with a model portfolio (ie. the delta between the current holdings and the optimal holdings).
+- When an Optimization exists, it is typically followed by a **rebalancing**: the process of executing the orders of an Optimization with a broker.
 
 Refer to [Optimize a portfolio](../common_scenarios/run_optimizer/).
+
+Refer to [Rebalancing](../robo/rebalancing.md).
+
+Refer to [Optimization](../robo/optimization.md)
 
 ## Entities
 The business objects of InvestSuite.
 
 Refer to [Business Objects](entities.md).
-
-## Rebalancing
-Generating orders to modify a portfolio to bring it back into an optimal state or in line with the model portfolio.
-
-Refer to [Rebalancing](../robo/rebalancing.md).
 
 ## Reconciliation
 The process of ensuring the portfolio holdings and transactions are in sync between the broker/custodian and Robo Advisor.

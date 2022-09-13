@@ -26,6 +26,7 @@ Follow the instructions at https://www.mkdocs.org/. Or in case you have a recent
 ~ conda activate investsuite-api-docs-env
 ~ pip install mkdocs
 ~ pip install mkdocs-material
+~ pip install plantuml-markdown
 ~ mkdocs serve
 INFO     -  Building documentation...
 INFO     -  Cleaning site directory
@@ -41,9 +42,16 @@ INFO     -  [17:14:14] Serving on http://127.0.0.1:8000/docs/
 
 ### Style guide
 
-- Avoid the usage of 'you' as this is ambiguous. Instead, use InvestSuite and the Client.
+- Avoid the usage of 'you' as this is ambiguous. Instead, use InvestSuite and the Client, Customer, Client Middleware.
 - Use 'Sentence case' in titles: use "Portfolio creation" i.o. "Portfolio Creation".
+- Do not use 'a', 'an' in titles (eg. 'Create a portfolio' -> 'create portfolio')
 - Entities are capitalized throughout the doc, eg. use 'the Optimization of a Portfolio is done'.
+
+### Page skeleton
+eg. see Transactions
+- Refer to the Glossary
+- Context: why you should read this page
+- Concepts: newly introduced, used in this page
   
 ## Deployment
 

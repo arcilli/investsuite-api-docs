@@ -212,7 +212,13 @@ Add the InvestSuite ID to the path to retrieve a user object.
         "phone": "+123456789",
         "brokerage_user_id": "12345678",
         "idp_user_id": "user_idp_identity",
-        "language": "en-US"
+        "language": "en-US",
+        "counter_account": {
+            "bank_account_number": "BE01234567891234",
+            "bank_account_number_type": "IBAN",
+            "bank_id": "IDQMIE2D",
+            "bank_id_type": "BIC"
+        }
     }
     ```
 ## Update a user
@@ -266,7 +272,7 @@ You can optionally add a counter account during user creation; or afterwards by 
 
 === "HTTP"
 
-    ```HTTP 
+    ```HTTP hl_lines="13 14 15 16"
     PATCH /users/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json

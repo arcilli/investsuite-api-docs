@@ -36,6 +36,7 @@ theme:
     repo: fontawesome/solid/book
   features:
     - navigation.tabs       # Vertical Top Level Sections
+    - navigation.tabs.sticky # Top navigation stays there when scrolling down
     - navigation.sections   # Group Sections
     # - toc.integrate         # Do not render ToC on the left
 
@@ -76,6 +77,26 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - plantuml_markdown: # See https://github.com/mikitex70/plantuml-markdown
+      server: http://www.plantuml.com/plantuml  # PlantUML server, for remote rendering
+      # other global options
+      cachedir: /tmp                            # set a non-empty value to enable caching
+      base_dir: .                               # where to search for diagrams to include
+      format: svg_inline                               # default diagram image format
+      classes: class1,class2                    # default diagram classes
+      encoding: utf-8                           # character encoding for external files (default utf-8)
+      # title: UML diagram                        # default title (tooltip) for diagram images
+      # alt: UML diagram image                    # default `alt` attribute for diagram images
+      priority: 30                              # plugin priority; the higher, the sooner will be applied (default 30)
+      http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)       
+      fallback_to_get: True                     # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
+      theme: mars     # plain, mars, (commented out), reddress-lightred, toy, vibrant , see https://the-lum.github.io/puml-themes-gallery/#all-the-themes                    # theme to be set, can be overridden inside puml files, (default none)
+      puml_notheme_cmdlist: [                             
+                              'version', 
+                              'listfonts', 
+                              'stdlib', 
+                              'license'
+                            ]                   # theme will not be set if listed commands present (default as listed)
 
 plugins:
   - search:

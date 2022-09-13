@@ -46,7 +46,10 @@ The User onboards outside of InvestSuite: the 'Client Onboarding Solution' takes
 1. Creating and updating the User
 2. Updating the Portfolio
 
-![onboarding_signup](onboarding.svg)
+**Sequence diagram:**
+
+```plantuml source="docs/scenarios/onboarding.puml"
+```
 
 Integrations:
 

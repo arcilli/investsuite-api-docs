@@ -8,13 +8,11 @@ title: Transactions
 
 ## Context
 
-The broker/custodian is the master system for [holdings (positions) and transactions](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync with InvestSuite.
+The broker/custodian is the master system for [transactions and holdings (positions)](../concepts/glossary.md#holdings-orders-transactions-and-movements). These need to be kept in sync with InvestSuite. In case of broker integration by the client (see [integration architecture](architecture.md)), this page describes how.
 
-In case the Client middelware needs to do this (see [integration architecture](architecture.md)), this page describes how.
+!!! question "First transactions, or first orders?"
 
-!!! tip "Order of API calls"
-
-    We recommend to first create (update) the transaction in our system, and then update the portfolio holdings.
+    We recommend to first create (update) the transaction, and then update the portfolio holdings.
 
 ## Concepts
 
@@ -55,11 +53,11 @@ erDiagram
 #### Types
 The following types of transactions exist:
 
-1. *Order* transactions: buying/selling of instruments, containing one or more trades (movements)
-2. *Cash* transactions: a deposit of cash, a divestment, fees or tax.
-3. *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more trades (movements)
-4. *Security Transfer* transaction: at least 1 trade (= securities movement)
-5. *Administrative* transaction
+1. *Order* transactions: buying/selling of instruments, containing one or more movements (see [example](#order-placed)).
+2. *Cash* transactions: a deposit of cash, a divestment, fees or tax (see [example](#cash)).
+3. *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more movements (see [example](#corporate-action)).
+4. *Security Transfer* transaction: at least 1 movement <!-- TODO describe what this is, add an example -->
+5. *Administrative* transaction <!-- TODO describe what this is, add an example -->
 
 #### Status
 
@@ -79,11 +77,16 @@ The following types of movements exist: `CASH_DEPOSIT`, `CASH_DIVIDEND`, `CASH_W
 #### Status
 A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED`, `SETTLED`, `CANCELLED`, `NOT_EXECUTED`, `EXPIRED`.
 
-## Create a transaction
+## Create transaction
 
 ### Order `PLACED`
 
-!!! warning "Optimization ID"
+!!! warning "Robo Advisor & Optimization ID"
+
+    For Robo Advisor, include the `optimization_id` field (from `Optimization.id`).
+    
+    This field is used to reconcile whether the Optimization is fully executed.
+    While an Optimization is in progress (ie. the [rebalancing process](../robo/rebalancing.md) is in progress), the Portfolio is blocked from making withdrawals.
 
     For Orders that originate from an Optimization, include the `optimization_id`.
 
@@ -108,7 +111,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
     {
         "external_id": "your-transaction-id-1",
-        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV",
+        "optimization_id": "O01ARZ3NDEKTSV4RRFFQ69G5FAV", // Robo Advisor only
         "movements": [
             {
                 "type": "BUY",
@@ -173,7 +176,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 !!! info
 
-    A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than `type` is `SELL` (not `BUY`) and the signs of the cash movement inversed.
+    A sell transaction is the reverse of a buy order. This example is identical to the Buy transaction example in this page, other than `type` is `SELL` (not `BUY`) and the signs of the cash movement inverted.
 
 === "Request"
 
@@ -223,15 +226,13 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
 
 ### Cash
 
-#### Withdrawal
+Transactions that hold cash movements represent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
-Transactions that hold cash movements respresent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
-
-Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH_WITHDRAWAL"` and `"quantity": -500`.
+#### Funding
 
 === "Request"
 
-    ```HTTP
+    ```HTTP hl_lines="10 14"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -242,10 +243,38 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
         "movements": [
             {
                 "type": "CASH_DEPOSIT",
-                "status": "SETTLED",
+                "status": "PENDING",    // or "SETTLED"
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 500.0,
+            }
+        ]
+    }
+    ```
+
+!!! warning "Update Portfolio holdings"
+
+    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
+
+#### Withdrawal
+
+=== "Request"
+
+    ```HTTP hl_lines="10 14"
+    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
+        "movements": [
+            {
+                "type": "CASH_WITHDRAWAL",
+                "status": "PENDING",    // or "SETTLED"
+                "datetime": "2021-10-06T00:00:00+00:00",
+                "instrument_id": "$USD",
+                "quantity": -500.0,
             }
         ]
     }
@@ -258,11 +287,11 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
         "external_id": "P01FHAR57WS6Q8AV1GH5EATYKP1/14031738752",
         "movements": [
             {
-                "type": "CASH_DEPOSIT",
+                "type": "CASH_WITHDRAWAL",
                 "status": "SETTLED",
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
-                "quantity": 500.0,
+                "quantity": -500.0,
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
@@ -276,7 +305,7 @@ Below is an example for a cash deposit. For a cash withdrawal use `"type": "CASH
 
 !!! warning "Update Portfolio holdings"
 
-    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
+    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
 
 #### Costs and Charges
 
@@ -421,9 +450,13 @@ stateDiagram-v2
     direction LR
     groupOne: Keep the movement with the latest status, if it exists.
     groupTwo: Also keep the movement with the latest status, if it exists.
+
+    [*] --> groupOne
+    [*] --> groupTwo
+    groupOne --> groupTwo
+
     state groupOne {
         direction LR
-        [*] --> PLANNED
         PLANNED --> PENDING
         PENDING --> PLACED
     }
@@ -445,7 +478,7 @@ stateDiagram-v2
     If the portfolio should be optimized ahead of the settlement of the transactions, update the transaction with the `EXECUTED` status.
 
 !!! info "Order costs and fees"
-    This example also shows the introduction of the transaction fee and the the tax associated with the order. 
+    This example also shows the introduction of the transaction fee and the tax associated with the order. 
     
     For costs and charges that are *not* associated with the transaction (eg. monthly fee) see the [Costs and Charges Transaction](#4-costs-and-charges).
 
