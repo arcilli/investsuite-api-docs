@@ -6,8 +6,8 @@ There are two sorts of cash transactions: deposits (funding) and withdrawals. De
 
 For **Robo Advisor**, the Funding/Withdrawal process and the [Rebalancing process](../robo/rebalancing.md) are closely related:
 
-- A *funding* triggers Optimizer, which will generate an Optimization, which will (during rebalancing) *invest the cash*;
-- A *withdrawal* triggers Optimizer, which will generate an Optimisation, which will (during rebalancing) *divest instruments and free up cash*.
+- A *funding* triggers Optimizer, which will generate an Optimization, which contains orders that (during rebalancing) will *invest the cash*;
+- A *withdrawal* triggers Optimizer, which will generate an Optimization, which contains orders that (during rebalancing) will *divest instruments and free up cash*.
 
 If you are looking to design/build a middleware that handles both, we recommend to have a look at our [example middleware design](middleware.md).
 
@@ -37,9 +37,9 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     Applies to Robo Advisor
 
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
-2. Optionally, the **Client Middleware** creates a `PENDING` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
+2. Optionally, the **Client Middleware** creates an `EXECUTED` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
 3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED` (see [here](../concepts/transactions.md#order-settled)).
-4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)).
+4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)). Depending on how the master system (eg. PMS)
 5. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
 6. If the Portfolio was not yet marked as funded, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
 7. The **Client Middleware** calls `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
@@ -57,16 +57,16 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     _cmw -> _bc:1. Move cash\nfrom bank's home account to\ncustomer's subaccount
     _bc --> _cmw: external_id
     opt
-        _cmw -> _ivs:2. POST /portfolio/{id}/transactions/ with \n- type: CASH_DEPOSIT\n- status: PENDING\n- external_id
+        _cmw -> _ivs:2. POST /portfolio/{id}/transactions/ with \n- type: CASH_DEPOSIT\n- status: EXECUTED\n- external_id
         _ivs --> _cmw: response
-        _cmw -> _cmw: Store response for future use
     end
     _bc ->(1) _cmw: Transaction SETTLED
     _cmw -> _ivs:3. PATCH /portfolio/{id}/transactions/{id}/ with \n- status: SETTLED
     _ivs --> _cmw: response
-    _cmw -> _cmw: Store response for future use
     _cmw -> _ivs: 4. PATCH /portfolio Holdings
-    _ivs -> _ivs: 5. Trigger Optimizer (asynchronously)
+    opt if Robo Advisor
+        _ivs -> _ivs: 5. Trigger Optimizer (asynchronously)
+    end
     _ivs -->_cmw:response
     opt if response.funded_since == null
     _cmw -> _ivs: 6. PATCH /portfolio funded_since

@@ -243,7 +243,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
         "movements": [
             {
                 "type": "CASH_DEPOSIT",
-                "status": "PENDING",    // or "SETTLED"
+                "status": "EXECUTED",    // or "SETTLED"
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": 500.0,
@@ -254,7 +254,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
 
 !!! warning "Update Portfolio holdings"
 
-    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
+    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
 #### Withdrawal
 
@@ -271,7 +271,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
         "movements": [
             {
                 "type": "CASH_WITHDRAWAL",
-                "status": "PENDING",    // or "SETTLED"
+                "status": "EXECUTED",    // or "SETTLED"
                 "datetime": "2021-10-06T00:00:00+00:00",
                 "instrument_id": "$USD",
                 "quantity": -500.0,
