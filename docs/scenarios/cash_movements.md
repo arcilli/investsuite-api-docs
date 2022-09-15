@@ -85,7 +85,9 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
  
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate the **Customer** confirms the Optimizaton. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. If there is sufficient cash in the Portfolio:
@@ -102,7 +104,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
     
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
         _cus->_ivs:3. Confirm Optimization
@@ -124,7 +130,9 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
 #### Broker integration by the Client (Event driven)
 
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. The `portfolio.withdrawal-request` event is fired (see [here](../concepts/events.md#withdrawal-request)).
@@ -145,7 +153,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
 
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
         _cus->_ivs:3. Confirm Optimization
@@ -166,7 +178,9 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
 #### Broker integration by the Client (Batch process)
 
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. In a batch process, the **Client Middleware** gets all portfolios with pending withdrawals (see [here](../concepts/portfolios.md#get-portfolios-with-pending-withdrawals)).
@@ -187,7 +201,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
     
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
     _cus->_ivs:3. Confirm sell
