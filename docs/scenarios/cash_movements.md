@@ -25,7 +25,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
 
 1. The **Client Middleware** notifies InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
-2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings and up to date (asynchronously).
+2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings up to date (asynchronously).
 3. If this is the first funding, **InvestSuite** sets the `funded_since` field.
 4. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
 5. **InvestSuite** sends a notification to the Customer.
@@ -39,7 +39,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
 2. Optionally, the **Client Middleware** creates an `EXECUTED` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
 3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED` (see [here](../concepts/transactions.md#order-settled)).
-4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)). Depending on how the master system (eg. PMS)
+4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)). Depending on how the master system (eg. PMS) reflects positions, execute this step earlier in the process (eg. after creating the `EXECUTED` Transaction).
 5. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
 6. If the Portfolio was not yet marked as funded, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
 7. The **Client Middleware** calls `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
@@ -85,7 +85,9 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
  
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate the **Customer** confirms the Optimizaton. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. If there is sufficient cash in the Portfolio:
@@ -93,7 +95,8 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       2. The **Core Banking System** transfers the cash to the customer's `counter_account`.
       3. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
       4.  **InvestSuite** sends a notification to the Customer.
-5.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
+5.  If not, the withdrawal will be handled by the **Client Middleware** at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
+
 
 ```plantuml
     actor "Customer" as _cus
@@ -102,7 +105,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
     
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
         _cus->_ivs:3. Confirm Optimization
@@ -118,13 +125,16 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
         _cmw -> _ivs: 5c. POST /events/withdraw
         _cus <-_ivs: 5d. Notification
     else Insufficient Cash
+        _cmw -> _cmw: 
         note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
     end
 ```
 
 #### Broker integration by the Client (Event driven)
 
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. The `portfolio.withdrawal-request` event is fired (see [here](../concepts/events.md#withdrawal-request)).
@@ -135,8 +145,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
       5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
       6. **InvestSuite** sends a notification to the Customer.
-6.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
-
+6.  If not, the withdrawal will be handled by the **Client Middleware** at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
 
 ```plantuml
     actor "Customer" as _cus
@@ -145,7 +154,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
 
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
         _cus->_ivs:3. Confirm Optimization
@@ -160,13 +173,16 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
         _ivs <- _cmw: 5e. POST /events/withdraw
         _cus <-_ivs: 5f. Notification
     else Insufficient Cash
+        _cmw -> _cmw: 
         note right of _cmw: 6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
     end
 ```
 
 #### Broker integration by the Client (Batch process)
 
-1. The **Customer** (through the InvestSuite app) requests a withdrawal. This updates the `divest_amount` on the Portfolio, indicating the amount to divest.
+1. A withdrawal is triggered:
+      1. Either by the **Customer**, through the InvestSuite app. The app sets the `divest_amount` on the Portfolio object.
+      2. Either by the **Client Middleware**, by setting the `divest_amount` on the Portfolio (see [here](../concepts/portfolios.md#set-divest-amount)).
 2. **InvestSuite** asynchronously runs Optimizer, resulting in an Optimization which, during the next rebalancing, will free up cash.
 3. In case of an advisory mandate and insufficient cash, the **Customer** confirms the Optimization. The confirmation is registered in the `owner_choice` field of the Optimization object.
 4. In a batch process, the **Client Middleware** gets all portfolios with pending withdrawals (see [here](../concepts/portfolios.md#get-portfolios-with-pending-withdrawals)).
@@ -177,7 +193,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
       5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
       6. **InvestSuite** sends a notification to the Customer.
-6. If not, the withdrawal will be executed during the next batch job run.
+6. If not, the withdrawal will be handled by the **Client Middleware** at a later time, during the next batch job run, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
 
 
 ```plantuml
@@ -187,7 +203,11 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     participant "Broker/Custodian" as _bc
     participant "Core Banking System" as _cbs
     
-    _cus->_ivs:1. Request withdrawal
+    alt InvestSuite App
+        _cus->_ivs:1a. Request withdrawal
+    else Middleware
+        _cmw->_ivs:1b. Request withdrawal
+    end
     _ivs->_ivs:2. Trigger Optimizer (asynchronously)
     opt if Advisory mandate and insufficient cash
     _cus->_ivs:3. Confirm sell
@@ -203,6 +223,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
             _ivs <- _cmw: 5e. POST /events/withdraw
             _cus <-_ivs: 5f. Notification
         else Insufficient Cash
+            _cmw -> _cmw: 
             note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
         end
     end 
@@ -217,7 +238,5 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
 
 1. The **Client** issues a withdrawal in the app.
-2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously).
-3. The **Core Banking System** transfers the cash to the customer's `counter_account`.
-4. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
-6. **InvestSuite** sends a notification to the Customer.
+2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously). When this process completes, **InvestSuite** sends a notification to the Customer.
+4. The **Core Banking System** transfers the cash to the customer's `counter_account`.
