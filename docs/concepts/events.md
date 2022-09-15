@@ -208,7 +208,7 @@ Fully qualified name: `users.account-number-update`
 }
 ``` -->
 
-#### Optimisations
+#### Optimizations
 
 ##### Status update
 
@@ -216,13 +216,13 @@ Fully qualified name: `users.account-number-update`
 
     Applies to: Robo Advisor
 
-Fully qualified name: `optimisations.status-update`
+Fully qualified name: `optimizations.status-update`
 
-When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.
+When an optimization is ready we will notify the b2b client when the optimization was successfully created.
 
 Fields:
 
-- is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).
+- is_recommended: only when this is “True” the optimization will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).
 
 - Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED
 
@@ -248,13 +248,13 @@ Fields:
 
 ##### Owner choice update
 
-Fully qualified name: `optimisations.owner-choice-update`
+Fully qualified name: `optimizations.owner-choice-update`
 
 This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).
 
-In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”
+In this case an optimization may only be executed when the owner choice has been updated to “ACCEPT”
 
-The id can be used to fetch the optimisation.
+The id can be used to fetch the optimization.
 
 - Possible values for the status field are `ACCEPT`, `REJECT`, `REOPTIMIZE`, `IGNORED`
 
