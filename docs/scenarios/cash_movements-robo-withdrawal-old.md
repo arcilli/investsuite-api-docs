@@ -9,8 +9,6 @@ Steps to take when the clients issues an instruction to withdraw funds, and you 
 1. The **Customer** (through the InvestSuite app) requests a withdrawal. <!-- The `portfolios.withdrawal` event is fired (see [here](../concepts/events.md#withdrawal-request)) - BUT THIS IS NOT PART OF THE MAIN FLOW HENCE COMMENTED OUT -->
 2. **InvestSuite** asynchronously performs a portfolio optimization, resulting in one or more orders to free up cash.
 3. The `optimizations.status-update` event is fired (see [here](../concepts/events.md#status-update_1)).
-
-
 4. If the Optimization is recommended (included in the event body), The **Client Middleware** responds to by getting the full optimization (see [here](../robo/optimization.md#get-the-latest-optimization-of-a-portfolio)).
 5. **You** place the sell orders at the broker.
 6. **You** transfer the freed up cash from the broker to the client's `counter_account`. **See below**: Get counter account.

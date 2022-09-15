@@ -305,7 +305,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
 
 !!! warning "Update Portfolio holdings"
 
-    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
+    Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
 
 #### Costs and Charges
 
@@ -487,6 +487,10 @@ stateDiagram-v2
     Note that the original `PLACED` movement is included.
 
     See [the diagram](#update-transaction) at the top of this section to understand why.
+
+!!! warning "`movement.datetime`"
+
+    The `datetime` of the linked instrument & cash (`BUY / EXECUTED` and `SELL / EXECUTED`) must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.
 
 <!-- !!! warning
 
