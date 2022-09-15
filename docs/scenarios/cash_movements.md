@@ -25,7 +25,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), that handles the corresponding cash transfers.
 
 1. The **Client Middleware** notifies InvestSuite that the investor account at the Bank has been funded by calling `POST /events/deposit/` (see [here](../concepts/events.md#deposit-event)).
-2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings and up to date (asynchronously).
+2. **InvestSuite** moves the cash at the broker from the bank's home account to the customer's subaccount. InvestSuite will manage keeping the Transactions, Portfolio Holdings up to date (asynchronously).
 3. If this is the first funding, **InvestSuite** sets the `funded_since` field.
 4. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
 5. **InvestSuite** sends a notification to the Customer.
@@ -39,7 +39,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
 1. The **Client Middleware** moves the cash at the broker from the bank's home account to the individual's subaccount.
 2. Optionally, the **Client Middleware** creates an `EXECUTED` Transaction in InvestSuite, referring to the `transaction_id` of the broker in the `external_id` field (see [here](../concepts/transactions.md#funding)).
 3. Once the Transaction is settled at the broker, the **Client Middleware** updates the Transaction status to `SETTLED` (see [here](../concepts/transactions.md#order-settled)).
-4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)). Depending on how the master system (eg. PMS)
+4. The **Client Middleware** updates the portfolio's cash position (see [here](../concepts/portfolios.md#holdings)). Depending on how the master system (eg. PMS) reflects positions, execute this step earlier in the process (eg. after creating the `EXECUTED` Transaction).
 5. In case of Robo Advisor, this will (asynchronously) trigger Optimizer.
 6. If the Portfolio was not yet marked as funded, the **Client Middleware** also sets `funded_since` field (see [here](../concepts/portfolios.md#funded-status)).
 7. The **Client Middleware** calls `POST /events/deposit/` (see [here](../concepts/events.md#funding-deposit-event)).
@@ -217,7 +217,5 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
     We assume there is an integration between the Broker/Custodian and the Core Banking System (eg. through end-of-day files), which is master of the `counter_account` and handles the corresponding cash transfers.
 
 1. The **Client** issues a withdrawal in the app.
-2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously).
-3. The **Core Banking System** transfers the cash to the customer's `counter_account`.
-4. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
-6. **InvestSuite** sends a notification to the Customer.
+2. **InvestSuite** moves the cash at the broker from the customer's subaccount to the bank's home account. InvestSuite will manage keeping the Transactions and Portfolio Holdings up to date (asynchronously). When this process completes, **InvestSuite** sends a notification to the Customer.
+4. The **Core Banking System** transfers the cash to the customer's `counter_account`.
