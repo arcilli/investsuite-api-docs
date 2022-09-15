@@ -95,7 +95,8 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       2. The **Core Banking System** transfers the cash to the customer's `counter_account`.
       3. The **Client Middleware** notifies InvestSuite that the payment has occurred (see [here](../concepts/events.md#withdrawal-executed-event)).
       4.  **InvestSuite** sends a notification to the Customer.
-5.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
+5.  If not, the withdrawal will be handled by the **Client Middleware** at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
+
 
 ```plantuml
     actor "Customer" as _cus
@@ -124,6 +125,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
         _cmw -> _ivs: 5c. POST /events/withdraw
         _cus <-_ivs: 5d. Notification
     else Insufficient Cash
+        _cmw -> _cmw: 
         note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
     end
 ```
@@ -143,8 +145,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
       5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
       6. **InvestSuite** sends a notification to the Customer.
-6.  If not, the withdrawal will be handled at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker.
-
+6.  If not, the withdrawal will be handled by the **Client Middleware** at a later time, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
 
 ```plantuml
     actor "Customer" as _cus
@@ -172,6 +173,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
         _ivs <- _cmw: 5e. POST /events/withdraw
         _cus <-_ivs: 5f. Notification
     else Insufficient Cash
+        _cmw -> _cmw: 
         note right of _cmw: 6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
     end
 ```
@@ -191,7 +193,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
       4. The **Client Middleware** updates the Portfolio Holdings with decreased cash (see [here](../concepts/portfolios.md#holdings)).
       5. The **Client Middleware** informs InvestSuite that the withdrawal has executed by calling `POST /events/withdraw/` (see [here](../concepts/events.md#withdrawal-executed-event)).
       6. **InvestSuite** sends a notification to the Customer.
-6. If not, the withdrawal will be executed during the next batch job run.
+6. If not, the withdrawal will be handled by the **Client Middleware** at a later time, during the next batch job run, by the rebalancing process or the process that handles executed or settled transactions from the broker. See the [Example Middleware Design](todo.md).
 
 
 ```plantuml
@@ -221,6 +223,7 @@ For **Self Investor**, the Funding/Withdrawal process is more straightforward, a
             _ivs <- _cmw: 5e. POST /events/withdraw
             _cus <-_ivs: 5f. Notification
         else Insufficient Cash
+            _cmw -> _cmw: 
             note right of _cmw:6. The withdrawal will be handled at a later time,\nby the rebalancing process or the process that\nhandles executed or settled transactions from the broker.
         end
     end 
