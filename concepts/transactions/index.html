@@ -1693,7 +1693,7 @@ While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">
 <span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_DEPOSIT&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EXECUTED&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">500.0</span><span class="p">,</span><span class="w"></span>
@@ -1706,7 +1706,7 @@ While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Update Portfolio holdings</p>
-<p>Also <a href="../portfolios/#holdings">update the Portfolio holdings</a> in case of <code>EXECUTED</code> or <code>SETTLED</code>.</p>
+<p>Also <a href="../portfolios/#holdings">update the Portfolio holdings</a> after this call.</p>
 </div>
 <h4 id="withdrawal">Withdrawal<a class="headerlink" href="#withdrawal" title="Permanent link">&para;</a></h4>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Request</label><label for="__tabbed_4_2">Response (body)</label></div>
@@ -1722,7 +1722,7 @@ While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">
 <span class="w">    </span><span class="nt">&quot;movements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CASH_WITHDRAWAL&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PENDING&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EXECUTED&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// or &quot;SETTLED&quot;</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-10-06T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$USD&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="hll"><span class="w">            </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-500.0</span><span class="p">,</span><span class="w"></span>

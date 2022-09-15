@@ -532,11 +532,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimisations" class="md-nav__link">
-    Optimisations
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
   </a>
   
-    <nav class="md-nav" aria-label="Optimisations">
+    <nav class="md-nav" aria-label="Optimizations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1249,11 +1249,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimisations" class="md-nav__link">
-    Optimisations
+  <a href="#optimizations" class="md-nav__link">
+    Optimizations
   </a>
   
-    <nav class="md-nav" aria-label="Optimisations">
+    <nav class="md-nav" aria-label="Optimizations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1594,18 +1594,18 @@ Fully qualified name: `users.account-number-update`
 }
 ``` -->
 
-<h4 id="optimisations">Optimisations<a class="headerlink" href="#optimisations" title="Permanent link">&para;</a></h4>
+<h4 id="optimizations">Optimizations<a class="headerlink" href="#optimizations" title="Permanent link">&para;</a></h4>
 <h5 id="status-update_1">Status update<a class="headerlink" href="#status-update_1" title="Permanent link">&para;</a></h5>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Applies to: Robo Advisor</p>
 </div>
-<p>Fully qualified name: <code>optimisations.status-update</code></p>
-<p>When an optimisation is ready we will notify the b2b client when the optimisation was successfully created.</p>
+<p>Fully qualified name: <code>optimizations.status-update</code></p>
+<p>When an optimization is ready we will notify the b2b client when the optimization was successfully created.</p>
 <p>Fields:</p>
 <ul>
 <li>
-<p>is_recommended: only when this is “True” the optimisation will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).</p>
+<p>is_recommended: only when this is “True” the optimization will be executed (discretionary) or will be proposed to the clientfor acceptance (advisory).</p>
 </li>
 <li>
 <p>Possible values for the status field: PENDING, SUCCESS, FAILURE, INFEASIBLE, NOT_OPTIMIZED</p>
@@ -1635,10 +1635,10 @@ Fully qualified name: `users.account-number-update`
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h5 id="owner-choice-update">Owner choice update<a class="headerlink" href="#owner-choice-update" title="Permanent link">&para;</a></h5>
-<p>Fully qualified name: <code>optimisations.owner-choice-update</code></p>
+<p>Fully qualified name: <code>optimizations.owner-choice-update</code></p>
 <p>This event is specifically useful for b2b clients who implemented an advisory flow (advisory mandate).</p>
-<p>In this case an optimisation may only be executed when the owner choice has been updated to “ACCEPT”</p>
-<p>The id can be used to fetch the optimisation.</p>
+<p>In this case an optimization may only be executed when the owner choice has been updated to “ACCEPT”</p>
+<p>The id can be used to fetch the optimization.</p>
 <ul>
 <li>Possible values for the status field are <code>ACCEPT</code>, <code>REJECT</code>, <code>REOPTIMIZE</code>, <code>IGNORED</code></li>
 </ul>
