@@ -109,7 +109,6 @@ nav:
     - Architecture:             concepts/architecture.md
 
     - Authentication:           concepts/authentication.md
-    - Financial data:           concepts/financial_data.md    # DEPRECATE / DUPLICATE with VAA?
     - Events:                   concepts/events.md
     - Embedding:                concepts/embedding.md
     - API errors:               concepts/errors.md
