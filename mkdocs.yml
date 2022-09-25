@@ -114,9 +114,9 @@ nav:
     - API errors:               concepts/errors.md
   
     - Business objects:         concepts/entities.md
-    - User (object):                    concepts/users.md
-    - Portfolio (object):               concepts/portfolios.md
-    - Transaction (object):             concepts/transactions.md
+    - User (object):            concepts/users.md
+    - Portfolio (object):       concepts/portfolios.md
+    - Transaction (object):     concepts/transactions.md
   
     # - Identifiers
     # - Policies
@@ -155,5 +155,7 @@ nav:
     - Reference API:            value-added-apis/reference.md
     - Tenant Configuration:     value-added-apis/tenant_config.md
 
-  - API specification:          "https://api.sandbox.investsuite.com/redoc"
+  - Integration OpenAPI:        "https://api.sandbox.investsuite.com/redoc"
+  - Value Added OpenAPI:        "https://api.data.investsuite.com/redoc"
+  
   - Release notes:              changelog.md
