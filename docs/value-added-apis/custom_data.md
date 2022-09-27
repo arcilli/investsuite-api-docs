@@ -409,7 +409,7 @@ Field | Description | Data type | Example | Required
 `data` | A list that holds a timeseries data object for each provided instrument. | `list` |  | yes
 `instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
 `values` | An object holding the timeseries data for the instrument. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float.  | `object[str, float]` | `{"2022-03-07": 9615.215, "1656337622": 9489.172}` | yes
-"currency" | The currency of the values being uploaded | `str` | "USD" | yes
+`currency` | The currency of the values being uploaded | `str` | "USD" | yes (where applicable)
 `timeseries_type` | The type of timeseries data that is provided. Available types can be seen in the [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
 
 
