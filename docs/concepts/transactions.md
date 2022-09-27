@@ -48,20 +48,24 @@ erDiagram
     Transaction ||--|| Movement: primary_movement
 ```
 
+<!-- TODO: Hide primary_movement from the API consumer? Internal kitchen -->
+
 ### Transactions
 
 #### Types
 The following types of transactions exist:
 
 1. *Order* transactions: buying/selling of instruments, containing one or more movements (see [example](#order-placed)).
-2. *Cash* transactions: a deposit of cash, a divestment, fees or tax (see [example](#cash)).
+2. *Cash Transfer* transaction: a deposit or withdrawal (see [example](#cash)).
 3. *Corporate Action* transactions, eg. stock split or distribution of dividends, can but does not need to include one or more movements (see [example](#corporate-action)).
-4. *Security Transfer* transaction: at least 1 movement <!-- TODO describe what this is, add an example -->
-5. *Administrative* transaction <!-- TODO describe what this is, add an example -->
+4. *Security Transfer* transaction: a transfer in/out the Portfolio from/to another broker.
+5. *Administrative* transaction: eg. a management fee, custody fee, ... (see [example](#costs-and-fees)).
 
 #### Status
 
-The Status of a Transaction is determined by the statuses of the Movements it comprises. 
+The Status of a Transaction is calculated by the status of the Movements it contains.
+
+This is not editable through the API.
 
 See the [Movement status](#status_1).
 <!-- https://investsuite.slack.com/archives/CDYGVNQKE/p1661328253880169?thread_ts=1661250223.596519&cid=CDYGVNQKE -->
@@ -224,7 +228,7 @@ A movement has the following statuses: `PLANNED`, `PENDING`, `PLACED`, `EXECUTED
     }
     ``` 
 
-### Cash
+### Cash transfer
 
 Transactions that hold cash movements represent to InvestSuite movements on the investment account. That account is usually different from the current account, which is the account that the client holds with the bank. We expect in other words transactions on your brokerage system, not from your core banking platform.
 
@@ -307,66 +311,6 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
 
     Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
 
-#### Costs and Charges
-
-Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. For instance for management fees, custody fees, and transaction fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes. For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
-
-!!! info "Costs and charges"
-    These are the costs and charges that are *not* associated with a transaction.
-
-    For costs and charges that are associated with a transaction, see [above](#1-buy-transactions).
-    
-
-=== "Request"
-
-    ```HTTP hl_lines="11"
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "external_id": "14031738752",
-        "movements": [
-            {
-                "external_id": "14031738752",
-                "type": "MANAGEMENT_FEE",
-                "status": "SETTLED",
-                "datetime": "2021-10-03T08:00:16.733954+00:00",
-                "instrument_id": "$USD",
-                "quantity": -0.1035719,
-            }
-        ]
-    }
-    ```
-
-=== "Response (body)"
-
-    ```JSON
-    {
-        "external_id": "14031738752",
-        "movements": [
-            {
-                "type": "MANAGEMENT_FEE",
-                "status": "SETTLED",
-                "datetime": "2021-10-03T08:00:16.733954+00:00",
-                "instrument_id": "$USD",
-                "quantity": -0.1035719
-            }
-        ],
-        "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
-        "creation_datetime": "2021-10-03T08:00:16.734375+00:00",
-        "version": 1,
-        "version_datetime": "2021-10-03T08:00:16.734375+00:00",
-        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        "deleted": false
-    }
-    ```
-
-!!! warning "Update Portfolio holdings"
-
-    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
-
 ### Corporate Action
 
 Corporate actions are changes invoked by a company that affect its stakeholders in particular share and bond holders. They come in various forms and shapes: dividends, stock splits, reverse stock splits ... and are usually approved by a board of directors. Sometimes even by the shareholders who can voluntarily submit a vote.
@@ -424,6 +368,71 @@ Corporate actions are registered as transactions as they will lead to movements 
 
     Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
+### Administrative
+#### Costs and fees
+
+Costs and charges come in various forms. There are items in the `type` Enum that define the sort of charge. 
+
+- For instance for management fees and custody fees. For other types use `"type": "OTHER_FEE"` and `"description": "{string}"`. Same goes for taxes.
+- For withholding tax paid to the governement use `"type": "WITHHOLDING_TAX"`. 
+- For other sorts of taxes charged use `"type": "OTHER_TAX"` and `"description": "{string}"`.
+
+!!! info "Costs and charges"
+    These are the costs and charges that are *not* associated with a transaction.
+
+    For costs and charges that are associated with a transaction, see [above](#order-executed).
+    
+
+=== "Request"
+
+    ```HTTP hl_lines="11"
+    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "external_id": "14031738752",
+                "type": "MANAGEMENT_FEE",
+                "status": "SETTLED",
+                "datetime": "2021-10-03T08:00:16.733954+00:00",
+                "instrument_id": "$USD",
+                "quantity": -0.1035719,
+            }
+        ]
+    }
+    ```
+
+=== "Response (body)"
+
+    ```JSON
+    {
+        "external_id": "14031738752",
+        "movements": [
+            {
+                "type": "MANAGEMENT_FEE",
+                "status": "SETTLED",
+                "datetime": "2021-10-03T08:00:16.733954+00:00",
+                "instrument_id": "$USD",
+                "quantity": -0.1035719
+            }
+        ],
+        "id": "T01FH2JNYAYQ4CTHQJ1MFDDGXZQ",
+        "creation_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version": 1,
+        "version_datetime": "2021-10-03T08:00:16.734375+00:00",
+        "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "deleted": false
+    }
+    ```
+
+!!! warning "Update Portfolio holdings"
+
+    Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
+
 ## Update transaction
 
 Transactions can be updated by issuing a `PATCH /portfolios/{id}/transactions/{id}` and creating or updating the `movements` inside.
@@ -440,20 +449,20 @@ Transactions can be updated by issuing a `PATCH /portfolios/{id}/transactions/{i
 
     1. When [placed](#order-placed), it will only have one movement with `PLACED`.
     2. When it is [executed](#order-executed), PATCH the Transaction with the original `PLACED` movement and an *additional* movement with status `EXECUTED`.
-    3. When it is [settled](#order-settled), PATCH the Transaction with the original `PLACED` movement, and update the status field of the additional movement to `SETTLED`.
+    3. When it is [settled](#order-settled), PATCH the Transaction with the original `PLACED` movement and update the status field of the additional movement to `SETTLED`.
 
-In general, use the following diagram to determine which movements to keep in a PATCH:
+In general, use the following diagram to determine which movements to keep in a PATCH. Keep the movement in each group, if it exists.
 <!-- There are two groups of Movements, determined by its status. A Transaction contains the latest version in each group. -->
 
 ```mermaid
 stateDiagram-v2
     direction LR
-    groupOne: Keep the movement with the latest status, if it exists.
-    groupTwo: Also keep the movement with the latest status, if it exists.
+    groupOne: Request Statuses
+    groupTwo: Execution Statuses
 
-    [*] --> groupOne
-    [*] --> groupTwo
-    groupOne --> groupTwo
+    [*] --> groupOne: 0..1
+    [*] --> groupTwo: 0..n
+    groupOne --> groupTwo: 1..n
 
     state groupOne {
         direction LR
@@ -480,7 +489,7 @@ stateDiagram-v2
 !!! info "Order costs and fees"
     This example also shows the introduction of the transaction fee and the tax associated with the order. 
     
-    For costs and charges that are *not* associated with the transaction (eg. monthly fee) see the [Costs and Charges Transaction](#4-costs-and-charges).
+    For costs and charges that are *not* associated with the transaction (eg. monthly fee) see the [Costs and Charges Transaction](#costs-and-fees).
 
 !!! question "What `movements` to include?"
 
@@ -599,6 +608,8 @@ stateDiagram-v2
     }
     ```
 ### Order `SETTLED`
+
+<!-- TODO quid partial fills? -->
 
 !!! warning "What `movements` to include?"
 
@@ -831,15 +842,14 @@ Given a current status with a `PLACED` order:
     "portfolio_id": "P01G511AYA61Z3Q14OBFUSCATED",
     "portfolio_currency": "USD",
     "type": "ORDER",
-    "order_type": "LIMIT",
+    "order_type": "MARKET",
     "primary_movement": {
         "external_id": "my-movement-1",
         "type": "BUY",
         "status": "PLACED",
         "datetime": "2022-06-08T10:15:53.000000+00:00",
         "instrument_id": "LU2660424076",
-        "quantity": "3",
-        "unit_price": "3.49"
+        "quantity": "3"
     },
     "movements": [
         {
@@ -848,8 +858,7 @@ Given a current status with a `PLACED` order:
             "status": "PLACED",
             "datetime": "2022-06-08T10:15:53.000000+00:00",
             "instrument_id": "LU2660424076",
-            "quantity": "3",
-            "unit_price": "3.49"
+            "quantity": "3"
         }
     ]
 }
@@ -859,7 +868,7 @@ To register a cancellation you add one movement to the current list of movements
 
 === "Request"
 
-    ```HTTP hl_lines="19 20 21 22 23 24 25"
+    ```HTTP hl_lines="18 19 20 21 22 23"
     POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -874,8 +883,7 @@ To register a cancellation you add one movement to the current list of movements
                 "status": "PLACED",
                 "datetime": "2022-06-08T10:15:53.000000+00:00",
                 "instrument_id": "LU2660424076",
-                "quantity": "3",
-                "unit_price": "3.49"
+                "quantity": "3"
             },
             {
                 "external_id": "my-movement-2",
@@ -883,8 +891,7 @@ To register a cancellation you add one movement to the current list of movements
                 "status": "CANCELLED",
                 "datetime": "2022-06-08T11:01:54.000000+00:00",
                 "instrument_id": "LU2660424076",
-                "quantity": "3",
-                "unit_price": "3.49"
+                "quantity": "3"
             }
         ]
     }
@@ -926,6 +933,12 @@ To register a cancellation you add one movement to the current list of movements
 
 !!! Info
     Notice that the `PLACED` and `CANCELLED` movements are identical, apart from their status and their datetime. The datetime is the time the order was `PLACED` and `CANCELLED` respectively.
+
+<!-- TODO Melanie dixit this is not true for partial fills -->
+
+### Correction
+
+See the `movement.trade_type` field, with values "CANCEL" "REBOOK" "INSTRUMENT_CHANGE" or "CORRECTION".
 
 <!-- TODO remove this table -->
 

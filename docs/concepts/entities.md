@@ -175,6 +175,10 @@ The API provides a structural search and filtering mechanism for all entities. W
 
 ### Operators
 
+!!! warning
+
+    Due to implementation details (eg. amounts are typically stored as strings to preserve precision) the behavior of these operators may vary.
+
 Operator type | Operator  | Example
 --- | --- | ---
 Number operator  | Exact match | `age eq 1`
