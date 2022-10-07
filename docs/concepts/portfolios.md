@@ -389,8 +389,11 @@ To signal that no further cash needs to be freed up, patch the `divest_amount` w
 
     {
         "manager": {
+            [...]
             "manager_settings": {
+                [...]
                 "divest_amount": 500
+                [...]
             }
         }
     }
