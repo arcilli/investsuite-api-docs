@@ -379,7 +379,7 @@ To signal that no further cash needs to be freed up, patch the `divest_amount` w
 
 === "HTTP"
 
-    ```HTTP hl_lines="14"
+    ```HTTP hl_lines="13"
     PATCH /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
