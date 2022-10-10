@@ -738,13 +738,13 @@ These checks can be bypassed by specifying them in the upload body; however unle
     	"data": [{
     			"instrument_id": "IE00B4L5Y983",
     			"composition_data": {
-    				"ASSET_CLASS": {
+    				"asset_class": {
     					"equity": 1
     				},
-    				"CURRENCY": {
+    				"currency": {
     					"gbp": 1
     				},
-    				"EQUITY_REGION": {
+    				"equity_region": {
     					"emerging": 0.1,
     					"europe_developed": 0.2,
     					"north_america": 0.7
@@ -754,12 +754,12 @@ These checks can be bypassed by specifying them in the upload body; however unle
     		{
     			"instrument_id": "IE00BWT41R00",
     			"composition_data": {
-    				"EQUITY_SECTOR": {
+    				"equity_sector": {
     					"real_estate": 0.3,
     					"technology": 0.3,
     					"utilities": 0.2
     				},
-    				"FIXED_INCOME_TYPE": {
+    				"fixed_income_type": {
     					"government": 1
     				}
     			}
@@ -772,7 +772,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
 `instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
-`composition_data` | An object holding composition data for the provided composition types. Possible composition types are `ASSET_CLASS`, `CREDIT_RATING`, `EQUITY_SECTOR`, `EQUITY_REGION`, `EQUITY_COUNTRY`, `EQUITY_INDUSTRY`, `EQUITY_INDUSTRY_GROUP`, `FIXED_INCOME_TYPE`, `FIXED_INCOME_REGION`, `FIXED_INCOME_COUNTRY`, `REGION`, `INSTRUMENT`, `CURRENCY`, and `DURATION`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. Values for composition should be float. | `object` | | yes
+`composition_data` | An object holding composition data for the provided composition types. Possible composition types are `asset_class`, `credit_rating`, `equity_sector`, `equity_region`, `equity_country`, `equity_industry`, `equity_industry_group`, `fixed_income_type`, `fixed_income_region`, `fixed_income_country`, `fixed_income_region`, `instrument`, `currency`, and `duration`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. Values for composition should be float. | `object` | | yes
 `skip_data_checks` | A list of data checks to be ignored. | `list` |  | no
 
 After uploading data, we get a response back:
@@ -836,7 +836,7 @@ You can query the uploaded composition data using the query endpoint. A filter c
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
-`types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
+`types` | A list of the composition types. | `list` | ["asset_class"] | no
 `include_levels` | Whether to include the defined levels. | `bool` | True | no
 
 The response of such a request is:
@@ -876,7 +876,7 @@ You can query the meta data for the custom uploaded composition data. Currently 
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "types": ["ASSET_CLASS"]
+            "types": ["asset_class"]
         }'
     ```
 
@@ -897,7 +897,7 @@ You can query the meta data for the custom uploaded composition data. Currently 
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
+types` | A list of the composition types. | `list` | ["asset_class"] | no
 
 The response of such a request is:
 
@@ -930,7 +930,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "instrument_ids": ["US2546871060"],
-            "types": ["ASSET_CLASS"]
+            "types": ["asset_class"]
         }'
     ```
 
@@ -953,7 +953,7 @@ Filtered data can be removed using the remove endpoint.
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
-`types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
+`types` | A list of the composition types. | `list` | ["asset_class"] | no
 
 Only the date ranges provided for the instruments provided will be removed (it is an AND relation). At least one filter must be provided.
 
@@ -1028,7 +1028,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
                 {
                 "instrument_id": "IE00B4L5Y983",
                 "composition_data": {
-                    "ASSET_CLASS": {
+                    "asset_class": {
                         "2022-01-31": {
                             "equity": 0.5,
                             "money_market": 0.5
@@ -1038,7 +1038,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
                             "money_market": 0.4
                         }
                     },
-                    "EQUITY_REGION": {
+                    "equity_region": {
                         "2022-01-31": {
                             "europe": 0.3,
                             "north_america": 0.6,
@@ -1070,7 +1070,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
             {
             "instrument_id": "IE00B4L5Y983",
             "composition_data": {
-                "ASSET_CLASS": {
+                "asset_class": {
                     "2022-01-31": {
                         "equity": 0.5,
                         "money_market": 0.5
@@ -1080,7 +1080,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
                         "money_market": 0.4
                     }
                 },
-                "EQUITY_REGION": {
+                "equity_region": {
                     "2022-01-31": {
                         "europe": 0.3,
                         "north_america": 0.6,
@@ -1101,7 +1101,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
 `instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
-`composition_data` | An object holding timeseries composition data for the provided composition types. Possible composition types are `ASSET_CLASS`, `CREDIT_RATING`, `EQUITY_SECTOR`, `EQUITY_REGION`, `EQUITY_COUNTRY`, `EQUITY_INDUSTRY`, `EQUITY_INDUSTRY_GROUP`, `FIXED_INCOME_TYPE`, `FIXED_INCOME_REGION`, `FIXED_INCOME_COUNTRY`, `REGION`, `INSTRUMENT`, `CURRENCY`, and `DURATION`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. A datestamp should be a string with format `YYYY-MM-DD` or string Unix timestamp. | `object[CompositionType, TimestampedCompositionObject]` | | yes
+`composition_data` | An object holding timeseries composition data for the provided composition types. Possible composition types are `asset_class`, `credit_rating`, `equity_sector`, `equity_region`, `equity_country`, `equity_industry`, `equity_industry_group`, `fixed_income_type`, `fixed_income_region`, `fixed_income_country`, `region`, `instrument`, `currency`, and `duration`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. A datestamp should be a string with format `YYYY-MM-DD` or string Unix timestamp. | `object[CompositionType, TimestampedCompositionObject]` | | yes
 
 After uploading data, we get a response back:
 
@@ -1170,7 +1170,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
-`composition_types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
+`composition_types` | A list of the composition types. | `list` | ["asset_class"] | no
 `start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
 `include_levels` | Whether to include the defined levels. | `bool` | True | no
@@ -1184,13 +1184,13 @@ The response of such a request is:
         "data": {
             "IE00B4L5Y983": {
                 "2022-01-31": {
-                    "ASSET_CLASS": {
+                    "asset_class": {
                         "equity": 0.5,
                         "money_market": 0.5
                     }
                 },
                 "2022-02-28": {
-                    "ASSET_CLASS": {
+                    "asset_class": {
                         "equity": 0.6,
                         "money_market": 0.4
                     }
@@ -1200,7 +1200,7 @@ The response of such a request is:
         },
         "meta": {
             "composition_levels": {
-                "ASSET_CLASS": ["equity", "fixed_income", "money_market"],
+                "asset_class": ["equity", "fixed_income", "money_market"],
                 ...
             }
         }
@@ -1222,7 +1222,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "instrument_ids": ["US2546871060"],
-            "composition_types": ["ASSET_CLASS"],
+            "composition_types": ["asset_class"],
             "start_date": "2022-01-02",
             "end_date": "2022-01-31"
         }'
@@ -1240,7 +1240,7 @@ Filtered data can be removed using the remove endpoint.
 
     {
         "instrument_ids": ["US2546871060"],
-        "types": ["ASSET_CLASS"],
+        "types": ["asset_class"],
         "start_date": "2022-01-02",
         "end_date": "2022-01-31"
     }
@@ -1249,7 +1249,7 @@ Filtered data can be removed using the remove endpoint.
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
-`types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
+`types` | A list of the composition types. | `list` | ["asset_class"] | no
 `start_date` | The start date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
 
