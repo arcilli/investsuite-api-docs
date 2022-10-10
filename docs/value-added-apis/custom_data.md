@@ -694,13 +694,13 @@ These checks can be bypassed by specifying them in the upload body; however unle
       "data": [{
     			"instrument_id": "IE00B4L5Y983",
     			"composition_data": {
-    				"asset_class": {
+    				"ASSET_CLASS": {
     					"equity": 1
     				},
-    				"currency": {
+    				"CURRENCY": {
     					"gbp": 1
     				},
-    				"equity_region": {
+    				"EQUITY_REGION": {
     					"emerging": 0.1,
     					"europe_developed": 0.2,
     					"north_america": 0.7
@@ -710,12 +710,12 @@ These checks can be bypassed by specifying them in the upload body; however unle
     		{
     			"instrument_id": "IE00BWT41R00",
     			"composition_data": {
-    				"equity_sector": {
+    				"EQUITY_SECTOR": {
     					"real_estate": 0.3,
     					"technology": 0.3,
     					"utilities": 0.2
     				},
-    				"fixed_income_type": {
+    				"FIXED_INCOME_TYPE": {
     					"government": 1
     				}
     			}
@@ -738,13 +738,13 @@ These checks can be bypassed by specifying them in the upload body; however unle
     	"data": [{
     			"instrument_id": "IE00B4L5Y983",
     			"composition_data": {
-    				"asset_class": {
+    				"ASSET_CLASS": {
     					"equity": 1
     				},
-    				"currency": {
+    				"CURRENCY": {
     					"gbp": 1
     				},
-    				"equity_region": {
+    				"EQUITY_REGION": {
     					"emerging": 0.1,
     					"europe_developed": 0.2,
     					"north_america": 0.7
@@ -754,12 +754,12 @@ These checks can be bypassed by specifying them in the upload body; however unle
     		{
     			"instrument_id": "IE00BWT41R00",
     			"composition_data": {
-    				"equity_sector": {
+    				"EQUITY_SECTOR": {
     					"real_estate": 0.3,
     					"technology": 0.3,
     					"utilities": 0.2
     				},
-    				"fixed_income_type": {
+    				"FIXED_INCOME_TYPE": {
     					"government": 1
     				}
     			}
