@@ -2680,13 +2680,13 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;CURRENCY&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;gbp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;EQUITY_REGION&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;equity_region&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="w"></span>
@@ -2696,12 +2696,12 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00BWT41R00&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;EQUITY_SECTOR&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;equity_sector&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;real_estate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;technology&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;utilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"></span>
 <span class="w">                </span><span class="p">},</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;FIXED_INCOME_TYPE&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;fixed_income_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;government&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
@@ -2739,7 +2739,7 @@ If you require composition data over different points in time (timeseries) use <
 </tr>
 <tr>
 <td><code>composition_data</code></td>
-<td>An object holding composition data for the provided composition types. Possible composition types are <code>ASSET_CLASS</code>, <code>CREDIT_RATING</code>, <code>EQUITY_SECTOR</code>, <code>EQUITY_REGION</code>, <code>EQUITY_COUNTRY</code>, <code>EQUITY_INDUSTRY</code>, <code>EQUITY_INDUSTRY_GROUP</code>, <code>FIXED_INCOME_TYPE</code>, <code>FIXED_INCOME_REGION</code>, <code>FIXED_INCOME_COUNTRY</code>, <code>REGION</code>, <code>INSTRUMENT</code>, <code>CURRENCY</code>, and <code>DURATION</code>. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. Values for composition should be float.</td>
+<td>An object holding composition data for the provided composition types. Possible composition types are <code>asset_class</code>, <code>credit_rating</code>, <code>equity_sector</code>, <code>equity_region</code>, <code>equity_country</code>, <code>equity_industry</code>, <code>equity_industry_group</code>, <code>fixed_income_type</code>, <code>fixed_income_region</code>, <code>fixed_income_country</code>, <code>fixed_income_region</code>, <code>instrument</code>, <code>currency</code>, and <code>duration</code>. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. Values for composition should be float.</td>
 <td><code>object</code></td>
 <td></td>
 <td>yes</td>
@@ -2859,7 +2859,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>types</code></td>
 <td>A list of the composition types.</td>
 <td><code>list</code></td>
-<td>["ASSET_CLASS"]</td>
+<td>["asset_class"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -2907,7 +2907,7 @@ If you require composition data over different points in time (timeseries) use <
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;types&quot;: [&quot;ASSET_CLASS&quot;]</span>
+<span class="s1">        &quot;types&quot;: [&quot;asset_class&quot;]</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
@@ -2939,7 +2939,7 @@ If you require composition data over different points in time (timeseries) use <
 <tbody>
 <tr>
 <td>types<code>| A list of the composition types. |</code>list`</td>
-<td>["ASSET_CLASS"]</td>
+<td>["asset_class"]</td>
 <td>no</td>
 <td></td>
 <td></td>
@@ -2976,7 +2976,7 @@ If you require composition data over different points in time (timeseries) use <
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
-<span class="s1">        &quot;types&quot;: [&quot;ASSET_CLASS&quot;]</span>
+<span class="s1">        &quot;types&quot;: [&quot;asset_class&quot;]</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
@@ -3018,7 +3018,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>types</code></td>
 <td>A list of the composition types.</td>
 <td><code>list</code></td>
-<td>["ASSET_CLASS"]</td>
+<td>["asset_class"]</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -3116,7 +3116,7 @@ If you require composition data over different points in time (timeseries) use <
 <span class="s1">            {</span>
 <span class="s1">            &quot;instrument_id&quot;: &quot;IE00B4L5Y983&quot;,</span>
 <span class="s1">            &quot;composition_data&quot;: {</span>
-<span class="s1">                &quot;ASSET_CLASS&quot;: {</span>
+<span class="s1">                &quot;asset_class&quot;: {</span>
 <span class="s1">                    &quot;2022-01-31&quot;: {</span>
 <span class="s1">                        &quot;equity&quot;: 0.5,</span>
 <span class="s1">                        &quot;money_market&quot;: 0.5</span>
@@ -3126,7 +3126,7 @@ If you require composition data over different points in time (timeseries) use <
 <span class="s1">                        &quot;money_market&quot;: 0.4</span>
 <span class="s1">                    }</span>
 <span class="s1">                },</span>
-<span class="s1">                &quot;EQUITY_REGION&quot;: {</span>
+<span class="s1">                &quot;equity_region&quot;: {</span>
 <span class="s1">                    &quot;2022-01-31&quot;: {</span>
 <span class="s1">                        &quot;europe&quot;: 0.3,</span>
 <span class="s1">                        &quot;north_america&quot;: 0.6,</span>
@@ -3156,7 +3156,7 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;composition_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-01-31&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"></span>
@@ -3166,7 +3166,7 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;EQUITY_REGION&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;equity_region&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-01-31&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;europe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
@@ -3212,7 +3212,7 @@ If you require composition data over different points in time (timeseries) use <
 </tr>
 <tr>
 <td><code>composition_data</code></td>
-<td>An object holding timeseries composition data for the provided composition types. Possible composition types are <code>ASSET_CLASS</code>, <code>CREDIT_RATING</code>, <code>EQUITY_SECTOR</code>, <code>EQUITY_REGION</code>, <code>EQUITY_COUNTRY</code>, <code>EQUITY_INDUSTRY</code>, <code>EQUITY_INDUSTRY_GROUP</code>, <code>FIXED_INCOME_TYPE</code>, <code>FIXED_INCOME_REGION</code>, <code>FIXED_INCOME_COUNTRY</code>, <code>REGION</code>, <code>INSTRUMENT</code>, <code>CURRENCY</code>, and <code>DURATION</code>. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. A datestamp should be a string with format <code>YYYY-MM-DD</code> or string Unix timestamp.</td>
+<td>An object holding timeseries composition data for the provided composition types. Possible composition types are <code>asset_class</code>, <code>credit_rating</code>, <code>equity_sector</code>, <code>equity_region</code>, <code>equity_country</code>, <code>equity_industry</code>, <code>equity_industry_group</code>, <code>fixed_income_type</code>, <code>fixed_income_region</code>, <code>fixed_income_country</code>, <code>region</code>, <code>instrument</code>, <code>currency</code>, and <code>duration</code>. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. A datestamp should be a string with format <code>YYYY-MM-DD</code> or string Unix timestamp.</td>
 <td><code>object[CompositionType, TimestampedCompositionObject]</code></td>
 <td></td>
 <td>yes</td>
@@ -3336,7 +3336,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>composition_types</code></td>
 <td>A list of the composition types.</td>
 <td><code>list</code></td>
-<td>["ASSET_CLASS"]</td>
+<td>["asset_class"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3370,13 +3370,13 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;IE00B4L5Y983&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-01-31&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-02-28&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
 <span class="w">                    </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
@@ -3386,7 +3386,7 @@ If you require composition data over different points in time (timeseries) use <
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;composition_levels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;ASSET_CLASS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;equity&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fixed_income&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;money_market&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;equity&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fixed_income&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;money_market&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">            </span><span class="err">...</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -3408,7 +3408,7 @@ If you require composition data over different points in time (timeseries) use <
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
-<span class="s1">        &quot;composition_types&quot;: [&quot;ASSET_CLASS&quot;],</span>
+<span class="s1">        &quot;composition_types&quot;: [&quot;asset_class&quot;],</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-01-02&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-01-31&quot;</span>
 <span class="s1">    }&#39;</span>
@@ -3424,7 +3424,7 @@ If you require composition data over different points in time (timeseries) use <
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;asset_class&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-02&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-31&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -3454,7 +3454,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>types</code></td>
 <td>A list of the composition types.</td>
 <td><code>list</code></td>
-<td>["ASSET_CLASS"]</td>
+<td>["asset_class"]</td>
 <td>no</td>
 </tr>
 <tr>
