@@ -1992,6 +1992,14 @@ While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">
 <p class="admonition-title"><code>movement.datetime</code></p>
 <p>The <code>datetime</code> of the linked instrument &amp; cash (<code>BUY / EXECUTED</code> and <code>SELL / EXECUTED</code>) must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Caveat when using the <code>movement.external_id</code></p>
+<ul>
+<li>When the <code>external_id</code> of a movement is set, the related cash movements <strong>must</strong> set the <code>reference_external_id</code> to the <code>external_id</code> of the respective securities movement</li>
+<li>When <code>external_id</code> is not filled, leave the <code>reference_external_id</code> field empty</li>
+</ul>
+<p>This applies to <code>EXECUTED</code>, <code>SETTLED</code>, <code>EXPIRED</code> and <code>CANCELLED</code></p>
+</div>
 <!-- !!! warning
 
     The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
