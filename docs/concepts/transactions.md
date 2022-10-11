@@ -37,8 +37,10 @@ erDiagram
     }
     Movement {
         string external_id
+        string reference_external_id
         string type
         string status
+        string datetime
     }
 
     User ||--|{ Portfolio: owns
@@ -256,7 +258,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
     }
     ```
 
-!!! warning "Update Portfolio holdings"
+!!! info "Update Portfolio holdings"
 
     Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
@@ -307,7 +309,7 @@ Transactions that hold cash movements represent to InvestSuite movements on the 
     }
     ```
 
-!!! warning "Update Portfolio holdings"
+!!! info "Update Portfolio holdings"
 
     Also [update the Portfolio holdings](portfolios.md#holdings) in case of `EXECUTED` or `SETTLED`.
 
@@ -364,7 +366,7 @@ Corporate actions are registered as transactions as they will lead to movements 
     }
     ```
 
-!!! warning "Update Portfolio holdings"
+!!! info "Update Portfolio holdings"
 
     Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
@@ -429,7 +431,7 @@ Costs and charges come in various forms. There are items in the `type` Enum that
     }
     ```
 
-!!! warning "Update Portfolio holdings"
+!!! info "Update Portfolio holdings"
 
     Also [update the Portfolio holdings](portfolios.md#holdings) after this call.
 
@@ -497,24 +499,21 @@ stateDiagram-v2
 
     See [the diagram](#update-transaction) at the top of this section to understand why.
 
-!!! warning "`movement.datetime`"
+!!! warning "Correlating related movements"
 
-    The `datetime` of the linked instrument & cash (`BUY / EXECUTED` and `SELL / EXECUTED`) must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.
+    We correlate movements based on the `movement.datetime` and (optionally) on `movement.external_id`.
 
-!!! warning "Caveat when using the `movement.external_id`"
+    * The `datetime` of the related instrument & cash movements must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.    
+    In the example below the `datetime` of the *Instrument Buy*, *Cash Sell*, *Cash Transaction Fee* and *Cash Other Tax* match.
 
-    * When the `external_id` of a movement is set, the related cash movements **must** set the `reference_external_id` to the `external_id` of the respective securities movement
-    * When `external_id` is not filled, leave the `reference_external_id` field empty
+    * When the `external_id` of a movement is set, the related cash movements **must** set the `reference_external_id` to the `external_id` of the respective securities movement.    
+    When `external_id` is not filled, leave the `reference_external_id` field empty
 
-    This applies to `EXECUTED`, `SETTLED`, `EXPIRED` and `CANCELLED`
-
-<!-- !!! warning
-
-    The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
+    This applies to all Execution Statusses: `CANCELLED`, `NOT_EXECUTED`, `EXPIRED`, `EXECUTED`, `SETTLED`.
 
 === "Request"
 
-    ```HTTP hl_lines="17 18 25 26 32 33 39 40"
+    ```HTTP hl_lines="17 18 19 20 26 27 28 31 34 35 36 39 42 43 44 47" linenums="1"
     PATCH /portfolios/P01FGVEKTV86PPKQVRK9CHT31JR/transactions/T01FHCP1CZ9F1S207KJHNA5V244 HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
@@ -531,6 +530,7 @@ stateDiagram-v2
                 "quantity": 7
             },
             {
+                "external_id": "instrument-buy-123",
                 "type": "BUY",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
@@ -543,21 +543,24 @@ stateDiagram-v2
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -206.57
+                "quantity": -206.57,  // This excludes the TRANSACTION_FEE and OTHER_TAX
+                "reference_external_id": "instrument-buy-123"
             },
             {
                 "type": "TRANSACTION_FEE",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -3
+                "quantity": -3,
+                "reference_external_id": "instrument-buy-123"
             },
             {
                 "type": "OTHER_TAX",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -0.15
+                "quantity": -0.15,
+                "reference_external_id": "instrument-buy-123"
             }
         ]
     }
@@ -577,6 +580,7 @@ stateDiagram-v2
                 "quantity": 7
             },
             {
+                "external_id": "instrument-buy-123",
                 "type": "BUY",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
@@ -589,21 +593,24 @@ stateDiagram-v2
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -206.57
+                "quantity": -206.57,  // This excludes the TRANSACTION_FEE and OTHER_TAX
+                "reference_external_id": "instrument-buy-123"
             },
             {
                 "type": "TRANSACTION_FEE",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -3
+                "quantity": -3,
+                "reference_external_id": "instrument-buy-123"
             },
             {
                 "type": "OTHER_TAX",
                 "status": "EXECUTED",
                 "datetime": "2022-06-10T07:52:26.341Z",
                 "instrument_id": "$USD",
-                "quantity": -0.15
+                "quantity": -0.15,
+                "reference_external_id": "instrument-buy-123"
             }
         ],
         "id": "T01FHCP1CZ9F1S207KJHNA5V244",
