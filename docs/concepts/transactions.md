@@ -501,6 +501,13 @@ stateDiagram-v2
 
     The `datetime` of the linked instrument & cash (`BUY / EXECUTED` and `SELL / EXECUTED`) must be identical. Otherwise, the portfolio holdings are inconsistent and the performance (eg. TWR) calculations will not be correct.
 
+!!! warning "Caveat when using the `movement.external_id`"
+
+    * When the `external_id` of a movement is set, the related cash movements **must** set the `reference_external_id` to the `external_id` of the respective securities movement
+    * When `external_id` is not filled, leave the `reference_external_id` field empty
+
+    This applies to `EXECUTED`, `SETTLED`, `EXPIRED` and `CANCELLED`
+
 <!-- !!! warning
 
     The Cash Movement does not include the Transaction Fee and Other Tax quanity -->
