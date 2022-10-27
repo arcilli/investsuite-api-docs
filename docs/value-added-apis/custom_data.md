@@ -8,11 +8,11 @@ InvestSuite offers a range of products, all using financial data. Each product h
 
 The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:
 
-- [Custom Reference Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Reference)
-- [Custom Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Timeseries)
-- [Custom Composition Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition)
-- [Custom Composition Timeseries Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition-Timeseries)
-- [Custom Attribution Model Docs](https://api.data.uat.investsuite.com/redoc#tag/Custom-Attribution)
+- [Custom Reference Model Docs](https://api.data.investsuite.com/redoc#tag/Custom-Reference)
+- [Custom Timeseries Model Docs](https://api.data.investsuite.com/redoc#tag/Custom-Timeseries)
+- [Custom Composition Model Docs](https://api.data.investsuite.com/redoc#tag/Custom-Composition)
+- [Custom Composition Timeseries Model Docs](https://api.data.investsuite.com/redoc#tag/Custom-Composition-Timeseries)
+- [Custom Attribution Model Docs](https://api.data.investsuite.com/redoc#tag/Custom-Attribution)
 
 The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.
 
@@ -31,7 +31,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/reference/batch/" \
+    "https://api.data.investsuite.com/data/custom/reference/batch/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -62,7 +62,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 
     ```HTTP
     POST /data/custom/reference/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -94,7 +94,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a reference data object for each provided instrument. | `list` |  | yes
 `instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. **There is not necessarily a relationship to the ISIN.**| `string` | "BE0974293251" | yes
-`reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `object` | | yes
+`reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `object` | | yes
 
 After uploading data, we get a response back:
 
@@ -124,7 +124,7 @@ You can query the uploaded reference data using the query endpoint. A filter can
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/reference/query/" \
+    "https://api.data.investsuite.com/data/custom/reference/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -139,7 +139,7 @@ You can query the uploaded reference data using the query endpoint. A filter can
 
     ```HTTP
     POST /data/custom/reference/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -180,7 +180,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/reference/remove/" \
+    "https://api.data.investsuite.com/data/custom/reference/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -195,7 +195,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/reference/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -242,7 +242,7 @@ All custom reference data can be removed in one go with the clear endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/reference/clear/" \
+    "https://api.data.investsuite.com/data/custom/reference/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -253,7 +253,7 @@ All custom reference data can be removed in one go with the clear endpoint.
 
     ```HTTP
     POST /data/custom/reference/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -279,7 +279,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/reference/csv/" \
+    "https://api.data.investsuite.com/data/custom/reference/csv/" \
     -H "accept: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
@@ -291,7 +291,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 
     ```HTTP
     POST /data/custom/reference/csv/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: multipart/form-data; filename="reference-data.csv"
     X-TENANT-ID: $TENANT_ID
@@ -302,7 +302,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `file` | A CSV file that holds reference data with the first line containing header column `instrument_id`, subsequent columns are the field names of reference data. | `list` | cf. example above  | yes
 `instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. **There is not necessarily a relationship to the ISIN.**| `csv column` | cf. example above | yes
-`reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `csv column` | cf. example above | yes
+`reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `csv column` | cf. example above | yes
 
 After uploading data, we get a response back:
 
@@ -338,7 +338,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/timeseries/batch/" \                 
+    "https://api.data.investsuite.com/data/custom/timeseries/batch/" \                 
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -372,7 +372,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
 
     ```HTTP
     POST /data/custom/timeseries/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     Content-Type: application/json
     accept: application/json
     X-TENANT-ID: $TENANT_ID
@@ -410,7 +410,7 @@ Field | Description | Data type | Example | Required
 `instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "BE0003851681" | yes
 `values` | An object holding the timeseries data for the instrument. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float.  | `object[str, float]` | `{"2022-03-07": 9615.215, "1656337622": 9489.172}` | yes
 `currency` | The currency of the values being uploaded | `str` | "USD" | yes (where applicable)
-`timeseries_type` | The type of timeseries data that is provided. Available types can be seen in the [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
+`timeseries_type` | The type of timeseries data that is provided. Available types can be seen in the [API documentation of this endpoint](https://api.data.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
 
 
 After uploading data, we get a response back:
@@ -443,7 +443,7 @@ You can query the uploaded timeseries data using the query endpoint. A filter ca
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/timeseries/query/" \
+    "https://api.data.investsuite.com/data/custom/timeseries/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -461,7 +461,7 @@ You can query the uploaded timeseries data using the query endpoint. A filter ca
 
     ```HTTP
     POST /data/custom/timeseries/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -515,7 +515,7 @@ You can query the meta data for the custom uploaded timeseries data. Currently t
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/timeseries/meta/query/" \
+    "https://api.data.investsuite.com/data/custom/timeseries/meta/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -530,7 +530,7 @@ You can query the meta data for the custom uploaded timeseries data. Currently t
 
     ```HTTP
     POST /data/custom/timeseries/meta/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -571,7 +571,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/timeseries/remove/" \
+    "https://api.data.investsuite.com/data/custom/timeseries/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -588,7 +588,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/timeseries/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -639,7 +639,7 @@ All custom timeseries data for a timeseries type can be removed in one go with t
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/timeseries/clear/" \
+    "https://api.data.investsuite.com/data/custom/timeseries/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -653,7 +653,7 @@ All custom timeseries data for a timeseries type can be removed in one go with t
 
     ```HTTP
     POST /data/custom/timeseries/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -685,7 +685,7 @@ These checks can be bypassed by specifying them in the upload body; however unle
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition/batch/" \                
+    "https://api.data.investsuite.com/data/custom/composition/batch/" \                
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -728,7 +728,7 @@ These checks can be bypassed by specifying them in the upload body; however unle
 
     ```HTTP
     POST /data/custom/composition/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     Content-Type: application/json
     accept: application/json
     X-TENANT-ID: $TENANT_ID
@@ -804,7 +804,7 @@ You can query the uploaded composition data using the query endpoint. A filter c
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition/query/" \
+    "https://api.data.investsuite.com/data/custom/composition/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -820,7 +820,7 @@ You can query the uploaded composition data using the query endpoint. A filter c
 
     ```HTTP
     POST /data/custom/composition/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -870,7 +870,7 @@ You can query the meta data for the custom uploaded composition data. Currently 
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition/meta/query/" \
+    "https://api.data.investsuite.com/data/custom/composition/meta/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -884,7 +884,7 @@ You can query the meta data for the custom uploaded composition data. Currently 
 
     ```HTTP
     POST /data/custom/composition/meta/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -923,7 +923,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition/remove/" \
+    "https://api.data.investsuite.com/data/custom/composition/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -938,7 +938,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/composition/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -986,7 +986,7 @@ All custom composition data can be removed in one go with the clear endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition/clear/" \
+    "https://api.data.investsuite.com/data/custom/composition/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -997,7 +997,7 @@ All custom composition data can be removed in one go with the clear endpoint.
 
     ```HTTP
     POST /data/custom/composition/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1018,7 +1018,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/" \                 
+    "https://api.data.investsuite.com/data/custom/composition-timeseries/batch/" \                 
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1059,7 +1059,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 
     ```HTTP
     POST /data/custom/composition-timeseries/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     Content-Type: application/json
     accept: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1134,7 +1134,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/query/" \
+    "https://api.data.investsuite.com/data/custom/composition-timeseries/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1152,7 +1152,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
     ```HTTP
     POST /data/custom/composition-timeseries/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1215,7 +1215,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/remove/" \
+    "https://api.data.investsuite.com/data/custom/composition-timeseries/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1232,7 +1232,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/composition-timeseries/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1286,7 +1286,7 @@ All custom composition timeseries data can be removed in one go with the clear e
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/clear/" \
+    "https://api.data.investsuite.com/data/custom/composition-timeseries/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1297,7 +1297,7 @@ All custom composition timeseries data can be removed in one go with the clear e
 
     ```HTTP
     POST /data/custom/composition-timeseries/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1319,7 +1319,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/attribution/batch/" \
+    "https://api.data.investsuite.com/data/custom/attribution/batch/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1350,7 +1350,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 
     ```HTTP
     POST /data/custom/attribution/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1415,7 +1415,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/composition-timeseries/query/" \
+    "https://api.data.investsuite.com/data/custom/composition-timeseries/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1431,7 +1431,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
     ```HTTP
     POST /data/custom/attribution/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1479,7 +1479,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/attribution/remove/" \
+    "https://api.data.investsuite.com/data/custom/attribution/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1495,7 +1495,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/attribution/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1542,7 +1542,7 @@ All custom attribution data can be removed in one go with the clear endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/attribution/clear/" \
+    "https://api.data.investsuite.com/data/custom/attribution/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1553,7 +1553,7 @@ All custom attribution data can be removed in one go with the clear endpoint.
 
     ```HTTP
     POST /data/custom/attribution/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1572,7 +1572,7 @@ The endpoint accepts a batch of currencies at once. Let us look at an example.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/batch/" \                 
+    "https://api.data.investsuite.com/data/custom/exchange-rates/batch/" \                 
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1608,7 +1608,7 @@ The endpoint accepts a batch of currencies at once. Let us look at an example.
 
     ```HTTP
     POST /data/custom/exchange-rates/batch/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     Content-Type: application/json
     accept: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1679,7 +1679,7 @@ You can query the uploaded exchange rate data using the query endpoint. A filter
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/query/" \
+    "https://api.data.investsuite.com/data/custom/exchange-rates/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1696,7 +1696,7 @@ You can query the uploaded exchange rate data using the query endpoint. A filter
 
     ```HTTP
     POST /data/custom/exchange-rates/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1745,7 +1745,7 @@ You can query the meta data for the custom uploaded exchange rates data. Current
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/meta/query/" \
+    "https://api.data.investsuite.com/data/custom/exchange-rates/meta/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1757,7 +1757,7 @@ You can query the meta data for the custom uploaded exchange rates data. Current
 
     ```HTTP
     POST /data/custom/exchange-rates/meta/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1788,7 +1788,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/remove/" \
+    "https://api.data.investsuite.com/data/custom/exchange-rates/remove/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1804,7 +1804,7 @@ Filtered data can be removed using the remove endpoint.
 
     ```HTTP
     POST /data/custom/exchange-rates/remove/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -1853,7 +1853,7 @@ All custom exchange rates data can be removed in one go with the clear endpoint.
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/data/custom/exchange-rates/clear/" \
+    "https://api.data.investsuite.com/data/custom/exchange-rates/clear/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -1866,7 +1866,7 @@ All custom exchange rates data can be removed in one go with the clear endpoint.
 
     ```HTTP
     POST /data/custom/exchange-rates/clear/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID

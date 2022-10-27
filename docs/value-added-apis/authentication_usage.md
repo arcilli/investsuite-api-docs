@@ -13,7 +13,7 @@ Example requests with authentication headers:
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/" \
+    "https://api.data.investsuite.com/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -24,7 +24,7 @@ Example requests with authentication headers:
 
     ```HTTP
     GET / HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
     accept: application/json
@@ -35,13 +35,13 @@ Example requests with authentication headers:
 
 
 ## API Docsite Usage
-Auto-generated documentation showing REST OpenAPI data models and response descriptions at the `redoc` path: [https://api.data.uat.investsuite.com/redoc](https://api.data.uat.investsuite.com/redoc)
+Auto-generated documentation showing REST OpenAPI data models and response descriptions at the `redoc` path: [https://api.data.investsuite.com/redoc](https://api.data.investsuite.com/redoc)
 
 You can navigate the data models and schemata by clicking the drop-down buttons for the relevant field.
 
 
 ## Webinterface Usage
-An interactive Swagger UI interface is available for testing at the `/docs` path: [https://api.data.uat.investsuite.com/docs](https://api.data.uat.investsuite.com/redoc)
+An interactive Swagger UI interface is available for testing at the `/docs` path: [https://api.data.investsuite.com/docs](https://api.data.investsuite.com/redoc)
 
 **⚠️ `/docs` Interactive Swagger UI caching issues**:
 

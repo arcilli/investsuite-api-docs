@@ -8,7 +8,7 @@ This API endpoint can be used to simulate a range of possible future returns for
 
 The Financial Data API endpoint for the Monte Carlo simulations is accessed through the following endpoint:
 
-- [Future Performance](https://api.data.uat.investsuite.com/redoc#operation/future_performance_future__post)
+- [Future Performance](https://api.data.investsuite.com/redoc#operation/future_performance_future__post)
 
 Below, we elaborate further on how to use this endpoints in practice.
 
@@ -20,7 +20,7 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
 
     ```bash
     curl -X "POST" \
-    "https://api.data.uat.investsuite.com/performance/future/" \
+    "https://api.data.investsuite.com/performance/future/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -46,7 +46,7 @@ The endpoint has a range of predefined fields to query data for. Let us look at 
 
     ```HTTP
     POST /performance/future/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
     accept: application/json

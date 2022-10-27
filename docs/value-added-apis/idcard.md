@@ -8,8 +8,8 @@ Get a list of instrument ID Cards.
 
 ID cards can be retrieved based on either a list of identifiers (ISINS or RICs), or for an entire universe
 
-- [ID Card API Documentation](https://api.data.uat.investsuite.com/redoc#tag/ID-Card)
-- [ID Card API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/ID%20Card/)
+- [ID Card API Documentation](https://api.data.investsuite.com/redoc#tag/ID-Card)
+- [ID Card API Swagger UI Interface](https://api.data.investsuite.com/docs#/ID%20Card/)
 
 ## Get ID cards based on a list of identifiers
 
@@ -17,7 +17,7 @@ ID cards can be retrieved based on either a list of identifiers (ISINS or RICs),
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/id-card/query/" \
+    "https://api.data.investsuite.com/id-card/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -29,7 +29,7 @@ ID cards can be retrieved based on either a list of identifiers (ISINS or RICs),
 
     ```HTTP
     GET /id-card/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -48,7 +48,7 @@ Field | Description | Data type | Example | Required
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/id-card/universe/" \
+    "https://api.data.investsuite.com/id-card/universe/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -59,7 +59,7 @@ Field | Description | Data type | Example | Required
 
     ```HTTP
     GET /id-card/universe/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID

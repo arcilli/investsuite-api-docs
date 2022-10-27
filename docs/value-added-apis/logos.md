@@ -6,8 +6,8 @@ title: Logos API
 
 Get a company logo image by an instrument identifier (ISIN).
 
-- [Logos API Documentation](https://api.data.uat.investsuite.com/redoc#tag/Logos)
-- [Logos API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Logos/)
+- [Logos API Documentation](https://api.data.investsuite.com/redoc#tag/Logos)
+- [Logos API Swagger UI Interface](https://api.data.investsuite.com/docs#/Logos/)
 
 Our logo database is automatically collected with human-in-the-loop verification and periodic updates to catch out-of-date assets.
 
@@ -19,7 +19,7 @@ Request a logo for an ISIN as .png image of a certain size with 1:1 square aspec
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/logo/?isin=BE0974293251&use_only_cache=true&size=128" \
+    "https://api.data.investsuite.com/logo/?isin=BE0974293251&use_only_cache=true&size=128" \
     -H "accept: */*" \
     -H "Content-Type: image/png" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -30,7 +30,7 @@ Request a logo for an ISIN as .png image of a certain size with 1:1 square aspec
 
     ```HTTP
     GET /logo/?isin=BE0974293251&use_only_cache=true&size=128 HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: */*
     Content-Type: image/png
     X-TENANT-ID: $TENANT_ID
