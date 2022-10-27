@@ -5,7 +5,7 @@ title: Reference API
 ## Service Description
 
 Query reference data fields for financial instruments such as ISIN, asset class, market cap, etc.
-User-defined data with custom fields can be uploaded with the [Custom Reference Data endpoint](../value-added-apis/custom_data.md).
+User-defined data with custom fields can be uploaded with the [Custom Reference Data endpoint](../insight-apis/custom_data.md).
 
 - [Reference Data Model Docs](https://api.data.investsuite.com/redoc#operation/reference_query_data_reference_query__post)
 - [Reference Data UI Interface](https://api.data.investsuite.com/docs#/Financial%20Data/reference_query_data_reference_query__post)
@@ -101,7 +101,7 @@ Use this GET endpoint to get reference data fields for the instruments in the te
 Field | Type | Description | Data type | Example | Required
 ----- | ---- | ----------- | --------- | ------- | --------
 `accept` | Request Header parameter | `application/json` returns the reference results as a json object. `application/octet-stream` as a binary Python pandas dataframe. | str |  | Yes, default `application/json`
-`universe_name` | Request query parameter | The named universe for which to return that universe instruments' reference data. Tenants have universes for different use-cases, cf. [Tenant Configuration](../value-added-apis/tenant_config.md) | `str` | `ROBO` | No, default returns union set of instruments of all universes of the tenant.
+`universe_name` | Request query parameter | The named universe for which to return that universe instruments' reference data. Tenants have universes for different use-cases, cf. [Tenant Configuration](../insight-apis/tenant_config.md) | `str` | `ROBO` | No, default returns union set of instruments of all universes of the tenant.
 `fields` | Request query parameter | List of instrument identifiers for which to request data fields. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.investsuite.com/redoc#operation/reference_querTODO: Assign ReferenceData model to response output so I can link redoc model docs here.y_data_reference_query__post)| `list[str]` | cf. above | Yes
 `fields_extra` | Request body JSON data | List of instrument field keys which are custom / user-defined and uploaded in the custom endpoint. | `list[str]` | cf. above | Yes
 
@@ -127,7 +127,7 @@ After the request, we get the following example response with the data field val
     ```
 
 ## Custom Reference POST
-See [Custom Reference Data endpoint](../value-added-apis/custom_data.md)
+See [Custom Reference Data endpoint](../insight-apis/custom_data.md)
 
 
 ## FAQ

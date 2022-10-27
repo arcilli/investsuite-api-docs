@@ -1,1 +1,0 @@
-This section handles topics that are specific to the Value Added APIs.
