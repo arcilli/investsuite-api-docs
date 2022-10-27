@@ -4,7 +4,7 @@ title: X-Ray API
 
 ## Service Description
 
-The X-Ray API provides a series of stock metrics. Our quantitative methodology scores stocks on 8 dimensions (Valuation, Growth, Momentum, Stability, Financial Health, Profitability, Size, Dividend Yield). 
+The X-Ray API provides a series of stock metrics. Our quantitative methodology scores stocks on 8 dimensions (Valuation, Growth, Momentum, Stability, Financial Health, Profitability, Size, Dividend Yield).
 
 To retrieve X-Ray perform a `GET` request against the `/xray/universe/` endpoint.
 
@@ -50,18 +50,18 @@ After the request, we get the following example response:
   ```JSON
   [{
       "data": {
-        "US88160R1014": {
+        "BE0003851681": {
             "VALUE_STARS": 1,
             "GROWTH_STARS": 4,
             ...
         },
-        "US1912161007": {
+        "BE0974293251": {
             "VALUE_STARS": 4,
             "GROWTH_STARS": 1,
             ...
         },
         ...
-      } 
+      }
     }
   ]
   ```

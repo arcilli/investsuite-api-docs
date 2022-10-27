@@ -39,18 +39,18 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
     -d '{
             "data": [
                 {
-                    "instrument_id": "US0378331005",
+                    "instrument_id": "BE0974293251",
                     "reference_data": {
-                        "country": "US",
-                        "name": "APPLE",
+                        "country": "BE",
+                        "name": "Ab InBev SA-NV",
                         "roundlot_size": 1
                     }
                 },
                 {
-                    "instrument_id": "US2546871060",
+                    "instrument_id": "BE0003851681",
                     "reference_data": {
-                        "country": "US",
-                        "name": "WALT DISNEY",
+                        "country": "BE",
+                        "name": "Aedifica",
                         "roundlot_size": 1
                     }
                 }
@@ -71,19 +71,19 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
     {
         "data": [
             {
-                "instrument_id": "US0378331005",
-                "reference_data": {
-                    "country": "US",
-                    "name": "APPLE",
-                    "roundlot_size": 1
-                }
+              "instrument_id": "BE0974293251",
+              "reference_data": {
+                  "country": "BE",
+                  "name": "Ab InBev SA-NV",
+                  "roundlot_size": 1
+              }
             },
             {
-                "instrument_id": "US2546871060",
-                "reference_data": {
-                    "country": "US",
-                    "name": "WALT DISNEY",
-                    "roundlot_size": 1
+              "instrument_id": "BE0003851681",
+              "reference_data": {
+                  "country": "BE",
+                  "name": "Aedifica",
+                  "roundlot_size": 1
                 }
             }
         ]
@@ -93,7 +93,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a reference data object for each provided instrument. | `list` |  | yes
-`instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. **There is not necessarily a relationship to the ISIN.**| `string` | "US2546871060" | yes
+`instrument_id` | The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. **There is not necessarily a relationship to the ISIN.**| `string` | "BE0974293251" | yes
 `reference_data` | An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post). | `object` | | yes
 
 After uploading data, we get a response back:
@@ -130,7 +130,7 @@ You can query the uploaded reference data using the query endpoint. A filter can
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "fields": ["NAME", "ASSET_CLASS"],
         }'
     ```
@@ -146,14 +146,14 @@ You can query the uploaded reference data using the query endpoint. A filter can
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
         "fields": ["NAME", "ASSET_CLASS"],
     }
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `fields` | List of instrument identifiers for which to request data fields. | `list` | ["NAME", "ASSET_CLASS"] | no
 
 The response of such a request is:
@@ -163,8 +163,8 @@ The response of such a request is:
     ```JSON
     {
        "data":{
-          "US0378331005":{
-             "name":"The Walt Disney Co",
+          "BE0003851681":{
+             "name":"Aedifica",
              "asset_class":"EQUITY"
           },
           ...
@@ -186,7 +186,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "fields": ["NAME"],
         }'
     ```
@@ -202,14 +202,14 @@ Filtered data can be removed using the remove endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
         "fields": ["NAME"],
     }
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments to be removed. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments to be removed. | `list` | ["BE0003851681"] | no
 `fields` | List of instrument identifiers to be removed. | `list` | ["NAME"] | no
 
 Only the fields provided for the instruments provided will be removed (it is an AND relation). Either list can be empty, but not both.
@@ -246,7 +246,7 @@ All custom reference data can be removed in one go with the clear endpoint.
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     ```
 
 === "HTTP Request"
@@ -272,7 +272,7 @@ The endpoint accepts a batch of instruments at once, and has a range of predefin
 
   ```csv
   instrument_id,country,name,roundlot_size
-  US0378331005,US,APPLE,1
+  BE0003851681,BE,Aedifica,1
   ```
 
 === "Curl Request"
@@ -332,7 +332,7 @@ Timeseries data consist of instrument-level data for which data changes frequent
 
 The endpoint accepts a batch of instruments at once, for the a particular type of timeseries data. Let us look at an example.
 
-**Overwriting existing data:** Updating can be done by providing new data values at the instrument/field-level. 
+**Overwriting existing data:** Updating can be done by providing new data values at the instrument/field-level.
 
 === "Curl Request"
 
@@ -346,7 +346,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
     -d '{
             "data": [
                 {
-                    "instrument_id": "US0378331005",
+                    "instrument_id": "BE0003851681",
                     "values": {
                         "2022-03-07": 158834,
                         "2022-03-08": 156979.4,
@@ -355,7 +355,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
                     "currency": USD
                 },
                 {
-                    "instrument_id": "US2546871060",
+                    "instrument_id": "BE0003851681",
                     "values": {
                         "2022-03-07": 9615.215,
                         "2022-03-08": 9489.172,
@@ -381,7 +381,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
     {
         "data": [
             {
-                "instrument_id": "US0378331005",
+                "instrument_id": "BE0003851681",
                 "values": {
                     "2022-03-07": 158834,
                     "2022-03-08": 156979.4,
@@ -390,7 +390,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
                 "currency": USD
             },
             {
-                "instrument_id": "US2546871060",
+                "instrument_id": "BE0003851681",
                 "values": {
                     "2022-03-07": 9615.215,
                     "2022-03-08": 9489.172,
@@ -407,7 +407,7 @@ The endpoint accepts a batch of instruments at once, for the a particular type o
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a timeseries data object for each provided instrument. | `list` |  | yes
-`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
+`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "BE0003851681" | yes
 `values` | An object holding the timeseries data for the instrument. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float.  | `object[str, float]` | `{"2022-03-07": 9615.215, "1656337622": 9489.172}` | yes
 `currency` | The currency of the values being uploaded | `str` | "USD" | yes (where applicable)
 `timeseries_type` | The type of timeseries data that is provided. Available types can be seen in the [API documentation of this endpoint](https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post)
@@ -433,7 +433,7 @@ Field | Description | Data type | Example | Required
 
 To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again.
 
-Also note that trying to upload a timeseries with a different currency than the one alrady present in the cache will throw an error.
+Also note that trying to upload a timeseries with a different currency than the one already present in the cache will throw an error.
 
 ### QUERY
 
@@ -450,7 +450,7 @@ You can query the uploaded timeseries data using the query endpoint. A filter ca
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "timeseries_type": "ADJUSTED_PRICE",
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "start_date": "2022-03-07",
             "end_date": "2022-03-09",
             "include_currency_meta": True
@@ -469,7 +469,7 @@ You can query the uploaded timeseries data using the query endpoint. A filter ca
 
     {
         "timeseries_type": "ADJUSTED_PRICE",
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
         "start_date": "2022-03-07",
         "end_date": "2022-03-09",
         "include_currency_meta": True
@@ -478,7 +478,7 @@ You can query the uploaded timeseries data using the query endpoint. A filter ca
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `timeseries_type` | The type of timeseries data. | `str` | "ADJUSTED_PRICE" | yes
 `start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
@@ -491,7 +491,7 @@ The response of such a request is:
     ```JSON
     {
         "data": {
-            "US2546871060": {
+            "BE0003851681": {
                 "2022-03-07": 9615.215,
                 "2022-03-08": 9489.172,
                 "2022-03-09": 9626.016
@@ -500,7 +500,7 @@ The response of such a request is:
         },
         "meta": {
             "currency_map": {
-                "US2546871060": "USD",
+                "BE0003851681": "USD",
                 ...
             }
         }
@@ -522,7 +522,7 @@ You can query the meta data for the custom uploaded timeseries data. Currently t
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "timeseries_type": "ADJUSTED_PRICE",
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
         }'
     ```
 
@@ -538,13 +538,13 @@ You can query the meta data for the custom uploaded timeseries data. Currently t
 
     {
         "timeseries_type": "ADJUSTED_PRICE",
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
     }
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `timeseries_type` | The type of timeseries data. | `str` | "ADJUSTED_PRICE" | yes
 
 The response of such a request is:
@@ -556,7 +556,7 @@ The response of such a request is:
         "data": {},
         "meta": {
             "currency_map": {
-                "US2546871060": "USD",
+                "BE0003851681": "USD",
                 ...
             }
         }
@@ -577,7 +577,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "timeseries_type": "ADJUSTED_PRICE",
             "start_date": "2022-07-07",
             "end_date": "2022-07-08"
@@ -595,7 +595,7 @@ Filtered data can be removed using the remove endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
         "timeseries_type": "ADJUSTED_PRICE",
         "start_date": "2022-07-07",
         "end_date": "2022-07-08"
@@ -604,7 +604,7 @@ Filtered data can be removed using the remove endpoint.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `timeseries_type` | The type of timeseries data. | `str` | "ADJUSTED_PRICE" | yes
 `start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
@@ -643,7 +643,7 @@ All custom timeseries data for a timeseries type can be removed in one go with t
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     -d '{
             "timeseries_type": "ADJUSTED_PRICE"
         }'
@@ -672,7 +672,7 @@ Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
 If you require composition data over different points in time (timeseries) use [Custom Composition Timeseries Data](#custom-composition-timeseries-data).
 
-When uploading custom composition data, certain sanity checks are performed by default. These are 
+When uploading custom composition data, certain sanity checks are performed by default. These are
 
 - COMPOSITION_TENANT_LEVELS: a check of the uploaded composition levels (e.g., "equity" & "fixed_income" for the ASSET_CLASS composition) against those defined in the tenant classification config. If levels are present in the upload which are not defined in the tenant config, an error is thrown
 - COMPOSITION_SUMS_TO_ONE: a check whether the composition weights sum to one (with a small tolerance). If the sum falls outside of 1 +- the tolerance, an error is thrown.
@@ -771,7 +771,7 @@ These checks can be bypassed by specifying them in the upload body; however unle
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
-`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
+`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "BE0003851681" | yes
 `composition_data` | An object holding composition data for the provided composition types. Possible composition types are `asset_class`, `credit_rating`, `equity_sector`, `equity_region`, `equity_country`, `equity_industry`, `equity_industry_group`, `fixed_income_type`, `fixed_income_region`, `fixed_income_country`, `fixed_income_region`, `instrument`, `currency`, and `duration`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. Values for composition should be float. | `object` | | yes
 `skip_data_checks` | A list of data checks to be ignored. | `list` |  | no
 
@@ -811,7 +811,7 @@ You can query the uploaded composition data using the query endpoint. A filter c
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "instrument_ids": ["IE00B4L5Y983"],
-            "types": ["asset_class"], 
+            "types": ["asset_class"],
             "include_levels": True
         }'
     ```
@@ -828,14 +828,14 @@ You can query the uploaded composition data using the query endpoint. A filter c
 
     {
         "instrument_ids": ["IE00B4L5Y983"],
-        "types": ["asset_class"], 
+        "types": ["asset_class"],
         "include_levels": True
     }
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `types` | A list of the composition types. | `list` | ["asset_class"] | no
 `include_levels` | Whether to include the defined levels. | `bool` | True | no
 
@@ -929,7 +929,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "types": ["asset_class"]
         }'
     ```
@@ -945,14 +945,14 @@ Filtered data can be removed using the remove endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0003851681"],
         "types": ["ASSET_CLASS"]
     }
     ```
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `types` | A list of the composition types. | `list` | ["asset_class"] | no
 
 Only the date ranges provided for the instruments provided will be removed (it is an AND relation). At least one filter must be provided.
@@ -990,7 +990,7 @@ All custom composition data can be removed in one go with the clear endpoint.
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     ```
 
 === "HTTP Request"
@@ -1100,7 +1100,7 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds a composition timeseries data object for each provided instrument. | `list` |  | yes
-`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US2546871060" | yes
+`instrument_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "BE0003851681" | yes
 `composition_data` | An object holding timeseries composition data for the provided composition types. Possible composition types are `ASSET_CLASS`, `CREDIT_RATING`, `EQUITY_SECTOR`, `EQUITY_REGION`, `EQUITY_COUNTRY`, `EQUITY_INDUSTRY`, `EQUITY_INDUSTRY_GROUP`, `FIXED_INCOME_TYPE`, `FIXED_INCOME_REGION`, `FIXED_INCOME_COUNTRY`, `REGION`, `INSTRUMENT`, `CURRENCY`, and `DURATION`. The API does not impose restrictions on the subtypes, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. A datestamp should be a string with format `YYYY-MM-DD` or string Unix timestamp. | `object[CompositionType, TimestampedCompositionObject]` | | yes
 
 After uploading data, we get a response back:
@@ -1141,7 +1141,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
             "instrument_ids": ["IE00B4L5Y983"],
-            "composition_types": ["ASSET_CLASS"], 
+            "composition_types": ["ASSET_CLASS"],
             "include_levels": True,
             "start_date": "2022-01-02",
             "end_date": "2022-02-28"
@@ -1160,7 +1160,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
     {
         "instrument_ids": ["IE00B4L5Y983"],
-        "composition_types": ["ASSET_CLASS"], 
+        "composition_types": ["ASSET_CLASS"],
         "include_levels": True,
         "start_date": "2022-01-02",
         "end_date": "2022-02-28"
@@ -1169,7 +1169,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0003851681"] | no
 `composition_types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
 `start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
@@ -1221,7 +1221,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "instrument_ids": ["US2546871060"],
+            "instrument_ids": ["BE0003851681"],
             "composition_types": ["ASSET_CLASS"],
             "start_date": "2022-01-02",
             "end_date": "2022-01-31"
@@ -1239,7 +1239,7 @@ Filtered data can be removed using the remove endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "instrument_ids": ["US2546871060"],
+        "instrument_ids": ["BE0974293251"],
         "types": ["ASSET_CLASS"],
         "start_date": "2022-01-02",
         "end_date": "2022-01-31"
@@ -1248,7 +1248,7 @@ Filtered data can be removed using the remove endpoint.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`instrument_ids` | A list of the IDs of the instruments. | `list` | ["US2546871060"] | no
+`instrument_ids` | A list of the IDs of the instruments. | `list` | ["BE0974293251"] | no
 `types` | A list of the composition types. | `list` | ["ASSET_CLASS"] | no
 `start_date` | The start date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
@@ -1290,7 +1290,7 @@ All custom composition timeseries data can be removed in one go with the clear e
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     ```
 
 === "HTTP Request"
@@ -1305,7 +1305,7 @@ All custom composition timeseries data can be removed in one go with the clear e
     ```
 
 
-## Custom Attribution 
+## Custom Attribution
 
 ### POST
 
@@ -1326,19 +1326,19 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{"data": [
           {
-            "fund_id": "US78462F1030",
+            "fund_id": "FUNDID123456",
             "attribution_data": {
               "2022-03-08": {
-                "US0378331005": -0.005838,
-                "US88160R1014": 0.012317
+                "BE0003851681": -0.005838,
+                "BE0974293251": 0.012317
               },
               "2022-03-09": {
-                "US0378331005": 0.017499,
-                "US88160R1014": 0.020967
+                "BE0003851681": 0.017499,
+                "BE0974293251": 0.020967
               },
               "2022-03-10": {
-                "US0378331005": -0.013593,
-                "US88160R1014": -0.012032
+                "BE0003851681": -0.013593,
+                "BE0974293251": -0.012032
                 }
               }
             }
@@ -1359,19 +1359,19 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
     {
         "data": [
             {
-                "fund_id": "US78462F1030",
+                "fund_id": "FUNDID123456",
                 "attribution_data": {
                     "2022-03-08": {
-                        "US0378331005": -0.005838,
-                        "US88160R1014": 0.012317
+                        "BE0003851681": -0.005838,
+                        "BE0974293251": 0.012317
                     },
                     "2022-03-09": {
-                        "US0378331005": 0.017499,
-                        "US88160R1014": 0.020967
+                        "BE0003851681": 0.017499,
+                        "BE0974293251": 0.020967
                     },
                     "2022-03-10": {
-                        "US0378331005": -0.013593,
-                        "US88160R1014": -0.012032
+                        "BE0003851681": -0.013593,
+                        "BE0974293251": -0.012032
                     }
                 }
             }
@@ -1383,8 +1383,8 @@ The endpoint accepts a batch of instruments at once. Let us look at an example.
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `data` | A list that holds an attribution timeseries data object for each provided instrument. | `list` |  | yes
-`fund_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "US78462F1030" | yes
-`attribution_data` | An object holding timeseries attribution data of the instrument. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float. | `object[str, float]` | `"2022-03-09": {"US0378331005": 0.017499}` | yes
+`fund_id` | The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. | `string` | "FUNDID123456" | yes
+`attribution_data` | An object holding timeseries attribution data of the instrument. The keyword is a datestamp string with format `YYYY-MM-DD` or string Unix timestamp. The value should be a float. | `object[str, float]` | `"2022-03-09": {"BE0003851681": 0.017499}` | yes
 
 After uploading data, we get a response back:
 
@@ -1421,7 +1421,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "fund_ids": ["US78462F1030"],
+            "fund_ids": ["FUNDID123456"],
             "start_date": ""2022-03-08",
             "end_date": ""2022-03-08"
         }'
@@ -1438,7 +1438,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "fund_ids": ["US78462F1030"],
+        "fund_ids": ["FUNDID123456"],
         "start_date": ""2022-03-08",
         "end_date": ""2022-03-08"
     }
@@ -1446,7 +1446,7 @@ You can query the uploaded composition timeseries data using the query endpoint.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`fund_ids` | A list of the IDs of the funds. | `list` | ["US78462F1030"] | no
+`fund_ids` | A list of the IDs of the funds. | `list` | ["FUNDID123456"] | no
 `start_date` | The start date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to query, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
 
@@ -1457,10 +1457,10 @@ The response of such a request is:
     ```JSON
     {
         "data": {
-            "US78462F1030": {
+            "FUNDID12345": {
                 "2022-03-08": {
-                    "US0378331005": -0.005838,
-                    "US88160R1014": 0.012317,
+                    "BE0003851681": -0.005838,
+                    "BE0974293251": 0.012317,
                     ...
                 },
                 ...
@@ -1485,7 +1485,7 @@ Filtered data can be removed using the remove endpoint.
     -H "X-TENANT-ID: $TENANT_ID" \
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
-            "fund_ids": ["US78462F1030"],
+            "fund_ids": ["FUNDID123456"],
             "start_date": "2022-03-08",
             "end_date": "2022-03-08"
         }'
@@ -1502,7 +1502,7 @@ Filtered data can be removed using the remove endpoint.
     X-Api-Key: $IVS_API_SECRET
 
     {
-        "fund_ids": ["US78462F1030"],
+        "fund_ids": ["FUNDID123456"],
         "start_date": "2022-03-08",
         "end_date": "2022-03-08"
     }
@@ -1510,7 +1510,7 @@ Filtered data can be removed using the remove endpoint.
 
 Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
-`fund_ids` | A list of the IDs of the funds. | `list` | ["US78462F1030"] | no
+`fund_ids` | A list of the IDs of the funds. | `list` | ["FUNDID123456"] | no
 `start_date` | The start date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-07" | no
 `end_date` | The end date of the date range to remove, provided as a string of the format `YYYY-MM-DD`. | `str` | "2022-03-09" | no
 
@@ -1546,7 +1546,7 @@ All custom attribution data can be removed in one go with the clear endpoint.
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     ```
 
 === "HTTP Request"
@@ -1566,7 +1566,7 @@ Exchange rates data consist of historical exchange rates versus a provided base 
 
 The endpoint accepts a batch of currencies at once. Let us look at an example.
 
-**Overwriting existing data:** Updating can be done by providing new data values at the currency/value-level. 
+**Overwriting existing data:** Updating can be done by providing new data values at the currency/value-level.
 
 === "Curl Request"
 
@@ -1857,7 +1857,7 @@ All custom exchange rates data can be removed in one go with the clear endpoint.
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
-    -H "X-Api-Key: $IVS_API_SECRET" 
+    -H "X-Api-Key: $IVS_API_SECRET"
     -d '{
         }'
     ```

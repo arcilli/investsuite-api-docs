@@ -82,7 +82,7 @@ Field | Description | Data type | Example | Required
 `sample_frequency` | Frequency for which the scenarios should be generated. Options are "D", "W", "M" or "Y". | `str` | "M" | no
 `quantiles` | The quantiles to calculate and return (expressed in decimal form). | `list` | [0.05, 0.5, 0.95] | no
 `use_expected_returns` | Whether the simulations need to are based on projected returns, not historical ones. | `bool` | false | no
-`asset_class_mapping` | Instruments to use for the historical asset class returns. | `dict` | {"EQUITY": "US0378331005", "FIXED_INCOME": "IE00B4L5Y983"} | no
+`asset_class_mapping` | Instruments to use for the historical asset class returns. | `dict` | {"EQUITY": "BE0974293251", "FIXED_INCOME": "IE00B4L5Y983"} | no
 `asset_class_st_mean_and_stdev` | Mean and standard deviation for the short term projected asset class returns. | `dict` | {"EQUITY": {"mean": 0.25, "stdev": 0.35}, "FIXED_INCOME": {"mean": 0.005, "stdev": 0.04}} | no
 `asset_class_lt_mean_and_stdev` | Mean and standard deviation for the long term projected asset class returns. | `dict` | {"EQUITY": {"mean": 0.15, "stdev": 0.25}, "FIXED_INCOME": {"mean": 0.005, "stdev": 0.04}} | no
 `short_to_long_term_transition_cut_off` | Cut-off between the short and long term distributions, in years. | `int` | 5 | no

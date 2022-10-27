@@ -24,8 +24,8 @@ Use this POST endpoint to query reference data fields for a list of instruments.
     -H "X-Api-Key: $IVS_API_SECRET" \
     -d '{
       "instrument_ids": [
-        "US0378331005",
-        "US2546871060"
+        "BE0974293251",
+        "BE0003851681"
         ],
       "fields": [
         "ASSET_CLASS",
@@ -60,11 +60,11 @@ After the request, we get the following example response with the data field val
     ```JSON
     {
        "data":{
-          "US0378331005":{
+          "BE0003851681":{
              "asset_class":"EQUITY",
              "currency":"USD"
           },
-          "US2546871060":{
+          "BE0003851681":{
              "asset_class":"EQUITY",
              "currency":"USD"
           }
@@ -112,14 +112,14 @@ After the request, we get the following example response with the data field val
     ```JSON
     {
        "data":{
-          "US0378331005":{
+          "BE0003851681":{
              "asset_class":"EQUITY",
-             "currency":"USD"
+             "currency":"EUR"
           },
           ...
-          "US2546871060":{
+          "BE0974293251":{
              "asset_class":"EQUITY",
-             "currency":"USD"
+             "currency":"EUR"
           }
        },
        "meta":null
