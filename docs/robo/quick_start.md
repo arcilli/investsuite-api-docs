@@ -25,129 +25,31 @@ Let's now get familiar with the API by simulating what is documented in the sequ
     
     Since this is a simulation however broker integration is not relevant. Instead we create a so-called _virtual portfolio_. This is a portfolio funded with _paper money_, as opposed to real money.
 
-## Steps
+## Onboarding phase
+
+This describes the technical flow. To accomodate various business requirements, see [Onboarding](../scenarios/onboarding.md).
 
 ### 1. Create a user
 
-Create a user for your customer so that in the next step you can define that user as owner of a portfolio. 
+Create a user for your customer so that in the next step you can define that user as owner of a portfolio. See [here](../concepts/users.md#create-a-user) for the API example.
 
-=== "HTTP"
+Save the `user.id` from the response body to use in the next step.
 
-    ```HTTP 
-    POST /users/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "external_id": "unique_external_entity_id",
-        "first_name": "Ashok",
-        "last_name": "Kumar"
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/users/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-            "external_id": "ashok-kumar-1",
-            "first_name": "Ashok",
-            "last_name": "Kumar"
-        }'
-    ```
-
-**Response body** 
-
-```JSON
-{
-    "external_id": "unique_external_entity_id",
-    "id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-    "creation_datetime": "2021-02-18T08:21:02+00:00",
-    "version": 3,
-    "version_datetime": "2021-02-18T08:21:02+00:00",
-    "version_authored_by_user_id": "U01ARZ3NDEKTSV4RRFFQ69G5FAV",
-    "deleted": false,
-    "first_name": "Ashok",
-    "last_name": "Kumar"
-}
+```HTTP
+--8<-- "docs/concepts/users.post-typical.request.http"
 ```
-
-!!! Hint
-    Copy the User ID from the Response Body to use in the next step.
 
 ### 2. Create a portfolio
 
-To optimize a portfolio that portfolio has to reference a _policy_, which is an investment strategy defined by the bank. Such strategy holds the constraints for the optimization algorithm to take into account when rendering order recommendations, for instance the minimum number of stocks within a certain sector or region. Select the `id` from the first policy returned by requesting `GET /policies/`.
+To optimize a portfolio that portfolio has to reference a _policy_, which is an investment strategy defined by the bank. Such strategy holds the constraints for the optimization algorithm to take into account when rendering order recommendations, for instance the minimum number of stocks within a certain sector or region. Get a valid `policy.id` by running [this](policy.md#query-policies) query.
 
-=== "HTTP"
+Once you have obtained the `policy.id` you can create a portfolio.
 
-    ```HTTP hl_lines="11"
-    GET /robo-advisor/policies/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Authorization: Bearer {access_token_string}
-    ```
+See [here](../concepts/portfolios.md#typical-robo-advisor-portfolio) for the API example.
 
-=== "curl"
-
-    ```bash
-    curl -X GET 'https://api.sandbox.investsuite.com/robo-advisor/policies/' \
-    --H 'Authorization: Bearer {access_token_string}'
-    ```
-
-Once you have obtained the policy ID you can create a portfolio.
-
-=== "HTTP"
-
-    ```HTTP hl_lines="11"
-    POST /portfolios/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-
-    {
-        "base_currency":"USD",
-        "config":{
-            "manager":"ROBO_ADVISOR_DISCRETIONARY",
-            "manager_version":1
-            "manager_settings": {
-                "policy_id":"Y01EF46X9XB437JS4678X0K529C",
-            }
-        },
-        "external_id":"your-bank-portfolio-1",
-        "money_type":"PAPER_MONEY",
-        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-    }
-
-    ```
-
-=== "curl"
-
-    ```bash
-    curl --location --request POST 'https://api.sandbox.investsuite.com/portfolios/' \
-        --header 'Authorization: Bearer {string}' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{    
-            "base_currency":"USD",    
-            "config":{    
-                "manager":"ROBO_ADVISOR_DISCRETIONARY",   
-                "manager_version":1    
-                "manager_settings": {    
-                    "policy_id":"Y01EF46X9XB437JS4678X0K529C",    
-                }  
-            },  
-            "external_id":"your-bank-portfolio-1",   
-            "money_type":"PAPER_MONEY", 
-            "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ", 
-        }'
-    ```
+```HTTP
+--8<-- "docs/concepts/portfolios.post-typicalrobo.request.http"
+```
 
 Take a look at the request body... 
 
@@ -185,6 +87,8 @@ Take a look at the request body...
 ```
 
 Copy the Portfolio ID from the Response Body to use in the next step.
+
+## Funding phase
 
 ### 3. Fund the portfolio
 
@@ -301,6 +205,8 @@ Alongside the updated holdings with the cash position, register the cash deposit
         "status": "COMPLETED"
     }
 ```
+
+## Rebalancing phase
 
 ### 4. Recommended orders
 

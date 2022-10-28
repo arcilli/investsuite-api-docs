@@ -102,7 +102,7 @@ Field | Description | Data type | Example | Required
 
 === "Request"
 
-    ```HTTP hl_lines="11 13"
+    ```HTTP hl_lines="14"
     POST /portfolios/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
@@ -110,6 +110,7 @@ Field | Description | Data type | Example | Required
     Content-Type: application/json
     Authorization: Bearer {string}
     {
+        "external_id":"your-bank-portfolio-1",
         "name":"General investing",
         "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
         "base_currency":"USD",
@@ -124,6 +125,9 @@ Field | Description | Data type | Example | Required
             "bank_account_type":"IBAN",
             "bank_account_number":"BE01234567891234"
             "payment_reference":"32154796"
+        },
+        "portfolio":{
+            "$USD":10000
         }
     }
     ```
@@ -148,32 +152,8 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 
 === "Request"
 
-    ```HTTP hl_lines="12 13 14"
-    POST /portfolios/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-    {
-        "base_currency":"USD",
-        "config":{
-            "manager":"ROBO_ADVISOR_DISCRETIONARY",
-            "manager_settings":{
-                "goal_id":"L01EF46X4872VVN0QRW4XF2ZP6W",
-                "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ",
-                "policy_id":"Y01EF46X9XB437JS4678X0K529C"
-            },
-            "manager_version":1
-        },
-        "external_id":"your-bank-portfolio-1",
-        "money_type":"PAPER_MONEY",
-        "name":"General investing",
-        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "portfolio":{
-            "$USD":10000
-        },
-    }
+    ```HTTP hl_lines="14"
+    --8<-- "docs/concepts/portfolios.post-typicalrobo.request.http"
     ```
 
 === "Response (body)"

@@ -74,6 +74,7 @@ markdown_extensions:
   - codehilite:
       guess_lang: false
   - footnotes
+  - pymdownx.snippets
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -136,8 +137,9 @@ nav:
     - Quick start:              robo/quick_start.md
     - Optimize a portfolio:     robo/run_optimizer.md # TODO MERGE?
     # - Synchronize a portfolio:  robo/synchronize_portfolios.md # MERGE WITH PORTFOLIOS ? = RECONCILIATION?
-    - Rebalancing (process):              robo/rebalancing.md
-    - Optimization (object):             robo/optimization.md
+    - Rebalancing (process):    robo/rebalancing.md
+    - Optimization (object):    robo/optimization.md
+    - Policy (object):          robo/policy.md
 
   - Self Investor:
     - Introduction:             self/introduction.md

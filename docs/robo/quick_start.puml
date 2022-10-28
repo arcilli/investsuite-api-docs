@@ -1,31 +1,33 @@
-actor "Client" as _c
-participant "InvestSuite API" as _a
-participant "Events" as _e
-participant "Middleware" as _m
-participant "Optimizer" as _o
-participant "Brokerage" as _b
+actor "Customer" as _c
+participant "Broker/Custodian" as _b
+participant "Client Middleware" as _m
+participant "Integration API\nRobo Advisor Backend" as _a
+participant "Optimizer API\nInvestSuite SaaS" as _o
 
 
-_c->_a:POST /users/
-_a->_m:createUser
-_a<--_m:userId
-_c<-_a:userId
-_c->_a:POST /portfolios/
-_a->_m:createPortfolio
-_a<--_m:portfolioId
-_c<-_a:portfolioId
+
+== Onboarding ==
+_m->_a:POST /users/
+_m<--_a:user.id
+
+_m->_a:GET /robo-advisor/policies/
+_m<--_a: policy.id
+
+_m->_a:POST /portfolios/\nwith user.id and policy.id
+_m<--_a:portfolio.id
+
+== Funding ==
 _c->_b:cash
 _c<--_b:funding OK
 
+== Rebalancing  ==
 loop Recurring Process
-_c->_a:PATCH /portfolios/{id}
+_m->_a:PATCH /portfolios/{id}
+_a->_o:optimize()
+_a<-_o:optimization
+_m->_a:GET /portfolios/{portfoflio_id}/\noptimizations/{optimization_id}
+_m<-_a:optimizations
+_m->_b:place orders
+_m<--_b:transactions
+_m->_a:POST /portfolio/{id}/transactions
 end
-_a->_m:updatePortfolio(holdings)
-_m->_o:optimize()
-_m<-_o:createOptimization()
-_e<-_o:addEvent()
-_c->_a:GET /portfolios/{portfoflio_id}/\noptimizations/{optimization_id}
-_c<-_a:optimizations
-_c->_b:place orders
-_c<--_b:transactions
-_c->_a:POST /portfolio/{id}/transactions
