@@ -2,14 +2,14 @@
 title: Quick start
 ---
 
-Get acquainted with the InvestSuite API. This quick start takes you through the typical steps to integrate with InvestSuite's Optimizer and Robo Advisor products. Below sequence diagram describes these basic steps. As a quick start, we will perform these steps interactively. 
+This page will take you through the typical steps to integrate with InvestSuite's Robo Advisor. Below sequence diagram describes the basic steps.
 
-!!! Hint
-    This exercise demonstrates the flow for Robo Advisor. The flow for **Self Investor** is the same. The only difference is that for Self Investor you do not get to call the optimizer for order recommendations.
+For the exhaustive integration required - see [here](run_optimizer.md).
 
 ## Integration flow
 
-![Optimizer Integration](../img/investsuite_optimizer_api_integration.jpg)
+```plantuml source="docs/robo/quick_start.puml"
+```
 
 Let's now get familiar with the API by simulating what is documented in the sequence diagram. These will be the steps: 
 

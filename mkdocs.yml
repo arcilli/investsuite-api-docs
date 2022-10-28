@@ -142,6 +142,9 @@ nav:
   - Self Investor:
     - Introduction:             self/introduction.md
 
+  - Optimizer:
+    - Introduction:             optimizer/introduction.md
+
   - Value Added APIs:
     - Introduction:             value-added-apis/introduction.md
     - Authentication & Usage:   value-added-apis/authentication_usage.md

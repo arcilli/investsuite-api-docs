@@ -1,0 +1,31 @@
+actor "Client" as _c
+participant "InvestSuite API" as _a
+participant "Events" as _e
+participant "Middleware" as _m
+participant "Optimizer" as _o
+participant "Brokerage" as _b
+
+
+_c->_a:POST /users/
+_a->_m:createUser
+_a<--_m:userId
+_c<-_a:userId
+_c->_a:POST /portfolios/
+_a->_m:createPortfolio
+_a<--_m:portfolioId
+_c<-_a:portfolioId
+_c->_b:cash
+_c<--_b:funding OK
+
+loop Recurring Process
+_c->_a:PATCH /portfolios/{id}
+end
+_a->_m:updatePortfolio(holdings)
+_m->_o:optimize()
+_m<-_o:createOptimization()
+_e<-_o:addEvent()
+_c->_a:GET /portfolios/{portfoflio_id}/\noptimizations/{optimization_id}
+_c<-_a:optimizations
+_c->_b:place orders
+_c<--_b:transactions
+_c->_a:POST /portfolio/{id}/transactions
