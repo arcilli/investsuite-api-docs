@@ -153,7 +153,7 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 === "Request"
 
     ```HTTP hl_lines="14"
-    --8<-- "docs/concepts/portfolios.post-typicalrobo.request.http"
+    --8<-- "concepts/portfolios.post-typicalrobo.request.http"
     ```
 
 === "Response (body)"

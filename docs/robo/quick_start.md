@@ -31,24 +31,35 @@ This describes the technical flow. To accomodate various business requirements, 
 
 ### 1. Create a user
 
-Create a user for your customer so that in the next step you can define that user as owner of a portfolio. See [here](../concepts/users.md#create-a-user) for the API example.
+Create a user for your customer so that in the next step you can define that user as owner of a portfolio. See [here](../concepts/users.md#create-a-user) for the broader documentation.
 
 Save the `user.id` from the response body to use in the next step.
 
 ```HTTP
---8<-- "docs/concepts/users.post-typical.request.http"
+--8<-- "concepts/users.post-typical.request.http"
 ```
 
 ### 2. Create a portfolio
 
-To optimize a portfolio that portfolio has to reference a _policy_, which is an investment strategy defined by the bank. Such strategy holds the constraints for the optimization algorithm to take into account when rendering order recommendations, for instance the minimum number of stocks within a certain sector or region. Get a valid `policy.id` by running [this](policy.md#query-policies) query.
+**Get a policy**
+
+To optimize a portfolio it has to reference a _policy_: an investment strategy defined by the bank. Such strategy holds the constraints for the optimization algorithm to take into account when rendering order recommendations, for instance the minimum number of stocks within a certain sector or region. 
+
+Either you already have a `policy.id` or (for the sake of example) get (any) valid `policy.id` by through the following API call, see [here](policy.md#query-policies) for the broader documentation.
+
+
+```HTTP hl_lines="11"
+--8<-- "robo/policy.get-query.request.http"
+```
 
 Once you have obtained the `policy.id` you can create a portfolio.
 
-See [here](../concepts/portfolios.md#typical-robo-advisor-portfolio) for the API example.
+**Create portfolio**
+
+See [here](../concepts/portfolios.md#typical-robo-advisor-portfolio) for the broader documentation.
 
 ```HTTP
---8<-- "docs/concepts/portfolios.post-typicalrobo.request.http"
+--8<-- "concepts/portfolios.post-typicalrobo.request.http"
 ```
 
 Take a look at the request body... 

@@ -63,7 +63,7 @@ Depending on which products the User uses, fields become required from a fuction
 === "Request"
 
     ```HTTP
-    --8<-- "docs/concepts/users.post-typical.request.http"
+    --8<-- "concepts/users.post-typical.request.http"
     ```
 
 === "Response (body)"

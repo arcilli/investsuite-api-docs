@@ -74,7 +74,9 @@ markdown_extensions:
   - codehilite:
       guess_lang: false
   - footnotes
-  - pymdownx.snippets
+  - pymdownx.snippets:    # Allow embedding of external file code snippets, see https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options
+      check_paths: True
+      base_path: 'docs'
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

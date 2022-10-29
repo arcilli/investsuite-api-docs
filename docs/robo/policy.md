@@ -20,10 +20,8 @@ Due to the complex nature of the Policy object, we recommend to create this thro
 
 === "HTTP"
 
-    ```HTTP hl_lines="11"
-    GET /robo-advisor/policies/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Authorization: Bearer {access_token_string}
+    ```HTTP
+    --8<-- "robo/policy.get-query.request.http"
     ```
 
 === "curl"
