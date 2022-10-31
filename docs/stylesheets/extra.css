@@ -9,3 +9,8 @@
 .md-typeset h1 {
   margin: 0 0 0.5em 0;
 }
+
+/* Max height for code snippets -- See https://github.com/squidfunk/mkdocs-material/issues/3444#issuecomment-1007263001 */
+.md-typeset pre > code {
+  max-height: 30rem;
+}
