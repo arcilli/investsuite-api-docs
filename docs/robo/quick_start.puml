@@ -5,29 +5,35 @@ participant "Integration API\nRobo Advisor Backend" as _a
 participant "Optimizer API\nInvestSuite SaaS" as _o
 
 
+== Authentication ==
+_m->_a:1. POST /auth/login
+_m<--_a:token
 
 == Onboarding ==
-_m->_a:POST /users/
+_m->_a:2. POST /users/
 _m<--_a:user.id
 
-_m->_a:GET /robo-advisor/policies/
+_m->_a:3. GET /robo-advisor/policies/
 _m<--_a: policy.id
 
-_m->_a:POST /portfolios/\nwith user.id and policy.id
+_m->_a:3. POST /portfolios/\nwith user.id and policy.id
 _m<--_a:portfolio.id
 
 == Funding ==
-_c->_b:cash
-_c<--_b:funding OK
+_c->_b:Transfer cash\n(Simulated here by means\nof a paper portfolio)
+_c<--_b:OK
+_b->_m:Funding event
+_m->_a:4. POST /portfolios/{id}/transactions/
+_m->_a:4. PATCH /portfolios/{id}/
 
 == Rebalancing  ==
-loop Recurring Process
-_m->_a:PATCH /portfolios/{id}
+loop Recurring process and triggered by a change in portfolio holdings
 _a->_o:optimize()
-_a<-_o:optimization
-_m->_a:GET /portfolios/{portfoflio_id}/\noptimizations/{optimization_id}
-_m<-_a:optimizations
-_m->_b:place orders
-_m<--_b:transactions
-_m->_a:POST /portfolio/{id}/transactions
+_a<-_o:Optimization
+_m->_a:5. GET /portfolios/{portfoflio_id}/\noptimizations/{optimization_id}
+_m<-_a:Optimizations
+_m->_b:Place orders
+_m<--_b:Transactions
+_m->_a:6. POST /portfolio/{id}/transactions
+_m->_a:7. PATCH /portfolios/{id}/
 end
