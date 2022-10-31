@@ -671,8 +671,6 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
     ```HTTP hl_lines="1"
     GET /portfolios/?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
     Content-Type: application/json
     Authorization: Bearer {string}
     ```
@@ -712,6 +710,8 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
 
 ### Get portfolios with pending withdrawals
 
+<!-- See PLAT-1535, the below is not supported
+
 Get the Portfolios where the `divest_amount` > 0
 
 === "Request"
@@ -719,8 +719,23 @@ Get the Portfolios where the `divest_amount` > 0
     ```HTTP hl_lines="1"
     GET /portfolios/query=config.manager_settings.divest_amount+lt+0 HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    ``` -->
+
+Get the Portfolios with a non-zero and non-null `divest_amount`
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /portfolios/?query=
+        config.manager_settings.divest_amount neq 0 and 
+        config.manager_settings.divest_amount neq null HTTP/1.1
+    Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
     ```
+
+
+
+    
