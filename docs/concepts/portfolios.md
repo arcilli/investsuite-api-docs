@@ -8,7 +8,17 @@ title: Manage portfolios
 
 ## Context
 
-This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
+This page lists all operations that can be performed on the Portfolio object, see [Glossary](glossary.md).
+
+## Concepts
+
+### Holdings
+
+Holdings are positions in a portfolio: instruments and/or cash.
+
+- Instruments are identified as their ISIN.
+- Cash is identified as `$` followed by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes) code. See [Glossary](glossary.md#currency).
+
 
 <!-- ## Concepts
 
@@ -87,7 +97,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `name` | The display name of the portfolio set by the user. | `string <= 128 characters` | My Portfolio-1 | yes
 `owned_by_user_id` | The portfolio owner's user ID. This field is required firstly to get to the account of the owner for cash withdrawals, and secondly to group portfolios by owner. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
-`base_currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
+`base_currency` | The portfolio's currency. See [Glossary](glossary.md#currency). | `string ^[A-Z]{3}\Z` | USD | yes
 `money_type` | Defines whether this is a 'virtual' portfolio or not. In a virtual portfolio buying and selling decisions are simulated, rather than placed as actual orders through a broker. ! Write once | `enum("REAL_MONEY", "PAPER_MONEY")` | REAL_MONEY | yes
 `config->manager` | The manager type is either: self managed, or managed by the Robo Advisor under an advisory or discretionary mandate. For **Self Investor** select `USER_MANAGED` ! Write once. | `enum("USER_MANAGED", "ROBO_ADVISOR_ADVISORY", "ROBO_ADVISOR_DISCRETIONARY")` | ROBO_ADVISOR_DISCRETIONARY | yes
 `config->manager_version` | Which major version of the selected portfolio manager to use. | `integer >= 1` | 1 | yes
