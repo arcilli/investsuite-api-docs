@@ -4,26 +4,12 @@ title: Quick start
 
 This page will take you through the typical steps to integrate with InvestSuite's Robo Advisor. Below sequence diagram describes the basic steps.
 
-For the exhaustive integration required - see [here](run_optimizer.md).
+For the exhaustive integration required - see [here](middleware_design.md).
 
 ## Integration flow
 
 ```plantuml source="docs/robo/quick_start.puml"
 ```
-
-Let's now get familiar with the API by simulating what is documented in the sequence diagram. These will be the steps: 
-
-1. Create a user by invoking `POST /users/`.
-2. Create a portfolio by invoking `POST /portfolios/`.
-3. Update the portfolio with the latest portfolio snapshot (initially only a cash holding).
-4. Get order recommendations as the result of an optimization, based on the holdings and portfolio settings.
-5. Post the transactions you get back from your broker.
-6. Repeat steps 4 - 7.
-
-!!! Note
-    As the sequence diagram reflects it is your role to act as the middle layer between InvestSuite and the broker (unless agreed differently during a common analyses). This means you get the orders and cash movement instructions via InvestSuite and place them with the broker. In the opposite direction, you provide to InvestSuite the holdings and the transactions from the broker. 
-    
-    Since this is a simulation however broker integration is not relevant. Instead we create a so-called _virtual portfolio_. This is a portfolio funded with _paper money_, as opposed to real money.
 
 ## Authentication phase
 
