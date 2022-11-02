@@ -127,10 +127,11 @@ nav:
     # - Asynchronous operations: advanced_topics/async.md
 
   - Scenarios:
-    - Onboarding (process):               scenarios/onboarding.md
-    - Funding & withdrawal (process):   scenarios/cash_movements.md
-    - Suitability profiler:     scenarios/suitability_profiler.md
-
+    - Onboarding (process):           scenarios/onboarding.md
+    - Funding & withdrawal (process): scenarios/cash_movements.md
+    - Suitability profiler:           scenarios/suitability_profiler.md
+    - Thematic search:                scenarios/thematic_search.md
+    
   - Robo Advisor:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
