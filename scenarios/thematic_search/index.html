@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/logos/">
+        <link rel="canonical" href="https://docs.investsuite.com/scenarios/thematic_search/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
     
     
       
-        <title>Logos API - InvestSuite Integration API documentation</title>
+        <title>Thematic search - InvestSuite Integration API documentation</title>
       
     
     
@@ -57,9 +57,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Logos API">
+<meta property="og:title" content="InvestSuite Integration API documentation - Thematic search">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/logos/">
+<meta property="og:url" content="https://docs.investsuite.com/scenarios/thematic_search/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#instrument-groups" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Logos API
+              Thematic search
             
           </span>
         </div>
@@ -196,13 +196,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../scenarios/onboarding/" class="md-tabs__link">
+      <a href="../onboarding/" class="md-tabs__link md-tabs__link--active">
         Scenarios
       </a>
     </li>
@@ -244,15 +246,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../value-added-apis/introduction/" class="md-tabs__link">
         Value Added APIs
       </a>
     </li>
@@ -538,12 +538,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -566,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/onboarding/" class="md-nav__link">
+      <a href="../onboarding/" class="md-nav__link">
         Onboarding (process)
       </a>
     </li>
@@ -580,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/cash_movements/" class="md-nav__link">
+      <a href="../cash_movements/" class="md-nav__link">
         Funding & withdrawal (process)
       </a>
     </li>
@@ -594,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/suitability_profiler/" class="md-nav__link">
+      <a href="../suitability_profiler/" class="md-nav__link">
         Suitability profiler
       </a>
     </li>
@@ -606,11 +608,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/thematic_search/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Thematic search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Thematic search
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instrument-groups" class="md-nav__link">
+    Instrument groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    Embedding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -780,14 +840,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
@@ -810,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../../value-added-apis/introduction/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -824,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication_usage/" class="md-nav__link">
+      <a href="../../value-added-apis/authentication_usage/" class="md-nav__link">
         Authentication & Usage
       </a>
     </li>
@@ -838,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../custom_data/" class="md-nav__link">
+      <a href="../../value-added-apis/custom_data/" class="md-nav__link">
         Custom Data API
       </a>
     </li>
@@ -852,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../xray/" class="md-nav__link">
+      <a href="../../value-added-apis/xray/" class="md-nav__link">
         X-Ray API
       </a>
     </li>
@@ -866,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idcard/" class="md-nav__link">
+      <a href="../../value-added-apis/idcard/" class="md-nav__link">
         ID Card API
       </a>
     </li>
@@ -880,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../themes/" class="md-nav__link">
+      <a href="../../value-added-apis/themes/" class="md-nav__link">
         Themes API
       </a>
     </li>
@@ -894,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inspiration/" class="md-nav__link">
+      <a href="../../value-added-apis/inspiration/" class="md-nav__link">
         Inspiration API
       </a>
     </li>
@@ -906,55 +964,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Logos API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../value-added-apis/logos/" class="md-nav__link">
         Logos API
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logo-get" class="md-nav__link">
-    Logo GET
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -966,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monte_carlo/" class="md-nav__link">
+      <a href="../../value-added-apis/monte_carlo/" class="md-nav__link">
         Monte Carlo API
       </a>
     </li>
@@ -980,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../../value-added-apis/reference/" class="md-nav__link">
         Reference API
       </a>
     </li>
@@ -994,7 +1008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+      <a href="../../value-added-apis/tenant_config/" class="md-nav__link">
         Tenant Configuration
       </a>
     </li>
@@ -1078,15 +1092,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#instrument-groups" class="md-nav__link">
+    Instrument groups
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#logo-get" class="md-nav__link">
-    Logo GET
+  <a href="#model" class="md-nav__link">
+    Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    Embedding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collections" class="md-nav__link">
+    Collections
   </a>
   
 </li>
@@ -1103,7 +1131,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-    <h1>Logos API</h1>
+    <h1>Thematic search</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1112,78 +1140,89 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>Get a company logo image by an instrument identifier (ISIN).</p>
-<ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Logos">Logos API Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Logos/">Logos API Swagger UI Interface</a></li>
-</ul>
-<p>Our logo database is automatically collected with human-in-the-loop verification and periodic updates to catch out-of-date assets.</p>
-<h2 id="logo-get">Logo GET<a class="headerlink" href="#logo-get" title="Permanent link">&para;</a></h2>
-<p>Request a logo for an ISIN as .png image of a certain size with 1:1 square aspect ratio.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<h2 id="instrument-groups">Instrument groups<a class="headerlink" href="#instrument-groups" title="Permanent link">&para;</a></h2>
+<p>The InvestSuite quant team composes and actively manages a list of themes (instrument groups) such as Healthcare, Clean &amp; Green economy, Social trends each holding an applicable list of financial instruments. The aim of thematic search is to offer in the context of self execution, complementary to other search mechanisms, to your clients a means to filter the instrument universe to their personal preference and view. To retrieve themes and selected instruments within them perform a <code>GET</code> request against the  <code>instrument-groups</code> endpoint.</p>
+<h2 id="model">Model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h2>
+<p>Thematic search is based on a simple CRUD model. The entity <code>InstrumentGroups</code> aggregates 0..* <code>Instrument</code> objects. An InstrumentGroup is the category e.g. <em>Health Care</em> and holds properties to describe the category: name, image, description. The <code>Instrument</code> object is a financial instrument, identified by an ISIN (external_id), and also holds properties to describe the instrument.</p>
+<p><img alt="Instrument Groups Model" src="../img/instrument_groups_model.jpg" /></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Request</label><label for="__tabbed_1_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: */*&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: image/png&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /thematic-search/instrument-groups/ </span>
+</span><span class="err">    ?[limit=100]</span>
+<span class="err">    &amp;[count=true]</span>
+<span class="err">    &amp;[embed=instrument_ids] HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/logo/?isin=US30303M1027&amp;use_only_cache=true&amp;size=128</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">*/*</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">image/png</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unique_external_entity_id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+</span><span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;J01F3MQ2DPYXPS7JTHGXX4D09D3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T09:23:34.238210+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cloud Computing&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Digital Disruption&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:ietf:rfc:2648&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;en-US&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cloud Computing is the on-demand availability of computer system resources, especially data storage (cloud storage) and computing power.&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Appel BV. Ordinary Shares&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;display_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Appel BV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STOCK&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;image_uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I01F3MPZ53PNXBQVTKZNKJ88RA3&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T00:00:00+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-04-19T09:21:47.127958+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
 </div>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Data type</th>
-<th>Example</th>
-<th>Required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>isin</code></td>
-<td>The ISIN identifier of the company.</td>
-<td><code>str</code></td>
-<td><code>US30303M1027</code></td>
-<td>Yes</td>
-</tr>
-<tr>
-<td><code>use_only_cache</code></td>
-<td>Set to <code>false</code>, to bypass the cache. Cached requests are recommended.</td>
-<td><code>bool: {true|false}</code></td>
-<td><code>true</code></td>
-<td>No, default <code>true</code></td>
-</tr>
-<tr>
-<td><code>size</code></td>
-<td>Size in pixels from 0 up to 1000. All returned images have square aspect ratio 1:1.</td>
-<td><code>int</code></td>
-<td>No, default to original asset size.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Image)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
-<p>The image binary in <code>image/png</code> format.</p>
+<h2 id="embedding">Embedding<a class="headerlink" href="#embedding" title="Permanent link">&para;</a></h2>
+<p>You can add details about the <code>Instrument</code> objects to the <code>InstrumentGroup</code> objects collection by providing the <code>?embed={query}</code> query string parameter. This parameter can be set to one or more field names that are available in the response object (and are references to other entities). The response will be extended with a populated <code>_embedded</code> key at the root level, which contains a full rendition of the referenced entities. Read detailed info about embedding <strong><a href="../../advanced_topics/embedding/">here</a></strong>.</p>
+<h2 id="collections">Collections<a class="headerlink" href="#collections" title="Permanent link">&para;</a></h2>
+<p>Collections are paginated lists of entities. To request a collection issue a <code>GET</code> request against the entity root path e.g. <code>GET /users/</code>, <code>GET /portfolios/</code>, <code>GET /instrument-groups/</code>. Collection endpoints accept alongside <code>embed</code> two additional query parameters for pagination: limit and offset. Limit (e.g. <code>limit=50</code>) allows you to pass in the number of items to be returned in the results array of the response. The default collection response size is 20 items. The maximum size is 100. Read detailed info about collections <strong><a href="../../advanced_topics/collections/">here</a></strong>.</p>
     
 
               </article>
@@ -1200,7 +1239,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../inspiration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Inspiration API" rel="prev">
+        <a href="../suitability_profiler/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Suitability profiler" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1209,20 +1248,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Inspiration API
+              Suitability profiler
             </div>
           </div>
         </a>
       
       
         
-        <a href="../monte_carlo/" class="md-footer__link md-footer__link--next" aria-label="Next: Monte Carlo API" rel="next">
+        <a href="../../robo/introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Monte Carlo API
+              Introduction
             </div>
           </div>
           <div class="md-footer__button md-icon">
