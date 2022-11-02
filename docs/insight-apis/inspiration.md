@@ -9,8 +9,8 @@ The Inspiration API provides groupings of instruments by automated curation with
 To retrieve Inspiration and up-to-date instruments within them perform a `GET` request against the  `/inspiration/` endpoint.
 A GET request against the `/inspiration/definition/` endpoint will return the metadata (identifier, description, name, query definition) available to the tenant.
 
-- [Inspiration API Redoc Documentation](https://api.data.uat.investsuite.com/redoc#tag/Inspiration)
-- [Inspiration API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Inspiration/)
+- [Inspiration API Redoc Documentation](https://api.data.investsuite.com/redoc#tag/Inspiration)
+- [Inspiration API Swagger UI Interface](https://api.data.investsuite.com/docs#/Inspiration/)
 
 ## Inspiration GET
 GET Inspirations for a tenant with updated instruments matching the provided Inspiration Definition at endpoint `/inspiration/`.
@@ -19,7 +19,7 @@ GET Inspirations for a tenant with updated instruments matching the provided Ins
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/inspiration/?id={inspiration_identifier_1}" \
+    "https://api.data.investsuite.com/inspiration/?id={inspiration_identifier_1}" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -30,7 +30,7 @@ GET Inspirations for a tenant with updated instruments matching the provided Ins
 
     ```HTTP
     GET /inspiration/?id={inspiration_identifier_1} HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
     accept: application/json
@@ -73,7 +73,7 @@ GET the Inspiration Definition metadata without the instruments at the `/inspira
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/inspiration/definition/" \
+    "https://api.data.investsuite.com/inspiration/definition/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -84,7 +84,7 @@ GET the Inspiration Definition metadata without the instruments at the `/inspira
 
     ```HTTP
     GET /inspiration/definition/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     X-TENANT-ID: $TENANT_ID
     X-Api-Key: $IVS_API_SECRET
     accept: application/json

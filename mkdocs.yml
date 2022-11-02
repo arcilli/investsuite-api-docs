@@ -131,6 +131,7 @@ nav:
     - Funding & withdrawal (process): scenarios/cash_movements.md
     - Suitability profiler:           scenarios/suitability_profiler.md
     - Thematic search:                scenarios/thematic_search.md
+    
   - Robo Advisor:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
@@ -142,20 +143,20 @@ nav:
   - Self Investor:
     - Introduction:             self/introduction.md
 
-  - Value Added APIs:
-    - Introduction:             value-added-apis/introduction.md
-    - Authentication & Usage:   value-added-apis/authentication_usage.md
-    - Custom Data API:          value-added-apis/custom_data.md
-    - X-Ray API:                value-added-apis/xray.md
-    - ID Card API:              value-added-apis/idcard.md
-    - Themes API:               value-added-apis/themes.md
-    - Inspiration API:          value-added-apis/inspiration.md
-    - Logos API:                value-added-apis/logos.md
-    - Monte Carlo API:          value-added-apis/monte_carlo.md
-    - Reference API:            value-added-apis/reference.md
-    - Tenant Configuration:     value-added-apis/tenant_config.md
+  - Insight APIs:
+    - Introduction:             insight-apis/introduction.md
+    - Authentication & Usage:   insight-apis/authentication_usage.md
+    - Custom Data API:          insight-apis/custom_data.md
+    - X-Ray API:                insight-apis/xray.md
+    - ID Card API:              insight-apis/idcard.md
+    - Themes API:               insight-apis/themes.md
+    - Inspiration API:          insight-apis/inspiration.md
+    - Logos API:                insight-apis/logos.md
+    - Monte Carlo API:          insight-apis/monte_carlo.md
+    - Reference API:            insight-apis/reference.md
+    - Tenant Configuration:     insight-apis/tenant_config.md
 
   - Integration OpenAPI:        "https://api.sandbox.investsuite.com/redoc"
-  - Value Added OpenAPI:        "https://api.data.investsuite.com/redoc"
+  - Insight APIs OpenAPI:       "https://api.data.investsuite.com/redoc"
 
   - Release notes:              changelog.md

@@ -6,8 +6,8 @@ title: Endpoint Name Title
 
 Describe the service here in natural language and provide documentation and UI link:
 
-- [Themes API Documentation](https://api.data.uat.investsuite.com/redoc#tag/{})
-- [Themes API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/Themes/)
+- [Themes API Documentation](https://api.data.investsuite.com/redoc#tag/{})
+- [Themes API Swagger UI Interface](https://api.data.investsuite.com/docs#/Themes/)
 
 ## GET example
 
@@ -15,7 +15,7 @@ Describe the service here in natural language and provide documentation and UI l
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS" \
+    "https://api.data.investsuite.com/$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -26,7 +26,7 @@ Describe the service here in natural language and provide documentation and UI l
 
     ```HTTP
     GET /$ENDPOINT_NAME/?$EXAMPLE_QUERY_PARAMS HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
