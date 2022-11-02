@@ -88,13 +88,13 @@ markdown_extensions:
       # title: UML diagram                        # default title (tooltip) for diagram images
       # alt: UML diagram image                    # default `alt` attribute for diagram images
       priority: 30                              # plugin priority; the higher, the sooner will be applied (default 30)
-      http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)       
+      http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)
       fallback_to_get: True                     # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
       theme: mars     # plain, mars, (commented out), reddress-lightred, toy, vibrant , see https://the-lum.github.io/puml-themes-gallery/#all-the-themes                    # theme to be set, can be overridden inside puml files, (default none)
-      puml_notheme_cmdlist: [                             
-                              'version', 
-                              'listfonts', 
-                              'stdlib', 
+      puml_notheme_cmdlist: [
+                              'version',
+                              'listfonts',
+                              'stdlib',
                               'license'
                             ]                   # theme will not be set if listed commands present (default as listed)
 
@@ -112,12 +112,12 @@ nav:
     - Events:                   concepts/events.md
     - Embedding:                concepts/embedding.md
     - API errors:               concepts/errors.md
-  
+
     - Business objects:         concepts/entities.md
     - User (object):            concepts/users.md
     - Portfolio (object):       concepts/portfolios.md
     - Transaction (object):     concepts/transactions.md
-  
+
     # - Identifiers
     # - Policies
     # - Versioning
@@ -127,10 +127,10 @@ nav:
     # - Asynchronous operations: advanced_topics/async.md
 
   - Scenarios:
-    - Onboarding (process):               scenarios/onboarding.md
-    - Funding & withdrawal (process):   scenarios/cash_movements.md
-    - Suitability profiler:     scenarios/suitability_profiler.md
-    
+    - Onboarding (process):           scenarios/onboarding.md
+    - Funding & withdrawal (process): scenarios/cash_movements.md
+    - Suitability profiler:           scenarios/suitability_profiler.md
+    - Thematic search:                scenarios/thematic_search.md
   - Robo Advisor:
     - Introduction:             robo/introduction.md
     - Quick start:              robo/quick_start.md
@@ -157,5 +157,5 @@ nav:
 
   - Integration OpenAPI:        "https://api.sandbox.investsuite.com/redoc"
   - Value Added OpenAPI:        "https://api.data.investsuite.com/redoc"
-  
+
   - Release notes:              changelog.md
