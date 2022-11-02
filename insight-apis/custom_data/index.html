@@ -12,7 +12,7 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/custom_data/">
+        <link rel="canonical" href="https://docs.investsuite.com/insight-apis/custom_data/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
@@ -59,7 +59,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="InvestSuite Integration API documentation - Custom Data API">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/custom_data/">
+<meta property="og:url" content="https://docs.investsuite.com/insight-apis/custom_data/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -253,7 +253,7 @@
   
     <li class="md-tabs__item">
       <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
-        Value Added APIs
+        Insight APIs
       </a>
     </li>
   
@@ -278,7 +278,7 @@
 
   <li class="md-tabs__item">
     <a href="https://api.data.investsuite.com/redoc" class="md-tabs__link">
-      Value Added OpenAPI
+      Insight APIs OpenAPI
     </a>
   </li>
 
@@ -793,14 +793,14 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Value Added APIs
+          Insight APIs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Value Added APIs" data-md-level="1">
+      <nav class="md-nav" aria-label="Insight APIs" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Value Added APIs
+          Insight APIs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1286,7 +1286,7 @@
   
     <li class="md-nav__item">
       <a href="https://api.data.investsuite.com/redoc" class="md-nav__link">
-        Value Added OpenAPI
+        Insight APIs OpenAPI
       </a>
     </li>
   
@@ -1624,11 +1624,11 @@
 <p>InvestSuite offers a range of products, all using financial data. Each product has access a few to market data providers. Sometimes the necessary data is not available with these providers, or a client may want to upload their own data to guarantee exactly the same numbers in the InvestSuite products as they report themselves. In that case, the client will upload the custom data to InvestSuite via the API endpoints as described on this page. This then takes precedence on the data from the provider.</p>
 <p>The Financial Data API accepts custom data via several endpoints, each accepting a specific type of data:</p>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Reference">Custom Reference Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Timeseries">Custom Timeseries Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition">Custom Composition Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Composition-Timeseries">Custom Composition Timeseries Model Docs</a></li>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Custom-Attribution">Custom Attribution Model Docs</a></li>
+<li><a href="https://api.data.investsuite.com/redoc#tag/Custom-Reference">Custom Reference Model Docs</a></li>
+<li><a href="https://api.data.investsuite.com/redoc#tag/Custom-Timeseries">Custom Timeseries Model Docs</a></li>
+<li><a href="https://api.data.investsuite.com/redoc#tag/Custom-Composition">Custom Composition Model Docs</a></li>
+<li><a href="https://api.data.investsuite.com/redoc#tag/Custom-Composition-Timeseries">Custom Composition Timeseries Model Docs</a></li>
+<li><a href="https://api.data.investsuite.com/redoc#tag/Custom-Attribution">Custom Attribution Model Docs</a></li>
 </ul>
 <p>The client will most likely use a combination of these endpoints. Below, we elaborate further on how to use these endpoints in practice.</p>
 <h2 id="custom-reference">Custom Reference<a class="headerlink" href="#custom-reference" title="Permanent link">&para;</a></h2>
@@ -1640,7 +1640,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/batch/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/reference/batch/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -1648,18 +1648,18 @@
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;data&quot;: [</span>
 <span class="s1">            {</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;US0378331005&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;BE0974293251&quot;,</span>
 <span class="s1">                &quot;reference_data&quot;: {</span>
-<span class="s1">                    &quot;country&quot;: &quot;US&quot;,</span>
-<span class="s1">                    &quot;name&quot;: &quot;APPLE&quot;,</span>
+<span class="s1">                    &quot;country&quot;: &quot;BE&quot;,</span>
+<span class="s1">                    &quot;name&quot;: &quot;Ab InBev SA-NV&quot;,</span>
 <span class="s1">                    &quot;roundlot_size&quot;: 1</span>
 <span class="s1">                }</span>
 <span class="s1">            },</span>
 <span class="s1">            {</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;US2546871060&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;BE0003851681&quot;,</span>
 <span class="s1">                &quot;reference_data&quot;: {</span>
-<span class="s1">                    &quot;country&quot;: &quot;US&quot;,</span>
-<span class="s1">                    &quot;name&quot;: &quot;WALT DISNEY&quot;,</span>
+<span class="s1">                    &quot;country&quot;: &quot;BE&quot;,</span>
+<span class="s1">                    &quot;name&quot;: &quot;Aedifica&quot;,</span>
 <span class="s1">                    &quot;roundlot_size&quot;: 1</span>
 <span class="s1">                }</span>
 <span class="s1">            }</span>
@@ -1669,7 +1669,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -1678,19 +1678,19 @@
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APPLE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE0974293251&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ab InBev SA-NV&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2546871060&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WALT DISNEY&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;reference_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aedifica&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">              </span><span class="nt">&quot;roundlot_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">]</span><span class="w"></span>
@@ -1721,12 +1721,12 @@
 <td><code>instrument_id</code></td>
 <td>The ID of the instrument. This will be used by InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, but some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data. <strong>There is not necessarily a relationship to the ISIN.</strong></td>
 <td><code>string</code></td>
-<td>"US2546871060"</td>
+<td>"BE0974293251"</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><code>reference_data</code></td>
-<td>An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at <a href="https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">API documentation of this endpoint</a>.</td>
+<td>An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at <a href="https://api.data.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">API documentation of this endpoint</a>.</td>
 <td><code>object</code></td>
 <td></td>
 <td>yes</td>
@@ -1787,27 +1787,27 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/reference/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;fields&quot;: [&quot;NAME&quot;, &quot;ASSET_CLASS&quot;],</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -1829,7 +1829,7 @@
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1847,8 +1847,8 @@
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;data&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">         </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;The Walt Disney Co&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Aedifica&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">         </span><span class="nt">&quot;asset_class&quot;</span><span class="p">:</span><span class="s2">&quot;EQUITY&quot;</span><span class="w"></span>
 <span class="w">      </span><span class="p">},</span><span class="w"></span>
 <span class="w">      </span><span class="err">...</span><span class="w"></span>
@@ -1865,27 +1865,27 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/reference/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;fields&quot;: [&quot;NAME&quot;],</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;NAME&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -1907,7 +1907,7 @@
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments to be removed.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -1974,16 +1974,16 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/reference/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2002,13 +2002,13 @@
 </div>
 </div>
 <div class="highlight"><pre><span></span><code>instrument_id,country,name,roundlot_size
-US0378331005,US,APPLE,1
+BE0003851681,BE,Aedifica,1
 </code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Curl Request</label><label for="__tabbed_9_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/reference/csv/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/reference/csv/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -2018,7 +2018,7 @@ US0378331005,US,APPLE,1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/reference/csv/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/form-data; filename=&quot;reference-data.csv&quot;</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2054,7 +2054,7 @@ US0378331005,US,APPLE,1
 </tr>
 <tr>
 <td><code>reference_data</code></td>
-<td>An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at <a href="https://api.data.uat.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">API documentation of this endpoint</a>.</td>
+<td>An object holding the actual reference data of the instrument. Available data fields can be seen in the drop-down at <a href="https://api.data.investsuite.com/redoc#operation/create_reference_batch_data_custom_reference_batch__post">API documentation of this endpoint</a>.</td>
 <td><code>csv column</code></td>
 <td>cf. example above</td>
 <td>yes</td>
@@ -2113,12 +2113,12 @@ US0378331005,US,APPLE,1
 <h3 id="post_1">POST<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h3>
 <p>Timeseries data consist of instrument-level data for which data changes frequently (usually daily) and for which historical values are relevant. Examples of timeseries data are NAV, adjusted price, yield, and interest rate. Using this endpoint, a client can upload timeseries data for specific instruments, and for a specific type.</p>
 <p>The endpoint accepts a batch of instruments at once, for the a particular type of timeseries data. Let us look at an example.</p>
-<p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the instrument/field-level. </p>
+<p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the instrument/field-level.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Curl Request</label><label for="__tabbed_11_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/batch/&quot;</span> <span class="se">\ </span>                
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/timeseries/batch/&quot;</span> <span class="se">\ </span>                
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -2126,7 +2126,7 @@ US0378331005,US,APPLE,1
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;data&quot;: [</span>
 <span class="s1">            {</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;US0378331005&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;BE0003851681&quot;,</span>
 <span class="s1">                &quot;values&quot;: {</span>
 <span class="s1">                    &quot;2022-03-07&quot;: 158834,</span>
 <span class="s1">                    &quot;2022-03-08&quot;: 156979.4,</span>
@@ -2135,7 +2135,7 @@ US0378331005,US,APPLE,1
 <span class="s1">                &quot;currency&quot;: USD</span>
 <span class="s1">            },</span>
 <span class="s1">            {</span>
-<span class="s1">                &quot;instrument_id&quot;: &quot;US2546871060&quot;,</span>
+<span class="s1">                &quot;instrument_id&quot;: &quot;BE0003851681&quot;,</span>
 <span class="s1">                &quot;values&quot;: {</span>
 <span class="s1">                    &quot;2022-03-07&quot;: 9615.215,</span>
 <span class="s1">                    &quot;2022-03-08&quot;: 9489.172,</span>
@@ -2150,7 +2150,7 @@ US0378331005,US,APPLE,1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2159,7 +2159,7 @@ US0378331005,US,APPLE,1
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US0378331005&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">158834</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">156979.4</span><span class="p">,</span><span class="w"></span>
@@ -2168,7 +2168,7 @@ US0378331005,US,APPLE,1
 <span class="w">            </span><span class="nt">&quot;currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">USD</span><span class="w"></span>
 <span class="w">        </span><span class="p">},</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US2546871060&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;instrument_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;values&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9615.215</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9489.172</span><span class="p">,</span><span class="w"></span>
@@ -2205,7 +2205,7 @@ US0378331005,US,APPLE,1
 <td><code>instrument_id</code></td>
 <td>The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data.</td>
 <td><code>string</code></td>
-<td>"US2546871060"</td>
+<td>"BE0003851681"</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -2224,7 +2224,7 @@ US0378331005,US,APPLE,1
 </tr>
 <tr>
 <td><code>timeseries_type</code></td>
-<td>The type of timeseries data that is provided. Available types can be seen in the <a href="https://api.data.uat.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post">API documentation of this endpoint</a></td>
+<td>The type of timeseries data that is provided. Available types can be seen in the <a href="https://api.data.investsuite.com/redoc#operation/create_timeseries_batch_data_custom_timeseries_batch__post">API documentation of this endpoint</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2279,21 +2279,21 @@ US0378331005,US,APPLE,1
 </tbody>
 </table>
 <p>To overwrite a certain type of timeseries data for one or more instruments on specific dates, simply provide the data for these instruments on the dates to overwrite again.</p>
-<p>Also note that trying to upload a timeseries with a different currency than the one alrady present in the cache will throw an error.</p>
+<p>Also note that trying to upload a timeseries with a different currency than the one already present in the cache will throw an error.</p>
 <h3 id="query_1">QUERY<a class="headerlink" href="#query_1" title="Permanent link">&para;</a></h3>
 <p>You can query the uploaded timeseries data using the query endpoint. A filter can be provided, or the entire cache for a given timeseries type can be returned. Furthermore, the currencies for each instrument for which the timeseries data has been uploaded previously can be returned as part of the payload as well.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Curl Request</label><label for="__tabbed_13_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/timeseries/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;,</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-03-07&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-03-09&quot;,</span>
 <span class="s1">        &quot;include_currency_meta&quot;: True</span>
@@ -2302,7 +2302,7 @@ US0378331005,US,APPLE,1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2310,7 +2310,7 @@ US0378331005,US,APPLE,1
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;timeseries_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ADJUSTED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-07&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-09&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;include_currency_meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="w"></span>
@@ -2334,7 +2334,7 @@ US0378331005,US,APPLE,1
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -2373,7 +2373,7 @@ US0378331005,US,APPLE,1
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US2546871060&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-03-07&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9615.215</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9489.172</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9626.016</span><span class="w"></span>
@@ -2382,7 +2382,7 @@ US0378331005,US,APPLE,1
 <span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;currency_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;US2546871060&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="err">...</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -2397,20 +2397,20 @@ US0378331005,US,APPLE,1
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/meta/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/timeseries/meta/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;,</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/meta/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2418,7 +2418,7 @@ US0378331005,US,APPLE,1
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;timeseries_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ADJUSTED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -2439,7 +2439,7 @@ US0378331005,US,APPLE,1
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -2459,7 +2459,7 @@ US0378331005,US,APPLE,1
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;meta&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;currency_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;US2546871060&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="err">...</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
@@ -2474,13 +2474,13 @@ US0378331005,US,APPLE,1
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/timeseries/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;,</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-07-07&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-07-08&quot;</span>
@@ -2489,14 +2489,14 @@ US0378331005,US,APPLE,1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;timeseries_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ADJUSTED_PRICE&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-07&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-08&quot;</span><span class="w"></span>
@@ -2520,7 +2520,7 @@ US0378331005,US,APPLE,1
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -2601,11 +2601,11 @@ US0378331005,US,APPLE,1
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/timeseries/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/timeseries/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;timeseries_type&quot;: &quot;ADJUSTED_PRICE&quot;</span>
 <span class="s1">    }&#39;</span>
@@ -2613,7 +2613,7 @@ US0378331005,US,APPLE,1
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/timeseries/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2632,7 +2632,7 @@ US0378331005,US,APPLE,1
 Examples are the asset class or country composition of a fund on a certain date.
 Using this endpoint, a client can upload composition data on different composition types for specific instruments.
 If you require composition data over different points in time (timeseries) use <a href="#custom-composition-timeseries-data">Custom Composition Timeseries Data</a>.</p>
-<p>When uploading custom composition data, certain sanity checks are performed by default. These are </p>
+<p>When uploading custom composition data, certain sanity checks are performed by default. These are</p>
 <ul>
 <li>COMPOSITION_TENANT_LEVELS: a check of the uploaded composition levels (e.g., "equity" &amp; "fixed_income" for the ASSET_CLASS composition) against those defined in the tenant classification config. If levels are present in the upload which are not defined in the tenant config, an error is thrown</li>
 <li>COMPOSITION_SUMS_TO_ONE: a check whether the composition weights sum to one (with a small tolerance). If the sum falls outside of 1 +- the tolerance, an error is thrown.</li>
@@ -2643,7 +2643,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/batch/&quot;</span> <span class="se">\ </span>               
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition/batch/&quot;</span> <span class="se">\ </span>               
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -2684,7 +2684,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2748,7 +2748,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_id</code></td>
 <td>The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data.</td>
 <td><code>string</code></td>
-<td>"US2546871060"</td>
+<td>"BE0003851681"</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -2822,21 +2822,21 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;instrument_ids&quot;: [&quot;IE00B4L5Y983&quot;],</span>
-<span class="s1">        &quot;types&quot;: [&quot;asset_class&quot;], </span>
+<span class="s1">        &quot;types&quot;: [&quot;asset_class&quot;],</span>
 <span class="s1">        &quot;include_levels&quot;: True</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2844,7 +2844,7 @@ If you require composition data over different points in time (timeseries) use <
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;asset_class&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;asset_class&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;include_levels&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -2866,7 +2866,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -2915,7 +2915,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/meta/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition/meta/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -2927,7 +2927,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/meta/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -2983,27 +2983,27 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;types&quot;: [&quot;asset_class&quot;]</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0003851681&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -3025,7 +3025,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3093,16 +3093,16 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3120,7 +3120,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/batch/&quot;</span> <span class="se">\ </span>                
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition-timeseries/batch/&quot;</span> <span class="se">\ </span>                
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -3159,7 +3159,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition-timeseries/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3221,7 +3221,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_id</code></td>
 <td>The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data.</td>
 <td><code>string</code></td>
-<td>"US2546871060"</td>
+<td>"BE0003851681"</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -3295,14 +3295,14 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition-timeseries/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">        &quot;instrument_ids&quot;: [&quot;IE00B4L5Y983&quot;],</span>
-<span class="s1">        &quot;composition_types&quot;: [&quot;ASSET_CLASS&quot;], </span>
+<span class="s1">        &quot;composition_types&quot;: [&quot;ASSET_CLASS&quot;],</span>
 <span class="s1">        &quot;include_levels&quot;: True,</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-01-02&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-02-28&quot;</span>
@@ -3311,7 +3311,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition-timeseries/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3319,7 +3319,7 @@ If you require composition data over different points in time (timeseries) use <
 
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;IE00B4L5Y983&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;composition_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">],</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">&quot;composition_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;include_levels&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">True</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-02&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-02-28&quot;</span><span class="w"></span>
@@ -3343,7 +3343,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0003851681"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3415,13 +3415,13 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition-timeseries/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;instrument_ids&quot;: [&quot;US2546871060&quot;],</span>
+<span class="s1">        &quot;instrument_ids&quot;: [&quot;BE0003851681&quot;],</span>
 <span class="s1">        &quot;composition_types&quot;: [&quot;ASSET_CLASS&quot;],</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-01-02&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-01-31&quot;</span>
@@ -3430,14 +3430,14 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition-timeseries/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US2546871060&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;instrument_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;BE0974293251&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ASSET_CLASS&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-02&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-01-31&quot;</span><span class="w"></span>
@@ -3461,7 +3461,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>instrument_ids</code></td>
 <td>A list of the IDs of the instruments.</td>
 <td><code>list</code></td>
-<td>["US2546871060"]</td>
+<td>["BE0974293251"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3551,16 +3551,16 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition-timeseries/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/composition-timeseries/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3578,26 +3578,26 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/attribution/batch/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/attribution/batch/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{&quot;data&quot;: [</span>
 <span class="s1">      {</span>
-<span class="s1">        &quot;fund_id&quot;: &quot;US78462F1030&quot;,</span>
+<span class="s1">        &quot;fund_id&quot;: &quot;FUNDID123456&quot;,</span>
 <span class="s1">        &quot;attribution_data&quot;: {</span>
 <span class="s1">          &quot;2022-03-08&quot;: {</span>
-<span class="s1">            &quot;US0378331005&quot;: -0.005838,</span>
-<span class="s1">            &quot;US88160R1014&quot;: 0.012317</span>
+<span class="s1">            &quot;BE0003851681&quot;: -0.005838,</span>
+<span class="s1">            &quot;BE0974293251&quot;: 0.012317</span>
 <span class="s1">          },</span>
 <span class="s1">          &quot;2022-03-09&quot;: {</span>
-<span class="s1">            &quot;US0378331005&quot;: 0.017499,</span>
-<span class="s1">            &quot;US88160R1014&quot;: 0.020967</span>
+<span class="s1">            &quot;BE0003851681&quot;: 0.017499,</span>
+<span class="s1">            &quot;BE0974293251&quot;: 0.020967</span>
 <span class="s1">          },</span>
 <span class="s1">          &quot;2022-03-10&quot;: {</span>
-<span class="s1">            &quot;US0378331005&quot;: -0.013593,</span>
-<span class="s1">            &quot;US88160R1014&quot;: -0.012032</span>
+<span class="s1">            &quot;BE0003851681&quot;: -0.013593,</span>
+<span class="s1">            &quot;BE0974293251&quot;: -0.012032</span>
 <span class="s1">            }</span>
 <span class="s1">          }</span>
 <span class="s1">        }</span>
@@ -3607,7 +3607,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/attribution/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3616,19 +3616,19 @@ If you require composition data over different points in time (timeseries) use <
 <span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;fund_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US78462F1030&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;fund_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FUNDID123456&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;attribution_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.005838</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012317</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.005838</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0974293251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012317</span><span class="w"></span>
 <span class="w">                </span><span class="p">},</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-09&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017499</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020967</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.017499</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0974293251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.020967</span><span class="w"></span>
 <span class="w">                </span><span class="p">},</span><span class="w"></span>
 <span class="w">                </span><span class="nt">&quot;2022-03-10&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.013593</span><span class="p">,</span><span class="w"></span>
-<span class="w">                    </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.012032</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.013593</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;BE0974293251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.012032</span><span class="w"></span>
 <span class="w">                </span><span class="p">}</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">}</span><span class="w"></span>
@@ -3660,14 +3660,14 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>fund_id</code></td>
 <td>The ID of the instrument. This will be used by all InvestSuite products to identify the instrument. While the API does not impose any restrictions on the format, some InvestSuite products do. Make sure to check these restrictions with the products that you will be using before uploading data.</td>
 <td><code>string</code></td>
-<td>"US78462F1030"</td>
+<td>"FUNDID123456"</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><code>attribution_data</code></td>
 <td>An object holding timeseries attribution data of the instrument. The keyword is a datestamp string with format <code>YYYY-MM-DD</code> or string Unix timestamp. The value should be a float.</td>
 <td><code>object[str, float]</code></td>
-<td><code>"2022-03-09": {"US0378331005": 0.017499}</code></td>
+<td><code>"2022-03-09": {"BE0003851681": 0.017499}</code></td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -3726,13 +3726,13 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/composition-timeseries/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/composition-timeseries/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;fund_ids&quot;: [&quot;US78462F1030&quot;],</span>
+<span class="s1">        &quot;fund_ids&quot;: [&quot;FUNDID123456&quot;],</span>
 <span class="s1">        &quot;start_date&quot;: &quot;&quot;2022-03-08&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;&quot;2022-03-08&quot;</span>
 <span class="s1">    }&#39;</span>
@@ -3740,14 +3740,14 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/attribution/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;fund_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US78462F1030&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fund_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FUNDID123456&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="mi">2022-03-08</span><span class="s2">&quot;,</span>
 <span class="s2">    &quot;</span><span class="err">e</span><span class="kc">n</span><span class="err">d_da</span><span class="kc">te</span><span class="s2">&quot;: &quot;&quot;2022-03-08&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -3770,7 +3770,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>fund_ids</code></td>
 <td>A list of the IDs of the funds.</td>
 <td><code>list</code></td>
-<td>["US78462F1030"]</td>
+<td>["FUNDID123456"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3795,10 +3795,10 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;US78462F1030&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;FUNDID12345&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">            </span><span class="nt">&quot;2022-03-08&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;US0378331005&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.005838</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;US88160R1014&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012317</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;BE0003851681&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.005838</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;BE0974293251&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012317</span><span class="p">,</span><span class="w"></span>
 <span class="w">                </span><span class="err">...</span><span class="w"></span>
 <span class="w">            </span><span class="p">},</span><span class="w"></span>
 <span class="w">            </span><span class="err">...</span><span class="w"></span>
@@ -3817,13 +3817,13 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/attribution/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/attribution/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> <span class="se">\</span>
 -d <span class="s1">&#39;{</span>
-<span class="s1">        &quot;fund_ids&quot;: [&quot;US78462F1030&quot;],</span>
+<span class="s1">        &quot;fund_ids&quot;: [&quot;FUNDID123456&quot;],</span>
 <span class="s1">        &quot;start_date&quot;: &quot;2022-03-08&quot;,</span>
 <span class="s1">        &quot;end_date&quot;: &quot;2022-03-08&quot;</span>
 <span class="s1">    }&#39;</span>
@@ -3831,14 +3831,14 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/attribution/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
 <span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
 
 <span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;fund_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;US78462F1030&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fund_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;FUNDID123456&quot;</span><span class="p">],</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-08&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-08&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
@@ -3861,7 +3861,7 @@ If you require composition data over different points in time (timeseries) use <
 <td><code>fund_ids</code></td>
 <td>A list of the IDs of the funds.</td>
 <td><code>list</code></td>
-<td>["US78462F1030"]</td>
+<td>["FUNDID123456"]</td>
 <td>no</td>
 </tr>
 <tr>
@@ -3934,16 +3934,16 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/attribution/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/attribution/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/attribution/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -3955,12 +3955,12 @@ If you require composition data over different points in time (timeseries) use <
 <h2 id="custom-exchange-rates-post">Custom Exchange Rates POST<a class="headerlink" href="#custom-exchange-rates-post" title="Permanent link">&para;</a></h2>
 <p>Exchange rates data consist of historical exchange rates versus a provided base currency, which are used to convert other timeseries such as prices from their currency onto a single currency. Using this endpoint, a client can upload timeseries data for all exchange rates against a provided base currency.</p>
 <p>The endpoint accepts a batch of currencies at once. Let us look at an example.</p>
-<p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the currency/value-level. </p>
+<p><strong>Overwriting existing data:</strong> Updating can be done by providing new data values at the currency/value-level.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="43:2"><input checked="checked" id="__tabbed_43_1" name="__tabbed_43" type="radio" /><input id="__tabbed_43_2" name="__tabbed_43" type="radio" /><div class="tabbed-labels"><label for="__tabbed_43_1">Curl Request</label><label for="__tabbed_43_2">HTTP Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/batch/&quot;</span> <span class="se">\ </span>                
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/exchange-rates/batch/&quot;</span> <span class="se">\ </span>                
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -3994,7 +3994,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/batch/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -4125,7 +4125,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/exchange-rates/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -4140,7 +4140,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -4224,7 +4224,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/meta/query/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/exchange-rates/meta/query/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -4234,7 +4234,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/meta/query/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -4266,7 +4266,7 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/remove/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/exchange-rates/remove/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
@@ -4280,7 +4280,7 @@ If you require composition data over different points in time (timeseries) use <
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/remove/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
@@ -4384,18 +4384,18 @@ If you require composition data over different points in time (timeseries) use <
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;POST&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/data/custom/exchange-rates/clear/&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://api.data.investsuite.com/data/custom/exchange-rates/clear/&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
 -H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span> 
+-H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
 -d <span class="s1">&#39;{</span>
 <span class="s1">    }&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/data/custom/exchange-rates/clear/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.investsuite.com</span>
 <span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>

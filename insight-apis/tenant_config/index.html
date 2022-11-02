@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/value-added-apis/themes/">
+        <link rel="canonical" href="https://docs.investsuite.com/insight-apis/tenant_config/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
     
     
       
-        <title>Themes API - InvestSuite Integration API documentation</title>
+        <title>Tenant Configuration Format - InvestSuite Integration API documentation</title>
       
     
     
@@ -57,9 +57,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Themes API">
+<meta property="og:title" content="InvestSuite Integration API documentation - Tenant Configuration">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/value-added-apis/themes/">
+<meta property="og:url" content="https://docs.investsuite.com/insight-apis/tenant_config/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#service-description" class="md-skip">
+        <a href="#tenant-configuration-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Themes API
+              Tenant Configuration Format
             
           </span>
         </div>
@@ -253,7 +253,7 @@
   
     <li class="md-tabs__item">
       <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
-        Value Added APIs
+        Insight APIs
       </a>
     </li>
   
@@ -278,7 +278,7 @@
 
   <li class="md-tabs__item">
     <a href="https://api.data.investsuite.com/redoc" class="md-tabs__link">
-      Value Added OpenAPI
+      Insight APIs OpenAPI
     </a>
   </li>
 
@@ -793,14 +793,14 @@
       
       
         <label class="md-nav__link" for="__nav_5">
-          Value Added APIs
+          Insight APIs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Value Added APIs" data-md-level="1">
+      <nav class="md-nav" aria-label="Insight APIs" data-md-level="1">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Value Added APIs
+          Insight APIs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -878,62 +878,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Themes API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../themes/" class="md-nav__link">
         Themes API
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#themes-get" class="md-nav__link">
-    Themes GET
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#investsuite-theme-screening-methodology" class="md-nav__link">
-    InvestSuite Theme Screening Methodology
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -999,11 +948,55 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../tenant_config/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tenant Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Tenant Configuration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-configuration-usage" class="md-nav__link">
+    Tenant Configuration Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-model" class="md-nav__link">
+    Data Model
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1039,7 +1032,7 @@
   
     <li class="md-nav__item">
       <a href="https://api.data.investsuite.com/redoc" class="md-nav__link">
-        Value Added OpenAPI
+        Insight APIs OpenAPI
       </a>
     </li>
   
@@ -1085,22 +1078,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#service-description" class="md-nav__link">
-    Service Description
+  <a href="#tenant-configuration-usage" class="md-nav__link">
+    Tenant Configuration Usage
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#themes-get" class="md-nav__link">
-    Themes GET
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#investsuite-theme-screening-methodology" class="md-nav__link">
-    InvestSuite Theme Screening Methodology
+  <a href="#data-model" class="md-nav__link">
+    Data Model
   </a>
   
 </li>
@@ -1117,7 +1103,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-    <h1>Themes API</h1>
+    <h1>Tenant Configuration Format</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1126,33 +1112,52 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
-<h2 id="service-description">Service Description<a class="headerlink" href="#service-description" title="Permanent link">&para;</a></h2>
-<p>The InvestSuite quant team composes and actively manages a list of Themes or thematic instrument groups such as Healthcare, Clean &amp; Green Economy, Social Trends each holding an applicable list of financial instruments. The aim of the Themes Value-Added-API service is to offer a means to filter the instrument universe to their personal preference and view. To retrieve Themes and selected instruments within them perform a <code>GET</code> request against the  <code>/themes/</code> endpoint:</p>
+<p><strong>The tenant configuration files are not user-editable.</strong>
+This page is for internal documentation purposes.</p>
+<h2 id="tenant-configuration-usage">Tenant Configuration Usage<a class="headerlink" href="#tenant-configuration-usage" title="Permanent link">&para;</a></h2>
+<p>The <code>{tenant_identifier}.json</code> files located in <code>/tenant_config</code> configure the following functionality:</p>
 <ul>
-<li><a href="https://api.data.uat.investsuite.com/redoc#tag/Themes">Themes API Redoc Documentation</a></li>
-<li><a href="https://api.data.uat.investsuite.com/docs#/Themes/">Themes API Swagger UI Interface</a></li>
+<li>Universes under property <code>"UNIVERSES"</code>: Named instrument universes which are collections of instruments/indices that belong to a tenant-usecase.
+  Each universe contains the allowed data sources with associated functionality.</li>
+<li>Allowed providers list under <code>"ALLOWED_PROVIDERS"</code>: Permissions the allowed data providers for the tenant.</li>
+<li>Classification mapping under <code>"CLASSIFICATION_MAPPING"</code>: Points to a mapping file per data provider from predefined categories -&gt; instrument/data field identifiers.</li>
 </ul>
-<p>Themes can be grouped into Metathemes. A Metatheme consists of multiple themes and will combine their instruments with its own.</p>
-<h2 id="themes-get">Themes GET<a class="headerlink" href="#themes-get" title="Permanent link">&para;</a></h2>
-<p>Request Themes and Metathemes instruments and metadata by passing your tenant identifier.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Curl Request</label><label for="__tabbed_1_2">HTTP Request</label></div>
+<h2 id="data-model">Data Model<a class="headerlink" href="#data-model" title="Permanent link">&para;</a></h2>
+<p>A subsection per request type and subpath in the endpoint.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Example tenant_config.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -X <span class="s2">&quot;GET&quot;</span> <span class="se">\</span>
-<span class="s2">&quot;https://api.data.uat.investsuite.com/themes/?include_children=false&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;accept: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-TENANT-ID: </span><span class="nv">$TENANT_ID</span><span class="s2">&quot;</span> <span class="se">\</span>
--H <span class="s2">&quot;X-Api-Key: </span><span class="nv">$IVS_API_SECRET</span><span class="s2">&quot;</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/themes/?include_children=false</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="o">:</span> <span class="l">api.data.uat.investsuite.com</span>
-<span class="na">accept</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">X-TENANT-ID</span><span class="o">:</span> <span class="l">$TENANT_ID</span>
-<span class="na">X-Api-Key</span><span class="o">:</span> <span class="l">$IVS_API_SECRET</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;UNIVERSES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;NAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EXAMPLE_UNIVERSE_1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;DATA_SOURCES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MORNINGSTAR&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;COMPOSITION&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;DATASTREAM&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;REFERENCE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;TIMESERIES&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;FUNDAMENTAL&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;INSTRUMENTS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INSTRUMENT_ID_1&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INSTRUMENT_ID_2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;INDICES&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INDEX_ID_1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;INDEX_ID_2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;ALLOWED_PROVIDERS&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;MORNINGSTAR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;DATASTREAM&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;CLASSIFICATION_MAPPING&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;demo.com&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
 </div>
@@ -1160,7 +1165,7 @@
 <table>
 <thead>
 <tr>
-<th>Query Parameter Field</th>
+<th>Field</th>
 <th>Description</th>
 <th>Data type</th>
 <th>Example</th>
@@ -1169,63 +1174,56 @@
 </thead>
 <tbody>
 <tr>
-<td><code>include_children</code></td>
-<td>By default Metathemes that consist of multiple child Themes will not include child instruments. Setting <code>include_children</code> to <code>true</code> will include the instruments of child Themes into the Metathemes data.</td>
-<td>boolean: <code>true</code>|<code>false</code></td>
-<td></td>
-<td>No, default <code>false</code></td>
+<td><code>"UNIVERSES"</code></td>
+<td>A list of universe definition objects. Defines named instrument universes which are collections of instruments/indices that belong to a tenant-usecase. Each universe contains the allowed data sources for associated DataTypes.</td>
+<td><code>list[object]</code></td>
+<td>cf. above</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>├<code>"NAME"</code></td>
+<td>The name of the universe. Can be used in endpoints under the <code>universe_name</code> optional query parameter, by default this is not passed and these endpoints return the set of all instrument universes after lookup.</td>
+<td><code>str</code></td>
+<td><code>EXAMPLE_UNIVERSE_1</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>├<code>"DATA_SOURCES"</code></td>
+<td>Configures the allowed data provider source by name key and a list of datatypes.<br>• Available data sources: <code>["MORNINGSTAR", "MORNINGSTAR_ONDEMAND", "DATASTREAM", "CUSTOM", "RDP", "TRKD", "COINMARKETCAP"]</code>.<br>• Available DataTypes: <code>["REFERENCE", "TIMESERIES", "ESG", "ESG_TIMESERIES", "COMPOSITION", "COMPOSITION_TIMESERIES", "FUNDAMENTAL"]</code></td>
+<td><code>object[str, list[DataType]]</code></td>
+<td><code>{"MORNINGSTAR": ["REFERENCE", "COMPOSITION"], "DATASTREAM": ["REFERENCE", "TIMESERIES", "FUNDAMENTAL"]}</code></td>
+<td>No, can be empty <code>{}</code></td>
+</tr>
+<tr>
+<td>├<code>"INSTRUMENTS"</code></td>
+<td>A list of instrument identifiers.</td>
+<td><code>list[str]</code></td>
+<td><code>["INSTRUMENT_ID_1", "INSTRUMENT_ID_2"]</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td>└<code>"INDICES"</code></td>
+<td>A list of indices/composition-of-instruments identifiers.</td>
+<td><code>str</code></td>
+<td><code>["INDEX_ID_1", "INDEX_ID_2"]</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>"ALLOWED_PROVIDERS"</code></td>
+<td>A list of allowed data provider names. Permissions the allowed data providers for the tenant.<br>• Available providers: <code>["MORNINGSTAR", "MORNINGSTAR_ONDEMAND", "DATASTREAM", "CUSTOM", "RDP", "TRKD", "COINMARKETCAP"]</code></td>
+<td><code>list[str]</code></td>
+<td>cf. above</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>"CLASSIFICATION_MAPPING"</code></td>
+<td>Points to the filename of a json map in the <code>/classification_mapping/</code> folder. This configures the mappings per data provider of from predefined categories -&gt; instrument/data field identifiers (e.g., <code>["REBRP-EquityRegionEuropeexeuro", "REBRP-EquityRegionEurozone", "REBRP-EquityRegionUnitedKingdomLongRescaled"]</code> are data field lookup keys for the <code>EUROPE_DEVELOPED</code> subcategory for <code>EQUITY_REGION</code> category for <code>MORNINGSTAR</code> data provider).</td>
+<td><code>list[str]</code></td>
+<td>cf. above</td>
+<td>Yes</td>
 </tr>
 </tbody>
 </table>
-<p>After the request, we get the following example response:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Response (Body Content JSON)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;theme1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Description of theme1.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;theme&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;children&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;instruments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;isin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISIN1234&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CompanyXYZ Inc.&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;date_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-04-06T14:34:32.425959&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metatheme1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Description of metatheme2.&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;metatheme&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;children&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;theme1&quot;</span><span class="p">],</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;instruments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">            </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;isin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ISIN5678&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enterprise Corp.&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="p">},</span><span class="w"></span>
-<span class="w">            </span><span class="err">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;date_modified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-04-06T14:34:32.425959&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<h2 id="investsuite-theme-screening-methodology">InvestSuite Theme Screening Methodology<a class="headerlink" href="#investsuite-theme-screening-methodology" title="Permanent link">&para;</a></h2>
-<p>The screening process consists of two-phases each of which is based on a automated process using human-in-the-loop artificial intelligence.</p>
-<ol>
-<li>
-<p>Theme identification: Themes and Thematic Investments are manually identified based on social trends or based on popular investment products (Thematic ETFs). A description and criteria for screening are drafted.</p>
-</li>
-<li>
-<p>Instrument screening: We automatically check the main activities of the instrument companies and their descriptions. The automated screening is then followed by extensive manual screening by humans and serves as a guide. Currently, the majority of the screening work is done by humans with automated suggestions.</p>
-</li>
-</ol>
     
 
               </article>
@@ -1242,7 +1240,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../idcard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ID Card API" rel="prev">
+        <a href="../reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reference API" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1251,20 +1249,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              ID Card API
+              Reference API
             </div>
           </div>
         </a>
       
       
         
-        <a href="../inspiration/" class="md-footer__link md-footer__link--next" aria-label="Next: Inspiration API" rel="next">
+        <a href="../../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Release notes" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Inspiration API
+              Release notes
             </div>
           </div>
           <div class="md-footer__button md-icon">
