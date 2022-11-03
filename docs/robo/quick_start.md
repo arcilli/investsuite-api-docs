@@ -2,11 +2,23 @@
 title: Quick start
 ---
 
-This page will take you through the typical steps to integrate with InvestSuite's Robo Advisor. Below sequence diagram describes the basic steps.
+## Context
 
-For the exhaustive integration required - see [here](middleware_design.md).
+This page will take you through the typical steps to integrate with InvestSuite's Robo Advisor. Below sequence diagram describes the basic happy path:
 
-## Integration flow
+- Authenticating to our API
+- Onboarding a user on our platform
+- Funding a portfolio
+- Optimizing (rebalancing) the portfolio
+- Getting the orders from this optimization
+- Updating the portfolio once these orders have been placed at the broker
+
+!!! info "Postman collection"
+    These steps are also available as a Postman collection. Get in touch with us through your sales contact.
+
+For an exhaustive integration solution (including non-happy path), see the  example [middleware design](middleware_design.md).
+
+## Overview
 
 ```plantuml source="docs/robo/quick_start.puml"
 ```

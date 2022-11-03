@@ -6,7 +6,7 @@ title: Middleware design
 
 The [quick start](quick_start.md) is a good place to start to get acquainted with the Robo Advisor API. However it is a partial and happy-path flow.
 
-This page lists an example middleware design to take care of all aspects of Robo Advisor beyond [Onboarding](../scenarios/onboarding.md):
+This page lists an *example* middleware design to take care of all aspects of Robo Advisor beyond [Onboarding](../scenarios/onboarding.md):
 
 - [Funding](../scenarios/cash_movements.md#broker-integration-by-the-client)
 - Withdrawals ([event-driven](../scenarios/cash_movements.md#broker-integration-by-the-client-event-driven) or [batch](../scenarios/cash_movements.md#broker-integration-by-the-client-batch-process))
