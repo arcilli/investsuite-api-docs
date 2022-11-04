@@ -91,13 +91,13 @@ markdown_extensions:
       # title: UML diagram                        # default title (tooltip) for diagram images
       # alt: UML diagram image                    # default `alt` attribute for diagram images
       priority: 30                              # plugin priority; the higher, the sooner will be applied (default 30)
-      http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)       
+      http_method: GET                          # GET or POST  - note that plantuml.com only supports GET (default GET)
       fallback_to_get: True                     # When using POST, should GET be used as fallback (POST will fail if @startuml/@enduml tags not used) (default True)
       theme: mars     # plain, mars, (commented out), reddress-lightred, toy, vibrant , see https://the-lum.github.io/puml-themes-gallery/#all-the-themes                    # theme to be set, can be overridden inside puml files, (default none)
-      puml_notheme_cmdlist: [                             
-                              'version', 
-                              'listfonts', 
-                              'stdlib', 
+      puml_notheme_cmdlist: [
+                              'version',
+                              'listfonts',
+                              'stdlib',
                               'license'
                             ]                   # theme will not be set if listed commands present (default as listed)
 
@@ -115,12 +115,12 @@ nav:
     - Events:                   concepts/events.md
     - Embedding:                concepts/embedding.md
     - API errors:               concepts/errors.md
-  
+
     - Business objects:         concepts/entities.md
     - User (object):            concepts/users.md
     - Portfolio (object):       concepts/portfolios.md
     - Transaction (object):     concepts/transactions.md
-  
+
     # - Identifiers
     # - Policies
     # - Versioning
@@ -130,9 +130,10 @@ nav:
     # - Asynchronous operations: advanced_topics/async.md
 
   - Scenarios:
-    - Onboarding (process):               scenarios/onboarding.md
-    - Funding & withdrawal (process):   scenarios/cash_movements.md
-    - Suitability profiler:     scenarios/suitability_profiler.md
+    - Onboarding (process):           scenarios/onboarding.md
+    - Funding & withdrawal (process): scenarios/cash_movements.md
+    - Suitability profiler:           scenarios/suitability_profiler.md
+    - Thematic search:                scenarios/thematic_search.md
     
   - Robo Advisor:
     - Introduction:             robo/introduction.md
@@ -148,20 +149,20 @@ nav:
   - Optimizer:
     - Introduction:             optimizer/introduction.md
 
-  - Value Added APIs:
-    - Introduction:             value-added-apis/introduction.md
-    - Authentication & Usage:   value-added-apis/authentication_usage.md
-    - Custom Data API:          value-added-apis/custom_data.md
-    - X-Ray API:                value-added-apis/xray.md
-    - ID Card API:              value-added-apis/idcard.md
-    - Themes API:               value-added-apis/themes.md
-    - Inspiration API:          value-added-apis/inspiration.md
-    - Logos API:                value-added-apis/logos.md
-    - Monte Carlo API:          value-added-apis/monte_carlo.md
-    - Reference API:            value-added-apis/reference.md
-    - Tenant Configuration:     value-added-apis/tenant_config.md
+  - Insight APIs:
+    - Introduction:             insight-apis/introduction.md
+    - Authentication & Usage:   insight-apis/authentication_usage.md
+    - Custom Data API:          insight-apis/custom_data.md
+    - X-Ray API:                insight-apis/xray.md
+    - ID Card API:              insight-apis/idcard.md
+    - Themes API:               insight-apis/themes.md
+    - Inspiration API:          insight-apis/inspiration.md
+    - Logos API:                insight-apis/logos.md
+    - Monte Carlo API:          insight-apis/monte_carlo.md
+    - Reference API:            insight-apis/reference.md
+    - Tenant Configuration:     insight-apis/tenant_config.md
 
   - Integration OpenAPI:        "https://api.sandbox.investsuite.com/redoc"
-  - Value Added OpenAPI:        "https://api.data.investsuite.com/redoc"
-  
+  - Insight APIs OpenAPI:       "https://api.data.investsuite.com/redoc"
+
   - Release notes:              changelog.md

@@ -8,8 +8,8 @@ Get a list of instrument ID Cards.
 
 ID cards can be retrieved based on either a list of identifiers (ISINS or RICs), or for an entire universe
 
-- [ID Card API Documentation](https://api.data.uat.investsuite.com/redoc#tag/ID-Card)
-- [ID Card API Swagger UI Interface](https://api.data.uat.investsuite.com/docs#/ID%20Card/)
+- [ID Card API Documentation](https://api.data.investsuite.com/redoc#tag/ID-Card)
+- [ID Card API Swagger UI Interface](https://api.data.investsuite.com/docs#/ID%20Card/)
 
 ## Get ID cards based on a list of identifiers
 
@@ -17,7 +17,7 @@ ID cards can be retrieved based on either a list of identifiers (ISINS or RICs),
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/id-card/query/" \
+    "https://api.data.investsuite.com/id-card/query/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -29,7 +29,7 @@ ID cards can be retrieved based on either a list of identifiers (ISINS or RICs),
 
     ```HTTP
     GET /id-card/query/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -48,7 +48,7 @@ Field | Description | Data type | Example | Required
 
     ```bash
     curl -X "GET" \
-    "https://api.data.uat.investsuite.com/id-card/universe/" \
+    "https://api.data.investsuite.com/id-card/universe/" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
     -H "X-TENANT-ID: $TENANT_ID" \
@@ -59,7 +59,7 @@ Field | Description | Data type | Example | Required
 
     ```HTTP
     GET /id-card/universe/ HTTP/1.1
-    Host: api.data.uat.investsuite.com
+    Host: api.data.investsuite.com
     accept: application/json
     Content-Type: application/json
     X-TENANT-ID: $TENANT_ID
@@ -102,7 +102,6 @@ After the request, we get the following example response:
             "EQUITY_SECTOR": "Healthcare",
             "FINANCIAL_HEALTH_STARS": 5.0,
             "GROWTH_STARS": 3.0,
-            "ISIN": "US00846U1016",
             "MARKET_CAP": 35588077791.0,
             "MOMENTUM_STARS": 4.0,
             "NAME": "Agilent Technologies Ord Shs",
@@ -143,7 +142,7 @@ Field | Description | Data type | Example | Required
 `EQUITY_SECTOR` | Sector that the stock belongs to (corresponds to the first level in the TRBC hierarchy)  | `str` | Healthcare | yes
 `FINANCIAL_HEALTH_STARS` | Number of financial health stars according to the InvestSuite X-Ray calculations | `float` | 5.0 | yes
 `GROWTH_STARS` | Number of growth stars according to the InvestSuite X-Ray calculations | `float` | 5.0 | yes
-`ISIN` | Instrument ISIN code | `str` | US00846U1016 | yes
+`ISIN` | Instrument ISIN code | `str` | BE0974293251 | yes
 `MARKET_CAP` | Company market capitalisation (in the units of CURRENCY) | `float` | 35588077791.0 | yes
 `MOMENTUM_STARS` | Number of momentum stars according to the InvestSuite X-Ray calculations | `float` | 4.0 | yes
 `NAME` | Instrument name | `str` | Agilent Technologies Ord Shs | yes
