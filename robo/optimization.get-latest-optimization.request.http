@@ -1,0 +1,4 @@
+GET /portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/optimizations/current/ HTTP/1.1
+Host: api.sandbox.investsuite.com
+Content-Type: application/json
+Authorization: Bearer {string}

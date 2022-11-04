@@ -1,0 +1,19 @@
+{
+  "current_solution": {
+    ...
+  },
+  "optimal_solution": {
+    ...
+  },
+  "portfolio_update": {
+    "is_recommended": false,
+    "orders": {
+    }
+  },
+  "id": "O01FGNGNS3R3836WB3JHD22J748",
+  "creation_datetime": "2021-09-28T06:15:06.613287+00:00",
+  "version": 1,
+  "version_datetime": "2021-09-28T06:15:06.613287+00:00",
+  "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "deleted": false
+}

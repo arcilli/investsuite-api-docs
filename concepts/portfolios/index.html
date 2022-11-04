@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/portfolios/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
     
     
       
@@ -26,7 +26,7 @@
       <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.815d1a91.min.css">
         
       
       
@@ -238,6 +238,22 @@
     <li class="md-tabs__item">
       <a href="../../self/introduction/" class="md-tabs__link">
         Self Investor
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../optimizer/introduction/" class="md-tabs__link">
+        Optimizer
       </a>
     </li>
   
@@ -543,6 +559,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#holdings" class="md-nav__link">
+    Holdings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-portfolio" class="md-nav__link">
     Create portfolio
   </a>
@@ -592,7 +628,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#holdings" class="md-nav__link">
+  <a href="#holdings_1" class="md-nav__link">
     Holdings
   </a>
   
@@ -860,8 +896,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/run_optimizer/" class="md-nav__link">
-        Optimize a portfolio
+      <a href="../../robo/middleware_design/" class="md-nav__link">
+        Middleware design
       </a>
     </li>
   
@@ -890,6 +926,20 @@
     <li class="md-nav__item">
       <a href="../../robo/optimization/" class="md-nav__link">
         Optimization (object)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../robo/policy/" class="md-nav__link">
+        Policy (object)
       </a>
     </li>
   
@@ -967,12 +1017,60 @@
       
       
         <label class="md-nav__link" for="__nav_5">
+          Optimizer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Optimizer" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Optimizer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimizer/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
           Insight APIs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Insight APIs" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Insight APIs
         </label>
@@ -1215,6 +1313,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#concepts" class="md-nav__link">
+    Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#holdings" class="md-nav__link">
+    Holdings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-portfolio" class="md-nav__link">
     Create portfolio
   </a>
@@ -1264,7 +1382,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#holdings" class="md-nav__link">
+  <a href="#holdings_1" class="md-nav__link">
     Holdings
   </a>
   
@@ -1377,7 +1495,14 @@
 <p>See the <a href="../glossary/#portfolio-of-a-user">Glossary</a> for a definition.</p>
 </div>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<p>This page lists all operations that can be performed on the Portfolio object, see See <a href="../glossary/">Glossary</a>.</p>
+<p>This page lists all operations that can be performed on the Portfolio object, see <a href="../glossary/">Glossary</a>.</p>
+<h2 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h2>
+<h3 id="holdings">Holdings<a class="headerlink" href="#holdings" title="Permanent link">&para;</a></h3>
+<p>Holdings are positions in a portfolio: instruments and/or cash.</p>
+<ul>
+<li>Instruments are identified as their ISIN.</li>
+<li>Cash is identified as <code>$</code> followed by the <a href="https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes">ISO 4217</a> code. See <a href="../glossary/#currency">Glossary</a>.</li>
+</ul>
 <!-- ## Concepts
 
 ### Status
@@ -1476,7 +1601,7 @@
 </tr>
 <tr>
 <td><code>base_currency</code></td>
-<td>The portfolio's currency.</td>
+<td>The portfolio's currency. See <a href="../glossary/#currency">Glossary</a>.</td>
 <td><code>string ^[A-Z]{3}\Z</code></td>
 <td>USD</td>
 <td>yes</td>
@@ -1520,11 +1645,12 @@
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 <span class="err">{</span>
+<span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="hll"><span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;REAL_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;REAL_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
 <span class="hll"><span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;USER_MANAGED&quot;</span><span class="p">,</span><span class="w"></span>
 </span><span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
@@ -1534,6 +1660,9 @@
 <span class="w">        </span><span class="nt">&quot;bank_account_type&quot;</span><span class="p">:</span><span class="s2">&quot;IBAN&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;bank_account_number&quot;</span><span class="p">:</span><span class="nt">&quot;BE01234567891234&quot;</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;payment_reference&quot;</span><span class="p">:</span><span class="s2">&quot;32154796&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
@@ -1585,23 +1714,23 @@
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 <span class="err">{</span>
-<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
-<span class="hll"><span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="hll"><span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="p">,</span><span class="w"></span>
-</span><span class="hll"><span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="w"></span>
-</span><span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="s2">&quot;your-bank-portfolio-1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;General investing&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;owned_by_user_id&quot;</span><span class="p">:</span><span class="s2">&quot;U01F5WYKRRXZHXT9S6FF1JZNJVZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;money_type&quot;</span><span class="p">:</span><span class="s2">&quot;PAPER_MONEY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;config&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;manager&quot;</span><span class="p">:</span><span class="s2">&quot;ROBO_ADVISOR_DISCRETIONARY&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">&quot;manager_version&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;manager_settings&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;goal_id&quot;</span><span class="p">:</span><span class="s2">&quot;L01EF46X4872VVN0QRW4XF2ZP6W&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// Optional</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;horizon_id&quot;</span><span class="p">:</span><span class="s2">&quot;H01EQ3429CY6Y2NW0ZF8A8Y2FYJ&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Optional</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="s2">&quot;Y01EF46X9XB437JS4678X0K529C&quot;</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
 <span class="w">    </span><span class="nt">&quot;portfolio&quot;</span><span class="p">:{</span><span class="w"></span>
 <span class="w">        </span><span class="nt">&quot;$USD&quot;</span><span class="p">:</span><span class="mi">10000</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </div>
@@ -1696,7 +1825,7 @@
 <li>The <code>money_type</code> field states if the portfolio manages real money or paper money.</li>
 </ul>
 </div>
-<h3 id="holdings">Holdings<a class="headerlink" href="#holdings" title="Permanent link">&para;</a></h3>
+<h3 id="holdings_1">Holdings<a class="headerlink" href="#holdings_1" title="Permanent link">&para;</a></h3>
 <p>To update the holdings you patch the <code>portfolio</code> field in the Portfolio object.</p>
 <div class="admonition warning">
 <p class="admonition-title">Consistency</p>
@@ -2206,8 +2335,6 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/?query=external_id+eq+&#39;your-bank-portfolio-1&#39;</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 </span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
 </code></pre></div>
@@ -2246,16 +2373,29 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
 </div>
 </div>
 <h3 id="get-portfolios-with-pending-withdrawals">Get portfolios with pending withdrawals<a class="headerlink" href="#get-portfolios-with-pending-withdrawals" title="Permanent link">&para;</a></h3>
-<p>Get the Portfolios where the <code>divest_amount</code> &gt; 0</p>
+<!-- See PLAT-1535, the below is not supported
+
+Get the Portfolios where the `divest_amount` > 0
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /portfolios/query=config.manager_settings.divest_amount+lt+0 HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    ``` -->
+
+<p>Get the Portfolios with a non-zero and non-null <code>divest_amount</code></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Request</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="nf">GET</span> <span class="nn">/portfolios/query=config.manager_settings.divest_amount+lt+0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-</span><span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
-<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
-<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
-<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
-<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="err">GET /portfolios/?query=</span>
+</span><span class="err">    config.manager_settings.divest_amount neq 0 and </span>
+<span class="err">    config.manager_settings.divest_amount neq null HTTP/1.1</span>
+<span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Content-Type: application/json</span>
+<span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
 </div>
 </div>
@@ -2382,7 +2522,7 @@ https://api.sandbox.investsuite.com/portfolios/P01F8ZSNV0J45R9DFZ3D7D8C26F/
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>

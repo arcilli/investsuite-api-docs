@@ -12,14 +12,14 @@
         <meta name="author" content="InvestSuite">
       
       
-        <link rel="canonical" href="https://docs.investsuite.com/robo/rebalancing/">
+        <link rel="canonical" href="https://docs.investsuite.com/robo/policy/">
       
       <link rel="icon" href="../../assets/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
     
     
       
-        <title>Rebalancing - InvestSuite Integration API documentation</title>
+        <title>Managing Policies - InvestSuite Integration API documentation</title>
       
     
     
@@ -57,9 +57,9 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="InvestSuite Integration API documentation - Rebalancing (process)">
+<meta property="og:title" content="InvestSuite Integration API documentation - Policy (object)">
 <meta property="og:description" content="The InvestSuite Integration API is the one-stop shop for integrations with InvestSuite's range of invest-tech solutions. These pages provide technical documentation to assist developers working with our APIs.">
-<meta property="og:url" content="https://docs.investsuite.com/robo/rebalancing/">
+<meta property="og:url" content="https://docs.investsuite.com/robo/policy/">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
 
   </head>
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#overview" class="md-skip">
+        <a href="#create-policy" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rebalancing
+              Managing Policies
             
           </span>
         </div>
@@ -714,190 +714,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Rebalancing (process)
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../rebalancing/" class="md-nav__link">
         Rebalancing (process)
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#process" class="md-nav__link">
-    Process
-  </a>
-  
-    <nav class="md-nav" aria-label="Process">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-optimization-is-triggered" class="md-nav__link">
-    1. Optimization is triggered
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Optimization is triggered">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-broker" class="md-nav__link">
-    Client integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-broker" class="md-nav__link">
-    InvestSuite integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#external-optimizer" class="md-nav__link">
-    External Optimizer
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-optimization-is-ready-to-be-executed" class="md-nav__link">
-    2. Optimization is ready to be executed
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Optimization is ready to be executed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#discretionary-mandate" class="md-nav__link">
-    Discretionary mandate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advisory-mandate" class="md-nav__link">
-    Advisory mandate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#portfolio-not-reoptimized" class="md-nav__link">
-    Portfolio not reoptimized
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-orders-of-optimization-sent-to-the-broker" class="md-nav__link">
-    3. Orders of Optimization sent to the broker
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Orders of Optimization sent to the broker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-broker_1" class="md-nav__link">
-    Client integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-the-broker" class="md-nav__link">
-    InvestSuite integrates with the broker
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-orders-are-executed-or-settled" class="md-nav__link">
-    4. Orders are executed or settled
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Orders are executed or settled">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-the-broker" class="md-nav__link">
-    Client integrates with the broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-the-broker_1" class="md-nav__link">
-    InvestSuite integrates with the broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#portfolio-reoptimized" class="md-nav__link">
-    Portfolio reoptimized
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -921,11 +742,55 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../policy/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Policy (object)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Policy (object)
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-policy" class="md-nav__link">
+    Create policy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-policies" class="md-nav__link">
+    Query policies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1291,151 +1156,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    Overview
+  <a href="#create-policy" class="md-nav__link">
+    Create policy
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#process" class="md-nav__link">
-    Process
+  <a href="#query-policies" class="md-nav__link">
+    Query policies
   </a>
-  
-    <nav class="md-nav" aria-label="Process">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-optimization-is-triggered" class="md-nav__link">
-    1. Optimization is triggered
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Optimization is triggered">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-broker" class="md-nav__link">
-    Client integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-broker" class="md-nav__link">
-    InvestSuite integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#external-optimizer" class="md-nav__link">
-    External Optimizer
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-optimization-is-ready-to-be-executed" class="md-nav__link">
-    2. Optimization is ready to be executed
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Optimization is ready to be executed">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#discretionary-mandate" class="md-nav__link">
-    Discretionary mandate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#advisory-mandate" class="md-nav__link">
-    Advisory mandate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#portfolio-not-reoptimized" class="md-nav__link">
-    Portfolio not reoptimized
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-orders-of-optimization-sent-to-the-broker" class="md-nav__link">
-    3. Orders of Optimization sent to the broker
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Orders of Optimization sent to the broker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-broker_1" class="md-nav__link">
-    Client integrates with broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-the-broker" class="md-nav__link">
-    InvestSuite integrates with the broker
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-orders-are-executed-or-settled" class="md-nav__link">
-    4. Orders are executed or settled
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Orders are executed or settled">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#client-integrates-with-the-broker" class="md-nav__link">
-    Client integrates with the broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#investsuite-integrates-with-the-broker_1" class="md-nav__link">
-    InvestSuite integrates with the broker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#portfolio-reoptimized" class="md-nav__link">
-    Portfolio reoptimized
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1451,7 +1181,7 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-    <h1>Rebalancing</h1>
+    <h1>Managing Policies</h1>
     <div class="md-source-date">
     <small>
         <hr style="margin:0.5rem 0rem;">
@@ -1462,81 +1192,243 @@
 <script>timeago.render(document.querySelectorAll('.timeago'));</script>
 <div class="admonition info">
 <p class="admonition-title">Definition</p>
-<p>See the <a href="../../concepts/glossary/#rebalancing">Glossary</a> for a definition.</p>
+<p>See the <a href="../../concepts/glossary/#investment-strategy-policy">Glossary</a> for a definition.</p>
 </div>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The following diagram describes the rebalancing process at a high level.</p>
-<p><img alt="" src="../rebalancing.jpg" /></p>
-<!-- Source: https://miro.com/app/board/uXjVOX6Q5tA=/?moveToWidget=3458764520791874643&cot=14 -->
+<h2 id="create-policy">Create policy<a class="headerlink" href="#create-policy" title="Permanent link">&para;</a></h2>
+<p>Due to the complex nature of the Policy object, we recommend to create this through the InvestSuite Web Console.</p>
+<!-- ## Get policy
 
-<h2 id="process">Process<a class="headerlink" href="#process" title="Permanent link">&para;</a></h2>
-<p>Depending on the following criteria, the rebalancing process is different:</p>
-<ul>
-<li>Broker/Custodian integration: by InvestSuite or by the Client</li>
-<li>Mandate: Advisory or Discretionary</li>
-<li>Portfolio Optimizer: by InvestSuite or by the Client</li>
-</ul>
-<!-- | Broker/Custodian Integration | Mandate | Optimizer | Process Flow |
-|---|---|---|---|
-| Client | Discretionary | InvestSuite | (1) |
-| Client | Discretionary | Client | (2) |
-| Client | Advisory | InvestSuite | (3) |
-| Client | Advisory | Client | (4) |
-| InvestSuite | Discretionary | InvestSuite | (5) |
-| InvestSuite | Discretionary | Client | (6) |
-| InvestSuite | Advisory | InvestSuite | (7) |
-| InvestSuite | Advisory | Client | (8) |
+## Update policy
 
-!!! info "Detailed process flow"
+## Delete policy -->
 
-    Talk to your sales representative for a detailed process flow.
-
-    Refer to https://investsuite.atlassian.net/wiki/spaces/PM/pages/2647752766/Rebalancing+in+Robo+Investor -->
-
-<h3 id="1-optimization-is-triggered">1. Optimization is triggered<a class="headerlink" href="#1-optimization-is-triggered" title="Permanent link">&para;</a></h3>
-<h4 id="client-integrates-with-broker">Client integrates with broker<a class="headerlink" href="#client-integrates-with-broker" title="Permanent link">&para;</a></h4>
-<p>When the Client integrates with the Broker, an Optimization is triggered when the Portfolio object is PATCHed (with Holdings or Transactions):</p>
-<ul>
-<li>A funding happens, see <a href="../../scenarios/cash_movements/#broker-integration-by-the-client">Funding</a>;</li>
-<li>A withdrawal request happens (setting the <code>withdrawal_amount</code> on the Portfolio);</li>
-<li>We recommend to trigger periodic optimizations (eg. every night, by issuing an empty PATCH call) - even though no orders may result - to ensure the portfolio does not drift.</li>
-</ul>
-<h4 id="investsuite-integrates-with-broker">InvestSuite integrates with broker<a class="headerlink" href="#investsuite-integrates-with-broker" title="Permanent link">&para;</a></h4>
-<p>When InvestSuite integrates with the Broker, an Optimization is triggered by a nightly batch job, run by InvestSuite.</p>
-<h4 id="external-optimizer">External Optimizer<a class="headerlink" href="#external-optimizer" title="Permanent link">&para;</a></h4>
-<p>The client (the external optimizer) decides when it runs.</p>
-<h3 id="2-optimization-is-ready-to-be-executed">2. Optimization is ready to be executed<a class="headerlink" href="#2-optimization-is-ready-to-be-executed" title="Permanent link">&para;</a></h3>
-<h4 id="discretionary-mandate">Discretionary mandate<a class="headerlink" href="#discretionary-mandate" title="Permanent link">&para;</a></h4>
-<p>When an Optimization is recommended (the <code>portfolio_update.is_recommended</code> field on the Optimization is <code>true</code>), the Optimization is considered ready to be executed.</p>
-<!-- TODO quid owner_choice and status? -->
-
-<h4 id="advisory-mandate">Advisory mandate<a class="headerlink" href="#advisory-mandate" title="Permanent link">&para;</a></h4>
-<p>When the Optimization is accepted by the user (the <code>owner_choice</code> field on the Optimization is <code>ACCEPT</code>), the Optimization is considered ready to be executed.</p>
-<h4 id="portfolio-not-reoptimized">Portfolio not reoptimized<a class="headerlink" href="#portfolio-not-reoptimized" title="Permanent link">&para;</a></h4>
-<p>When an Optimization is ready to be executed, the Portfolio is (temporarily) excluded from optimization.</p>
-<h3 id="3-orders-of-optimization-sent-to-the-broker">3. Orders of Optimization sent to the broker<a class="headerlink" href="#3-orders-of-optimization-sent-to-the-broker" title="Permanent link">&para;</a></h3>
-<!-- TODO what is the trigger here? an event? or a batch job? or a query? what criteria -->
-
-<h4 id="client-integrates-with-broker_1">Client integrates with broker<a class="headerlink" href="#client-integrates-with-broker_1" title="Permanent link">&para;</a></h4>
-<p>The Client middleware sends the Orders of the Optimization to the broker, and updates InvestSuite:</p>
-<ol>
-<li>The Client middleware gets the Orders from the Optimization object, see <a href="../optimization/#get-the-latest-optimization-of-a-portfolio">here</a>.</li>
-<li>The Client middleware sends the Orders to the broker.</li>
-<li>The Client middleware creates corresponding Transactions in InvestSuite, see <a href="../../concepts/transactions/#create-a-transaction">here</a>.</li>
-</ol>
-<h4 id="investsuite-integrates-with-the-broker">InvestSuite integrates with the broker<a class="headerlink" href="#investsuite-integrates-with-the-broker" title="Permanent link">&para;</a></h4>
-<p>InvestSuite sends the orders to the broker and keeps them up to date.</p>
-<h3 id="4-orders-are-executed-or-settled">4. Orders are executed or settled<a class="headerlink" href="#4-orders-are-executed-or-settled" title="Permanent link">&para;</a></h3>
-<h4 id="client-integrates-with-the-broker">Client integrates with the broker<a class="headerlink" href="#client-integrates-with-the-broker" title="Permanent link">&para;</a></h4>
-<ol>
-<li>The Client middleware updates the corresponding Transactions in InvestSuite, see <a href="../../concepts/transactions/#update-transaction">here</a>.</li>
-<li>The Client middleware updates the Portfolio holdings, see <a href="../../concepts/portfolios/#holdings">here</a>.</li>
-</ol>
-<h4 id="investsuite-integrates-with-the-broker_1">InvestSuite integrates with the broker<a class="headerlink" href="#investsuite-integrates-with-the-broker_1" title="Permanent link">&para;</a></h4>
-<p>InvestSuite keeps the orders up to date.</p>
-<h4 id="portfolio-reoptimized">Portfolio reoptimized<a class="headerlink" href="#portfolio-reoptimized" title="Permanent link">&para;</a></h4>
-<p>When all Transactions of an Optimization have a status <code>EXECUTED</code> or <code>SETTLED</code>, the Portfolio is considered again for optimization.</p>
-<!-- also cancelled/expired/... -->
+<h2 id="query-policies">Query policies<a class="headerlink" href="#query-policies" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">HTTP</label><label for="__tabbed_1_2">Response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/robo-advisor/policies/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {access_token_string}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;external_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conservative&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;readable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01FZWMAFJ1XRH579Z662HG7Q10&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;modifiable_by&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01FZWMAFJ1XRH579Z662HG7Q10&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;U01FZT2QAHVK1Q1NEKN93PP574W&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Y01G0EBF4C68KBW90BZMH32V2QD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;creation_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-04-12T07:40:34.053717+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-08-09T11:08:55.204569+00:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;U01FZT2QAHVK1Q1NEKN93PP574W&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Conservative&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;parent_policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;risk_profile_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;K01G0EB2KB35J9E1VEKWEJZN1EC&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IVAR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;algorithm_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;algorithm_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;execution_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;base_currency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;USD&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;fractional_shares&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cost_per_transaction_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cost_per_transaction_fraction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.005</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;combine_transaction_cost_components&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MAX&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;transaction_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="mi">75</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="kc">null</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;benchmark_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;simulate_transaction_cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;portfolio_update_constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;min_portfolio_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;min_portfolio_update_optimality_improvement_fraction&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;max_portfolio_constraint_violation_pctpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;holdings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cash_fraction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.005</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.05</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;portfolio_constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;asset_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;alternatives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;bonds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.8</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;commodities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.05</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;stocks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.25</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;corporate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;eurobond&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;equity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;government&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;money_market&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;regions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;bonds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;stocks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;asia_pacific_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.4</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;emerging&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;europe_developed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.4</span><span class="w"></span>
+<span class="w">                    </span><span class="p">],</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;north_america&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.6</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                    </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;bond_types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;convertible&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;corporate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.5</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;government&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">1</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;sectors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;basic_materials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;consumer_cyclical&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.25</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;consumer_defensive&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;communication_services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;energy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.05</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;financial_services&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;healthcare&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.25</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;industrials&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;real_estate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.05</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;technology&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.25</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.35</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;utilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.1</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;investment_universe&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;BE97717W3319&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;BE97717W6049&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;BE4642871846&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;BE2330518539&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;buy_universe&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;holdings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;position_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">60</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">100000</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;position_fraction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.02</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cash_amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mi">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="kc">null</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;cash_fraction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.0125</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="mf">0.03</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;momentum&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;benchmark_constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;model_portfolio_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;meta_portfolio_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
     
 
               </article>
@@ -1553,7 +1445,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../middleware_design/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Middleware design" rel="prev">
+        <a href="../optimization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Optimization (object)" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1562,20 +1454,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Middleware design
+              Optimization (object)
             </div>
           </div>
         </a>
       
       
         
-        <a href="../optimization/" class="md-footer__link md-footer__link--next" aria-label="Next: Optimization (object)" rel="next">
+        <a href="../../self/introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Optimization (object)
+              Introduction
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/concepts/entities/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
     
     
       
@@ -26,7 +26,7 @@
       <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.815d1a91.min.css">
         
       
       
@@ -238,6 +238,22 @@
     <li class="md-tabs__item">
       <a href="../../self/introduction/" class="md-tabs__link">
         Self Investor
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../optimizer/introduction/" class="md-tabs__link">
+        Optimizer
       </a>
     </li>
   
@@ -562,6 +578,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-of-business-objects" class="md-nav__link">
     List of business objects
   </a>
@@ -777,8 +800,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../robo/run_optimizer/" class="md-nav__link">
-        Optimize a portfolio
+      <a href="../../robo/middleware_design/" class="md-nav__link">
+        Middleware design
       </a>
     </li>
   
@@ -807,6 +830,20 @@
     <li class="md-nav__item">
       <a href="../../robo/optimization/" class="md-nav__link">
         Optimization (object)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../robo/policy/" class="md-nav__link">
+        Policy (object)
       </a>
     </li>
   
@@ -884,12 +921,60 @@
       
       
         <label class="md-nav__link" for="__nav_5">
+          Optimizer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Optimizer" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Optimizer
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimizer/introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
           Insight APIs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Insight APIs" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Insight APIs
         </label>
@@ -1179,6 +1264,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-of-business-objects" class="md-nav__link">
     List of business objects
   </a>
@@ -1256,6 +1348,7 @@
 </span><span class="hll"><span class="err">    ?embed=owned_by_user_id</span>
 </span><span class="hll"><span class="err">    &amp;limit=2 HTTP/1.1</span>
 </span><span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Content-Type: application/json</span>
 <span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
 </div>
@@ -1372,6 +1465,7 @@
 <div class="highlight"><pre><span></span><code><span class="err">GET /portfolios</span>
 <span class="hll"><span class="err">    ?query=lastmodified+in+[&#39;20200101&#39;+to+&#39;20240101&#39;] HTTP/1.1</span>
 </span><span class="err">Host: api.sandbox.investsuite.com</span>
+<span class="err">Content-Type: application/json</span>
 <span class="err">Authorization: Bearer {string}</span>
 </code></pre></div>
 </div>
@@ -1460,13 +1554,23 @@
 </tr>
 <tr>
 <td>Date operator</td>
-<td>Is in range for dates with timeezonr</td>
+<td>Is in range for dates with timeezone</td>
 <td><code>lastmodified in ['2020-09-11T09:03:53.721588+00:00' to '2020-11-11T09:03:53.721588+00:00']</code></td>
 </tr>
 <tr>
 <td>Boolean operator</td>
 <td>Boolean queries</td>
 <td><code>archived eq true</code></td>
+</tr>
+<tr>
+<td>Null comparison</td>
+<td>Equals <code>null</code></td>
+<td><code>field eq null</code><br>NOTE the <code>is null</code> operator is (by design) not supported.</td>
+</tr>
+<tr>
+<td>Null comparison</td>
+<td>Not equal to <code>null</code></td>
+<td><code>field neq null</code></td>
 </tr>
 <tr>
 <td>List operator</td>
@@ -1493,6 +1597,44 @@ in all possible compositions e.g. <code>query=email+eq+'*tom*'+and+firstname+in+
 <li>Multiple attributes: orderby {attribute_name} desc, {attribute_name2} asc e.g. <code>orderby+age+desc,+firstname</code></li>
 <li>Attributes names can be nested e.g. <code>orderby+manager.bank_account</code>.</li>
 </ul>
+<h2 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h2>
+<p>Business objects can be enumerated by paginating through the entire collection.</p>
+<p>Issuing a <code>GET</code> request to the entity root path will return a next cursor:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Request</label><label for="__tabbed_3_2">Response</label><label for="__tabbed_3_3">Response (End)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nf">GET</span> <span class="nn">/portfolios</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
+<span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/portfolios/?limit=20&amp;offset=20&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;next&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;15&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;offset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;_embedded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="list-of-business-objects">List of business objects<a class="headerlink" href="#list-of-business-objects" title="Permanent link">&para;</a></h2>
 <p>Common:</p>
 <ul>
@@ -1663,7 +1805,7 @@ In a Transaction, you can have a latest Movement in status group (1) and one or 
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>
