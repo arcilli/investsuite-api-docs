@@ -43,10 +43,11 @@ Depending on the following criteria, the rebalancing process is different:
 
 #### Client integrates with broker
 
-When the Client integrates with the Broker, an Optimization is triggered when the Portfolio object is patched (with Holdings or Transactions):
+When the Client integrates with the Broker, an Optimization is triggered when the Portfolio object is PATCHed (with Holdings or Transactions):
 
-- A funding happens, see [Funding](../scenarios/cash_movements.md#broker-integration-by-the-client).
-<!-- - TODO what else? -->
+- A funding happens, see [Funding](../scenarios/cash_movements.md#broker-integration-by-the-client);
+- A withdrawal request happens (setting the `withdrawal_amount` on the Portfolio);
+- We recommend to trigger periodic optimizations (eg. every night, by issuing an empty PATCH call) - even though no orders may result - to ensure the portfolio does not drift.
 
 #### InvestSuite integrates with broker
 

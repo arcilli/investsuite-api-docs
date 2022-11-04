@@ -1,0 +1,125 @@
+{
+  "current_solution": {
+    "objective_value": -2.3899945188058256e-05,
+    "portfolio": {
+      "BE78468R1014": 3,
+      "$USD": 402.52
+    },
+    "look_through": {
+      "asset_classes": {
+        "alternatives": 0.0,
+        "bonds": 1.0,
+        "commodities": 0.0,
+        "stocks": 0.0,
+        "cash": 0.0
+      },
+      "regions": {
+        "bonds": {
+          "asia_pacific_developed": 0.0,
+          "emerging": 0.0,
+          "europe_developed": 0.0,
+          "north_america": 1.0
+        },
+        "stocks": {
+          "asia_pacific_developed": 0.0,
+          "emerging": 0.0,
+          "europe_developed": 0.0,
+          "north_america": 0.0
+        }
+      },
+      "bond_types": null,
+      "sectors": {
+        "basic_materials": 0.0,
+        "consumer_cyclical": 0.0,
+        "consumer_defensive": 0.0,
+        "communication_services": 0.0,
+        "energy": 0.0,
+        "financial_services": 0.0,
+        "healthcare": 0.0,
+        "industrials": 0.0,
+        "real_estate": 0.0,
+        "technology": 0.0,
+        "utilities": 0.0
+      }
+    }
+  },
+  "optimal_solution": {
+    "objective_value": 0.001359509844724587,
+    "portfolio": {
+      "BE4642886612": 0.76,
+      "BE78468R1014": 3,
+      "BE4642863926": 0.7381,
+      "BE46429B2676": 3.7190000000000003,
+      "BE78468R2004": 3.0000000000000004,
+      "$USD": 14.769662844999981
+    },
+    "look_through": {
+      "asset_classes": {
+        "alternatives": 0.0,
+        "bonds": 0.7986485447656201,
+        "commodities": 0.0,
+        "stocks": 0.20135145523437992,
+        "cash": 0.0
+      },
+      "regions": {
+        "bonds": {
+          "asia_pacific_developed": 0.0,
+          "emerging": 0.0,
+          "europe_developed": 0.0,
+          "north_america": 1.0
+        },
+        "stocks": {
+          "asia_pacific_developed": 0.09369676320272571,
+          "emerging": 0.0,
+          "europe_developed": 0.1799403747870528,
+          "north_america": 0.7263628620102215
+        }
+      },
+      "bond_types": null,
+      "sectors": {
+        "basic_materials": 0.046054619609495716,
+        "consumer_cyclical": 0.13806308600212508,
+        "consumer_defensive": 0.07094628258129534,
+        "communication_services": 0.022473042495950425,
+        "energy": 0.03446538322470511,
+        "financial_services": 0.16124155877170626,
+        "healthcare": 0.12224125679967916,
+        "industrials": 0.11992341101283713,
+        "real_estate": 0.0,
+        "technology": 0.2563740870896863,
+        "utilities": 0.02821727241251957
+      }
+    }
+  },
+  "portfolio_update": {
+    "is_recommended": true,
+    "orders": {
+      "BE4642886612": {
+        "shares": 0.76,
+        "expected_share_price": 130.09,
+        "expected_transaction_cost": 0.4943420000000001
+      },
+      "BE4642863926": {
+        "shares": 0.7381,
+        "expected_share_price": 130.31,
+        "expected_transaction_cost": 0.48090905500000003
+      },
+      "BE46429B2676": {
+        "shares": 3.719,
+        "expected_share_price": 26.58,
+        "expected_transaction_cost": 0.4942551
+      },
+      "BE78468R2004": {
+        "shares": 3,
+        "expected_share_price": 30.64,
+        "expected_transaction_cost": 0.4596
+      }
+    }
+  },
+  "id": "O01FGNGNS3R3836WB3JHD22J748",
+  "creation_datetime": "2021-09-28T06:15:06.613287+00:00",
+  "version": 1,
+  "version_datetime": "2021-09-28T06:15:06.613287+00:00",
+  "version_authored_by_user_id": "UXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "deleted": false
+}

@@ -8,7 +8,17 @@ title: Manage portfolios
 
 ## Context
 
-This page lists all operations that can be performed on the Portfolio object, see See [Glossary](glossary.md).
+This page lists all operations that can be performed on the Portfolio object, see [Glossary](glossary.md).
+
+## Concepts
+
+### Holdings
+
+Holdings are positions in a portfolio: instruments and/or cash.
+
+- Instruments are identified as their ISIN.
+- Cash is identified as `$` followed by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes) code. See [Glossary](glossary.md#currency).
+
 
 <!-- ## Concepts
 
@@ -87,7 +97,7 @@ Field | Description | Data type | Example | Required
 ----- | ----------- | --------- | ------- | --------
 `name` | The display name of the portfolio set by the user. | `string <= 128 characters` | My Portfolio-1 | yes
 `owned_by_user_id` | The portfolio owner's user ID. This field is required firstly to get to the account of the owner for cash withdrawals, and secondly to group portfolios by owner. | `string ^U[0-9A-HJKMNP-TV-Z]{26}\Z` | U01ARZ3NDEKTSV4RRFFQ69G5FAV | yes
-`base_currency` | The portfolio's currency. | `string ^[A-Z]{3}\Z` | USD | yes
+`base_currency` | The portfolio's currency. See [Glossary](glossary.md#currency). | `string ^[A-Z]{3}\Z` | USD | yes
 `money_type` | Defines whether this is a 'virtual' portfolio or not. In a virtual portfolio buying and selling decisions are simulated, rather than placed as actual orders through a broker. ! Write once | `enum("REAL_MONEY", "PAPER_MONEY")` | REAL_MONEY | yes
 `config->manager` | The manager type is either: self managed, or managed by the Robo Advisor under an advisory or discretionary mandate. For **Self Investor** select `USER_MANAGED` ! Write once. | `enum("USER_MANAGED", "ROBO_ADVISOR_ADVISORY", "ROBO_ADVISOR_DISCRETIONARY")` | ROBO_ADVISOR_DISCRETIONARY | yes
 `config->manager_version` | Which major version of the selected portfolio manager to use. | `integer >= 1` | 1 | yes
@@ -102,7 +112,7 @@ Field | Description | Data type | Example | Required
 
 === "Request"
 
-    ```HTTP hl_lines="11 13"
+    ```HTTP hl_lines="14"
     POST /portfolios/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Accept-Encoding: gzip, deflate
@@ -110,6 +120,7 @@ Field | Description | Data type | Example | Required
     Content-Type: application/json
     Authorization: Bearer {string}
     {
+        "external_id":"your-bank-portfolio-1",
         "name":"General investing",
         "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
         "base_currency":"USD",
@@ -124,6 +135,9 @@ Field | Description | Data type | Example | Required
             "bank_account_type":"IBAN",
             "bank_account_number":"BE01234567891234"
             "payment_reference":"32154796"
+        },
+        "portfolio":{
+            "$USD":10000
         }
     }
     ```
@@ -148,32 +162,8 @@ A typical Robo Advisor portfolio also has a Goal, Horizon and Policy defined. Se
 
 === "Request"
 
-    ```HTTP hl_lines="12 13 14"
-    POST /portfolios/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
-    Content-Type: application/json
-    Authorization: Bearer {string}
-    {
-        "base_currency":"USD",
-        "config":{
-            "manager":"ROBO_ADVISOR_DISCRETIONARY",
-            "manager_settings":{
-                "goal_id":"L01EF46X4872VVN0QRW4XF2ZP6W",
-                "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ",
-                "policy_id":"Y01EF46X9XB437JS4678X0K529C"
-            },
-            "manager_version":1
-        },
-        "external_id":"your-bank-portfolio-1",
-        "money_type":"PAPER_MONEY",
-        "name":"General investing",
-        "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
-        "portfolio":{
-            "$USD":10000
-        },
-    }
+    ```HTTP hl_lines="14"
+    --8<-- "concepts/portfolios.post-typicalrobo.request.http"
     ```
 
 === "Response (body)"
@@ -681,8 +671,6 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
     ```HTTP hl_lines="1"
     GET /portfolios/?query=external_id+eq+'your-bank-portfolio-1' HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
     Content-Type: application/json
     Authorization: Bearer {string}
     ```
@@ -722,6 +710,8 @@ You can query each entity through a general endpoint e.g. `GET /portfolios/?quer
 
 ### Get portfolios with pending withdrawals
 
+<!-- See PLAT-1535, the below is not supported
+
 Get the Portfolios where the `divest_amount` > 0
 
 === "Request"
@@ -729,8 +719,23 @@ Get the Portfolios where the `divest_amount` > 0
     ```HTTP hl_lines="1"
     GET /portfolios/query=config.manager_settings.divest_amount+lt+0 HTTP/1.1
     Host: api.sandbox.investsuite.com
-    Accept-Encoding: gzip, deflate
-    Connection: Keep-Alive
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    ``` -->
+
+Get the Portfolios with a non-zero and non-null `divest_amount`
+
+=== "Request"
+
+    ```HTTP hl_lines="1"
+    GET /portfolios/?query=
+        config.manager_settings.divest_amount neq 0 and 
+        config.manager_settings.divest_amount neq null HTTP/1.1
+    Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
     ```
+
+
+
+    

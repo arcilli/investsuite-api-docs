@@ -1,0 +1,25 @@
+POST /portfolios/ HTTP/1.1
+Host: api.sandbox.investsuite.com
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+Content-Type: application/json
+Authorization: Bearer {string}
+{
+    "external_id":"your-bank-portfolio-1",
+    "name":"General investing",
+    "owned_by_user_id":"U01F5WYKRRXZHXT9S6FF1JZNJVZ",
+    "base_currency":"USD",
+    "money_type":"PAPER_MONEY",
+    "config":{
+        "manager":"ROBO_ADVISOR_DISCRETIONARY",
+        "manager_version":1,
+        "manager_settings":{
+            "goal_id":"L01EF46X4872VVN0QRW4XF2ZP6W",    // Optional
+            "horizon_id":"H01EQ3429CY6Y2NW0ZF8A8Y2FYJ", // Optional
+            "policy_id":"Y01EF46X9XB437JS4678X0K529C"  
+        }
+    },
+    "portfolio":{
+        "$USD":10000
+    }
+}

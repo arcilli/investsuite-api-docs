@@ -63,26 +63,9 @@ Depending on which products the User uses, fields become required from a fuction
 === "Request"
 
     ```HTTP
-    POST /users/ HTTP/1.1
-    Host: api.sandbox.investsuite.com
-    Content-Type: application/json
-    Authorization: Bearer {string}
-    {
-        "external_id": "unique_external_identity_id_2809",
-        "first_name": "Ashok",
-        "last_name": "Kumar",
-        "email": "ashok.kumar@example.com",
-        "phone": "+123456789",
-        "counter_account": {
-            bank_account_number: "BE01234567891234",
-            bank_account_type: "IBAN",
-            bank_id: "IDQMIE2D"
-        },
-        "language": "en-US"
-        "status": "WAITING_FOR_VERIFICATION"
-    }
-
+    --8<-- "concepts/users.post-typical.request.http"
     ```
+
 === "Response (body)"
 
     ```JSON

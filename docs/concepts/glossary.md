@@ -122,6 +122,11 @@ This is part of the input for Optimizer to construct the Portfolio.
 - **Advisory** (Robo Advisor only): The user needs to approve the recommended optimization before the orders can be executed.
 - **Execution-only** (Self Investor only): The user decides what orders to execute.
 
+## Currency
+
+Currencies are expressed as defined in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#List_of_ISO_4217_currency_codes).
+
+To express cash holdings in a portfolio, they are prefixed with the `$`-sign followed by the currency code. For example, Australian dollar is `$AUD`, Euro is `$EUR`, United Arab Emirates dirham is `$AUD`.
 
 
 <!-- 

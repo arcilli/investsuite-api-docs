@@ -47,6 +47,7 @@ query    | Example: `query=email+eq+'jane.doe@example.com`. See below.
         ?embed=owned_by_user_id
         &limit=2 HTTP/1.1
     Host: api.sandbox.investsuite.com
+    Content-Type: application/json
     Authorization: Bearer {string}
     ```
 
@@ -165,6 +166,7 @@ The API provides a structural search and filtering mechanism for all entities. W
     GET /portfolios
         ?query=lastmodified+in+['20200101'+to+'20240101'] HTTP/1.1
     Host: api.sandbox.investsuite.com
+    Content-Type: application/json
     Authorization: Bearer {string}
     ```
 
@@ -193,8 +195,10 @@ String operator  | `LIKE` matching | `email eq '*gmail*'`
 Date operator    | Exact match | `last_modified eq '2020-09-11T09:03:53.721588+00:00'`
 Date operator    | Is in range for dates without time | `lastmodified in ['20200101' to '20210101']`
 Date operator    | Is in range for dates with time | `lastmodified in ['2020-09-11T09:03:53.721588' to '2020-11-11T09:03:53.721588']`
-Date operator    | Is in range for dates with timeezonr | `lastmodified in ['2020-09-11T09:03:53.721588+00:00' to '2020-11-11T09:03:53.721588+00:00']`
+Date operator    | Is in range for dates with timeezone | `lastmodified in ['2020-09-11T09:03:53.721588+00:00' to '2020-11-11T09:03:53.721588+00:00']`
 Boolean operator | Boolean queries | `archived eq true`
+Null comparison  | Equals `null` | `field eq null`<br>NOTE the `is null` operator is (by design) not supported.
+Null comparison  | Not equal to `null` | `field neq null`
 List operator    | `IN` (element of) | `field in ['value1', 'value2', 'value3']`
 Logical operator | `AND`, `OR` | `email eq kristof and age gt 18`
 
@@ -209,6 +213,49 @@ The sorting operator always comes as the last term, except when there is a selec
 - Order descending: orderby {attribute_name} desc e.g. `orderby+age+desc`
 - Multiple attributes: orderby {attribute_name} desc, {attribute_name2} asc e.g. `orderby+age+desc,+firstname`
 - Attributes names can be nested e.g. `orderby+manager.bank_account`.
+
+## Pagination
+
+Business objects can be enumerated by paginating through the entire collection.
+
+Issuing a `GET` request to the entity root path will return a next cursor:
+
+=== "Request"
+
+    ```HTTP
+    GET /portfolios HTTP/1.1
+    Host: api.sandbox.investsuite.com
+    Content-Type: application/json
+    Authorization: Bearer {string}
+    ```
+
+=== "Response"
+
+    ```JSON hl_lines="2"
+    {
+        "next": "/portfolios/?limit=20&offset=20",
+        "count": "20",
+        "offset": "20",
+        "results": [
+            ...
+        ],
+        "_embedded": {}
+    }
+    ```
+
+=== "Response (End)"
+
+    ```JSON hl_lines="2"
+    {
+        "next": null,
+        "count": "15",
+        "offset": "20",
+        "results": [
+            ...
+        ],
+        "_embedded": {}
+    }
+    ```
 
 ## List of business objects
 
