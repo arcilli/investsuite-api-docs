@@ -1630,7 +1630,7 @@
 <p>The Orders part contains an <code>expected_share_price</code> and <code>expected_transaction_cost</code>. Since the Optimization process is inherently asynchronous, the share price may fluctuate.</p>
 <p>We therefore recommend to include an Optimizer <a href="../policy/">Policy</a> that always hold a small percentage in cash, to cover price fluctuations. </p>
 <p>Do explicitly check the price difference in the middleware.</p>
-<p>Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a <code>NOT_EXECUTED</code> status.</p>
+<p>Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a <code>NOT_EXECUTED</code> movement.</p>
 <h4 id="quantity-type">Quantity type<a class="headerlink" href="#quantity-type" title="Permanent link">&para;</a></h4>
 <p>The <code>portfolio_update</code> section within an optimisation object can be configured on client level to return the quantity of instruments that need to be bought or sold in either <code>UNITS</code> or in <code>AMOUNT</code>:</p>
 <ul>
