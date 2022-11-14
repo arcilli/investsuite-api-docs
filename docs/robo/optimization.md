@@ -66,7 +66,7 @@ Calculation of an optimization takes between 5 seconds and a couple of minutes d
 
 === "Response (Already Optimal)"
 
-    ```JSON linenums="1" hl_lines="9"
+    ```JSON hl_lines="9"
     --8<-- "robo/optimization.get-latest-optimization-no-optimizations.response.http"
     ```
 
@@ -88,6 +88,16 @@ Field | Description | Data type | Example | Required
 `portfolio_update->reasons->portfolio_update_constraint_value` | The value of the portfolio update constraint. | `number` | 0.9 | yes
 `portfolio_update->reasons->portfolio_constraint_id` | The id of the corresponding portfolio constraint. | `string` | holdings.cash | yes
 `creation_datetime` | The date and time the first version of the entity was created. | `date-time` | 2025-06-04T15:23:15.328252+00:0 | yes
+
+#### Share Price
+
+The Orders part contains an `expected_share_price` and `expected_transaction_cost`. Since the Optimization process is inherently asynchronous, the share price may fluctuate.
+
+We therefore recommend to include an Optimizer [Policy](policy.md) that always hold a small percentage in cash, to cover price fluctuations. 
+
+Do explicitly check the price difference in the middleware.
+
+Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a `NOT_EXECUTED` status.
 
 #### Quantity type
 
