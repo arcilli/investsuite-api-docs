@@ -97,7 +97,7 @@ We therefore recommend to include an Optimizer [Policy](policy.md) that always h
 
 Do explicitly check the price difference in the middleware.
 
-Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a `NOT_EXECUTED` status.
+Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a `NOT_EXECUTED` movement.
 
 #### Quantity type
 
