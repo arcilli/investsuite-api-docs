@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.investsuite.com/robo/optimization/">
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.815d1a91.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
       
       
@@ -810,6 +810,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#share-price" class="md-nav__link">
+    Share Price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#quantity-type" class="md-nav__link">
     Quantity type
   </a>
@@ -1259,6 +1266,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#share-price" class="md-nav__link">
+    Share Price
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#quantity-type" class="md-nav__link">
     Quantity type
   </a>
@@ -1471,25 +1485,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;current_solution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="err">...</span><span class="w"></span>
 <span class="w">  </span><span class="p">},</span><span class="w"></span>
@@ -1508,7 +1504,7 @@
 <span class="w">  </span><span class="nt">&quot;version_authored_by_user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="w"></span>
 <span class="w">  </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -1630,6 +1626,11 @@
 </tr>
 </tbody>
 </table>
+<h4 id="share-price">Share Price<a class="headerlink" href="#share-price" title="Permanent link">&para;</a></h4>
+<p>The Orders part contains an <code>expected_share_price</code> and <code>expected_transaction_cost</code>. Since the Optimization process is inherently asynchronous, the share price may fluctuate.</p>
+<p>We therefore recommend to include an Optimizer <a href="../policy/">Policy</a> that always hold a small percentage in cash, to cover price fluctuations. </p>
+<p>Do explicitly check the price difference in the middleware.</p>
+<p>Should the price difference be to great, or insufficient cash be available (due to bigger than expected price difference), update the Transaction with a <code>NOT_EXECUTED</code> status.</p>
 <h4 id="quantity-type">Quantity type<a class="headerlink" href="#quantity-type" title="Permanent link">&para;</a></h4>
 <p>The <code>portfolio_update</code> section within an optimisation object can be configured on client level to return the quantity of instruments that need to be bought or sold in either <code>UNITS</code> or in <code>AMOUNT</code>:</p>
 <ul>
