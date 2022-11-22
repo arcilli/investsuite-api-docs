@@ -59,20 +59,22 @@ end
 
 
 alt Robo Advisor Only
-_ivs->_ivs:Create Portfolio (PAPER_MONEY)
-_ivs->_clt:**(PTF001)** Event: Portfolio Created
-note right of _clt:Depending on your backoffice needs/capabilies, \nwe recommend to skip the PAPER_MONEY portfolios
-_ivs->_ivs:Suitability Profiling
-note over _ivs:User can use PAPER_MONEY portfolio\nas long as (s)he wants
-_ivs->_ivs:User activates portfolio\n- Delete PAPER_MONEY Portfolio\n- Create REAL_MONEY Portfolio
-
+    _ivs->_ivs:Create Portfolio (PAPER_MONEY)
+    _ivs->_clt:**(PTF001)** Event: Portfolio Created
+    note right of _clt:Depending on your backoffice needs/capabilies, \nwe recommend to skip the PAPER_MONEY portfolios
+    _ivs->_ivs:Suitability Profiling
+    note over _ivs:User can use PAPER_MONEY portfolio\nas long as (s)he wants
+    _ivs->_ivs:User activates portfolio\n- Delete PAPER_MONEY Portfolio\n- Create REAL_MONEY Portfolio
 else Self Investor Only
-_ivs->_ivs:Create Portfolio (REAL_MONEY)
+    _ivs->_ivs:Create Portfolio (REAL_MONEY)
 
 end
 
-_ivs->_clt:**(PTF001)** Event: Portfolio Created
-note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
-_clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
-_ivs<-_clt:**(PTF002)** Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
-
+alt Broker/Custodian Integration by InvestSuite
+    _ivs -> _ivs: Manage User & Portfolio at Broker/Custodian
+else Broker/Custodian Integration by Client
+    _ivs->_clt:**(PTF001)** Event: Portfolio Created
+    note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
+    _clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
+    _ivs<-_clt:**(PTF002)** Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
+end
