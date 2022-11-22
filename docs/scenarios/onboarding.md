@@ -33,6 +33,12 @@ The former is the preferred scenario as it requires less integration work, allow
 |---|---|---|
 | Implications | - How to onboard existing users, if in scope? | - Middleware needs to handle user creation  |
 
+- Will InvestSuite integrate with the broker/custodian?
+
+|  | Yes | No |
+|---|---|---|
+| Implications | InvestSuite ensures the user/portfolio are managed at the broker/custodian | Client Middleware needs to ensure the user/portfoio are managed at the broker/custodian |
+
 - Will the backoffice systems support the Robo Advisor ['paper money'](../concepts/glossary.md#money) portfolios?
 
 |  | Yes | No |
