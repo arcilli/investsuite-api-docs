@@ -57,7 +57,6 @@ activate _ivs
 end
 
 
-
 alt Robo Advisor Only
     _ivs->_ivs:Create Portfolio (PAPER_MONEY)
     _ivs->_clt:**(PTF001)** Event: Portfolio Created
@@ -70,11 +69,13 @@ else Self Investor Only
 
 end
 
+_ivs->_clt:**(PTF001)** Event: Portfolio Created
+note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
+_clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
+
 alt Broker/Custodian Integration by InvestSuite
     _ivs -> _ivs: Manage User & Portfolio at Broker/Custodian
 else Broker/Custodian Integration by Client
-    _ivs->_clt:**(PTF001)** Event: Portfolio Created
-    note right of _clt:The event does not contain detail about the portfolio created other than the ID\nTo get the details, issue a GET /portfolios/{id}
-    _clt->_clt:Backoffice Processes\n(CBS, CRM, ...)
+    _clt->_clt: Manage User & Portfolio atBroker/Custodian
     _ivs<-_clt:**(PTF002)** Update Portfolio\nBrokerage Account\n\nPATCH /portfolio/{id}
 end
