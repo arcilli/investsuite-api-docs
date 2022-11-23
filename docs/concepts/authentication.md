@@ -7,11 +7,13 @@ Authenticate against the API to receive a JSON Web Token (JWT). Learn more about
 !!! Warning
     Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.
 
+Call the `/auth/login` endpoint with the `access_key_id` and `secret_access_key` (or username and password respectively).
+
 When you successfully authenticate you receive an `access_token` and a `refresh_token`. Add the `access_token`to the HTTP headers in all subsequent requests. This is required to authenticate against the API service. You cannot access any endpoint without a valid JWT.
 
 The `access_token` has a limited lifetime. The duration is added to the response body in the `expires_at`field, e.g `expires_at: 300`. Within the lifetime of the access_token you can refresh the token by issuing the `/auth/refresh-token` endpoint. We will try this out below where we will perform following three steps:
 
-1. Login: Authenticate with `access_key_id` and `secret_access_key` to retrieve an access token.
+1. Login: Authenticate with `access_key_id` (or username) and `secret_access_key` (or password) to retrieve an access token.
 2. Refresh token: Refresh the access token.
 3. Add token: Issue a GET request with the access token.
 
