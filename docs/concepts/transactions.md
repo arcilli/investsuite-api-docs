@@ -464,7 +464,7 @@ stateDiagram-v2
 
     [*] --> groupOne: 0..1
     [*] --> groupTwo: 0..n
-    groupOne --> groupTwo: 1..n
+    groupOne --> groupTwo: 0..n
 
     state groupOne {
         direction LR
@@ -883,7 +883,7 @@ To register a cancellation you add one movement to the current list of movements
 === "Request"
 
     ```HTTP hl_lines="18 19 20 21 22 23"
-    POST /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
+    PATCH /portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/ HTTP/1.1
     Host: api.sandbox.investsuite.com
     Content-Type: application/json
     Authorization: Bearer {string}
