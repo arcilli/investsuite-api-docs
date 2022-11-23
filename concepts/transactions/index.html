@@ -2051,7 +2051,7 @@ While an Optimization is in progress (ie. the <a href="../../robo/rebalancing/">
 
     [*] --&gt; groupOne: 0..1
     [*] --&gt; groupTwo: 0..n
-    groupOne --&gt; groupTwo: 1..n
+    groupOne --&gt; groupTwo: 0..n
 
     state groupOne {
         direction LR
@@ -2511,7 +2511,7 @@ When <code>external_id</code> is not filled, leave the <code>reference_external_
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Request</label><label for="__tabbed_10_2">Response (body)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<div class="highlight"><pre><span></span><code><span class="nf">PATCH</span> <span class="nn">/portfolios/P01FGZK41MJ4NJXKZ27VJC0HGS9/transactions/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="o">:</span> <span class="l">api.sandbox.investsuite.com</span>
 <span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json</span>
 <span class="na">Authorization</span><span class="o">:</span> <span class="l">Bearer {string}</span>

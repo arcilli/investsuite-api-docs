@@ -1209,10 +1209,11 @@
 <p class="admonition-title">Warning</p>
 <p>Requests should not be directly sent from your app or website, as your authentication data may be exposed in transit. All requests are required to be made via an HTTPS connection; requests made over plain HTTP will fail.</p>
 </div>
+<p>Call the <code>/auth/login</code> endpoint with the <code>access_key_id</code> and <code>secret_access_key</code> (or username and password respectively).</p>
 <p>When you successfully authenticate you receive an <code>access_token</code> and a <code>refresh_token</code>. Add the <code>access_token</code>to the HTTP headers in all subsequent requests. This is required to authenticate against the API service. You cannot access any endpoint without a valid JWT.</p>
 <p>The <code>access_token</code> has a limited lifetime. The duration is added to the response body in the <code>expires_at</code>field, e.g <code>expires_at: 300</code>. Within the lifetime of the access_token you can refresh the token by issuing the <code>/auth/refresh-token</code> endpoint. We will try this out below where we will perform following three steps:</p>
 <ol>
-<li>Login: Authenticate with <code>access_key_id</code> and <code>secret_access_key</code> to retrieve an access token.</li>
+<li>Login: Authenticate with <code>access_key_id</code> (or username) and <code>secret_access_key</code> (or password) to retrieve an access token.</li>
 <li>Refresh token: Refresh the access token.</li>
 <li>Add token: Issue a GET request with the access token.</li>
 </ol>
