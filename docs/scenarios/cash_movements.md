@@ -9,7 +9,7 @@ For **Robo Advisor**, the Funding/Withdrawal process and the [Rebalancing proces
 - A *funding* triggers Optimizer, which will generate an Optimization, which contains orders that (during rebalancing) will *invest the cash*;
 - A *withdrawal* triggers Optimizer, which will generate an Optimization, which contains orders that (during rebalancing) will *divest instruments and free up cash*.
 
-If you are looking to design/build a middleware that handles both, we recommend to have a look at our [example middleware design](middleware.md).
+If you are looking to design/build a middleware that handles both, we recommend to have a look at our [example middleware design](../robo/middleware_design.md).
 
 For **Self Investor**, the Funding/Withdrawal process is more straightforward, as the Customer is responsible for investing/freeing up cash.
 ## Funding
